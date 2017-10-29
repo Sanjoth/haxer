@@ -1,6 +1,7 @@
   <div style="text-align:center">
     <label>Search Query:</label>
-    <input type="text" (keydown)="sendReq(query.value)" [(ngModel)]="texts" name=query #query>
+    
+    <input type="text" (keyup)="sendReq(query.value)" [(ngModel)]="texts" name=query #query>
     
     <h4>You searched for '{{texts}}'</h4>
 

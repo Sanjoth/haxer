@@ -153,7 +153,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/user.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <div style=\"text-align:center\">\n    <label>Search Query:</label>\n    <input type=\"text\" (keydown)=\"sendReq(query.value)\" [(ngModel)]=\"texts\" name=query #query>\n    \n    <h4>You searched for '{{texts}}'</h4>\n\n  <h5>Search Details</h5>\n  </div>\n  <table> \n      <tr>\n        <th>Page </th>\n        <th>Total Results</th>\n        <th>Total Pages</th>\n        <th>Results per page</th>\n      </tr>\n      <tr>\n        <td>{{data.page}}</td>\n        <td>{{data.total_results}}</td>\n        <td>{{data.total_pages}}</td>\n        <td>{{data.results.length}}</td>\n      </tr>\n    </table>\n  \n  \n  <ol>\n    <li *ngFor=\"let movie of data.results; let myIndex = index\"> \n      <b> Movie ID: </b> {{movie.id}} <br>\n      <b> Movie Title: </b> {{movie.title}} <br> \n\n      <b> Genres: </b><ol> <li *ngFor=\"let item of movie.genre_ids\">\n          {{item }} </li> </ol> \n    \n      <b> Original Language: </b> {{movie.original_language}} <br>\n      <b> IMDb Rating: </b> {{movie.vote_average}} <br>\n      <b> Vote Count: </b> {{movie.vote_count}} <br> \n      <b> Movie Overview: </b> {{movie.overview}} <br> \n      <b> Popularity: </b> {{movie.popularity}} <br> \n      <b> Adult: </b> {{movie.adult}} <br>\n      <b> Year: </b> {{movie.release_date}} <br>\n    </li>\n  </ol>\n\n  <!-- OLD CODE\n  <b>Movie Details:</b><br>\n  Movie id: {{data.results[0].id}}<br>\n  Title: {{data.results[0].title}}<br>\n  Genres: <ol><li *ngFor=\"let item of data.results[0].genre_ids\">\n    {{item }} </li> </ol> <br> \n  Language: {{data.results[0].original_language}}<br>\n  IMDb Rating: {{data.results[0].vote_average}}<br>\n  Vote Count: {{data.results[0].vote_count}}<br>\n  Overview: {{data.results[0].overview}}<br>\n  Popularity: {{data.results[0].popularity}}<br>\n  Adult: {{data.results[0].adult}}<br>\n  poster_path: {{data.results[0].poster_path}}<br>\n  backdrop_path: {{data.results[0].id}}<br>\n  <br><br>\n  \n  <b>Search Details:</b><br>\n  page: {{data.page}}<br>\n  total_results: {{data.total_results}}<br>\n  total_pages: {{data.total_pages}}<br>\n  results:{{data.results.length}}<br>\n\n  -->"
+module.exports = "  <div style=\"text-align:center\">\n    <label>Search Query:</label>\n    \n    <input type=\"text\" (keyup)=\"sendReq(query.value)\" [(ngModel)]=\"texts\" name=query #query>\n    \n    <h4>You searched for '{{texts}}'</h4>\n\n  <h5>Search Details</h5>\n  </div>\n  <table> \n      <tr>\n        <th>Page </th>\n        <th>Total Results</th>\n        <th>Total Pages</th>\n        <th>Results per page</th>\n      </tr>\n      <tr>\n        <td>{{data.page}}</td>\n        <td>{{data.total_results}}</td>\n        <td>{{data.total_pages}}</td>\n        <td>{{data.results.length}}</td>\n      </tr>\n    </table>\n  \n  \n  <ol>\n    <li *ngFor=\"let movie of data.results; let myIndex = index\"> \n      <b> Movie ID: </b> {{movie.id}} <br>\n      <b> Movie Title: </b> {{movie.title}} <br> \n\n      <b> Genres: </b><ol> <li *ngFor=\"let item of movie.genre_ids\">\n          {{item }} </li> </ol> \n    \n      <b> Original Language: </b> {{movie.original_language}} <br>\n      <b> IMDb Rating: </b> {{movie.vote_average}} <br>\n      <b> Vote Count: </b> {{movie.vote_count}} <br> \n      <b> Movie Overview: </b> {{movie.overview}} <br> \n      <b> Popularity: </b> {{movie.popularity}} <br> \n      <b> Adult: </b> {{movie.adult}} <br>\n      <b> Year: </b> {{movie.release_date}} <br>\n    </li>\n  </ol>\n\n  <!-- OLD CODE\n  <b>Movie Details:</b><br>\n  Movie id: {{data.results[0].id}}<br>\n  Title: {{data.results[0].title}}<br>\n  Genres: <ol><li *ngFor=\"let item of data.results[0].genre_ids\">\n    {{item }} </li> </ol> <br> \n  Language: {{data.results[0].original_language}}<br>\n  IMDb Rating: {{data.results[0].vote_average}}<br>\n  Vote Count: {{data.results[0].vote_count}}<br>\n  Overview: {{data.results[0].overview}}<br>\n  Popularity: {{data.results[0].popularity}}<br>\n  Adult: {{data.results[0].adult}}<br>\n  poster_path: {{data.results[0].poster_path}}<br>\n  backdrop_path: {{data.results[0].id}}<br>\n  <br><br>\n  \n  <b>Search Details:</b><br>\n  page: {{data.page}}<br>\n  total_results: {{data.total_results}}<br>\n  total_pages: {{data.total_pages}}<br>\n  results:{{data.results.length}}<br>\n\n  -->"
 
 /***/ }),
 
@@ -181,6 +181,13 @@ var UserComponent = (function () {
     }
     UserComponent.prototype.sendReq = function (query) {
         var _this = this;
+        if (query == '') {
+            query = 'NaNaNaNaN';
+            this.mySwitch = false;
+            return true;
+        }
+        this.mySwitch = true;
+        console.log(query);
         this.hell = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&query=' + query + '&page=1&include_adult=false';
         this.http.get(this.hell).subscribe(function (data) {
             /* console.log(data);
@@ -198,6 +205,7 @@ var UserComponent = (function () {
              console.log(data.results[0].genre_ids[2]);
              console.log(data.results[0].popularity);
              */
+            console.log("data is :" + data);
             _this.data = data; // Assign local to global
         });
     };
