@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   sendReq(query){
     this.hell = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&query='+query+'&page=1&include_adult=false';
     this.http.get<UserResponse>(this.hell).subscribe(data => {
-      console.log(data);
+     /* console.log(data);
       console.log(data.page);
       console.log(data.total_results);
       console.log(data.total_pages);
@@ -31,6 +31,7 @@ export class UserComponent implements OnInit {
       console.log(data.results[0].genre_ids[1]);
       console.log(data.results[0].genre_ids[2]);
       console.log(data.results[0].popularity);
+      */
       this.data = data; // Assign local to global
     });
   
