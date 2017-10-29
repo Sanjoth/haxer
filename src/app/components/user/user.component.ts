@@ -10,7 +10,6 @@ export class UserComponent implements OnInit {
   // Global Vars
   hell:string;
   data:object;
-  mySwitch:boolean;
   
   constructor(private http: HttpClient){
   }
@@ -19,10 +18,9 @@ export class UserComponent implements OnInit {
     if(query == '')
     {
       query='NaNaNaNaN';
-      this.mySwitch = false;
-      return true;
+      console.log(query);
+    
     }
-    this.mySwitch = true;
     console.log(query);
     this.hell = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&query='+query+'&page=1&include_adult=false';
     this.http.get<UserResponse>(this.hell).subscribe(data => {

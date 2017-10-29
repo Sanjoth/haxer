@@ -1,12 +1,13 @@
-  <div style="text-align:center">
-    <label>Search Query:</label>
-    
-    <input type="text" (keyup)="sendReq(query.value)" [(ngModel)]="texts" name=query #query>
-    
-    <h4>You searched for '{{texts}}'</h4>
+<div style="text-align:center">
+ 
+    Search: <input type="text" placeholder="Keywords" (keyup)="sendReq(query.value)" [(ngModel)]="texts" name="query" #query>
 
-  <h5>Search Details</h5>
+ 
   </div>
+  <div *ngIf="data">
+      <div style="text-align:center">
+      <p>You searched for ' <b>{{texts}}</b> ' </p>
+      <h5>Search Details</h5>
   <table> 
       <tr>
         <th>Page </th>
@@ -21,9 +22,9 @@
         <td>{{data.results.length}}</td>
       </tr>
     </table>
+  </div>
   
-  
-  <ol>
+  <ol> 
     <li *ngFor="let movie of data.results; let myIndex = index"> 
       <b> Movie ID: </b> {{movie.id}} <br>
       <b> Movie Title: </b> {{movie.title}} <br> 
@@ -38,8 +39,9 @@
       <b> Popularity: </b> {{movie.popularity}} <br> 
       <b> Adult: </b> {{movie.adult}} <br>
       <b> Year: </b> {{movie.release_date}} <br>
-    </li>
+    </li> 
   </ol>
+</div>
 
   <!-- OLD CODE
   <b>Movie Details:</b><br>
