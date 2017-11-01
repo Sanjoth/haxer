@@ -67,9 +67,7 @@ interface Results{
   poster_path: string;
   release_date: string;
 }
-export class GridListDynamicExample {
-  
-}
+
 
 /* console.log(data);
       console.log(data.page);
