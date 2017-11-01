@@ -25,6 +25,7 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
+        "Hammerjs": "../node_modules/hammerjs/hammer.min.js",
         "prod": "environments/environment.prod.ts"
       }
     }

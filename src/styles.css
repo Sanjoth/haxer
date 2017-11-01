@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*Angular Material 2 Themes, icons,etc */
+@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Card Style template */
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+  }
+  
+  mat-card {
+    max-width: 70%;
+    
+    margin: 1em auto;
+    text-align: left;
+  }
+  
