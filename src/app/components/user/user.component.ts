@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
     if(query == '')
     {
       query='NaNaNaNaN';
-      console.log(query);
+  
     
     }
     console.log(query);
