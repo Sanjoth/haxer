@@ -11,22 +11,19 @@ export class UserComponent implements OnInit {
   // Global Vars
   hell:string;
   data:object;
+  blank:object;
   
   constructor(private http: HttpClient){
   }
 
   trackClick(movieid,genre){
-
     console.log(movieid,genre);
-
-
   }
   
   sendReq(query){
     if(query == '')
     {
-      query='NaNaNaNaN'; // For clearing Search so that no empty request is made
-
+      this.data=this.blank; //Clearing Search Box
     }
     //console.log(query);
     this.hell = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query='+query+'&page=1';
@@ -36,9 +33,7 @@ export class UserComponent implements OnInit {
   
   
   }
-  ngOnInit(){
-    
-  }
+  ngOnInit(){}
 
 }
 

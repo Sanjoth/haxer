@@ -265,7 +265,7 @@ var UserComponent = (function () {
     UserComponent.prototype.sendReq = function (query) {
         var _this = this;
         if (query == '') {
-            query = 'NaNaNaNaN'; // For clearing Search so that no empty request is made
+            this.data = this.blank; //Clearing Search Box
         }
         //console.log(query);
         this.hell = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1';
@@ -273,8 +273,7 @@ var UserComponent = (function () {
             _this.data = data; // Assign local to global
         });
     };
-    UserComponent.prototype.ngOnInit = function () {
-    };
+    UserComponent.prototype.ngOnInit = function () { };
     return UserComponent;
 }());
 UserComponent = __decorate([
