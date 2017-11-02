@@ -11,9 +11,13 @@ body {
   }
   
   mat-card {
-    max-width: 70%;
+    max-width: 80%;
     
-    margin: 1em auto;
+    margin: 0.5em auto;
     text-align: left;
   }
   
+  html {
+    position: relative;
+    min-height: 100%;
+  }

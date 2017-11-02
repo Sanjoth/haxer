@@ -11,13 +11,19 @@ import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material';
 
+//Self Made
+import { TruncatePipe } from './truncate/truncate.module';
+
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
+    TruncatePipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

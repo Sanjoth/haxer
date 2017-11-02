@@ -1,7 +1,7 @@
 table, th , td  {
     border: 1px solid grey;
     border-collapse: collapse;
-    padding: 5px;
+    padding: 10px;
   }
   table tr:nth-child(odd) {
     background-color: #f1f1f1;
@@ -16,10 +16,12 @@ table, th , td  {
   margin-right: auto;
   }
 
+  /*  Material Card */
   .example-card {
-    width: 100%;
+    width: 400px;
     
   }
+
 
 
   

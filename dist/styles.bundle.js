@@ -36,7 +36,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/icon?family=Ma
 exports.i(__webpack_require__("../../../../css-loader/index.js?{\"sourceMap\":false,\"importLoaders\":1}!../../../../postcss-loader/index.js?{\"ident\":\"postcss\"}!../../../material/prebuilt-themes/indigo-pink.css"), "");
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n/*Angular Material 2 Themes, icons,etc */\n\n/* Card Style template */\nbody {\n    margin: 0;\n    font-family: Roboto, sans-serif;\n  }\n  \n  mat-card {\n    max-width: 70%;\n    \n    margin: 1em auto;\n    text-align: left;\n  }\n  \n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n/*Angular Material 2 Themes, icons,etc */\n\n/* Card Style template */\nbody {\n    margin: 0;\n    font-family: Roboto, sans-serif;\n  }\n  \n  mat-card {\n    max-width: 80%;\n    \n    margin: 0.5em auto;\n    text-align: left;\n  }\n  \n  html {\n    position: relative;\n    min-height: 100%;\n  }", ""]);
 
 // exports
 
