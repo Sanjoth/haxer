@@ -22,8 +22,6 @@
         </table>  
        </div> 
 <br/>
-<!-- <mat-grid-list cols="2" rowHeight="800px">
-  <mat-grid-tile> -->
       <div class="card-group">
   <mat-card class="example-card" *ngFor="let movie of data.results; let myIndex = index" (click)="trackClick(movie.id,movie.genre_ids)">
       <mat-card-header>
@@ -31,7 +29,7 @@
               <i class="fa fa-film" aria-hidden="true"></i> <b> {{movie.title}} </b>
          </mat-card-title>
       </mat-card-header>
-        <img mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}">
+        <img mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}" onerror="this.onerror=null;this.src='/assets/nf.png'">
       <mat-card-content>
           <div class="d-flex justify-content-between">
               <div>
@@ -57,16 +55,9 @@
       </mat-card-actions>   
   </mat-card>
   </div>
-  <!--
-</mat-grid-tile>
-</mat-grid-list>
--->
 </div>
 
-
-
-  
- 
+<br/> <br/>
 
 
   <!-- OLD CODE
@@ -153,5 +144,5 @@
   </ol>
 </div>
 -->
-<br/> <br/>
+
   
