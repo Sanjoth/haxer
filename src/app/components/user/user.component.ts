@@ -25,15 +25,12 @@ export class UserComponent implements OnInit {
   sendReq(query){
     if(query == '')
     {
-      query='NaNaNaNaN';
-  
-    
+      query='NaNaNaNaN'; // For clearing Search so that no empty request is made
+
     }
-    console.log(query);
-    this.hell = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&query='+query+'&page=1&include_adult=false';
+    //console.log(query);
+    this.hell = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query='+query+'&page=1';
     this.http.get<UserResponse>(this.hell).subscribe(data => {
-    
-      console.log("data is :"+data);
       this.data = data; // Assign local to global
     });
   

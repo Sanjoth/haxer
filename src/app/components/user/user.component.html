@@ -25,30 +25,35 @@
 <!-- <mat-grid-list cols="2" rowHeight="800px">
   <mat-grid-tile> -->
       <div class="card-group">
-  <mat-card class="example-card"*ngFor="let movie of data.results; let myIndex = index" (click)="trackClick(movie.id,movie.genre_ids)">
+  <mat-card class="example-card" *ngFor="let movie of data.results; let myIndex = index" (click)="trackClick(movie.id,movie.genre_ids)">
       <mat-card-header>
-          <mat-card-title><b>{{movie.title}}</b><br></mat-card-title>
-          <p hidden>Movie ID: {{movie.id}}<br></p>
-        </mat-card-header>
-        <img mat-card-image src="http://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}">
+          <mat-card-title>
+              <i class="fa fa-film" aria-hidden="true"></i> <b> {{movie.title}} </b>
+         </mat-card-title>
+      </mat-card-header>
+        <img mat-card-image src="http://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}">
       <mat-card-content>
-      <b>Genres: </b><label *ngFor="let item of movie.genre_ids;let i = index">{{item}}<label *ngIf="i < movie.genre_ids.length-1 ">,</label></label>.<br>
-      <b> Language: </b> {{movie.original_language}} <br>
-      <b> IMDb Rating: </b> {{movie.vote_average}} <br>
-      <b> Vote Count: </b> {{movie.vote_count}} <br> 
-      <b> Movie Overview: </b> 
-      <label *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </label> 
-      <label *ngIf="movie.overview.length<140">{{movie.overview}} </label><br> 
-      <b> Popularity: </b> {{movie.popularity}} <br> 
+          <div class="d-flex justify-content-between">
+              <div>
+                  <i class="fa fa-calendar" aria-hidden="true"></i> {{movie.release_date}}
+              </div>
+              <div>
+                  <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average}} 
+              </div>
+         </div> 
+         <b> Genre(s): </b><span *ngFor="let item of movie.genre_ids;let i = index">{{item}}<span *ngIf="i < movie.genre_ids.length-1">,</span></span>.<br>
+      <b> Overview: </b> 
+      <span *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </span> 
+      <span *ngIf="movie.overview.length<140">{{movie.overview}} </span><br> 
+      <i class="fa fa-language" aria-hidden="true"></i> {{movie.original_language}} <br>
+      <i class="fa fa-rocket" aria-hidden="true"></i> {{movie.popularity}} <br> 
       <b> Adult: </b> {{movie.adult}} <br>
-      <b> Year: </b> {{movie.release_date}} <br>
-     
-    </mat-card-content>
-  
+      
+    </mat-card-content>  
     <mat-card-actions style="text-align: center">     
-        <button mat-button>LIKE</button>
-        <button mat-button>DISLIKE</button>
-        <button mat-button>BOOKMARK</button>
+        <button mat-button><i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i></button>
+        <button mat-button><i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i></button>
+        <button mat-button><i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i></button>
       </mat-card-actions>   
   </mat-card>
   </div>
@@ -57,6 +62,7 @@
 </mat-grid-list>
 -->
 </div>
+
 
 
   
@@ -148,9 +154,4 @@
 </div>
 -->
 <br/> <br/>
-<div class="card-group">
-   
-  </div>
   
-
- 
