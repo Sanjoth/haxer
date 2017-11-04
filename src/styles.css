@@ -19,6 +19,7 @@ mat-card {
 
 mat-toolbar-row {
   justify-content: space-between;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
   html {
