@@ -4,19 +4,33 @@
 @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+
 /* Card Style template */
 body {
-    margin: 0;
-    font-family: Roboto, sans-serif;
-  }
-  
-  mat-card {
-    max-width: 90%;
-    margin: 1em auto;
-    text-align: left;
-  }
-  
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+mat-card {
+  max-width: 90%;
+  margin: 1em auto;
+  text-align: left;
+}
+
+mat-toolbar-row {
+  justify-content: space-between;
+}
+
+.done {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  color: white;
+}
+
   html {
     position: relative;
     min-height: 100%;
   }
+
+  

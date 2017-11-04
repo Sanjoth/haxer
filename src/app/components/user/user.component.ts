@@ -12,12 +12,36 @@ export class UserComponent implements OnInit {
   hell:string;
   data:object;
   blank:object;
-  
+
+  gen: GenreTy = {
+    28:"Action",        
+    12:"Adventure",        
+    16:"Animation",   
+    35:"Comedy",   
+    80:"Crime", 
+    99:"Documentary", 
+    18:"Drama", 
+    10751:"Family",
+    14:"Fantasy",
+    36:"History",
+    27:"Horror",
+    10402:"Music",
+    9648:"Mystery",
+    10749:"Romance",  
+    878:"Science Fiction", 
+    10770:"TV Movie",  
+    53:"Thriller",  
+    10752:"War",
+    37:"Western"
+};
+
+
   constructor(private http: HttpClient){
   }
 
   trackClick(movieid,genre){
     console.log(movieid,genre);
+    console.log(this.gen[28]);
   }
   
   sendReq(query){
@@ -60,6 +84,9 @@ interface Results{
   release_date: string;
 }
 
+interface GenreTy {
+  [key: number]:  string;
+}
 
 /* console.log(data);
       console.log(data.page);

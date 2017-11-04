@@ -1,3 +1,4 @@
+
 <div style="text-align:center">
     Search: <input type="text" autocomplete="off" placeholder="Keywords" (keyup)="sendReq(query.value)" [(ngModel)]="texts" name="query" #query>
 </div>
@@ -21,12 +22,11 @@
           </tr>
         </table>  
        </div> 
-<br/>
       <div class="card-group">
   <mat-card class="example-card" *ngFor="let movie of data.results; let myIndex = index" (click)="trackClick(movie.id,movie.genre_ids)">
       <mat-card-header>
           <mat-card-title>
-              <i class="fa fa-film" aria-hidden="true"></i> <b> {{movie.title}} </b>
+              <i class="fa fa-film fa-lg" aria-hidden="true"></i> <b> {{movie.title}} </b>
          </mat-card-title>
       </mat-card-header>
         <img mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}" onerror="this.onerror=null;this.src='/assets/nf.png'">
@@ -38,15 +38,23 @@
               <div>
                   <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average}} 
               </div>
-         </div> 
-         <b> Genre(s): </b><span *ngFor="let item of movie.genre_ids;let i = index">{{item}}<span *ngIf="i < movie.genre_ids.length-1">,</span></span>.<br>
-      <b> Overview: </b> 
+         </div>
+          
+      <i><span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">{{this.gen[item]}}<span *ngIf="i < movie.genre_ids.length-1">,</span></span>.</i><br>
       <span *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </span> 
       <span *ngIf="movie.overview.length<140">{{movie.overview}} </span><br> 
-      <i class="fa fa-language" aria-hidden="true"></i> {{movie.original_language}} <br>
-      <i class="fa fa-rocket" aria-hidden="true"></i> {{movie.popularity}} <br> 
-      <b> Adult: </b> {{movie.adult}} <br>
-      
+
+      <div class="d-flex justify-content-between">
+          <div>
+              <i class="fa fa-eye fa-lg" aria-hidden="true"></i> <span *ngIf="movie.adult; else templateName">Restricted</span><ng-template #templateName>
+                  Unrestricted
+              </ng-template>
+          </div>
+          <div>
+              <i class="fa fa-language fa-lg" aria-hidden="true"></i> {{movie.original_language}}
+          </div>
+     </div>
+      <i class="fa fa-rocket fa-lg" aria-hidden="true"></i>  {{movie.popularity}} <br> 
     </mat-card-content>  
     <mat-card-actions style="text-align: center">     
         <button mat-button><i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i></button>
@@ -83,45 +91,6 @@
   results:{{data.results.length}}<br>
 
   -->
-<!-- MATERIAL CARD AND NAV BAR
-  <div>
-    <mat-toolbar color="primary">
-      <span><mat-icon>mood</mat-icon></span>
-  
-      <span>Yay, Material in Angular 2!</span>
-  
-      <button mat-icon-button [mat-menu-trigger-for]="menu">
-        <mat-icon>more_vert</mat-icon>
-        
-      </button>
-    </mat-toolbar>
-    <mat-menu x-position="before" #menu="matMenu">
-      <button mat-menu-item>Option 1</button>
-      <button mat-menu-item>Option 2</button>
-
-    </mat-menu>
-  
-    <mat-card>
-      <button mat-button>All</button>
-      <button mat-raised-button>Of</button>
-      <button mat-raised-button color="primary">The</button>
-      <button mat-raised-button color="accent">Buttons</button>
-      <button mat-icon-button [mat-menu-trigger-for]="menu"><mat-icon>home</mat-icon></button>
-      <button mat-icon-button [mat-menu-trigger-for]="menu"><mat-icon>home</mat-icon></button>
-      <button mat-icon-button [mat-menu-trigger-for]="menu">Add to watch later !</button>
-
-    </mat-card>
-  
-    <span class="done">
-      <button mat-fab>
-        <mat-icon>check circle</mat-icon>
-      </button>
-    </span>
-  </div>
--->
-
-
-
     <!-- OLD CODe
 
         

@@ -9,21 +9,23 @@ import {HttpClientModule} from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatGridListModule} from '@angular/material';
-
+import { MatToolbarModule } from '@angular/material';
+import { MatMenuModule, MatButtonModule } from '@angular/material';
 //Self Made
 import { TruncatePipe } from './truncate/truncate.module';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     TruncatePipe,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,6 @@ import { FooterComponent } from './components/footer/footer.component';
     FormsModule,
     MaterialModule,
     BrowserAnimationsModule,
-    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

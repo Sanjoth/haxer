@@ -18,9 +18,12 @@ table, th , td  {
 
   /*  Material Card */
   .example-card {
-    width: 400px;
-    
+    width: 400px; 
+    font-family: 'Source Sans Pro', sans-serif;
   }
+
+ 
+
 
 
 
