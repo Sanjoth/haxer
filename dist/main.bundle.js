@@ -234,7 +234,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <mat-toolbar color=\"primary\">\n      <span><i class=\"fa fa-user fa-lg\" aria-hidden=\"true\"></i></span>\n  \n      <span>Haxèr</span>\n\n      <span [mat-menu-trigger-for]=\"menu\">\n          <i class=\"fa fa-cog fa-lg\" aria-hidden=\"true\"></i>\n      </span>\n    </mat-toolbar>\n    <mat-menu x-position=\"before\" #menu=\"matMenu\">\n      <button mat-menu-item>Option 1</button>\n      <button mat-menu-item>Option 2</button>\n    </mat-menu>\n  \n  </div>"
+module.exports = "<div>\n    <mat-toolbar color=\"accent\">\n      <span><i class=\"fa fa-user fa-lg\" aria-hidden=\"true\"></i></span>\n  \n      <span>Haxèr</span>\n\n      <span [mat-menu-trigger-for]=\"menu\">\n          <i class=\"fa fa-cog fa-lg\" aria-hidden=\"true\"></i>\n      </span>\n    </mat-toolbar>\n    <mat-menu x-position=\"before\" #menu=\"matMenu\">\n      <button mat-menu-item>Option 1</button>\n      <button mat-menu-item>Option 2</button>\n    </mat-menu>\n  \n  </div>"
 
 /***/ }),
 
@@ -282,7 +282,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "table, th , td  {\n    border: 1px solid grey;\n    border-collapse: collapse;\n    padding: 10px;\n  }\n  table tr:nth-child(odd) {\n    background-color: #f1f1f1;\n  }\n  table tr:nth-child(even) {\n    background-color: #ffffff;\n  }\n\n  table\n  { \n  margin-left: auto;\n  margin-right: auto;\n  }\n\n  /*  Material Card */\n  .example-card {\n    width: 400px; \n    font-family: 'Source Sans Pro', sans-serif;\n  }\n\n \n\n\n\n\n  \n  \n  \n  ", ""]);
+exports.push([module.i, "table, th , td  {\n    border: 1px solid grey;\n    border-collapse: collapse;\n    padding: 10px;\n  }\n  table tr:nth-child(odd) {\n    background-color: #f1f1f1;\n  }\n  table tr:nth-child(even) {\n    background-color: #ffffff;\n  }\n\n  table\n  { \n  margin-left: auto;\n  margin-right: auto;\n  }\n\n  /*  Material Card */\n  .example-card {\n    width: 400px; \n    font-family: 'Source Sans Pro', sans-serif;\n  }\n\n\n\n\n  \n  \n  \n  ", ""]);
 
 // exports
 
