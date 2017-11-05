@@ -13,21 +13,15 @@ export class HeaderComponent implements OnInit {
   }
 
   toggNav() {
-    if(document.getElementById("mySidenav").style.width == "20%")
+    if(document.getElementById("mySidenav").style.width == "220px")
     {
      document.getElementById("mySidenav").style.width = "0"; 
-     document.getElementById("mySidenav").style.minWidth = "0"; 
-     document.getElementById("main").style.marginLeft = "0";
+     document.getElementById("overlay").style.display = "none";
+     
     }
     else{
-     document.getElementById("mySidenav").style.width = "20%";
-     document.getElementById("mySidenav").style.minWidth = "140px";
-     document.getElementById("main").style.marginLeft = "20%";
-     if(document.getElementById('hax').offsetWidth < 450)
-     {
-      document.getElementById("main").style.marginLeft = "140px";
-     }
-     
+     document.getElementById("mySidenav").style.width = "220px";
+     document.getElementById("overlay").style.display = "block";
     }
   
 }

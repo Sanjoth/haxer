@@ -1,8 +1,7 @@
 
 <div style="text-align:center">
-    Search: <input type="text" autocomplete="off" placeholder="Keywords" (keyup)="sendReq(query.value)" [(ngModel)]="texts" name="query" #query>
+    Search: <input type="text" id="query" autocomplete="off" placeholder="Keywords" (keyup)="sendReq(query.value)" [(ngModel)]="texts" name="query" #query>
 </div>
-
 <div *ngIf="data">
       <div style="text-align:center"> 
           <p>You searched for ' <b>{{texts}}</b> ' </p>
@@ -23,6 +22,7 @@
         </table>  
        </div> 
       <div class="card-group">
+            <div id="overlay"></div>
   <mat-card class="example-card" *ngFor="let movie of data.results; let myIndex = index" (click)="trackClick(movie.id,movie.genre_ids)">
       <mat-card-header>
           <mat-card-title>
@@ -66,8 +66,6 @@
 </div>
 
 <br/> <br/>
-
-
   <!-- OLD CODE
   <b>Movie Details:</b><br>
   Movie id: {{data.results[0].id}}<br>
