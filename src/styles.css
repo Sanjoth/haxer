@@ -21,6 +21,10 @@ mat-toolbar-row {
   justify-content: space-between;
   font-family: 'Source Sans Pro', sans-serif;
 }
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
 
   html {
     position: relative;

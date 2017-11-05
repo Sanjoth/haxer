@@ -8,10 +8,6 @@
     color: white; /*Text Color of Nav bar Text*/
 }
 
-.mat-menu-panel {
-    background: #000 !important;
-}
-
 .sidenav {
     height: 100%;
     width: 0;
@@ -38,12 +34,7 @@
     color: #616161;
 }
 
-#main {
-    transition: margin-left .5s;
-    padding: 16px;
-}
-
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav a {font-size: 16px;}
 }

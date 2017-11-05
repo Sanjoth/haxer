@@ -217,7 +217,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "\n.mat-toolbar{\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    z-index: 9;\n    color: white; /*Text Color of Nav bar Text*/\n}\n\n.mat-menu-panel {\n    background: #000 !important;\n}\n\n.sidenav {\n    height: 100%;\n    width: 0;\n    position: fixed;\n    z-index: 1;\n    top: 0;\n    left: 0;\n    background-color: #000;\n    overflow-x: hidden;\n    transition: 0.5s;\n    padding-top: 60px;\n}\n\n.sidenav a {\n    padding: 8px 8px 8px 32px;\n    text-decoration: none;\n    font-size: 25px;\n    color: white;\n    display: block;\n    transition: 0.3s;\n}\n\n.sidenav a:hover {\n    color: #616161;\n}\n\n#main {\n    transition: margin-left .5s;\n    padding: 16px;\n}\n\n@media screen and (max-height: 450px) {\n  .sidenav {padding-top: 15px;}\n  .sidenav a {font-size: 18px;}\n}", ""]);
+exports.push([module.i, "\n.mat-toolbar{\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    z-index: 9;\n    color: white; /*Text Color of Nav bar Text*/\n}\n\n.sidenav {\n    height: 100%;\n    width: 0;\n    position: fixed;\n    z-index: 1;\n    top: 0;\n    left: 0;\n    background-color: #000;\n    overflow-x: hidden;\n    transition: 0.5s;\n    padding-top: 60px;\n}\n\n.sidenav a {\n    padding: 8px 8px 8px 32px;\n    text-decoration: none;\n    font-size: 25px;\n    color: white;\n    display: block;\n    transition: 0.3s;\n}\n\n.sidenav a:hover {\n    color: #616161;\n}\n\n@media screen and (max-height: 450px) {\n  .sidenav {padding-top: 15px;}\n  .sidenav a {font-size: 16px;}\n}", ""]);
 
 // exports
 
@@ -256,13 +256,15 @@ var HeaderComponent = (function () {
     HeaderComponent.prototype.ngOnInit = function () {
     };
     HeaderComponent.prototype.toggNav = function () {
-        if (document.getElementById("mySidenav").style.width == "250px") {
+        if (document.getElementById("mySidenav").style.width == "20%") {
             document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("mySidenav").style.minWidth = "0";
             document.getElementById("main").style.marginLeft = "0";
         }
         else {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
+            document.getElementById("mySidenav").style.width = "20%";
+            document.getElementById("mySidenav").style.minWidth = "140px";
+            document.getElementById("main").style.marginLeft = "20%";
         }
     };
     return HeaderComponent;
