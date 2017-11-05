@@ -1,6 +1,6 @@
 <div>
     <mat-toolbar color="accent">
-      <span><i class="fa fa-user fa-lg" aria-hidden="true"></i></span>
+      <span><i class="fa fa-user fa-lg" aria-hidden="true" (click)="toggNav()"></i></span>
   
       <span>Haxèr</span>
 
@@ -9,8 +9,14 @@
       </span>
     </mat-toolbar>
     <mat-menu x-position="before" #menu="matMenu">
-      <button mat-menu-item>Option 1</button>
-      <button mat-menu-item>Option 2</button>
+      <button mat-menu-item>Settings</button>
+      <button mat-menu-item>Sign out</button>
     </mat-menu>
   
   </div>
+  <div id="mySidenav" class="sidenav" (click)="toggNav()">
+  <a href="#">About</a>
+  <a href="#">Sign in</a>
+  <a href="#">Register</a>
+  <a href="#">My List</a>
+</div>

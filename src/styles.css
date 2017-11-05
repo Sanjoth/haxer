@@ -27,3 +27,23 @@ mat-toolbar-row {
     min-height: 100%;
   }
   .mat-toolbar.mat-accent {background: #000 !important;}
+
+  
+  .mat-menu-panel {
+    background: #000 !important;
+}
+
+.mat-menu-item {
+  background: #000 !important;
+  color: white !important;
+  font-family: 'Source Sans Pro', sans-serif !important;
+  font-size: 17px !important;
+}
+
+.mat-menu-item:hover {
+  background: #424242 !important;
+  color: white !important;
+  font-family: 'Source Sans Pro', sans-serif !important;
+  font-size: 17px !important;
+}
+

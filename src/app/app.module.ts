@@ -7,10 +7,8 @@ import {HttpClientModule} from '@angular/common/http';
 
 //Angular Material 2
 import { MaterialModule } from './material/material.module';
-import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material';
-import { MatMenuModule, MatButtonModule } from '@angular/material';
+
 //Self Made
 import { TruncatePipe } from './truncate/truncate.module';
 
@@ -32,10 +30,9 @@ import { HeaderComponent } from './components/header/header.component';
      // Include it under 'imports' in your application module
     // after BrowserModule.
     HttpClientModule,
-    MatInputModule,
     FormsModule,
     MaterialModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

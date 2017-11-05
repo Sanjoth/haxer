@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-header></app-header>\n<br><br>\n<div class=\"container\" style=\"text-align:center; position:relative;\">\n  <h2>\n   <br> Welcome to {{title}}! <br> {{subt}}\n  </h2>\n  <img _ngcontent-c0=\"\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\" width=\"50\">\n</div>\n<br>\n<app-user></app-user>\n<br/> <br/>\n<app-footer></app-footer>\n\n\n\n\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-header></app-header>\n<br><br>\n<div class=\"container\" style=\"text-align:center; position:relative;\">\n  <h2>\n   <br> {{title}} <br>\n  </h2>\n  <img _ngcontent-c0=\"\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\" width=\"50\">\n</div>\n<br>\n<app-user></app-user>\n<br/> <br/>\n<app-footer></app-footer>\n\n\n\n\n\n"
 
 /***/ }),
 
@@ -58,8 +58,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 //import { HttpClient } from '@angular/common/http';
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Haxèr';
-        this.subt = 'A Movie Recommendation Engine for the real world!';
+        this.title = 'A Movie Recommendation System for the real world!';
     }
     /*
     constructor(private http: HttpClient){
@@ -91,13 +90,12 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_material_module__ = __webpack_require__("../../../../../src/app/material/material.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__truncate_truncate_module__ = __webpack_require__("../../../../../src/app/truncate/truncate.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_user_user_component__ = __webpack_require__("../../../../../src/app/components/user/user.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/components/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__truncate_truncate_module__ = __webpack_require__("../../../../../src/app/truncate/truncate.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_user_user_component__ = __webpack_require__("../../../../../src/app/components/user/user.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/components/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -110,7 +108,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 // Import HttpClientModule from @angular/common/http
 
 //Angular Material 2
-
 
 
 //Self Made
@@ -127,24 +124,23 @@ var AppModule = (function () {
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__components_user_user_component__["a" /* UserComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__truncate_truncate_module__["a" /* TruncatePipe */],
-            __WEBPACK_IMPORTED_MODULE_10__components_footer_footer_component__["a" /* FooterComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__components_header_header_component__["a" /* HeaderComponent */]
+            __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__components_user_user_component__["a" /* UserComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__truncate_truncate_module__["a" /* TruncatePipe */],
+            __WEBPACK_IMPORTED_MODULE_9__components_footer_footer_component__["a" /* FooterComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__components_header_header_component__["a" /* HeaderComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             // Include it under 'imports' in your application module
             // after BrowserModule.
             __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_material__["d" /* MatInputModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_4__material_material_module__["a" /* MaterialModule */],
-            __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */]
         ],
         providers: [],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
@@ -221,7 +217,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "\n.mat-toolbar{\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    z-index: 9;\n    color: white; /*Text Color of Nav bar Text*/\n}", ""]);
+exports.push([module.i, "\n.mat-toolbar{\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    z-index: 9;\n    color: white; /*Text Color of Nav bar Text*/\n}\n\n.mat-menu-panel {\n    background: #000 !important;\n}\n\n.sidenav {\n    height: 100%;\n    width: 0;\n    position: fixed;\n    z-index: 1;\n    top: 0;\n    left: 0;\n    background-color: #000;\n    overflow-x: hidden;\n    transition: 0.5s;\n    padding-top: 60px;\n}\n\n.sidenav a {\n    padding: 8px 8px 8px 32px;\n    text-decoration: none;\n    font-size: 25px;\n    color: white;\n    display: block;\n    transition: 0.3s;\n}\n\n.sidenav a:hover {\n    color: #616161;\n}\n\n#main {\n    transition: margin-left .5s;\n    padding: 16px;\n}\n\n@media screen and (max-height: 450px) {\n  .sidenav {padding-top: 15px;}\n  .sidenav a {font-size: 18px;}\n}", ""]);
 
 // exports
 
@@ -234,7 +230,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <mat-toolbar color=\"accent\">\n      <span><i class=\"fa fa-user fa-lg\" aria-hidden=\"true\"></i></span>\n  \n      <span>Haxèr</span>\n\n      <span [mat-menu-trigger-for]=\"menu\">\n          <i class=\"fa fa-cog fa-lg\" aria-hidden=\"true\"></i>\n      </span>\n    </mat-toolbar>\n    <mat-menu x-position=\"before\" #menu=\"matMenu\">\n      <button mat-menu-item>Option 1</button>\n      <button mat-menu-item>Option 2</button>\n    </mat-menu>\n  \n  </div>"
+module.exports = "<div>\n    <mat-toolbar color=\"accent\">\n      <span><i class=\"fa fa-user fa-lg\" aria-hidden=\"true\" (click)=\"toggNav()\"></i></span>\n  \n      <span>Haxèr</span>\n\n      <span [mat-menu-trigger-for]=\"menu\">\n          <i class=\"fa fa-cog fa-lg\" aria-hidden=\"true\"></i>\n      </span>\n    </mat-toolbar>\n    <mat-menu x-position=\"before\" #menu=\"matMenu\">\n      <button mat-menu-item>Settings</button>\n      <button mat-menu-item>Sign out</button>\n    </mat-menu>\n  \n  </div>\n  <div id=\"mySidenav\" class=\"sidenav\" (click)=\"toggNav()\">\n  <a href=\"#\">About</a>\n  <a href=\"#\">Sign in</a>\n  <a href=\"#\">Register</a>\n  <a href=\"#\">My List</a>\n</div>\n"
 
 /***/ }),
 
@@ -259,6 +255,16 @@ var HeaderComponent = (function () {
     }
     HeaderComponent.prototype.ngOnInit = function () {
     };
+    HeaderComponent.prototype.toggNav = function () {
+        if (document.getElementById("mySidenav").style.width == "250px") {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+        else {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+    };
     return HeaderComponent;
 }());
 HeaderComponent = __decorate([
@@ -282,7 +288,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "table, th , td  {\n    border: 1px solid grey;\n    border-collapse: collapse;\n    padding: 10px;\n  }\n  table tr:nth-child(odd) {\n    background-color: #f1f1f1;\n  }\n  table tr:nth-child(even) {\n    background-color: #ffffff;\n  }\n\n  table\n  { \n  margin-left: auto;\n  margin-right: auto;\n  }\n\n  /*  Material Card */\n  .example-card {\n    width: 400px; \n    font-family: 'Source Sans Pro', sans-serif;\n  }\n\n\n\n\n  \n  \n  \n  ", ""]);
+exports.push([module.i, "table, th , td  {\n    border: 1px solid grey;\n    border-collapse: collapse;\n    padding: 10px;\n  }\n  table tr:nth-child(odd) {\n    background-color: #f1f1f1;\n  }\n  table tr:nth-child(even) {\n    background-color: #ffffff;\n  }\n\n  table\n  { \n  margin-left: auto;\n  margin-right: auto;\n  }\n\n  /*  Material Card */\n  .example-card {\n    width: 400px; \n    font-family: 'Source Sans Pro', sans-serif;\n  }\n\n\n\n\n\n  \n  \n  \n  ", ""]);
 
 // exports
 
@@ -413,15 +419,15 @@ MaterialModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatMenuModule */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatToolbarModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatMenuModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatToolbarModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatIconModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCardModule */]
         ],
         exports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatMenuModule */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatToolbarModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatMenuModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatToolbarModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatIconModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCardModule */]
         ]
