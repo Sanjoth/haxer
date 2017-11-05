@@ -264,7 +264,7 @@ var HeaderComponent = (function () {
         else {
             document.getElementById("mySidenav").style.width = "20%";
             document.getElementById("mySidenav").style.minWidth = "140px";
-            document.getElementById("main").style.marginLeft = "20%";
+            document.getElementById("main").style.marginLeft = "140px";
         }
     };
     return HeaderComponent;

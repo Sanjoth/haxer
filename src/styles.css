@@ -30,9 +30,12 @@ mat-toolbar-row {
     position: relative;
     min-height: 100%;
   }
-  .mat-toolbar.mat-accent {background: #000 !important;}
 
   
+  .mat-toolbar.mat-accent {background: #000 !important;}
+
+
+/* SETTINGS OPTION PANEL */
   .mat-menu-panel {
     background: #000 !important;
 }
