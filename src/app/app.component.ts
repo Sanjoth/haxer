@@ -13,6 +13,11 @@ export class AppComponent implements OnInit{
   constructor(private http: HttpClient){
   }
   */
+  remOver()
+  {
+    document.getElementById("mySidenav").style.width = "0"; 
+    document.getElementById("overlay").style.display = "none";
+  }
   ngOnInit(){
   }
 
