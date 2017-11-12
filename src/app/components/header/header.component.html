@@ -2,7 +2,7 @@
     <mat-toolbar color="accent">
       <span><i class="fa fa-user fa-lg" aria-hidden="true" (click)="toggNav()"></i></span>
   
-      <span>Haxèr</span>
+      <a routerLink="/browse" routerLinkActive="active">Haxèr</a>
 
       <span [mat-menu-trigger-for]="menu">
           <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
@@ -15,8 +15,8 @@
   
   </div>
   <div id="mySidenav" class="sidenav" (click)="toggNav()">
-  <a href="#">About</a>
-  <a href="#">Sign in</a>
-  <a href="#">Register</a>
-  <a href="#">My List</a>
+  <a routerLink="/about" routerLinkActive="active">About</a>
+  <a routerLink="/login" routerLinkActive="active">Sign in</a>
+  <a routerLink="/signup" routerLinkActive="active">Register</a>
+  <a routerLink="/user/:id" routerLinkActive="active">My List</a>
   </div>
