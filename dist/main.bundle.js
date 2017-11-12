@@ -140,16 +140,17 @@ var appRoutes = [
     { path: 'movie/:id', component: __WEBPACK_IMPORTED_MODULE_14__components_movie_detail_movie_detail_component__["a" /* MovieDetailComponent */] },
     { path: 'user/:id', component: __WEBPACK_IMPORTED_MODULE_15__components_user_detail_user_detail_component__["a" /* UserDetailComponent */] },
     { path: 'about', component: __WEBPACK_IMPORTED_MODULE_17__components_about_us_about_us_component__["a" /* AboutUsComponent */] },
-    { path: 'browse', component: __WEBPACK_IMPORTED_MODULE_9__components_user_user_component__["a" /* UserComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_9__components_user_user_component__["a" /* UserComponent */] }
     /*{
       path: 'heroes',
       component: HeroListComponent,
       data: { title: 'Heroes List' }
     }*/
+    /*
     { path: '',
-        redirectTo: '/browse',
-        pathMatch: 'full'
-    },
+      redirectTo: '/browse',
+      pathMatch: 'full'
+    }*/ ,
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_16__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
 ];
 var AppModule = (function () {
@@ -322,7 +323,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "a {\n    text-decoration:none; \n    color:white;\n}\n\n.mat-toolbar{\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    z-index: 9;\n    color: white; /*Text Color of Nav bar Text*/\n}\n\n.sidenav {\n    height: 100%;\n    width: 0;\n    position: fixed;\n    z-index: 1;\n    top: 0;\n    left: 0;\n    background-color: #000;\n    overflow-x: hidden;\n    transition: 0.5s;\n    padding-top: 60px;\n}\n\n.sidenav a {\n    padding: 8px 8px 8px 32px;\n    text-decoration: none;\n    font-size: 25px;\n    color: white;\n    display: block;\n    transition: 0.3s;\n}\n\n.sidenav a:hover {\n    color: #616161;\n}\n\n@media screen and (max-height: 450px) {\n  .sidenav {padding-top: 15px;}\n  .sidenav a {font-size: 16px;}\n}", ""]);
+exports.push([module.i, "a {\n    text-decoration:none; \n    color:white;  \n}\n\n.mat-toolbar{\n    position: fixed;\n    top: 0;\n    right: 0;\n    left: 0;\n    z-index: 9;\n    color: white; /*Text Color of Nav bar Text*/\n    font-family: 'Source Sans Pro', sans-serif !important;\n}\n\n.sidenav {\n    height: 100%;\n    width: 0;\n    position: fixed;\n    z-index: 1;\n    top: 0;\n    left: 0;\n    background-color: #000;\n    overflow-x: hidden;\n    transition: 0.5s;\n    padding-top: 60px;\n}\n\n.sidenav a {\n    padding: 8px 8px 8px 32px;\n    text-decoration: none;\n    font-size: 25px;\n    color: white;\n    display: block;\n    transition: 0.3s;\n}\n\n.sidenav a:hover {\n    color: #616161;\n}\n\n@media screen and (max-height: 450px) {\n  .sidenav {padding-top: 15px;}\n  .sidenav a {font-size: 16px;}\n}\n\n#cont {\n    width:100%;\n    text-align:center;\n}\n\n#left {\n    float:left; \n}\n\n#center {\n    display: inline-block;\n    margin:0 auto;\n    width:100px;\n}\n\n#right {\n    float:right;\n}", ""]);
 
 // exports
 
@@ -335,7 +336,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <mat-toolbar color=\"accent\">\n      <span><i class=\"fa fa-user fa-lg\" aria-hidden=\"true\" (click)=\"toggNav()\"></i></span>\n  \n      <a routerLink=\"/browse\" routerLinkActive=\"active\">Haxèr</a>\n\n      <span [mat-menu-trigger-for]=\"menu\">\n          <i class=\"fa fa-cog fa-lg\" aria-hidden=\"true\"></i>\n      </span>\n    </mat-toolbar>\n    <mat-menu x-position=\"before\" #menu=\"matMenu\">\n      <button mat-menu-item>Settings</button>\n      <button mat-menu-item>Sign out</button>\n    </mat-menu>\n  \n  </div>\n  <div id=\"mySidenav\" class=\"sidenav\" (click)=\"toggNav()\">\n  <a routerLink=\"/about\" routerLinkActive=\"active\">About</a>\n  <a routerLink=\"/login\" routerLinkActive=\"active\">Sign in</a>\n  <a routerLink=\"/signup\" routerLinkActive=\"active\">Register</a>\n  <a routerLink=\"/user/:id\" routerLinkActive=\"active\">My List</a>\n  </div>\n"
+module.exports = "<div>\n    <mat-toolbar id=\"cont\" color=\"accent\">\n      <div id=\"left\"><i class=\"fa fa-user fa-lg\" aria-hidden=\"true\" (click)=\"toggNav()\"></i></div>\n      <div id=\"center\"><a routerLink=\"/\" routerLinkActive=\"active\"><b>Haxèr</b></a></div>\n      <div id=\"right\" [mat-menu-trigger-for]=\"menu\"><i class=\"fa fa-cog fa-lg\" aria-hidden=\"true\"></i></div>\n    </mat-toolbar>\n    <mat-menu x-position=\"before\" #menu=\"matMenu\">\n      <button mat-menu-item>Settings</button>\n      <button mat-menu-item>Sign out</button>\n    </mat-menu>\n  \n  </div>\n  <div id=\"mySidenav\" class=\"sidenav\" (click)=\"toggNav()\">\n  <a routerLink=\"/about\" routerLinkActive=\"active\">About</a>\n  <a routerLink=\"/login\" routerLinkActive=\"active\">Sign in</a>\n  <a routerLink=\"/signup\" routerLinkActive=\"active\">Register</a>\n  <a routerLink=\"/user/:id\" routerLinkActive=\"active\">My List</a>\n  </div>\n"
 
 /***/ }),
 

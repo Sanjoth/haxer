@@ -30,16 +30,17 @@ const appRoutes: Routes = [
   { path: 'movie/:id', component: MovieDetailComponent },
   { path: 'user/:id', component: UserDetailComponent},
   { path: 'about', component: AboutUsComponent},
-  { path: 'browse', component: UserComponent},
+  { path: '', component: UserComponent}
   /*{
     path: 'heroes',
     component: HeroListComponent,
     data: { title: 'Heroes List' }
   }*/
+  /*
   { path: '',
     redirectTo: '/browse',
     pathMatch: 'full'
-  },
+  }*/,
   { path: '**', component: PageNotFoundComponent }
 ];
 

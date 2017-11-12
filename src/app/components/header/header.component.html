@@ -1,12 +1,8 @@
 <div>
-    <mat-toolbar color="accent">
-      <span><i class="fa fa-user fa-lg" aria-hidden="true" (click)="toggNav()"></i></span>
-  
-      <a routerLink="/browse" routerLinkActive="active">Haxèr</a>
-
-      <span [mat-menu-trigger-for]="menu">
-          <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
-      </span>
+    <mat-toolbar id="cont" color="accent">
+      <div id="left"><i class="fa fa-user fa-lg" aria-hidden="true" (click)="toggNav()"></i></div>
+      <div id="center"><a routerLink="/" routerLinkActive="active"><b>Haxèr</b></a></div>
+      <div id="right" [mat-menu-trigger-for]="menu"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></div>
     </mat-toolbar>
     <mat-menu x-position="before" #menu="matMenu">
       <button mat-menu-item>Settings</button>

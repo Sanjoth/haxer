@@ -1,6 +1,6 @@
 a {
     text-decoration:none; 
-    color:white;
+    color:white;  
 }
 
 .mat-toolbar{
@@ -10,6 +10,7 @@ a {
     left: 0;
     z-index: 9;
     color: white; /*Text Color of Nav bar Text*/
+    font-family: 'Source Sans Pro', sans-serif !important;
 }
 
 .sidenav {
@@ -41,4 +42,23 @@ a {
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 16px;}
+}
+
+#cont {
+    width:100%;
+    text-align:center;
+}
+
+#left {
+    float:left; 
+}
+
+#center {
+    display: inline-block;
+    margin:0 auto;
+    width:100px;
+}
+
+#right {
+    float:right;
 }
