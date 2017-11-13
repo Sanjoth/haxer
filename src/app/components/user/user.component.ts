@@ -8,7 +8,9 @@ import {MatInputModule} from '@angular/material';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+
   // Global Vars
+  title = 'A Hybrid Movie Search & Recommendation System for the real world!';
   hell:string;
   data:object;
   blank:object;
