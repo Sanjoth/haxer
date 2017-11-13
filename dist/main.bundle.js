@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-header></app-header>\n<br><br>\n<router-outlet id=\"overlay\"></router-outlet>\n<br/> <br/>\n<app-footer></app-footer>\n\n\n\n\n\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-header></app-header>\n<br><br>\n<router-outlet id=\"overlay\" (click)=\"remOver\"></router-outlet>\n<br/> <br/>\n<app-footer></app-footer>\n\n\n\n\n\n\n"
 
 /***/ }),
 
