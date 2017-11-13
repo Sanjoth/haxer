@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggNav() {
+  public toggNav() {
     if(document.getElementById("mySidenav").style.width == "220px")
     {
      document.getElementById("mySidenav").style.width = "0"; 
