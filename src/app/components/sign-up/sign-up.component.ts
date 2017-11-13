@@ -11,5 +11,10 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
   }
+  check=false;
+  correctCaptcha()
+  {
+    this.check=true;
+  }
 
 }

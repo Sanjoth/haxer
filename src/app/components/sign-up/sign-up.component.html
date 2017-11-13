@@ -1,3 +1,27 @@
-<p>
-  sign-up works!
-</p>
+<span class="agile-login">
+  <div class="wrapper">
+    <h2>Sign Up</h2>
+    <div class="w3ls-form">
+      <form action="/regUser" method="get">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Name" required/>
+        <label>Email Address</label>
+        <input type="text" name="email" placeholder="Email" required/>
+        <label>Password</label>
+        <input type="password" name="password1" placeholder="Password" required />
+        <label>Confirm Password</label>
+        <input type="password" name="password2" placeholder="Confirm Password" required /><br>
+        <div class="g-recaptcha" data-theme="dark" data-sitekey="6LdcijgUAAAAAHESsqShZ_pNE48MEcb_GxG8KSrq" data-callback="correctCaptcha"></div>
+        <a href="#" class="pass">Already Registered ?</a>
+        <input type="submit" value="Register" />
+      </form>
+    </div>
+    <!--
+    <div class="agile-icons">
+      <a href="#"><span class="fa fa-google" aria-hidden="true"></span></a>
+      <a href="#"><span class="fa fa-facebook"></span></a>
+    </div>
+  -->
+  </div>
+  <br>
+</span>
