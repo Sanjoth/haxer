@@ -629,18 +629,15 @@ var SignUpComponent = (function () {
         });
         window['verifyCallback'] = this.verifyCallback.bind(this);
     }
-    SignUpComponent.prototype.displayRecaptcha = function () {
-        var doc = document.getElementById('signup-form');
-        var script = document.createElement('script');
-        script.innerHTML = '';
-        script.src = 'https://www.google.com/recaptcha/api.js';
-        script.async = true;
-        script.defer = true;
-        doc.appendChild(script);
-    };
     SignUpComponent.prototype.verifyCallback = function (response) {
         this.captcha = response;
-        alert(this.captcha);
+        console.log(this.captcha);
+        if (this.captcha.length > 0) {
+            this.check == true;
+        }
+        else {
+            this.check == false;
+        }
     };
     SignUpComponent.prototype.ngOnInit = function () {
     };
