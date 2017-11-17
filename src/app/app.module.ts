@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 // Import HttpClientModule from @angular/common/http
@@ -57,7 +58,7 @@ const appRoutes: Routes = [
     UserDetailComponent,
     PageNotFoundComponent,
     AboutUsComponent
-  ],
+    ],
   imports: [
     RouterModule.forRoot(
       appRoutes
@@ -69,7 +70,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

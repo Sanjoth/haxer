@@ -5,16 +5,7 @@ const mongo = require('mongodb');
 const app = express();
 const url = require('url');
 // Data
-var seedData = {
-    uname: 'Sanjoth Shaw',
-    email: 'sanjothshaw@gmail.com',
-    password: 'abcd1234',
-    movieClicks:[ 1212,2213,4521],
-    genres: [44,22,44],
-    movieLikes: [ 12312,4123,4256],
-    movieDislikes: [1123,4234,23434],
-    mylist: [123421,1234231,1234]
-  };
+var seedData;
 
 var mourl = 'mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@ds261745.mlab.com:61745/heroku_m30b5bz0';
 
@@ -39,18 +30,34 @@ app.get('/regUser', function(request, response){
   var email = querys.query.email;
   var pass = querys.query.password1;
 
+  var seedData = {
+    "uname": `${name}`,
+    "email": `${email}`,
+    "password": `${pass}`,
+    "movieClicks":[],
+    "genres": [],
+    "movieLikes": [],
+    "movieDislikes": [],
+    "mylist": []
+  };
+  
   MongoClient.connect(mourl, function(err, db) {
-    var search = { email: "sanjothshaw@gmail.com" };
+    var search = JSON.parse(`{"email": "${email}"}`);
     db.collection("users").find(search).toArray(function(err, result) {
-      if (err) throw err;
-      console.log(result);
+      if (err)
+      { console.error(err); response.send("Error " + err); throw err;}
       if(result.length == 0)
       {
+        //Insert the new document(user) into collection users if new user
         db.collection("users").insertOne(seedData, function(err, res) {
           if (err) throw err;
           console.log("1 user inserted");
+          response.send(res);
         });
       }
+      else
+      { response.send(result); }
+      
       db.close();
     });
   });  

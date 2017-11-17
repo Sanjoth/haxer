@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-header></app-header>\n<br><br>\n<router-outlet id=\"overlay\" (click)=\"remOver\"></router-outlet>\n<br/> <br/>\n<app-footer></app-footer>\n\n\n\n\n\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-header></app-header>\n<br><br>\n<router-outlet id=\"overlay\" (click)=\"remOver()\"></router-outlet>\n<br/> <br/>\n<app-footer></app-footer>\n\n\n\n\n\n\n"
 
 /***/ }),
 
@@ -116,6 +116,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // Import HttpClientModule from @angular/common/http
 
 //Angular Material 2
@@ -178,9 +179,10 @@ var AppModule = (function () {
                 // Include it under 'imports' in your application module
                 // after BrowserModule.
                 __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__material_material_module__["a" /* MaterialModule */],
-                __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */]
+                __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["i" /* ReactiveFormsModule */]
             ],
             providers: [],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
@@ -590,7 +592,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/sign-up/sign-up.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<br><br>\n<span class=\"agile-login\">\n  <div class=\"wrapper\">\n    <h2>Sign Up</h2>\n    <div class=\"w3ls-form\">\n      <form action=\"/regUser\" method=\"get\">\n        <label>Name</label>\n        <input type=\"text\" name=\"name\" placeholder=\"Name\" required/>\n        <label>Email Address</label>\n        <input type=\"text\" name=\"email\" placeholder=\"Email\" required/>\n        <label>Password</label>\n        <input type=\"password\" name=\"password1\" placeholder=\"Password\" required />\n        <label>Confirm Password</label>\n        <input type=\"password\" name=\"password2\" placeholder=\"Confirm Password\" required /><br>\n        <div class=\"g-recaptcha\" data-sitekey=\"6LdcijgUAAAAAHESsqShZ_pNE48MEcb_GxG8KSrq\" data-callback=\"correctCaptcha\"></div>\n        <a href=\"#\" class=\"pass\">Already Registered ?</a>\n        <input type=\"submit\" value=\"Register\" />\n      </form>\n    </div>\n    <!--\n    <div class=\"agile-icons\">\n      <a href=\"#\"><span class=\"fa fa-google\" aria-hidden=\"true\"></span></a>\n      <a href=\"#\"><span class=\"fa fa-facebook\"></span></a>\n    </div>\n  -->\n  </div>\n  <br>\n</span>"
+module.exports = "<br><br>\n<span class=\"agile-login\">\n  <div class=\"wrapper\">\n    <h2>Sign Up</h2>\n    <div class=\"w3ls-form\">\n      <form [formGroup]=\"myForm\" (ngSubmit)=\"sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)\">\n        <label>Name</label>\n        <input type=\"text\" formControlName=\"name\" #fulln placeholder=\"Name\" required minlength=\"4\"/>\n        <label>Email Address</label>\n        <input type=\"text\" formControlName=\"email\" #emailadd placeholder=\"Email\" required/>\n        <label>Password</label>\n        <input type=\"password\" formControlName=\"password1\" #pass1 placeholder=\"Password\" required minlength=\"4\"/>\n        <label>Confirm Password</label>\n        <input type=\"password\" formControlName=\"password2\" #pass2 placeholder=\"Confirm Password\" required /><br>\n        <a href=\"#\" class=\"pass\">Already Registered ?</a>\n        <div class=\"g-recaptcha\" data-sitekey=\"6LdcijgUAAAAAHESsqShZ_pNE48MEcb_GxG8KSrq\" data-callback=\"correctCaptcha\"></div>\n        <span style=\"color:orangered\" *ngIf=\"myForm.hasError('email', 'email') && myForm.get('email').touched else yoman\" #butt>\n            Please enter a valid email address to succesfully register.\n        </span>\n        <ng-template #yoman>\n            <input type=\"submit\" value=\"Register\"/>\n        </ng-template>\n      </form>\n    </div>\n\n    \n    <!--\n    <div class=\"agile-icons\">\n      <a href=\"#\"><span class=\"fa fa-google\" aria-hidden=\"true\"></span></a>\n      <a href=\"#\"><span class=\"fa fa-facebook\"></span></a>\n    </div>\n  -->\n  </div>\n  <br>\n</span>"
 
 /***/ }),
 
@@ -600,6 +602,8 @@ module.exports = "<br><br>\n<span class=\"agile-login\">\n  <div class=\"wrapper
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignUpComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -610,14 +614,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var SignUpComponent = (function () {
-    function SignUpComponent() {
+    function SignUpComponent(http, fb) {
+        this.http = http;
+        this.fb = fb;
         this.check = false;
+        this.myForm = fb.group({
+            name: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
+            password1: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
+            password2: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
+            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].email]
+        });
     }
     SignUpComponent.prototype.ngOnInit = function () {
     };
     SignUpComponent.prototype.correctCaptcha = function () {
         this.check = true;
+    };
+    SignUpComponent.prototype.sendReq = function (name, email, pass1, pass2) {
+        var _this = this;
+        if (name == "" || email == "" || pass1 == "" || pass2 == "") {
+            alert("Please don't leave any fields blank !");
+            return;
+        }
+        if (pass1 != pass2) {
+            alert("Passwords don't match");
+            return;
+        }
+        if (this.check == true) {
+            this.register = "/regUser?name=" + name + "&email=" + email + "&password1=" + pass1;
+            console.log(this.register);
+            this.http.get(this.register).subscribe(function (data) {
+                console.log(data);
+                console.log(_this.register);
+            });
+        }
+        else {
+            alert("Captch return false, please try again !");
+        }
     };
     SignUpComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -625,9 +661,10 @@ var SignUpComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/sign-up/sign-up.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/sign-up/sign-up.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */]) === "function" && _b || Object])
     ], SignUpComponent);
     return SignUpComponent;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=sign-up.component.js.map
@@ -716,7 +753,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/user.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div (click)=\"remOver()\"></div>\n<div class=\"container\" style=\"text-align:center; position:relative;\">\n  <h2>\n   <br> {{title}} <br>\n  </h2>\n  <img _ngcontent-c0=\"\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\" width=\"50\">\n</div>\n<br>\n<div style=\"text-align:center\">\n    Search: <input type=\"text\" id=\"query\" autocomplete=\"off\" placeholder=\"Keywords\" (keyup)=\"sendReq(query.value)\" [(ngModel)]=\"texts\" name=\"query\" #query>\n</div>\n<div *ngIf=\"data\">\n      <div style=\"text-align:center\"> \n          <p>You searched for ' <b>{{texts}}</b> ' </p>\n          <h5>Search Details</h5>\n        <table> \n          <tr>\n            <th>Page </th>\n            <th>Total Results</th>\n            <th>Total Pages</th>\n            <th>Results per page</th>\n          </tr>\n          <tr>\n            <td>{{data.page}}</td>\n            <td>{{data.total_results}}</td>\n            <td>{{data.total_pages}}</td>\n            <td>{{data.results.length}}</td>\n          </tr>\n        </table>  \n       </div> \n      <div class=\"card-group\">\n  <mat-card class=\"example-card\" *ngFor=\"let movie of data.results; let myIndex = index\" (click)=\"trackClick(movie.id,movie.genre_ids)\">\n      <mat-card-header>\n          <mat-card-title>\n              <i class=\"fa fa-film fa-lg\" aria-hidden=\"true\"></i> <b> {{movie.title}} </b>\n         </mat-card-title>\n      </mat-card-header>\n        <img mat-card-image src=\"https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}\" onerror=\"this.onerror=null;this.src='/assets/nf.png'\">\n      <mat-card-content>\n          <div class=\"d-flex justify-content-between\">\n              <div>\n                  <i class=\"fa fa-calendar\" aria-hidden=\"true\"></i> {{movie.release_date}}\n              </div>\n              <div>\n                  <i class=\"fa fa-imdb fa-lg\" aria-hidden=\"true\"></i> {{movie.vote_average}} \n              </div>\n         </div>\n          \n      <i><span style=\"color: #666; font-size: 12px;\" *ngFor=\"let item of movie.genre_ids;let i = index\">{{this.gen[item]}}<span *ngIf=\"i < movie.genre_ids.length-1\">,</span></span>.</i><br>\n      <span *ngIf=\"movie.overview.length>140\">{{movie.overview | truncate : 140 : true}} </span> \n      <span *ngIf=\"movie.overview.length<140\">{{movie.overview}} </span><br> \n\n      <div class=\"d-flex justify-content-between\">\n          <div>\n              <i class=\"fa fa-eye fa-lg\" aria-hidden=\"true\"></i> <span *ngIf=\"movie.adult; else templateName\">Restricted</span><ng-template #templateName>\n                  Unrestricted\n              </ng-template>\n          </div>\n          <div>\n              <i class=\"fa fa-language fa-lg\" aria-hidden=\"true\"></i> {{movie.original_language}}\n          </div>\n     </div>\n      <i class=\"fa fa-rocket fa-lg\" aria-hidden=\"true\"></i>  {{movie.popularity}} <br> \n    </mat-card-content>  \n    <mat-card-actions style=\"text-align: center\">     \n        <button mat-button><i class=\"fa fa-thumbs-o-up fa-lg\" aria-hidden=\"true\"></i></button>\n        <button mat-button><i class=\"fa fa-thumbs-o-down fa-lg\" aria-hidden=\"true\"></i></button>\n        <button mat-button><i class=\"fa fa-bookmark-o fa-lg\" aria-hidden=\"true\"></i></button>\n      </mat-card-actions>   \n  </mat-card>\n  </div>\n</div>\n\n<br/> <br/>\n  <!-- OLD CODE\n  <b>Movie Details:</b><br>\n  Movie id: {{data.results[0].id}}<br>\n  Title: {{data.results[0].title}}<br>\n  Genres: <ol><li *ngFor=\"let item of data.results[0].genre_ids\">\n    {{item }} </li> </ol> <br> \n  Language: {{data.results[0].original_language}}<br>\n  IMDb Rating: {{data.results[0].vote_average}}<br>\n  Vote Count: {{data.results[0].vote_count}}<br>\n  Overview: {{data.results[0].overview}}<br>\n  Popularity: {{data.results[0].popularity}}<br>\n  Adult: {{data.results[0].adult}}<br>\n  poster_path: {{data.results[0].poster_path}}<br>\n  backdrop_path: {{data.results[0].id}}<br>\n  <br><br>\n  \n  <b>Search Details:</b><br>\n  page: {{data.page}}<br>\n  total_results: {{data.total_results}}<br>\n  total_pages: {{data.total_pages}}<br>\n  results:{{data.results.length}}<br>\n\n  -->\n    <!-- OLD CODe\n\n        \n  <ol > \n    <li *ngFor=\"let movie of data.results; let myIndex = index\" (click)=\"trackClick(movie.id,movie.genre_ids)\" #yo> \n      <b> Movie ID: </b> {{movie.id}} <br>\n      <b> Movie Title: </b> {{movie.title}} <br> \n\n      <b> Genres: </b><ol> <li *ngFor=\"let item of movie.genre_ids\">\n          {{item}} </li> </ol> \n    \n      <b> Original Language: </b> {{movie.original_language}} <br>\n      <b> IMDb Rating: </b> {{movie.vote_average}} <br>\n      <b> Vote Count: </b> {{movie.vote_count}} <br> \n      <b> Movie Overview: </b> {{movie.overview}} <br> \n      <b> Popularity: </b> {{movie.popularity}} <br> \n      <b> Adult: </b> {{movie.adult}} <br>\n      <b> Year: </b> {{movie.release_date}} <br>\n    </li> \n  </ol>\n</div>\n-->\n\n  "
+module.exports = "<div (click)=\"remOver()\"></div>\n<div class=\"container\" style=\"text-align:center; position:relative;\">\n  <h2>\n   <br> {{title}} <br>\n  </h2>\n  <img _ngcontent-c0=\"\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\" width=\"50\">\n</div>\n<br>\n<div style=\"text-align:center\">\n    Search: <input type=\"text\" id=\"query\" autocomplete=\"off\" placeholder=\"Keywords\" (keyup)=\"sendReq(query.value)\" [(ngModel)]=\"texts\" name=\"query\" #query>\n</div>\n<div *ngIf=\"data\">\n      <div style=\"text-align:center\"> \n          <p>You searched for ' <b>{{texts}}</b> ' </p>\n          <h5>Search Details</h5>\n        <table> \n          <tr>\n            <th>Page </th>\n            <th>Total Results</th>\n            <th>Total Pages</th>\n            <th>Results per page</th>\n          </tr>\n          <tr>\n            <td>{{data.page}}</td>\n            <td>{{data.total_results}}</td>\n            <td>{{data.total_pages}}</td>\n            <td>{{data.results.length}}</td>\n          </tr>\n        </table>  \n      </div> \n  <div class=\"card-group\">\n          <mat-card class=\"example-card\" *ngFor=\"let movie of data.results; let myIndex = index\" (click)=\"trackClick(movie.id,movie.genre_ids)\">\n          <mat-card-header>\n              <mat-card-title>\n                  <i class=\"fa fa-film fa-lg\" aria-hidden=\"true\"></i> <b> {{movie.title}} </b>\n            </mat-card-title>\n          </mat-card-header>\n            <img mat-card-image src=\"https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}\" onerror=\"this.onerror=null;this.src='/assets/nf.png'\">\n          <mat-card-content>\n            <div class=\"d-flex justify-content-between\">\n                <div>\n                    <i class=\"fa fa-calendar\" aria-hidden=\"true\"></i> {{movie.release_date}}\n                </div>\n                <div>\n                    <i class=\"fa fa-imdb fa-lg\" aria-hidden=\"true\"></i> {{movie.vote_average}} \n                </div>\n            </div>\n          \n              <i><span style=\"color: #666; font-size: 12px;\" *ngFor=\"let item of movie.genre_ids;let i = index\">{{this.gen[item]}}<span *ngIf=\"i < movie.genre_ids.length-1\">,</span></span>.</i><br>\n              <span *ngIf=\"movie.overview.length>140\">{{movie.overview | truncate : 140 : true}} </span> \n              <span *ngIf=\"movie.overview.length<140\">{{movie.overview}} </span><br> \n\n              <div class=\"d-flex justify-content-between\">\n                  <div>\n                      <i class=\"fa fa-eye fa-lg\" aria-hidden=\"true\"></i> <span *ngIf=\"movie.adult; else templateName\">Restricted</span><ng-template #templateName>\n                          Unrestricted\n                      </ng-template>\n                  </div>\n                  <div>\n                      <i class=\"fa fa-language fa-lg\" aria-hidden=\"true\"></i> {{movie.original_language}}\n                  </div>\n            </div>\n              <i class=\"fa fa-rocket fa-lg\" aria-hidden=\"true\"></i>  {{movie.popularity}} <br> \n           </mat-card-content>  \n           <mat-card-actions style=\"text-align: center\">     \n              <button mat-button><i class=\"fa fa-thumbs-o-up fa-lg\" aria-hidden=\"true\"></i></button>\n              <button mat-button><i class=\"fa fa-thumbs-o-down fa-lg\" aria-hidden=\"true\"></i></button>\n              <button mat-button><i class=\"fa fa-bookmark-o fa-lg\" aria-hidden=\"true\"></i></button>\n            </mat-card-actions>   \n      </mat-card>\n  </div>\n</div>\n\n<br/> <br/>\n  <!-- OLD CODE\n  <b>Movie Details:</b><br>\n  Movie id: {{data.results[0].id}}<br>\n  Title: {{data.results[0].title}}<br>\n  Genres: <ol><li *ngFor=\"let item of data.results[0].genre_ids\">\n    {{item }} </li> </ol> <br> \n  Language: {{data.results[0].original_language}}<br>\n  IMDb Rating: {{data.results[0].vote_average}}<br>\n  Vote Count: {{data.results[0].vote_count}}<br>\n  Overview: {{data.results[0].overview}}<br>\n  Popularity: {{data.results[0].popularity}}<br>\n  Adult: {{data.results[0].adult}}<br>\n  poster_path: {{data.results[0].poster_path}}<br>\n  backdrop_path: {{data.results[0].id}}<br>\n  <br><br>\n  \n  <b>Search Details:</b><br>\n  page: {{data.page}}<br>\n  total_results: {{data.total_results}}<br>\n  total_pages: {{data.total_pages}}<br>\n  results:{{data.results.length}}<br>\n\n  -->\n    <!-- OLD CODe\n\n        \n  <ol > \n    <li *ngFor=\"let movie of data.results; let myIndex = index\" (click)=\"trackClick(movie.id,movie.genre_ids)\" #yo> \n      <b> Movie ID: </b> {{movie.id}} <br>\n      <b> Movie Title: </b> {{movie.title}} <br> \n\n      <b> Genres: </b><ol> <li *ngFor=\"let item of movie.genre_ids\">\n          {{item}} </li> </ol> \n    \n      <b> Original Language: </b> {{movie.original_language}} <br>\n      <b> IMDb Rating: </b> {{movie.vote_average}} <br>\n      <b> Vote Count: </b> {{movie.vote_count}} <br> \n      <b> Movie Overview: </b> {{movie.overview}} <br> \n      <b> Popularity: </b> {{movie.popularity}} <br> \n      <b> Adult: </b> {{movie.adult}} <br>\n      <b> Year: </b> {{movie.release_date}} <br>\n    </li> \n  </ol>\n</div>\n-->\n\n  "
 
 /***/ }),
 
