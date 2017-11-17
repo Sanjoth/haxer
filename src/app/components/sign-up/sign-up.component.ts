@@ -16,8 +16,8 @@ export class SignUpComponent implements OnInit {
   constructor(private http: HttpClient, private fb: FormBuilder) {
     this.myForm = fb.group({
       name:  [null, Validators.required],
-      password1: [null, Validators.required],
-      password2: [null, Validators.required],
+      password1: [null, Validators.minLength],
+      password2: [null, Validators.minLength],
       email: [null, Validators.email]
     });
     window['verifyCallback'] = this.verifyCallback.bind(this);
