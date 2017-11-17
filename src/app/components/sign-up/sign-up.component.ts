@@ -55,7 +55,7 @@ export class SignUpComponent implements OnInit {
     }
     else
     {
-      alert("Captch return false, please try again !");
+      alert("Captch return false, please try again!");
     }
   
 
