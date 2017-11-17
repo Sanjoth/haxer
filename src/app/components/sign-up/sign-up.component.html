@@ -3,7 +3,7 @@
   <div class="wrapper">
     <h2>Sign Up</h2>
     <div class="w3ls-form">
-      <form [formGroup]="myForm" (ngSubmit)="sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)">
+      <form [formGroup]="myForm" (ngSubmit)="sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)" id="signup-form">
         <label>Name</label>
         <input type="text" formControlName="name" #fulln placeholder="Name" required minlength="4"/>
         <label>Email Address</label>
@@ -11,17 +11,16 @@
         <label>Password</label>
         <input type="password" formControlName="password1" #pass1 placeholder="Password" required minlength="4"/>
         <label>Confirm Password</label>
-        <input type="password" formControlName="password2" #pass2 placeholder="Confirm Password" required /><br>
+        <input type="password" formControlName="password2" #pass2 placeholder="Confirm Password" required minlength="4"/><br>
         <a href="#" class="pass">Already Registered ?</a>
         <div class="text-xs-center">
           <div class="g-recaptcha" data-sitekey="6LdcijgUAAAAAHESsqShZ_pNE48MEcb_GxG8KSrq" data-callback="correctCaptcha"></div>
         </div>
-        <span style="color:orangered" *ngIf="myForm.hasError('email', 'email') && myForm.get('email').touched else yoman" #butt>
+        <input type="submit" [hidden]="myForm.invalid" value="Register"/>
+        <span style="color:orangered" *ngIf="myForm.hasError('email', 'email') && myForm.get('email').touched">
             Please enter a valid email address to succesfully register.
         </span>
-        <ng-template #yoman>
-            <input type="submit" value="Register"/>
-        </ng-template>
+        
       </form>
     </div>
 

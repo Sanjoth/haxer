@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,25 +11,36 @@ export class SignUpComponent implements OnInit {
   check=false;
   register:string;
   myForm:object;
+  captcha:string;
 
   constructor(private http: HttpClient, private fb: FormBuilder) {
     this.myForm = fb.group({
-      name:  ['', Validators.required],
-      password1: ['', Validators.required],
-      password2: ['', Validators.required],
-      email: ['', Validators.email]
+      name:  [null, Validators.required],
+      password1: [null, Validators.required],
+      password2: [null, Validators.required],
+      email: [null, Validators.email]
     });
+    window['verifyCallback'] = this.verifyCallback.bind(this);
+  }
+  
+  displayRecaptcha(){
+    var doc = <HTMLDivElement>document.getElementById('signup-form');
+    var script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = 'https://www.google.com/recaptcha/api.js';
+    script.async = true;
+    script.defer = true;
+    doc.appendChild(script);
+  }
+  
+  verifyCallback(response){
+    this.captcha=response;
+    alert(this.captcha);
   }
  
 
   ngOnInit() {
     
-  }
-
-
-  correctCaptcha()
-  {
-    this.check=true;
   }
 
   sendReq(name,email,pass1,pass2){
@@ -61,3 +72,6 @@ export class SignUpComponent implements OnInit {
 
 }
 }
+
+
+
