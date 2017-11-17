@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  check=false;
+  check:boolean;
   register:string;
   myForm:object;
   captcha:string;
@@ -25,7 +25,7 @@ export class SignUpComponent implements OnInit {
   
   verifyCallback(response){
     this.captcha=response;
-   this.check == true;
+   this.check = true;
     }
  
 

@@ -20,6 +20,10 @@
         <span style="color:orangered" *ngIf="myForm.hasError('email', 'email') && myForm.get('email').touched">
             Please enter a valid email address to succesfully register.
         </span>
+
+        <span style="color:orangered" *ngIf="myForm.get('password1').errors['minlength'] && myForm.get('password1').touched">
+            Please enter a minimum of 4 alphanumeric password.
+        </span>
         
       </form>
     </div>

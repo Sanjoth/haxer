@@ -592,7 +592,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/sign-up/sign-up.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<br><br>\n<span class=\"agile-login\">\n  <div class=\"wrapper\">\n    <h2>Sign Up</h2>\n    <div class=\"w3ls-form\">\n      <form [formGroup]=\"myForm\" (ngSubmit)=\"sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)\" id=\"signup-form\">\n        <label>Name</label>\n        <input type=\"text\" formControlName=\"name\" #fulln placeholder=\"Name\" required minlength=\"4\"/>\n        <label>Email Address</label>\n        <input type=\"text\" formControlName=\"email\" #emailadd placeholder=\"Email\" required/>\n        <label>Password</label>\n        <input type=\"password\" formControlName=\"password1\" #pass1 placeholder=\"Password\" required minlength=\"4\"/>\n        <label>Confirm Password</label>\n        <input type=\"password\" formControlName=\"password2\" #pass2 placeholder=\"Confirm Password\" required/><br>\n        <a href=\"#\" class=\"pass\">Already Registered ?</a>\n        <div class=\"text-xs-center\">\n          <div class=\"g-recaptcha\" data-callback=\"verifyCallback\" data-sitekey=\"6LdcijgUAAAAAHESsqShZ_pNE48MEcb_GxG8KSrq\"></div>\n        </div>\n        <input type=\"submit\" [hidden]=\"myForm.invalid\" value=\"Register\"/>\n        <span style=\"color:orangered\" *ngIf=\"myForm.hasError('email', 'email') && myForm.get('email').touched\">\n            Please enter a valid email address to succesfully register.\n        </span>\n        \n      </form>\n    </div>\n\n    \n    <!--\n    <div class=\"agile-icons\">\n      <a href=\"#\"><span class=\"fa fa-google\" aria-hidden=\"true\"></span></a>\n      <a href=\"#\"><span class=\"fa fa-facebook\"></span></a>\n    </div>\n  -->\n  </div>\n  <br>\n</span>"
+module.exports = "<br><br>\n<span class=\"agile-login\">\n  <div class=\"wrapper\">\n    <h2>Sign Up</h2>\n    <div class=\"w3ls-form\">\n      <form [formGroup]=\"myForm\" (ngSubmit)=\"sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)\" id=\"signup-form\">\n        <label>Name</label>\n        <input type=\"text\" formControlName=\"name\" #fulln placeholder=\"Name\" required minlength=\"4\"/>\n        <label>Email Address</label>\n        <input type=\"text\" formControlName=\"email\" #emailadd placeholder=\"Email\" required/>\n        <label>Password</label>\n        <input type=\"password\" formControlName=\"password1\" #pass1 placeholder=\"Password\" required minlength=\"4\"/>\n        <label>Confirm Password</label>\n        <input type=\"password\" formControlName=\"password2\" #pass2 placeholder=\"Confirm Password\" required/><br>\n        <a href=\"#\" class=\"pass\">Already Registered ?</a>\n        <div class=\"text-xs-center\">\n          <div class=\"g-recaptcha\" data-callback=\"verifyCallback\" data-sitekey=\"6LdcijgUAAAAAHESsqShZ_pNE48MEcb_GxG8KSrq\"></div>\n        </div>\n        <input type=\"submit\" [hidden]=\"myForm.invalid\" value=\"Register\"/>\n        <span style=\"color:orangered\" *ngIf=\"myForm.hasError('email', 'email') && myForm.get('email').touched\">\n            Please enter a valid email address to succesfully register.\n        </span>\n\n        <span style=\"color:orangered\" *ngIf=\"myForm.get('password1').errors['minlength'] && myForm.get('password1').touched\">\n            Please enter a minimum of 4 alphanumeric password.\n        </span>\n        \n      </form>\n    </div>\n\n    \n    <!--\n    <div class=\"agile-icons\">\n      <a href=\"#\"><span class=\"fa fa-google\" aria-hidden=\"true\"></span></a>\n      <a href=\"#\"><span class=\"fa fa-facebook\"></span></a>\n    </div>\n  -->\n  </div>\n  <br>\n</span>"
 
 /***/ }),
 
@@ -620,7 +620,6 @@ var SignUpComponent = (function () {
     function SignUpComponent(http, fb) {
         this.http = http;
         this.fb = fb;
-        this.check = false;
         this.myForm = fb.group({
             name: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
             password1: [null, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required],
@@ -631,7 +630,7 @@ var SignUpComponent = (function () {
     }
     SignUpComponent.prototype.verifyCallback = function (response) {
         this.captcha = response;
-        this.check == true;
+        this.check = true;
     };
     SignUpComponent.prototype.ngOnInit = function () {
     };
