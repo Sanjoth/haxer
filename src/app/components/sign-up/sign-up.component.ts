@@ -25,14 +25,8 @@ export class SignUpComponent implements OnInit {
   
   verifyCallback(response){
     this.captcha=response;
-    console.log(this.captcha);
-    if(this.captcha.length > 0){
-      this.check == true;
+   this.check == true;
     }
-    else{
-      this.check == false;
-    }
-  }
  
 
   ngOnInit() {
