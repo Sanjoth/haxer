@@ -650,6 +650,12 @@ var SignUpComponent = (function () {
             this.http.get(this.register).subscribe(function (data) {
                 console.log(data);
                 console.log(_this.register);
+                if (data.ok == 1) {
+                    alert("Successfully registered, please login :-)");
+                }
+                else {
+                    alert("User already exists, please login or reset your password");
+                }
             });
         }
         else {

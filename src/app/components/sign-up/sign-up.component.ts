@@ -49,9 +49,19 @@ export class SignUpComponent implements OnInit {
     {
     this.register = `/regUser?name=${name}&email=${email}&password1=${pass1}`;
     console.log(this.register);
-    this.http.get(this.register).subscribe(data => {
+    this.http.get<UserResponse>(this.register).subscribe(data => {
       console.log(data);
       console.log(this.register);
+
+      if(data.ok == 1)
+      {
+        alert("Successfully registered, please login :-)");
+      }
+      else
+      {
+        alert("User already exists, please login or reset your password");
+      }
+
     });
     }
     else
@@ -61,6 +71,10 @@ export class SignUpComponent implements OnInit {
   
 
 }
+}
+
+interface UserResponse {
+  ok: number;
 }
 
 
