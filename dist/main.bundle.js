@@ -48,21 +48,22 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ngx_cookie_service__ = __webpack_require__("../../../../ngx-cookie-service/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
-//import { HttpClient } from '@angular/common/http';
+
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(cookieService) {
+        this.cookieService = cookieService;
     }
-    /*
-    constructor(private http: HttpClient){
-    }
-    */
     AppComponent.prototype.remOver = function () {
         document.getElementById("mySidenav").style.width = "0";
         document.getElementById("overlay").style.display = "none";
@@ -74,9 +75,11 @@ var AppComponent = (function () {
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ngx_cookie_service__["a" /* CookieService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ngx_cookie_service__["a" /* CookieService */]) === "function" && _a || Object])
     ], AppComponent);
     return AppComponent;
+    var _a;
 }());
 
 //# sourceMappingURL=app.component.js.map
@@ -92,26 +95,28 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_material_module__ = __webpack_require__("../../../../../src/app/material/material.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__truncate_truncate_module__ = __webpack_require__("../../../../../src/app/truncate/truncate.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_user_user_component__ = __webpack_require__("../../../../../src/app/components/user/user.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/components/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_sign_up_sign_up_component__ = __webpack_require__("../../../../../src/app/components/sign-up/sign-up.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_log_in_log_in_component__ = __webpack_require__("../../../../../src/app/components/log-in/log-in.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_movie_detail_movie_detail_component__ = __webpack_require__("../../../../../src/app/components/movie-detail/movie-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_user_detail_user_detail_component__ = __webpack_require__("../../../../../src/app/components/user-detail/user-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/components/page-not-found/page-not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_about_us_about_us_component__ = __webpack_require__("../../../../../src/app/components/about-us/about-us.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_cookie_service__ = __webpack_require__("../../../../ngx-cookie-service/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_material_module__ = __webpack_require__("../../../../../src/app/material/material.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__truncate_truncate_module__ = __webpack_require__("../../../../../src/app/truncate/truncate.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_user_user_component__ = __webpack_require__("../../../../../src/app/components/user/user.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/components/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_sign_up_sign_up_component__ = __webpack_require__("../../../../../src/app/components/sign-up/sign-up.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_log_in_log_in_component__ = __webpack_require__("../../../../../src/app/components/log-in/log-in.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_movie_detail_movie_detail_component__ = __webpack_require__("../../../../../src/app/components/movie-detail/movie-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_user_detail_user_detail_component__ = __webpack_require__("../../../../../src/app/components/user-detail/user-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/components/page-not-found/page-not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_about_us_about_us_component__ = __webpack_require__("../../../../../src/app/components/about-us/about-us.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -135,12 +140,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var appRoutes = [
-    { path: 'signup', component: __WEBPACK_IMPORTED_MODULE_12__components_sign_up_sign_up_component__["a" /* SignUpComponent */] },
-    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_13__components_log_in_log_in_component__["a" /* LogInComponent */] },
-    { path: 'movie/:id', component: __WEBPACK_IMPORTED_MODULE_14__components_movie_detail_movie_detail_component__["a" /* MovieDetailComponent */] },
-    { path: 'user/:id', component: __WEBPACK_IMPORTED_MODULE_15__components_user_detail_user_detail_component__["a" /* UserDetailComponent */] },
-    { path: 'about', component: __WEBPACK_IMPORTED_MODULE_17__components_about_us_about_us_component__["a" /* AboutUsComponent */] },
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_9__components_user_user_component__["a" /* UserComponent */] }
+    { path: 'signup', component: __WEBPACK_IMPORTED_MODULE_13__components_sign_up_sign_up_component__["a" /* SignUpComponent */] },
+    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_14__components_log_in_log_in_component__["a" /* LogInComponent */] },
+    { path: 'movie/:id', component: __WEBPACK_IMPORTED_MODULE_15__components_movie_detail_movie_detail_component__["a" /* MovieDetailComponent */] },
+    { path: 'user/:id', component: __WEBPACK_IMPORTED_MODULE_16__components_user_detail_user_detail_component__["a" /* UserDetailComponent */] },
+    { path: 'about', component: __WEBPACK_IMPORTED_MODULE_18__components_about_us_about_us_component__["a" /* AboutUsComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_10__components_user_user_component__["a" /* UserComponent */] }
     /*{
       path: 'heroes',
       component: HeroListComponent,
@@ -151,7 +156,7 @@ var appRoutes = [
       redirectTo: '/browse',
       pathMatch: 'full'
     }*/ ,
-    { path: '**', component: __WEBPACK_IMPORTED_MODULE_16__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_17__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -159,33 +164,33 @@ var AppModule = (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["K" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__components_user_user_component__["a" /* UserComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__truncate_truncate_module__["a" /* TruncatePipe */],
-                __WEBPACK_IMPORTED_MODULE_10__components_footer_footer_component__["a" /* FooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__components_header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__components_sign_up_sign_up_component__["a" /* SignUpComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__components_log_in_log_in_component__["a" /* LogInComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__components_movie_detail_movie_detail_component__["a" /* MovieDetailComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__components_user_detail_user_detail_component__["a" /* UserDetailComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__components_about_us_about_us_component__["a" /* AboutUsComponent */]
+                __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__components_user_user_component__["a" /* UserComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__truncate_truncate_module__["a" /* TruncatePipe */],
+                __WEBPACK_IMPORTED_MODULE_11__components_footer_footer_component__["a" /* FooterComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__components_header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__components_sign_up_sign_up_component__["a" /* SignUpComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__components_log_in_log_in_component__["a" /* LogInComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__components_movie_detail_movie_detail_component__["a" /* MovieDetailComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__components_user_detail_user_detail_component__["a" /* UserDetailComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__components_about_us_about_us_component__["a" /* AboutUsComponent */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* RouterModule */].forRoot(appRoutes
+                __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* RouterModule */].forRoot(appRoutes
                 /*,{ enableTracing: true } // <-- debugging purposes only */
                 ),
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 // Include it under 'imports' in your application module
                 // after BrowserModule.
-                __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_5__material_material_module__["a" /* MaterialModule */],
-                __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_6__material_material_module__["a" /* MaterialModule */],
+                __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["i" /* ReactiveFormsModule */]
             ],
-            providers: [],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_4_ngx_cookie_service__["a" /* CookieService */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -338,7 +343,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <mat-toolbar id=\"cont\" color=\"accent\">\n      <div id=\"left\"><i class=\"fa fa-user fa-lg\" aria-hidden=\"true\" (click)=\"toggNav()\"></i></div>\n      <div id=\"center\"><a routerLink=\"/\" routerLinkActive=\"active\"><b>Haxèr</b></a></div>\n      <div id=\"right\" [mat-menu-trigger-for]=\"menu\"><i class=\"fa fa-cog fa-lg\" aria-hidden=\"true\"></i></div>\n    </mat-toolbar>\n    <mat-menu x-position=\"before\" #menu=\"matMenu\">\n      <button mat-menu-item>Settings</button>\n      <button mat-menu-item>Sign out</button>\n    </mat-menu>\n  \n  </div>\n  <div id=\"mySidenav\" class=\"sidenav\" (click)=\"toggNav()\">\n  <a routerLink=\"/about\" routerLinkActive=\"active\">About</a>\n  <a routerLink=\"/login\" routerLinkActive=\"active\">Sign in</a>\n  <a routerLink=\"/signup\" routerLinkActive=\"active\">Register</a>\n  <a routerLink=\"/user/:id\" routerLinkActive=\"active\">My List</a>\n  </div>\n"
+module.exports = "<div>\n    <mat-toolbar id=\"cont\" color=\"accent\">\n      <div id=\"left\"><i class=\"fa fa-user fa-lg\" aria-hidden=\"true\" (click)=\"toggNav()\"></i></div>\n      <div id=\"center\"><a routerLink=\"/\" routerLinkActive=\"active\"><b>Haxèr</b></a></div>\n      <div id=\"right\" [mat-menu-trigger-for]=\"menu\"><i class=\"fa fa-cog fa-lg\" aria-hidden=\"true\"></i></div>\n    </mat-toolbar>\n    <mat-menu x-position=\"before\" #menu=\"matMenu\">\n      <button mat-menu-item routerLink=\"/settings\" routerLinkActive=\"active\">Settings</button>\n      <button mat-menu-item routerLink=\"/help\" routerLinkActive=\"active\">Help</button>\n      <button mat-menu-item routerLink=\"/\" *ngIf=\"this.cookieService.get('UserEmail')\" (click)=\"logOut()\">Sign out</button>\n    </mat-menu>\n  \n  </div>\n  <div id=\"mySidenav\" class=\"sidenav\" (click)=\"toggNav()\">  \n  <a *ngIf=\"this.cookieService.get('UserEmail')\" routerLink=\"/profile\" routerLinkActive=\"active\">{{this.cookieService.get('Name')}}</a>\n  <a *ngIf=\"!this.cookieService.get('UserEmail')\" routerLink=\"/login\" routerLinkActive=\"active\">Sign in</a>\n  <a *ngIf=\"!this.cookieService.get('UserEmail')\" routerLink=\"/signup\" routerLinkActive=\"active\">Register</a>\n  <a *ngIf=\"this.cookieService.get('UserEmail')\" routerLink=\"/user/:id\" routerLinkActive=\"active\">My List</a>\n  <a routerLink=\"/recom\" routerLinkActive=\"active\">Recommendations</a>\n  <a routerLink=\"/discover\" routerLinkActive=\"active\">Discover</a>\n  <a routerLink=\"/about\" routerLinkActive=\"active\">About</a>\n  </div>\n"
 
 /***/ }),
 
@@ -348,6 +353,7 @@ module.exports = "<div>\n    <mat-toolbar id=\"cont\" color=\"accent\">\n      <
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeaderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ngx_cookie_service__ = __webpack_require__("../../../../ngx-cookie-service/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -358,20 +364,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var HeaderComponent = (function () {
-    function HeaderComponent() {
+    function HeaderComponent(cookieService) {
+        this.cookieService = cookieService;
     }
     HeaderComponent.prototype.ngOnInit = function () {
     };
     HeaderComponent.prototype.toggNav = function () {
-        if (document.getElementById("mySidenav").style.width == "220px") {
+        if (document.getElementById("mySidenav").style.width == "245px") {
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("overlay").style.display = "none";
         }
         else {
-            document.getElementById("mySidenav").style.width = "220px";
+            document.getElementById("mySidenav").style.width = "245px";
             document.getElementById("overlay").style.display = "block";
         }
+    };
+    HeaderComponent.prototype.logOut = function () {
+        this.cookieService.delete('UserEmail');
+        this.cookieService.delete('Name');
     };
     HeaderComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -379,9 +391,10 @@ var HeaderComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/header/header.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/header/header.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ngx_cookie_service__["a" /* CookieService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ngx_cookie_service__["a" /* CookieService */]) === "function" && _a || Object])
     ], HeaderComponent);
     return HeaderComponent;
+    var _a;
 }());
 
 //# sourceMappingURL=header.component.js.map
@@ -409,7 +422,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/log-in/log-in.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<br><br>\n<span class=\"agile-login\">\n  <div class=\"wrapper\">\n    <h2>Sign In</h2>\n    <div class=\"w3ls-form\">\n      <form action=\"/\" method=\"post\">\n        <label>Username</label>\n        <input type=\"text\" name=\"email\" placeholder=\"Email Address\" required />\n        <label>Password</label>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\" required />\n        <a href=\"#\" class=\"pass\">Forgot Password ?</a>\n        <input type=\"submit\" value=\"Log In\" />\n      </form>\n    </div>\n    <!--\n    <div class=\"agile-icons\">\n      <a href=\"#\"><span class=\"fa fa-google\" aria-hidden=\"true\"></span></a>\n      <a href=\"#\"><span class=\"fa fa-facebook\"></span></a>\n    </div>\n  -->\n    <div class=\"w3ls-form\">\n       <hr><input type=\"submit\" value=\"Register\" /></div>\n  </div>\n  <br>\n</span>"
+module.exports = "<br><br>\n<span class=\"agile-login\">\n  <div class=\"wrapper\">\n    <h2>Sign In</h2>\n    <div class=\"w3ls-form\">\n      <form (ngSubmit)=\"sendReq(em.value,pass.value)\">\n        <label>Username</label>\n        <input type=\"text\" name=\"email\" placeholder=\"Email Address\" required #em/>\n        <label>Password</label>\n        <input type=\"password\" name=\"password\" placeholder=\"Password\" required #pass/>\n        <a href=\"#\" class=\"pass\">Forgot Password ?</a>\n        <input type=\"submit\" value=\"Log In\" />\n      </form>\n    </div>\n    <!--\n    <div class=\"agile-icons\">\n      <a href=\"#\"><span class=\"fa fa-google\" aria-hidden=\"true\"></span></a>\n      <a href=\"#\"><span class=\"fa fa-facebook\"></span></a>\n    </div>\n  -->\n    <div class=\"w3ls-form\">\n       <hr><input routerLink=\"/signup\" routerLinkActive=\"active\" type=\"submit\" value=\"Register\" /></div>\n  </div>\n  <br>\n</span>"
 
 /***/ }),
 
@@ -419,6 +432,9 @@ module.exports = "<br><br>\n<span class=\"agile-login\">\n  <div class=\"wrapper
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogInComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_cookie_service__ = __webpack_require__("../../../../ngx-cookie-service/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -429,10 +445,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var LogInComponent = (function () {
-    function LogInComponent() {
+    function LogInComponent(http, router, cookieService) {
+        this.http = http;
+        this.router = router;
+        this.cookieService = cookieService;
     }
     LogInComponent.prototype.ngOnInit = function () {
+        this.cookieService.set('Intrst_MovieIDs', '', 9999);
+        this.cookieService.set('Intrst_GenreIDs', '', 9999);
+        this.cookieService.set('Like_MovieIDs', '', 9999);
+        this.cookieService.set('Like_GenreIDs', '', 9999);
+        this.cookieService.set('Dislike_MovieIDs', '', 9999);
+        this.cookieService.set('Dislike_GenreIDs', '', 9999);
+        this.cookieService.set('Bookmarked', '', 9999);
+        console.log(this.cookieService.getAll());
+        //this.cookieService.set('Test', `${this.cookieService.get('Test')},${movie_id}`);
+    };
+    LogInComponent.prototype.sendReq = function (email, pass) {
+        var _this = this;
+        this.loginstr = "/getUser?email=" + email + "&pass=" + pass;
+        this.http.get(this.loginstr).subscribe(function (data) {
+            _this.data = data; // Assign local to global
+            console.log(data);
+            if (data.length == 1) {
+                console.log(data[0].email + " " + data[0].password);
+                alert("Welcome " + data[0].name + " !");
+                //Initialize Cookie for Email
+                _this.cookieService.set('UserEmail', "" + _this.data[0].email, 9999);
+                _this.cookieService.set('Name', "" + _this.data[0].uname, 9999);
+                console.log(_this.cookieService.get('UserEmail'));
+                _this.router.navigateByUrl('/');
+            }
+            else {
+                alert("The username or password is invalid !");
+            }
+        });
     };
     LogInComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -440,9 +491,10 @@ var LogInComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/log-in/log-in.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/log-in/log-in.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ngx_cookie_service__["a" /* CookieService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ngx_cookie_service__["a" /* CookieService */]) === "function" && _c || Object])
     ], LogInComponent);
     return LogInComponent;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=log-in.component.js.map
@@ -592,7 +644,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/sign-up/sign-up.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<br><br>\n<span class=\"agile-login\">\n  <div class=\"wrapper\">\n    <h2>Sign Up</h2>\n    <div class=\"w3ls-form\">\n      <form [formGroup]=\"myForm\" (ngSubmit)=\"sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)\" id=\"signup-form\">\n        <label>Full Name</label>\n        <input type=\"text\" formControlName=\"name\" #fulln placeholder=\"Name\" required minlength=\"4\"/>\n        <label>Email Address</label>\n        <input type=\"text\" formControlName=\"email\" #emailadd placeholder=\"Email\" required/>\n        <label>Password</label>\n        <input type=\"password\" formControlName=\"password1\" #pass1 placeholder=\"Password\" required minlength=\"4\"/>\n        <label>Confirm Password</label>\n        <input type=\"password\" formControlName=\"password2\" #pass2 placeholder=\"Confirm Password\" required/><br>\n        <a href=\"#\" class=\"pass\">Already Registered ?</a>\n        <div class=\"text-xs-center\">\n          <div class=\"g-recaptcha\" data-callback=\"verifyCallback\" data-sitekey=\"6LdcijgUAAAAAHESsqShZ_pNE48MEcb_GxG8KSrq\"></div>\n        </div>\n        <input type=\"submit\" [hidden]=\"myForm.invalid\" value=\"Register\"/>\n        <span style=\"color:orangered\" *ngIf=\"myForm.hasError('email', 'email') && myForm.get('email').touched\">\n            Please enter a valid email address to succesfully register. <br>\n        </span>\n        <span style=\"color:orangered\" *ngIf=\"myForm.get('password1').hasError('minlength') && myForm.get('password1').touched\">\n            Please enter a password having more than 4 alphanumeric characters. <br>\n        </span>\n        \n      </form>\n    </div>\n\n    \n    <!--\n    <div class=\"agile-icons\">\n      <a href=\"#\"><span class=\"fa fa-google\" aria-hidden=\"true\"></span></a>\n      <a href=\"#\"><span class=\"fa fa-facebook\"></span></a>\n    </div>\n  -->\n  </div>\n  <br>\n</span>"
+module.exports = "<br><br>\n<span class=\"agile-login\">\n  <div class=\"wrapper\">\n    <h2>Sign Up</h2>\n    <div class=\"w3ls-form\" id=\"signup-form\">\n      <form [formGroup]=\"myForm\" (ngSubmit)=\"sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)\">\n        <label>Full Name</label>\n        <input type=\"text\" formControlName=\"name\" #fulln placeholder=\"Name\" required minlength=\"4\"/>\n        <label>Email Address</label>\n        <input type=\"text\" formControlName=\"email\" #emailadd placeholder=\"Email\" required/>\n        <label>Password</label>\n        <input type=\"password\" formControlName=\"password1\" #pass1 placeholder=\"Password\" required minlength=\"4\"/>\n        <label>Confirm Password</label>\n        <input type=\"password\" formControlName=\"password2\" #pass2 placeholder=\"Confirm Password\" required/><br>\n        <a routerLink=\"/login\" routerLinkActive=\"active\" class=\"pass\">Already Registered ?</a>\n        <input type=\"submit\" [hidden]=\"myForm.invalid\" value=\"Register\"/>\n        <span style=\"color:orangered\" *ngIf=\"myForm.hasError('email', 'email') && myForm.get('email').touched\">\n            Please enter a valid email address to succesfully register. <br>\n        </span>\n        <span style=\"color:orangered\" *ngIf=\"myForm.get('password1').hasError('minlength') && myForm.get('password1').touched\">\n            Please enter a password having more than 4 alphanumeric characters. <br>\n        </span>\n        \n      </form>\n    </div>\n\n    \n    <!--\n    <div class=\"agile-icons\">\n      <a href=\"#\"><span class=\"fa fa-google\" aria-hidden=\"true\"></span></a>\n      <a href=\"#\"><span class=\"fa fa-facebook\"></span></a>\n    </div>\n  -->\n  </div>\n  <br>\n</span>"
 
 /***/ }),
 
@@ -626,12 +678,7 @@ var SignUpComponent = (function () {
             password2: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].minLength],
             email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].email]
         });
-        window['verifyCallback'] = this.verifyCallback.bind(this);
     }
-    SignUpComponent.prototype.verifyCallback = function (response) {
-        this.captcha = response;
-        this.check = true;
-    };
     SignUpComponent.prototype.ngOnInit = function () {
     };
     SignUpComponent.prototype.sendReq = function (name, email, pass1, pass2) {
@@ -644,23 +691,18 @@ var SignUpComponent = (function () {
             alert("Passwords don't match");
             return;
         }
-        if (this.check == true) {
-            this.register = "/regUser?name=" + name + "&email=" + email + "&password1=" + pass1;
-            console.log(this.register);
-            this.http.get(this.register).subscribe(function (data) {
-                console.log(data);
-                console.log(_this.register);
-                if (data.ok == 1) {
-                    alert("Successfully registered, please login :-)");
-                }
-                else {
-                    alert("User already exists, please login or reset your password");
-                }
-            });
-        }
-        else {
-            alert("Captch return false, please try again!");
-        }
+        this.register = "/regUser?name=" + name + "&email=" + email + "&password1=" + pass1;
+        console.log(this.register);
+        this.http.get(this.register).subscribe(function (data) {
+            console.log(data);
+            console.log(_this.register);
+            if (data.ok == 1) {
+                alert("Successfully registered, please login :-)");
+            }
+            else {
+                alert("User already exists, please login or reset your password!");
+            }
+        });
     };
     SignUpComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -747,7 +789,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "table, th , td  {\n    border: 1px solid grey;\n    border-collapse: collapse;\n    padding: 10px;\n  }\n  table tr:nth-child(odd) {\n    background-color: #f1f1f1;\n  }\n  table tr:nth-child(even) {\n    background-color: #ffffff;\n  }\n\n  table\n  { \n  margin-left: auto;\n  margin-right: auto;\n  }\n\n  /*  Material Card */\n  .example-card {\n    width: 400px; \n    font-family: 'Source Sans Pro', sans-serif;\n  }\n\n\n\n\n\n  \n  \n  \n  ", ""]);
+exports.push([module.i, "table, th , td  {\n    border: 1px solid grey;\n    border-collapse: collapse;\n    padding: 10px;\n  }\n  table tr:nth-child(odd) {\n    background-color: #f1f1f1;\n  }\n  table tr:nth-child(even) {\n    background-color: #ffffff;\n  }\n\n  table\n  { \n  margin-left: auto;\n  margin-right: auto;\n  }\n\n  /*  Material Card */\n  .example-card {\n    width: 400px; \n    font-family: 'Source Sans Pro', sans-serif;\n  }\n\n  a {\n    text-decoration: none;\n    display: inline-block;\n    padding: 8px 16px;\n}\n\na:hover {\n    background-color: #ddd;\n    color: black;\n}\n\n.previous {\n    background-color: #000;\n    color: white;\n}\n\n.next {\n    background-color: #000;\n    color: white;\n}\n\n\n\n\n  \n  \n  \n  ", ""]);
 
 // exports
 
@@ -760,7 +802,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/user.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div (click)=\"remOver()\"></div>\n<div class=\"container\" style=\"text-align:center; position:relative;\">\n  <h2>\n   <br> {{title}} <br>\n  </h2>\n  <img _ngcontent-c0=\"\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\" width=\"50\">\n</div>\n<br>\n<div style=\"text-align:center\">\n    Search: <input type=\"text\" id=\"query\" autocomplete=\"off\" placeholder=\"Keywords\" (keyup)=\"sendReq(query.value)\" [(ngModel)]=\"texts\" name=\"query\" #query>\n</div>\n<div *ngIf=\"data\">\n      <div style=\"text-align:center\"> \n          <p>You searched for ' <b>{{texts}}</b> ' </p>\n          <h5>Search Details</h5>\n        <table> \n          <tr>\n            <th>Page </th>\n            <th>Total Results</th>\n            <th>Total Pages</th>\n            <th>Results per page</th>\n          </tr>\n          <tr>\n            <td>{{data.page}}</td>\n            <td>{{data.total_results}}</td>\n            <td>{{data.total_pages}}</td>\n            <td>{{data.results.length}}</td>\n          </tr>\n        </table>  \n      </div> \n  <div class=\"card-group\">\n          <mat-card class=\"example-card\" *ngFor=\"let movie of data.results; let myIndex = index\" (click)=\"trackClick(movie.id,movie.genre_ids)\">\n          <mat-card-header>\n              <mat-card-title>\n                  <i class=\"fa fa-film fa-lg\" aria-hidden=\"true\"></i> <b> {{movie.title}} </b>\n            </mat-card-title>\n          </mat-card-header>\n            <img mat-card-image src=\"https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}\" onerror=\"this.onerror=null;this.src='/assets/nf.png'\">\n          <mat-card-content>\n            <div class=\"d-flex justify-content-between\">\n                <div>\n                    <i class=\"fa fa-calendar\" aria-hidden=\"true\"></i> {{movie.release_date}}\n                </div>\n                <div>\n                    <i class=\"fa fa-imdb fa-lg\" aria-hidden=\"true\"></i> {{movie.vote_average}} \n                </div>\n            </div>\n          \n              <i><span style=\"color: #666; font-size: 12px;\" *ngFor=\"let item of movie.genre_ids;let i = index\">{{this.gen[item]}}<span *ngIf=\"i < movie.genre_ids.length-1\">,</span></span>.</i><br>\n              <span *ngIf=\"movie.overview.length>140\">{{movie.overview | truncate : 140 : true}} </span> \n              <span *ngIf=\"movie.overview.length<140\">{{movie.overview}} </span><br> \n\n              <div class=\"d-flex justify-content-between\">\n                  <div>\n                      <i class=\"fa fa-eye fa-lg\" aria-hidden=\"true\"></i> <span *ngIf=\"movie.adult; else templateName\">Restricted</span><ng-template #templateName>\n                          Unrestricted\n                      </ng-template>\n                  </div>\n                  <div>\n                      <i class=\"fa fa-language fa-lg\" aria-hidden=\"true\"></i> {{movie.original_language}}\n                  </div>\n            </div>\n              <i class=\"fa fa-rocket fa-lg\" aria-hidden=\"true\"></i>  {{movie.popularity}} <br> \n           </mat-card-content>  \n           <mat-card-actions style=\"text-align: center\">     \n              <button mat-button><i class=\"fa fa-thumbs-o-up fa-lg\" aria-hidden=\"true\"></i></button>\n              <button mat-button><i class=\"fa fa-thumbs-o-down fa-lg\" aria-hidden=\"true\"></i></button>\n              <button mat-button><i class=\"fa fa-bookmark-o fa-lg\" aria-hidden=\"true\"></i></button>\n            </mat-card-actions>   \n      </mat-card>\n  </div>\n</div>\n\n<br/> <br/>\n  <!-- OLD CODE\n  <b>Movie Details:</b><br>\n  Movie id: {{data.results[0].id}}<br>\n  Title: {{data.results[0].title}}<br>\n  Genres: <ol><li *ngFor=\"let item of data.results[0].genre_ids\">\n    {{item }} </li> </ol> <br> \n  Language: {{data.results[0].original_language}}<br>\n  IMDb Rating: {{data.results[0].vote_average}}<br>\n  Vote Count: {{data.results[0].vote_count}}<br>\n  Overview: {{data.results[0].overview}}<br>\n  Popularity: {{data.results[0].popularity}}<br>\n  Adult: {{data.results[0].adult}}<br>\n  poster_path: {{data.results[0].poster_path}}<br>\n  backdrop_path: {{data.results[0].id}}<br>\n  <br><br>\n  \n  <b>Search Details:</b><br>\n  page: {{data.page}}<br>\n  total_results: {{data.total_results}}<br>\n  total_pages: {{data.total_pages}}<br>\n  results:{{data.results.length}}<br>\n\n  -->\n    <!-- OLD CODe\n\n        \n  <ol > \n    <li *ngFor=\"let movie of data.results; let myIndex = index\" (click)=\"trackClick(movie.id,movie.genre_ids)\" #yo> \n      <b> Movie ID: </b> {{movie.id}} <br>\n      <b> Movie Title: </b> {{movie.title}} <br> \n\n      <b> Genres: </b><ol> <li *ngFor=\"let item of movie.genre_ids\">\n          {{item}} </li> </ol> \n    \n      <b> Original Language: </b> {{movie.original_language}} <br>\n      <b> IMDb Rating: </b> {{movie.vote_average}} <br>\n      <b> Vote Count: </b> {{movie.vote_count}} <br> \n      <b> Movie Overview: </b> {{movie.overview}} <br> \n      <b> Popularity: </b> {{movie.popularity}} <br> \n      <b> Adult: </b> {{movie.adult}} <br>\n      <b> Year: </b> {{movie.release_date}} <br>\n    </li> \n  </ol>\n</div>\n-->\n\n  "
+module.exports = "<div (click)=\"remOver()\"></div>\n<div class=\"container\" style=\"text-align:center; position:relative;\">\n  <h2>\n   <br> {{title}} <br>\n  </h2>\n  <img _ngcontent-c0=\"\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\" width=\"50\">\n</div>\n<br>\n<div style=\"text-align:center\">\n    Search: <input type=\"text\" id=\"query\" autocomplete=\"off\" placeholder=\"Keywords\" (keyup)=\"sendReq(query.value)\" [(ngModel)]=\"texts\" name=\"query\" #query>\n</div>\n<div *ngIf=\"data\">\n      <div style=\"text-align:center\"> \n          <p>You searched for ' <b>{{texts}}</b> ' </p>\n          <h5>Search Details</h5>\n        <table> \n          <tr>\n            <th>Page </th>\n            <th>Total Results</th>\n            <th>Total Pages</th>\n            <th>Results per page</th>\n          </tr>\n          <tr>\n            <td>{{data.page}}</td>\n            <td>{{data.total_results}}</td>\n            <td>{{data.total_pages}}</td>\n            <td>{{data.results.length}}</td>\n          </tr>\n        </table>  \n      </div> \n  <div class=\"card-group\">\n          <mat-card class=\"example-card\" *ngFor=\"let movie of data.results; let myIndex = index\">\n          <mat-card-header>\n              <mat-card-title>\n                  <i class=\"fa fa-film fa-lg\" aria-hidden=\"true\"></i> <b> {{movie.title}} </b>\n            </mat-card-title>\n          </mat-card-header>\n            <img (click)=\"trackClick(movie.id,movie.genre_ids)\" mat-card-image src=\"https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}\" onerror=\"this.onerror=null;this.src='/assets/nf.png'\">\n          <mat-card-content (click)=\"trackClick(movie.id,movie.genre_ids)\">\n            <div class=\"d-flex justify-content-between\">\n                <div>\n                    <i class=\"fa fa-calendar\" aria-hidden=\"true\"></i> {{movie.release_date}}\n                </div>\n                <div>\n                    <i class=\"fa fa-imdb fa-lg\" aria-hidden=\"true\"></i> {{movie.vote_average}} \n                </div>\n            </div>\n          \n              <i><span style=\"color: #666; font-size: 12px;\" *ngFor=\"let item of movie.genre_ids;let i = index\">{{this.gen[item]}}<span *ngIf=\"i < movie.genre_ids.length-1\">,</span></span>.</i><br>\n              <span *ngIf=\"movie.overview.length>140\">{{movie.overview | truncate : 140 : true}} </span> \n              <span *ngIf=\"movie.overview.length<140\">{{movie.overview}} </span><br> \n\n              <div class=\"d-flex justify-content-between\">\n                  <div>\n                      <i class=\"fa fa-eye fa-lg\" aria-hidden=\"true\"></i> <span *ngIf=\"movie.adult; else templateName\">Restricted</span><ng-template #templateName>\n                          Unrestricted\n                      </ng-template>\n                  </div>\n                  <div>\n                      <i class=\"fa fa-language fa-lg\" aria-hidden=\"true\"></i> {{movie.original_language}}\n                  </div>\n            </div>\n              <i class=\"fa fa-rocket fa-lg\" aria-hidden=\"true\"></i>  {{movie.popularity}} <br> \n           </mat-card-content>  \n           <mat-card-actions style=\"text-align: center\">     \n              <button (click)=\"likeMovie(movie.id,movie.genre_ids)\" mat-button><i class=\"fa fa-thumbs-o-up fa\" aria-hidden=\"true\"></i></button>\n              <button (click)=\"dislikeMovie(movie.id,movie.genre_ids)\" mat-button><i class=\"fa fa-thumbs-o-down fa\" aria-hidden=\"true\"></i></button>\n              <button (click)=\"addList(movie.id,movie.genre_ids)\" mat-button><i class=\"fa fa-bookmark-o fa\" aria-hidden=\"true\"></i></button>\n            </mat-card-actions>   \n      </mat-card>\n  </div>\n</div>\n<div *ngIf=\"data\" style=\"text-align: center\">\n<a href=\"#\" class=\"previous round\">&#8249;</a>\n<a href=\"#\" class=\"next round\">&#8250;</a>\n</div>\n<br/> <br/>\n  <!-- OLD CODE\n  <b>Movie Details:</b><br>\n  Movie id: {{data.results[0].id}}<br>\n  Title: {{data.results[0].title}}<br>\n  Genres: <ol><li *ngFor=\"let item of data.results[0].genre_ids\">\n    {{item }} </li> </ol> <br> \n  Language: {{data.results[0].original_language}}<br>\n  IMDb Rating: {{data.results[0].vote_average}}<br>\n  Vote Count: {{data.results[0].vote_count}}<br>\n  Overview: {{data.results[0].overview}}<br>\n  Popularity: {{data.results[0].popularity}}<br>\n  Adult: {{data.results[0].adult}}<br>\n  poster_path: {{data.results[0].poster_path}}<br>\n  backdrop_path: {{data.results[0].id}}<br>\n  <br><br>\n  \n  <b>Search Details:</b><br>\n  page: {{data.page}}<br>\n  total_results: {{data.total_results}}<br>\n  total_pages: {{data.total_pages}}<br>\n  results:{{data.results.length}}<br>\n\n  -->\n    <!-- OLD CODe\n\n        \n  <ol > \n    <li *ngFor=\"let movie of data.results; let myIndex = index\" (click)=\"trackClick(movie.id,movie.genre_ids)\" #yo> \n      <b> Movie ID: </b> {{movie.id}} <br>\n      <b> Movie Title: </b> {{movie.title}} <br> \n\n      <b> Genres: </b><ol> <li *ngFor=\"let item of movie.genre_ids\">\n          {{item}} </li> </ol> \n    \n      <b> Original Language: </b> {{movie.original_language}} <br>\n      <b> IMDb Rating: </b> {{movie.vote_average}} <br>\n      <b> Vote Count: </b> {{movie.vote_count}} <br> \n      <b> Movie Overview: </b> {{movie.overview}} <br> \n      <b> Popularity: </b> {{movie.popularity}} <br> \n      <b> Adult: </b> {{movie.adult}} <br>\n      <b> Year: </b> {{movie.release_date}} <br>\n    </li> \n  </ol>\n</div>\n-->\n\n  "
 
 /***/ }),
 
@@ -771,6 +813,7 @@ module.exports = "<div (click)=\"remOver()\"></div>\n<div class=\"container\" st
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_cookie_service__ = __webpack_require__("../../../../ngx-cookie-service/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -782,9 +825,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var UserComponent = (function () {
-    function UserComponent(http) {
+    function UserComponent(http, cookieService) {
         this.http = http;
+        this.cookieService = cookieService;
         // Global Vars
         this.title = 'A Hybrid Movie Search & Recommendation System for the real world!';
         this.gen = {
@@ -809,32 +854,67 @@ var UserComponent = (function () {
             37: "Western"
         };
     }
-    UserComponent.prototype.trackClick = function (movieid, genre) {
-        console.log(movieid, genre);
-        console.log(this.gen[28]);
-    };
     UserComponent.prototype.sendReq = function (query) {
         var _this = this;
         if (query == '') {
             this.data = this.blank; //Clearing Search Box
         }
         //console.log(query);
-        this.hell = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1';
-        this.http.get(this.hell).subscribe(function (data) {
+        this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1';
+        this.http.get(this.tmdb).subscribe(function (data) {
             _this.data = data; // Assign local to global
         });
     };
     UserComponent.prototype.ngOnInit = function () { };
+    UserComponent.prototype.cookieUpdate = function (cookieName1, cookieName2, movieid, genre) {
+        if (this.cookieService.check("" + cookieName1) && (this.cookieService.check("" + cookieName2))) {
+            // If data already in cookie & both cookie names is specified
+            this.cookieService.set("" + cookieName1, this.cookieService.get("" + cookieName1) + "," + movieid);
+            this.cookieService.set("" + cookieName2, this.cookieService.get("" + cookieName2) + "," + genre);
+            console.log("Cookie1Mov " + this.cookieService.get("" + cookieName1));
+            console.log("Cookie2Gen " + this.cookieService.get("" + cookieName2));
+        }
+        else if (this.cookieService.check("" + cookieName1) && cookieName2 == '') {
+            // If data already in cookie but only 1 cookie name specified
+            this.cookieService.set("" + cookieName1, this.cookieService.get("" + cookieName1) + "," + movieid);
+            console.log("Cookie1Mov " + this.cookieService.get("" + cookieName1));
+        }
+        else {
+            // If cookie new
+            this.cookieService.set("" + cookieName1, "" + movieid);
+            this.cookieService.set("" + cookieName2, "" + genre);
+            console.log("Cookie1Mov " + this.cookieService.get("" + cookieName1));
+            if (cookieName2 != '') {
+                console.log("Cookie2Gen " + this.cookieService.get("" + cookieName2));
+            }
+        }
+    };
+    UserComponent.prototype.trackClick = function (movieid, genre) {
+        console.log(movieid, genre);
+        this.cookieUpdate('Intrst_MovieIDs', 'Intrst_GenreIDs', movieid, genre);
+    };
+    UserComponent.prototype.likeMovie = function (movieid, genre) {
+        console.log(movieid, genre);
+        this.cookieUpdate('Like_MovieIDs', 'Like_GenreIDs', movieid, genre);
+    };
+    UserComponent.prototype.dislikeMovie = function (movieid, genre) {
+        console.log(movieid, genre);
+        this.cookieUpdate('Dislike_MovieIDs', 'Dislike_GenreIDs', movieid, genre);
+    };
+    UserComponent.prototype.addList = function (movieid, genre) {
+        console.log(movieid, genre);
+        this.cookieUpdate('Bookmarked', '', movieid, genre);
+    };
     UserComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-user',
             template: __webpack_require__("../../../../../src/app/components/user/user.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/user/user.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ngx_cookie_service__["a" /* CookieService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ngx_cookie_service__["a" /* CookieService */]) === "function" && _b || Object])
     ], UserComponent);
     return UserComponent;
-    var _a;
+    var _a, _b;
 }());
 
 /* console.log(data);

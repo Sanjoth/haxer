@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-//import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,10 @@ import { Component,OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
 
-  /*
-  constructor(private http: HttpClient){
+  
+  constructor(private cookieService: CookieService){
   }
-  */
+  
   remOver()
   {
     document.getElementById("mySidenav").style.width = "0"; 

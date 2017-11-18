@@ -22,7 +22,25 @@ MongoClient.connect(mourl, function(err, db) {
 
 //search
 
+app.get('/getUser', function(request, response){
+  var querys = url.parse(request.url, true);
+  var email = querys.query.email;
+  var pass = querys.query.pass;
 
+    MongoClient.connect(mourl, function(err, db){
+      var search = JSON.parse(`{"email": "${email}", "password": "${pass}"}`);
+      db.collection("users").find(search).toArray(function(err, result){
+        if(err)
+        {
+          console.error(err); response.send("Error "+ err); throw err;
+        }
+        else
+        {
+          response.send(result);
+        }
+        });
+      });
+});
 
 app.get('/regUser', function(request, response){
   var querys = url.parse(request.url, true);

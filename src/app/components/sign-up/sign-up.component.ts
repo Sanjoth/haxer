@@ -11,7 +11,6 @@ export class SignUpComponent implements OnInit {
   check:boolean;
   register:string;
   myForm:object;
-  captcha:string;
 
   constructor(private http: HttpClient, private fb: FormBuilder) {
     this.myForm = fb.group({
@@ -20,14 +19,7 @@ export class SignUpComponent implements OnInit {
       password2: ['', Validators.minLength],
       email: ['', Validators.email]
     });
-    window['verifyCallback'] = this.verifyCallback.bind(this);
   }
-  
-  verifyCallback(response){
-    this.captcha=response;
-   this.check = true;
-    }
- 
 
   ngOnInit() {
     
@@ -45,8 +37,6 @@ export class SignUpComponent implements OnInit {
       alert("Passwords don't match");
       return;
     }
-    if(this.check == true)
-    {
     this.register = `/regUser?name=${name}&email=${email}&password1=${pass1}`;
     console.log(this.register);
     this.http.get<UserResponse>(this.register).subscribe(data => {
@@ -59,17 +49,10 @@ export class SignUpComponent implements OnInit {
       }
       else
       {
-        alert("User already exists, please login or reset your password");
+        alert("User already exists, please login or reset your password!");
       }
 
     });
-    }
-    else
-    {
-      alert("Captch return false, please try again!");
-    }
-  
-
 }
 }
 

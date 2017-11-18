@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {MatInputModule} from '@angular/material';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-user',
@@ -8,12 +8,12 @@ import {MatInputModule} from '@angular/material';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
   // Global Vars
   title = 'A Hybrid Movie Search & Recommendation System for the real world!';
-  hell:string;
+  tmdb:string;
   data:object;
   blank:object;
+  index:number;
 
   gen: GenreTy = {
     28:"Action",        
@@ -36,30 +36,68 @@ export class UserComponent implements OnInit {
     10752:"War",
     37:"Western"
 };
+  constructor(private http: HttpClient, private cookieService: CookieService ){}
 
-
-  constructor(private http: HttpClient){
-  }
-
-  trackClick(movieid,genre){
-    console.log(movieid,genre);
-    console.log(this.gen[28]);
-  }
-  
   sendReq(query){
     if(query == '')
     {
       this.data=this.blank; //Clearing Search Box
     }
     //console.log(query);
-    this.hell = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query='+query+'&page=1';
-    this.http.get<UserResponse>(this.hell).subscribe(data => {
+    this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query='+query+'&page=1';
+    this.http.get<UserResponse>(this.tmdb).subscribe(data => {
       this.data = data; // Assign local to global
     });
-  
-  
   }
   ngOnInit(){}
+
+  cookieUpdate(cookieName1,cookieName2,movieid,genre){
+
+    if(this.cookieService.check(`${cookieName1}`) && (this.cookieService.check(`${cookieName2}`)))
+    {
+      // If data already in cookie & both cookie names is specified
+    this.cookieService.set(`${cookieName1}`, `${this.cookieService.get(`${cookieName1}`)},${movieid}`);
+    this.cookieService.set(`${cookieName2}`, `${this.cookieService.get(`${cookieName2}`)},${genre}`);
+    console.log("Cookie1Mov "+this.cookieService.get(`${cookieName1}`));
+    console.log("Cookie2Gen "+this.cookieService.get(`${cookieName2}`));
+    }
+    else if(this.cookieService.check(`${cookieName1}`) && cookieName2 == ''){
+      // If data already in cookie but only 1 cookie name specified
+      this.cookieService.set(`${cookieName1}`, `${this.cookieService.get(`${cookieName1}`)},${movieid}`);
+      console.log("Cookie1Mov "+this.cookieService.get(`${cookieName1}`));
+    }
+    else
+    {
+      // If cookie new
+      this.cookieService.set(`${cookieName1}`, `${movieid}`);
+      this.cookieService.set(`${cookieName2}`, `${genre}`);
+      console.log("Cookie1Mov "+this.cookieService.get(`${cookieName1}`));
+      if(cookieName2 != '')
+      {
+      console.log("Cookie2Gen "+this.cookieService.get(`${cookieName2}`));
+      }
+    }
+  }
+
+  trackClick(movieid,genre){
+    
+        console.log(movieid,genre);
+       this.cookieUpdate('Intrst_MovieIDs','Intrst_GenreIDs',movieid,genre);
+      
+      }
+  likeMovie(movieid,genre){
+    console.log(movieid,genre);
+    this.cookieUpdate('Like_MovieIDs','Like_GenreIDs',movieid,genre);
+    
+  }
+  dislikeMovie(movieid,genre){
+    console.log(movieid,genre);
+    this.cookieUpdate('Dislike_MovieIDs','Dislike_GenreIDs',movieid,genre);
+  }
+  addList(movieid,genre){
+    console.log(movieid,genre);
+    this.cookieUpdate('Bookmarked','',movieid,genre);
+  }
 
 }
 

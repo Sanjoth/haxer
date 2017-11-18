@@ -5,14 +5,18 @@
       <div id="right" [mat-menu-trigger-for]="menu"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></div>
     </mat-toolbar>
     <mat-menu x-position="before" #menu="matMenu">
-      <button mat-menu-item>Settings</button>
-      <button mat-menu-item>Sign out</button>
+      <button mat-menu-item routerLink="/settings" routerLinkActive="active">Settings</button>
+      <button mat-menu-item routerLink="/help" routerLinkActive="active">Help</button>
+      <button mat-menu-item routerLink="/" *ngIf="this.cookieService.get('UserEmail')" (click)="logOut()">Sign out</button>
     </mat-menu>
   
   </div>
-  <div id="mySidenav" class="sidenav" (click)="toggNav()">
+  <div id="mySidenav" class="sidenav" (click)="toggNav()">  
+  <a *ngIf="this.cookieService.get('UserEmail')" routerLink="/profile" routerLinkActive="active">{{this.cookieService.get('Name')}}</a>
+  <a *ngIf="!this.cookieService.get('UserEmail')" routerLink="/login" routerLinkActive="active">Sign in</a>
+  <a *ngIf="!this.cookieService.get('UserEmail')" routerLink="/signup" routerLinkActive="active">Register</a>
+  <a *ngIf="this.cookieService.get('UserEmail')" routerLink="/user/:id" routerLinkActive="active">My List</a>
+  <a routerLink="/recom" routerLinkActive="active">Recommendations</a>
+  <a routerLink="/discover" routerLinkActive="active">Discover</a>
   <a routerLink="/about" routerLinkActive="active">About</a>
-  <a routerLink="/login" routerLinkActive="active">Sign in</a>
-  <a routerLink="/signup" routerLinkActive="active">Register</a>
-  <a routerLink="/user/:id" routerLinkActive="active">My List</a>
   </div>

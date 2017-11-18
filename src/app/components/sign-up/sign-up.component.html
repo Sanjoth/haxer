@@ -2,8 +2,8 @@
 <span class="agile-login">
   <div class="wrapper">
     <h2>Sign Up</h2>
-    <div class="w3ls-form">
-      <form [formGroup]="myForm" (ngSubmit)="sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)" id="signup-form">
+    <div class="w3ls-form" id="signup-form">
+      <form [formGroup]="myForm" (ngSubmit)="sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)">
         <label>Full Name</label>
         <input type="text" formControlName="name" #fulln placeholder="Name" required minlength="4"/>
         <label>Email Address</label>
@@ -12,10 +12,7 @@
         <input type="password" formControlName="password1" #pass1 placeholder="Password" required minlength="4"/>
         <label>Confirm Password</label>
         <input type="password" formControlName="password2" #pass2 placeholder="Confirm Password" required/><br>
-        <a href="#" class="pass">Already Registered ?</a>
-        <div class="text-xs-center">
-          <div class="g-recaptcha" data-callback="verifyCallback" data-sitekey="6LdcijgUAAAAAHESsqShZ_pNE48MEcb_GxG8KSrq"></div>
-        </div>
+        <a routerLink="/login" routerLinkActive="active" class="pass">Already Registered ?</a>
         <input type="submit" [hidden]="myForm.invalid" value="Register"/>
         <span style="color:orangered" *ngIf="myForm.hasError('email', 'email') && myForm.get('email').touched">
             Please enter a valid email address to succesfully register. <br>
