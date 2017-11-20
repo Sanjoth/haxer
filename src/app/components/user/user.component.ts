@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +12,9 @@ export class UserComponent implements OnInit {
   tmdb:string;
   data:object;
   blank:object;
-  index:number;
+  movieid:number;
+  
+ 
 
   gen: GenreTy = {
     28:"Action",        
@@ -36,7 +37,7 @@ export class UserComponent implements OnInit {
     10752:"War",
     37:"Western"
 };
-  constructor(private http: HttpClient, private cookieService: CookieService ){}
+  constructor(private http: HttpClient){}
 
   sendReq(query){
     if(query == '')
@@ -51,52 +52,76 @@ export class UserComponent implements OnInit {
   }
   ngOnInit(){}
 
-  cookieUpdate(cookieName1,cookieName2,movieid,genre){
 
-    if(this.cookieService.check(`${cookieName1}`) && (this.cookieService.check(`${cookieName2}`)))
+  // Function to udpate cookie data with latest info
+  localStorageUpdate(cookieName1,cookieName2,movieid,genre){
+console.log(movieid,genre);
+    if(!localStorage.getItem("UserEmail") || genre.length == 0)
     {
-      // If data already in cookie & both cookie names is specified
-    this.cookieService.set(`${cookieName1}`, `${this.cookieService.get(`${cookieName1}`)},${movieid}`);
-    this.cookieService.set(`${cookieName2}`, `${this.cookieService.get(`${cookieName2}`)},${genre}`);
-    console.log("Cookie1Mov "+this.cookieService.get(`${cookieName1}`));
-    console.log("Cookie2Gen "+this.cookieService.get(`${cookieName2}`));
+      //Dont track
+      console.log("Genre issue");
+      return false;
     }
-    else if(this.cookieService.check(`${cookieName1}`) && cookieName2 == ''){
+
+    if(localStorage.getItem(`"${cookieName1}"`)!= null)
+    {
+    let checkDupli = localStorage.getItem(`"${cookieName1}"`);
+    let delim = checkDupli.split(",");
+    let num = delim.length;
+    let index = 0;
+
+    // If movie already tracked
+    for(index = 0; index < num; index++)
+    {
+      if(movieid == delim[index])
+      {
+        return false;
+      }
+    }
+  }
+
+    console.log(movieid,genre);
+
+    if((localStorage.getItem(`"${cookieName1}"`)!= null) && (localStorage.getItem(`"${cookieName2}"`)!= null))
+    { 
+      // If data already in cookie & both cookie names is specified
+    localStorage.setItem(`"${cookieName1}"`, `${localStorage.getItem(`"${cookieName1}"`)},${movieid}`);
+    localStorage.setItem(`"${cookieName2}"`, `${localStorage.getItem(`"${cookieName2}"`)},${genre}`);
+    console.log("Cookie1Mov "+localStorage.getItem(`"${cookieName1}"`));
+    console.log("Cookie2Gen "+localStorage.getItem(`"${cookieName2}"`));
+    }
+    else if((localStorage.getItem(`"${cookieName1}"`)!= null) && cookieName2 == ""){
       // If data already in cookie but only 1 cookie name specified
-      this.cookieService.set(`${cookieName1}`, `${this.cookieService.get(`${cookieName1}`)},${movieid}`);
-      console.log("Cookie1Mov "+this.cookieService.get(`${cookieName1}`));
+      localStorage.setItem(`"${cookieName1}"`, `${localStorage.getItem(`"${cookieName1}"`)},${movieid}`);
+      console.log("Cookie1Mov "+localStorage.getItem(`"${cookieName1}"`));
     }
     else
     {
       // If cookie new
-      this.cookieService.set(`${cookieName1}`, `${movieid}`);
-      this.cookieService.set(`${cookieName2}`, `${genre}`);
-      console.log("Cookie1Mov "+this.cookieService.get(`${cookieName1}`));
+      localStorage.setItem(`"${cookieName1}"`, `${movieid}`);
+      localStorage.setItem(`"${cookieName2}"`, `${genre}`);
+      console.log("Cookie1Mov "+localStorage.getItem(`"${cookieName1}"`));
       if(cookieName2 != '')
       {
-      console.log("Cookie2Gen "+this.cookieService.get(`${cookieName2}`));
+      console.log("Cookie2Gen "+localStorage.getItem(`"${cookieName2}"`));
       }
     }
   }
 
-  trackClick(movieid,genre){
-    
-        console.log(movieid,genre);
-       this.cookieUpdate('Intrst_MovieIDs','Intrst_GenreIDs',movieid,genre);
-      
-      }
+  trackClick(movieid,genre){    
+    this.localStorageUpdate("Intrst_MovieIDs","Intrst_GenreIDs",movieid,genre);   
+  }
   likeMovie(movieid,genre){
-    console.log(movieid,genre);
-    this.cookieUpdate('Like_MovieIDs','Like_GenreIDs',movieid,genre);
-    
+    this.localStorageUpdate("Like_MovieIDs","Like_GenreIDs",movieid,genre);
+    return true;  
   }
   dislikeMovie(movieid,genre){
-    console.log(movieid,genre);
-    this.cookieUpdate('Dislike_MovieIDs','Dislike_GenreIDs',movieid,genre);
+    this.localStorageUpdate("Dislike_MovieIDs","Dislike_GenreIDs",movieid,genre);
+    return true;  
   }
   addList(movieid,genre){
-    console.log(movieid,genre);
-    this.cookieUpdate('Bookmarked','',movieid,genre);
+    this.localStorageUpdate("Bookmarked","",movieid,genre);
+    return true;  
   }
 
 }
@@ -127,6 +152,7 @@ interface Results{
 interface GenreTy {
   [key: number]:  string;
 }
+
 
 /* console.log(data);
       console.log(data.page);

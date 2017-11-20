@@ -63,11 +63,20 @@
               <i class="fa fa-rocket fa-lg" aria-hidden="true"></i>  {{movie.popularity}} <br> 
            </mat-card-content>  
            <mat-card-actions style="text-align: center">     
-              <button (click)="likeMovie(movie.id,movie.genre_ids)" mat-button><i class="fa fa-thumbs-o-up fa" aria-hidden="true"></i></button>
-              <button (click)="dislikeMovie(movie.id,movie.genre_ids)" mat-button><i class="fa fa-thumbs-o-down fa" aria-hidden="true"></i></button>
-              <button (click)="addList(movie.id,movie.genre_ids)" mat-button><i class="fa fa-bookmark-o fa" aria-hidden="true"></i></button>
-            </mat-card-actions>   
+              <button (click)="likeMovie(movie.id,movie.genre_ids)" class="mat-button" mat-button id="{{movie.id}}a">
+                <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i> 
+              </button>
+              <button (click)="dislikeMovie(movie.id,movie.genre_ids)" class="mat-button" mat-button id="{{movie.id}}b">
+                <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+              </button>
+              <button (click)="addList(movie.id,movie.genre_ids)" class="mat-button" mat-button id="{{movie.id}}c" >
+                <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+              </button>
+            </mat-card-actions>  
+            {{movie.id}}a
+           
       </mat-card>
+    
   </div>
 </div>
 <div *ngIf="data" style="text-align: center">

@@ -1,19 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { checkAndUpdateBinding } from '@angular/core/src/view/util';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
 
-  constructor(private cookieService: CookieService) { 
-  } 
+export class HeaderComponent implements OnInit {
+  userEmail:string;
+  Name:string;
+  signIn:boolean;
+ 
+
+  constructor() {
+    console.log(localStorage.getItem("UserEmail"));
+    this.userEmail = localStorage.getItem("UserEmail");
+    if(this.userEmail == null)
+    {
+      this.signIn = false;
+    }
+    else
+    {
+    this.signIn = true;
+    this.Name = localStorage.getItem("Name");
+    }
+    
+ } 
 
   ngOnInit() {
     
   }
+  
 
  toggNav() {
     if(document.getElementById("mySidenav").style.width == "245px")
@@ -30,8 +48,9 @@ export class HeaderComponent implements OnInit {
 }
 
 logOut(){
-  this.cookieService.delete('UserEmail');
-  this.cookieService.delete('Name');
+  localStorage.removeItem("UserEmail");
+  localStorage.removeItem("Name");
+  this.signIn = false;
 }
 
   

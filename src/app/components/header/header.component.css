@@ -39,3 +39,7 @@ mat-toolbar{
 #right {
     float:right;
 }
+
+#mySidenav{
+    z-index: 3 !important;
+}

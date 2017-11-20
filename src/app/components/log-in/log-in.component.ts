@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router'
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-log-in',
@@ -13,18 +12,13 @@ export class LogInComponent implements OnInit {
   loginstr:string;
   movieid:number;
 
-  constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    this.cookieService.set('Intrst_MovieIDs', '', 9999);
-    this.cookieService.set('Intrst_GenreIDs', '', 9999);
-    this.cookieService.set('Like_MovieIDs', '', 9999);
-    this.cookieService.set('Like_GenreIDs', '', 9999);
-    this.cookieService.set('Dislike_MovieIDs', '', 9999);
-    this.cookieService.set('Dislike_GenreIDs', '', 9999);
-    this.cookieService.set('Bookmarked', '', 9999);
-    console.log(this.cookieService.getAll());
-    //this.cookieService.set('Test', `${this.cookieService.get('Test')},${movie_id}`);
+    /*for (let key in localStorage){
+      console.log(key)
+   }
+   */
   }
 
   sendReq(email,pass)
@@ -36,14 +30,14 @@ export class LogInComponent implements OnInit {
       if(data.length == 1)
       {
       console.log(data[0].email+" "+data[0].password);
-      alert("Welcome "+data[0].name+" !");
-       //Initialize Cookie for Email
+      alert("Welcome "+data[0].uname+" !");
+       //Initialize local Storage for Email
 
-       this.cookieService.set('UserEmail',`${this.data[0].email}`,9999);
-       this.cookieService.set('Name',`${this.data[0].uname}`,9999);
-      console.log(this.cookieService.get('UserEmail'));
+       localStorage.setItem("UserEmail",`${this.data[0].email}`);
+       localStorage.setItem("Name",`${this.data[0].uname}`);
+      console.log(localStorage.getItem("UserEmail"));
 
-      this.router.navigateByUrl('/');
+      window.location.href = "/";
 
       }
       else{
