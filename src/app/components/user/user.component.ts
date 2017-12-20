@@ -59,7 +59,7 @@ console.log(movieid,genre);
     if(!localStorage.getItem("UserEmail") || genre.length == 0)
     {
       //Dont track
-      console.log("Genre issue");
+      //console.log("Genre issue");
       return false;
     }
 
