@@ -43,10 +43,19 @@ a:hover {
     color: white;
 }
 
+.mat-button-toggle-group, .mat-button-toggle-standalone{
+  box-shadow: none !important;
+  border-radius: 0px !important;
+}
 
+.mat-button-toggle-checked{
+  background-color: #ffffff !important;
+}
 
-
-  
+.mat-button-toggle
+{
+  background-color: #ffffff !important;
+}
   
   
   

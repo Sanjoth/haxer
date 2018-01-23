@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  
   // Global Vars
   title = 'A Hybrid Movie Search & Recommendation System for the real world!';
   tmdb:string;
   data:object;
   blank:object;
   movieid:number;
-  
- 
-
   gen: GenreTy = {
     28:"Action",        
     12:"Adventure",        
@@ -37,6 +36,8 @@ export class UserComponent implements OnInit {
     10752:"War",
     37:"Western"
 };
+ iconChk:String;
+
   constructor(private http: HttpClient){}
 
   sendReq(query){
@@ -111,15 +112,42 @@ console.log(movieid,genre);
   trackClick(movieid,genre){    
     this.localStorageUpdate("Intrst_MovieIDs","Intrst_GenreIDs",movieid,genre);   
   }
-  likeMovie(movieid,genre){
+  likeMovie(movieid,genre,event){
+    this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
+    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg\"></i>")
+    {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-up fa-lg\"></i>";
+    }
+    else
+    {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg\"></i>";
+    }
     this.localStorageUpdate("Like_MovieIDs","Like_GenreIDs",movieid,genre);
     return true;  
   }
-  dislikeMovie(movieid,genre){
+  dislikeMovie(movieid,genre,event){
+    this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
+    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg\"></i>")
+    {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-down fa-lg\"></i>";
+    }
+    else
+    {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg\"></i>";
+    }
     this.localStorageUpdate("Dislike_MovieIDs","Dislike_GenreIDs",movieid,genre);
     return true;  
   }
-  addList(movieid,genre){
+  addList(movieid,genre,event){
+    this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
+    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>")
+    {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark fa-lg\"></i>";
+    }
+    else
+    {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>";
+    }
     this.localStorageUpdate("Bookmarked","",movieid,genre);
     return true;  
   }
@@ -169,3 +197,4 @@ interface GenreTy {
       console.log(data.results[0].genre_ids[2]);
       console.log(data.results[0].popularity);
  */
+

@@ -52,7 +52,8 @@
 
               <div class="d-flex justify-content-between">
                   <div>
-                      <i class="fa fa-eye fa-lg" aria-hidden="true"></i> <span *ngIf="movie.adult; else templateName">Restricted</span><ng-template #templateName>
+                      <i class="fa fa-eye fa-lg" aria-hidden="true"></i> <span *ngIf="movie.adult; else Audience">Restricted</span>
+                      <ng-template #Audience>
                           Unrestricted
                       </ng-template>
                   </div>
@@ -63,15 +64,28 @@
               <i class="fa fa-rocket fa-lg" aria-hidden="true"></i>  {{movie.popularity}} <br> 
            </mat-card-content>  
            <mat-card-actions style="text-align: center">     
-              <button (click)="likeMovie(movie.id,movie.genre_ids)" class="mat-button" mat-button id="{{movie.id}}a">
+             <!--
+            <button (click)="likeMovie(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}a">
                 <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i> 
               </button>
-              <button (click)="dislikeMovie(movie.id,movie.genre_ids)" class="mat-button" mat-button id="{{movie.id}}b">
+              <button (click)="dislikeMovie(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}b">
                 <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
               </button>
-              <button (click)="addList(movie.id,movie.genre_ids)" class="mat-button" mat-button id="{{movie.id}}c" >
+              <button (click)="addList(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}c" >
                 <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
-              </button>
+              </button>  
+             --> 
+              <mat-button-toggle-group #group="matButtonToggleGroup">
+                  <mat-button-toggle value="like" (click)="likeMovie(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}a">
+                      <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i> 
+                    </mat-button-toggle>
+                    <mat-button-toggle value="dislike" (click)="dislikeMovie(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}b">
+                      <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+                    </mat-button-toggle>        
+                  </mat-button-toggle-group>     
+                    <mat-button-toggle value="addList" (click)="addList(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}c" >
+                      <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+                    </mat-button-toggle>  
             </mat-card-actions>  
       </mat-card>
     
@@ -127,5 +141,3 @@
   </ol>
 </div>
 -->
-
-  

@@ -94,17 +94,20 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_material_module__ = __webpack_require__("../../../../../src/app/material/material.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__truncate_truncate_module__ = __webpack_require__("../../../../../src/app/truncate/truncate.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_user_user_component__ = __webpack_require__("../../../../../src/app/components/user/user.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/components/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_sign_up_sign_up_component__ = __webpack_require__("../../../../../src/app/components/sign-up/sign-up.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_log_in_log_in_component__ = __webpack_require__("../../../../../src/app/components/log-in/log-in.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_movie_detail_movie_detail_component__ = __webpack_require__("../../../../../src/app/components/movie-detail/movie-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_user_detail_user_detail_component__ = __webpack_require__("../../../../../src/app/components/user-detail/user-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/components/page-not-found/page-not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_about_us_about_us_component__ = __webpack_require__("../../../../../src/app/components/about-us/about-us.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__truncate_truncate_module__ = __webpack_require__("../../../../../src/app/truncate/truncate.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_user_user_component__ = __webpack_require__("../../../../../src/app/components/user/user.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/components/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_header_header_component__ = __webpack_require__("../../../../../src/app/components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_sign_up_sign_up_component__ = __webpack_require__("../../../../../src/app/components/sign-up/sign-up.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_log_in_log_in_component__ = __webpack_require__("../../../../../src/app/components/log-in/log-in.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_movie_detail_movie_detail_component__ = __webpack_require__("../../../../../src/app/components/movie-detail/movie-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_user_detail_user_detail_component__ = __webpack_require__("../../../../../src/app/components/user-detail/user-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/components/page-not-found/page-not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_about_us_about_us_component__ = __webpack_require__("../../../../../src/app/components/about-us/about-us.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_recommender_recommender_component__ = __webpack_require__("../../../../../src/app/components/recommender/recommender.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_discover_discover_component__ = __webpack_require__("../../../../../src/app/components/discover/discover.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -121,6 +124,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 //Angular Material 2
 
 
+
 //Self Made
 
 
@@ -133,13 +137,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var appRoutes = [
-    { path: 'signup', component: __WEBPACK_IMPORTED_MODULE_12__components_sign_up_sign_up_component__["a" /* SignUpComponent */] },
-    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_13__components_log_in_log_in_component__["a" /* LogInComponent */] },
-    { path: 'movie/:id', component: __WEBPACK_IMPORTED_MODULE_14__components_movie_detail_movie_detail_component__["a" /* MovieDetailComponent */] },
-    { path: 'user/:id', component: __WEBPACK_IMPORTED_MODULE_15__components_user_detail_user_detail_component__["a" /* UserDetailComponent */] },
-    { path: 'about', component: __WEBPACK_IMPORTED_MODULE_17__components_about_us_about_us_component__["a" /* AboutUsComponent */] },
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_9__components_user_user_component__["a" /* UserComponent */] }
+    { path: 'signup', component: __WEBPACK_IMPORTED_MODULE_13__components_sign_up_sign_up_component__["a" /* SignUpComponent */] },
+    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_14__components_log_in_log_in_component__["a" /* LogInComponent */] },
+    { path: 'movie/:id', component: __WEBPACK_IMPORTED_MODULE_15__components_movie_detail_movie_detail_component__["a" /* MovieDetailComponent */] },
+    { path: 'user/:id', component: __WEBPACK_IMPORTED_MODULE_16__components_user_detail_user_detail_component__["a" /* UserDetailComponent */] },
+    { path: 'about', component: __WEBPACK_IMPORTED_MODULE_18__components_about_us_about_us_component__["a" /* AboutUsComponent */] },
+    { path: 'recom', component: __WEBPACK_IMPORTED_MODULE_19__components_recommender_recommender_component__["a" /* RecommenderComponent */] },
+    { path: 'discover', component: __WEBPACK_IMPORTED_MODULE_20__components_discover_discover_component__["a" /* DiscoverComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_10__components_user_user_component__["a" /* UserComponent */] }
     /*{
       path: 'heroes',
       component: HeroListComponent,
@@ -150,7 +158,7 @@ var appRoutes = [
       redirectTo: '/browse',
       pathMatch: 'full'
     }*/ ,
-    { path: '**', component: __WEBPACK_IMPORTED_MODULE_16__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_17__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -158,17 +166,19 @@ var AppModule = (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["K" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__components_user_user_component__["a" /* UserComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__truncate_truncate_module__["a" /* TruncatePipe */],
-                __WEBPACK_IMPORTED_MODULE_10__components_footer_footer_component__["a" /* FooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__components_header_header_component__["a" /* HeaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__components_sign_up_sign_up_component__["a" /* SignUpComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__components_log_in_log_in_component__["a" /* LogInComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__components_movie_detail_movie_detail_component__["a" /* MovieDetailComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__components_user_detail_user_detail_component__["a" /* UserDetailComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__components_about_us_about_us_component__["a" /* AboutUsComponent */]
+                __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__components_user_user_component__["a" /* UserComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__truncate_truncate_module__["a" /* TruncatePipe */],
+                __WEBPACK_IMPORTED_MODULE_11__components_footer_footer_component__["a" /* FooterComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__components_header_header_component__["a" /* HeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__components_sign_up_sign_up_component__["a" /* SignUpComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__components_log_in_log_in_component__["a" /* LogInComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__components_movie_detail_movie_detail_component__["a" /* MovieDetailComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__components_user_detail_user_detail_component__["a" /* UserDetailComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__components_about_us_about_us_component__["a" /* AboutUsComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_recommender_recommender_component__["a" /* RecommenderComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__components_discover_discover_component__["a" /* DiscoverComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* RouterModule */].forRoot(appRoutes
@@ -181,10 +191,11 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__material_material_module__["a" /* MaterialModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["i" /* ReactiveFormsModule */]
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["i" /* ReactiveFormsModule */],
+                __WEBPACK_IMPORTED_MODULE_7__angular_material__["b" /* MatButtonToggleModule */]
             ],
             providers: [],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -249,6 +260,67 @@ var AboutUsComponent = (function () {
         __metadata("design:paramtypes", [])
     ], AboutUsComponent);
     return AboutUsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/discover/discover.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/discover/discover.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<br><br>\n<p>\n  discover works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/discover/discover.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DiscoverComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DiscoverComponent = (function () {
+    function DiscoverComponent() {
+    }
+    DiscoverComponent.prototype.ngOnInit = function () {
+    };
+    DiscoverComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-discover',
+            template: __webpack_require__("../../../../../src/app/components/discover/discover.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/discover/discover.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], DiscoverComponent);
+    return DiscoverComponent;
 }());
 
 
@@ -513,7 +585,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/movie-detail/movie-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<br><br>\n<p>\n  movie-detail works!\n</p>\n"
+module.exports = "<br><br>\n<p>\n  Movie Detail Section works !\n</p>\n"
 
 /***/ }),
 
@@ -608,6 +680,67 @@ var PageNotFoundComponent = (function () {
         __metadata("design:paramtypes", [])
     ], PageNotFoundComponent);
     return PageNotFoundComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/recommender/recommender.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/recommender/recommender.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\n<br />\n<br />\n<p>\n  Recommender Section works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/recommender/recommender.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecommenderComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var RecommenderComponent = (function () {
+    function RecommenderComponent() {
+    }
+    RecommenderComponent.prototype.ngOnInit = function () {
+    };
+    RecommenderComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-recommender',
+            template: __webpack_require__("../../../../../src/app/components/recommender/recommender.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/recommender/recommender.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], RecommenderComponent);
+    return RecommenderComponent;
 }());
 
 
@@ -779,7 +912,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "table, th , td  {\n    border: 1px solid grey;\n    border-collapse: collapse;\n    padding: 10px;\n  }\n  table tr:nth-child(odd) {\n    background-color: #f1f1f1;\n  }\n  table tr:nth-child(even) {\n    background-color: #ffffff;\n  }\n\n  table\n  { \n  margin-left: auto;\n  margin-right: auto;\n  }\n\n  /*  Material Card */\n  .example-card {\n    width: 400px; \n    font-family: 'Source Sans Pro', sans-serif;\n  }\n\n  a {\n    text-decoration: none;\n    display: inline-block;\n    padding: 8px 16px;\n}\n\na:hover {\n    background-color: #ddd;\n    color: black;\n}\n\n.previous {\n    background-color: #000;\n    color: white;\n}\n\n.next {\n    background-color: #000;\n    color: white;\n}\n\n\n\n\n  \n  \n  \n  ", ""]);
+exports.push([module.i, "table, th , td  {\n    border: 1px solid grey;\n    border-collapse: collapse;\n    padding: 10px;\n  }\n  table tr:nth-child(odd) {\n    background-color: #f1f1f1;\n  }\n  table tr:nth-child(even) {\n    background-color: #ffffff;\n  }\n\n  table\n  { \n  margin-left: auto;\n  margin-right: auto;\n  }\n\n  /*  Material Card */\n  .example-card {\n    width: 400px; \n    font-family: 'Source Sans Pro', sans-serif;\n  }\n\n  a {\n    text-decoration: none;\n    display: inline-block;\n    padding: 8px 16px;\n}\n\na:hover {\n    background-color: #ddd;\n    color: black;\n}\n\n.previous {\n    background-color: #000;\n    color: white;\n}\n\n.next {\n    background-color: #000;\n    color: white;\n}\n\n.mat-button-toggle-group, .mat-button-toggle-standalone{\n  box-shadow: none !important;\n  border-radius: 0px !important;\n}\n\n.mat-button-toggle-checked{\n  background-color: #ffffff !important;\n}\n\n.mat-button-toggle\n{\n  background-color: #ffffff !important;\n}\n  \n  \n  ", ""]);
 
 // exports
 
@@ -792,7 +925,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/user.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div (click)=\"remOver()\"></div>\n<div class=\"container\" style=\"text-align:center; position:relative;\">\n  <h2>\n   <br> {{title}} <br>  \n  </h2> <br>\n<img src=\"/assets/haxer.png\">\n</div>\n<br>\n<div style=\"text-align:center\">\n    Search: <input type=\"text\" id=\"query\" autocomplete=\"off\" placeholder=\"Keywords\" (keyup)=\"sendReq(query.value)\" [(ngModel)]=\"texts\" name=\"query\" #query>\n</div>\n<div *ngIf=\"data\">\n      <div style=\"text-align:center\"> \n          <p>You searched for ' <b>{{texts}}</b> ' </p>\n          <h5>Search Details</h5>\n        <table> \n          <tr>\n            <th>Page </th>\n            <th>Total Results</th>\n            <th>Total Pages</th>\n            <th>Results per page</th>\n          </tr>\n          <tr>\n            <td>{{data.page}}</td>\n            <td>{{data.total_results}}</td>\n            <td>{{data.total_pages}}</td>\n            <td>{{data.results.length}}</td>\n          </tr>\n        </table>  \n      </div> \n  <div class=\"card-group\">\n          <mat-card class=\"example-card\" *ngFor=\"let movie of data.results; let myIndex = index\">\n          <mat-card-header>\n              <mat-card-title>\n                  <i class=\"fa fa-film fa-lg\" aria-hidden=\"true\"></i> <b> {{movie.title}} </b>\n            </mat-card-title>\n          </mat-card-header>\n            <img (click)=\"trackClick(movie.id,movie.genre_ids)\" mat-card-image src=\"https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}\" onerror=\"this.onerror=null;this.src='/assets/nf.png'\">\n          <mat-card-content (click)=\"trackClick(movie.id,movie.genre_ids)\">\n            <div class=\"d-flex justify-content-between\">\n                <div>\n                    <i class=\"fa fa-calendar\" aria-hidden=\"true\"></i> {{movie.release_date}}\n                </div>\n                <div>\n                    <i class=\"fa fa-imdb fa-lg\" aria-hidden=\"true\"></i> {{movie.vote_average}} \n                </div>\n            </div>\n          \n              <i><span style=\"color: #666; font-size: 12px;\" *ngFor=\"let item of movie.genre_ids;let i = index\">{{this.gen[item]}}<span *ngIf=\"i < movie.genre_ids.length-1\">,</span></span>.</i><br>\n              <span *ngIf=\"movie.overview.length>140\">{{movie.overview | truncate : 140 : true}} </span> \n              <span *ngIf=\"movie.overview.length<140\">{{movie.overview}} </span><br> \n\n              <div class=\"d-flex justify-content-between\">\n                  <div>\n                      <i class=\"fa fa-eye fa-lg\" aria-hidden=\"true\"></i> <span *ngIf=\"movie.adult; else templateName\">Restricted</span><ng-template #templateName>\n                          Unrestricted\n                      </ng-template>\n                  </div>\n                  <div>\n                      <i class=\"fa fa-language fa-lg\" aria-hidden=\"true\"></i> {{movie.original_language}}\n                  </div>\n            </div>\n              <i class=\"fa fa-rocket fa-lg\" aria-hidden=\"true\"></i>  {{movie.popularity}} <br> \n           </mat-card-content>  \n           <mat-card-actions style=\"text-align: center\">     \n              <button (click)=\"likeMovie(movie.id,movie.genre_ids)\" class=\"mat-button\" mat-button id=\"{{movie.id}}a\">\n                <i class=\"fa fa-thumbs-o-up fa-lg\" aria-hidden=\"true\"></i> \n              </button>\n              <button (click)=\"dislikeMovie(movie.id,movie.genre_ids)\" class=\"mat-button\" mat-button id=\"{{movie.id}}b\">\n                <i class=\"fa fa-thumbs-o-down fa-lg\" aria-hidden=\"true\"></i>\n              </button>\n              <button (click)=\"addList(movie.id,movie.genre_ids)\" class=\"mat-button\" mat-button id=\"{{movie.id}}c\" >\n                <i class=\"fa fa-bookmark-o fa-lg\" aria-hidden=\"true\"></i>\n              </button>\n            </mat-card-actions>  \n      </mat-card>\n    \n  </div>\n</div>\n<div *ngIf=\"data\" style=\"text-align: center\">\n<a href=\"#\" class=\"previous round\">&#8249;</a>\n<a href=\"#\" class=\"next round\">&#8250;</a>\n</div>\n<br/> <br/>\n  <!-- OLD CODE\n  <b>Movie Details:</b><br>\n  Movie id: {{data.results[0].id}}<br>\n  Title: {{data.results[0].title}}<br>\n  Genres: <ol><li *ngFor=\"let item of data.results[0].genre_ids\">\n    {{item }} </li> </ol> <br> \n  Language: {{data.results[0].original_language}}<br>\n  IMDb Rating: {{data.results[0].vote_average}}<br>\n  Vote Count: {{data.results[0].vote_count}}<br>\n  Overview: {{data.results[0].overview}}<br>\n  Popularity: {{data.results[0].popularity}}<br>\n  Adult: {{data.results[0].adult}}<br>\n  poster_path: {{data.results[0].poster_path}}<br>\n  backdrop_path: {{data.results[0].id}}<br>\n  <br><br>\n  \n  <b>Search Details:</b><br>\n  page: {{data.page}}<br>\n  total_results: {{data.total_results}}<br>\n  total_pages: {{data.total_pages}}<br>\n  results:{{data.results.length}}<br>\n\n  -->\n    <!-- OLD CODe\n\n        \n  <ol > \n    <li *ngFor=\"let movie of data.results; let myIndex = index\" (click)=\"trackClick(movie.id,movie.genre_ids)\" #yo> \n      <b> Movie ID: </b> {{movie.id}} <br>\n      <b> Movie Title: </b> {{movie.title}} <br> \n\n      <b> Genres: </b><ol> <li *ngFor=\"let item of movie.genre_ids\">\n          {{item}} </li> </ol> \n    \n      <b> Original Language: </b> {{movie.original_language}} <br>\n      <b> IMDb Rating: </b> {{movie.vote_average}} <br>\n      <b> Vote Count: </b> {{movie.vote_count}} <br> \n      <b> Movie Overview: </b> {{movie.overview}} <br> \n      <b> Popularity: </b> {{movie.popularity}} <br> \n      <b> Adult: </b> {{movie.adult}} <br>\n      <b> Year: </b> {{movie.release_date}} <br>\n    </li> \n  </ol>\n</div>\n-->\n\n  "
+module.exports = "<div (click)=\"remOver()\"></div>\n<div class=\"container\" style=\"text-align:center; position:relative;\">\n  <h2>\n   <br> {{title}} <br>  \n  </h2> <br>\n<img src=\"/assets/haxer.png\">\n</div>\n<br>\n<div style=\"text-align:center\">\n    Search: <input type=\"text\" id=\"query\" autocomplete=\"off\" placeholder=\"Keywords\" (keyup)=\"sendReq(query.value)\" [(ngModel)]=\"texts\" name=\"query\" #query>\n</div>\n<div *ngIf=\"data\">\n      <div style=\"text-align:center\"> \n          <p>You searched for ' <b>{{texts}}</b> ' </p>\n          <h5>Search Details</h5>\n        <table> \n          <tr>\n            <th>Page </th>\n            <th>Total Results</th>\n            <th>Total Pages</th>\n            <th>Results per page</th>\n          </tr>\n          <tr>\n            <td>{{data.page}}</td>\n            <td>{{data.total_results}}</td>\n            <td>{{data.total_pages}}</td>\n            <td>{{data.results.length}}</td>\n          </tr>\n        </table>  \n      </div> \n  <div class=\"card-group\">\n          <mat-card class=\"example-card\" *ngFor=\"let movie of data.results; let myIndex = index\">\n          <mat-card-header>\n              <mat-card-title>\n                  <i class=\"fa fa-film fa-lg\" aria-hidden=\"true\"></i> <b> {{movie.title}} </b>\n            </mat-card-title>\n          </mat-card-header>\n            <img (click)=\"trackClick(movie.id,movie.genre_ids)\" mat-card-image src=\"https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}\" onerror=\"this.onerror=null;this.src='/assets/nf.png'\">\n          <mat-card-content (click)=\"trackClick(movie.id,movie.genre_ids)\">\n            <div class=\"d-flex justify-content-between\">\n                <div>\n                    <i class=\"fa fa-calendar\" aria-hidden=\"true\"></i> {{movie.release_date}}\n                </div>\n                <div>\n                    <i class=\"fa fa-imdb fa-lg\" aria-hidden=\"true\"></i> {{movie.vote_average}} \n                </div>\n            </div>\n          \n              <i><span style=\"color: #666; font-size: 12px;\" *ngFor=\"let item of movie.genre_ids;let i = index\">{{this.gen[item]}}<span *ngIf=\"i < movie.genre_ids.length-1\">,</span></span>.</i><br>\n              <span *ngIf=\"movie.overview.length>140\">{{movie.overview | truncate : 140 : true}} </span> \n              <span *ngIf=\"movie.overview.length<140\">{{movie.overview}} </span><br> \n\n              <div class=\"d-flex justify-content-between\">\n                  <div>\n                      <i class=\"fa fa-eye fa-lg\" aria-hidden=\"true\"></i> <span *ngIf=\"movie.adult; else Audience\">Restricted</span>\n                      <ng-template #Audience>\n                          Unrestricted\n                      </ng-template>\n                  </div>\n                  <div>\n                      <i class=\"fa fa-language fa-lg\" aria-hidden=\"true\"></i> {{movie.original_language}}\n                  </div>\n            </div>\n              <i class=\"fa fa-rocket fa-lg\" aria-hidden=\"true\"></i>  {{movie.popularity}} <br> \n           </mat-card-content>  \n           <mat-card-actions style=\"text-align: center\">     \n             <!--\n            <button (click)=\"likeMovie(this.movie.id,this.movie.genre_ids,$event)\" class=\"mat-button\" mat-button id=\"{{movie.id}}a\">\n                <i class=\"fa fa-thumbs-o-up fa-lg\" aria-hidden=\"true\"></i> \n              </button>\n              <button (click)=\"dislikeMovie(this.movie.id,this.movie.genre_ids,$event)\" class=\"mat-button\" mat-button id=\"{{movie.id}}b\">\n                <i class=\"fa fa-thumbs-o-down fa-lg\" aria-hidden=\"true\"></i>\n              </button>\n              <button (click)=\"addList(this.movie.id,this.movie.genre_ids,$event)\" class=\"mat-button\" mat-button id=\"{{movie.id}}c\" >\n                <i class=\"fa fa-bookmark-o fa-lg\" aria-hidden=\"true\"></i>\n              </button>  \n             --> \n              <mat-button-toggle-group #group=\"matButtonToggleGroup\">\n                  <mat-button-toggle value=\"like\" (click)=\"likeMovie(this.movie.id,this.movie.genre_ids,$event)\" class=\"mat-button\" mat-button id=\"{{movie.id}}a\">\n                      <i class=\"fa fa-thumbs-o-up fa-lg\" aria-hidden=\"true\"></i> \n                    </mat-button-toggle>\n                    <mat-button-toggle value=\"dislike\" (click)=\"dislikeMovie(this.movie.id,this.movie.genre_ids,$event)\" class=\"mat-button\" mat-button id=\"{{movie.id}}b\">\n                      <i class=\"fa fa-thumbs-o-down fa-lg\" aria-hidden=\"true\"></i>\n                    </mat-button-toggle>        \n                  </mat-button-toggle-group>     \n                    <mat-button-toggle value=\"addList\" (click)=\"addList(this.movie.id,this.movie.genre_ids,$event)\" class=\"mat-button\" mat-button id=\"{{movie.id}}c\" >\n                      <i class=\"fa fa-bookmark-o fa-lg\" aria-hidden=\"true\"></i>\n                    </mat-button-toggle>  \n            </mat-card-actions>  \n      </mat-card>\n    \n  </div>\n</div>\n<div *ngIf=\"data\" style=\"text-align: center\">\n<a href=\"#\" class=\"previous round\">&#8249;</a>\n<a href=\"#\" class=\"next round\">&#8250;</a>\n</div>\n<br/> <br/>\n  <!-- OLD CODE\n  <b>Movie Details:</b><br>\n  Movie id: {{data.results[0].id}}<br>\n  Title: {{data.results[0].title}}<br>\n  Genres: <ol><li *ngFor=\"let item of data.results[0].genre_ids\">\n    {{item }} </li> </ol> <br> \n  Language: {{data.results[0].original_language}}<br>\n  IMDb Rating: {{data.results[0].vote_average}}<br>\n  Vote Count: {{data.results[0].vote_count}}<br>\n  Overview: {{data.results[0].overview}}<br>\n  Popularity: {{data.results[0].popularity}}<br>\n  Adult: {{data.results[0].adult}}<br>\n  poster_path: {{data.results[0].poster_path}}<br>\n  backdrop_path: {{data.results[0].id}}<br>\n  <br><br>\n  \n  <b>Search Details:</b><br>\n  page: {{data.page}}<br>\n  total_results: {{data.total_results}}<br>\n  total_pages: {{data.total_pages}}<br>\n  results:{{data.results.length}}<br>\n\n  -->\n    <!-- OLD CODe\n\n        \n  <ol > \n    <li *ngFor=\"let movie of data.results; let myIndex = index\" (click)=\"trackClick(movie.id,movie.genre_ids)\" #yo> \n      <b> Movie ID: </b> {{movie.id}} <br>\n      <b> Movie Title: </b> {{movie.title}} <br> \n\n      <b> Genres: </b><ol> <li *ngFor=\"let item of movie.genre_ids\">\n          {{item}} </li> </ol> \n    \n      <b> Original Language: </b> {{movie.original_language}} <br>\n      <b> IMDb Rating: </b> {{movie.vote_average}} <br>\n      <b> Vote Count: </b> {{movie.vote_count}} <br> \n      <b> Movie Overview: </b> {{movie.overview}} <br> \n      <b> Popularity: </b> {{movie.popularity}} <br> \n      <b> Adult: </b> {{movie.adult}} <br>\n      <b> Year: </b> {{movie.release_date}} <br>\n    </li> \n  </ol>\n</div>\n-->"
 
 /***/ }),
 
@@ -899,15 +1032,36 @@ var UserComponent = (function () {
     UserComponent.prototype.trackClick = function (movieid, genre) {
         this.localStorageUpdate("Intrst_MovieIDs", "Intrst_GenreIDs", movieid, genre);
     };
-    UserComponent.prototype.likeMovie = function (movieid, genre) {
+    UserComponent.prototype.likeMovie = function (movieid, genre, event) {
+        this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
+        if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg\"></i>") {
+            document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-up fa-lg\"></i>";
+        }
+        else {
+            document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg\"></i>";
+        }
         this.localStorageUpdate("Like_MovieIDs", "Like_GenreIDs", movieid, genre);
         return true;
     };
-    UserComponent.prototype.dislikeMovie = function (movieid, genre) {
+    UserComponent.prototype.dislikeMovie = function (movieid, genre, event) {
+        this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
+        if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg\"></i>") {
+            document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-down fa-lg\"></i>";
+        }
+        else {
+            document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg\"></i>";
+        }
         this.localStorageUpdate("Dislike_MovieIDs", "Dislike_GenreIDs", movieid, genre);
         return true;
     };
-    UserComponent.prototype.addList = function (movieid, genre) {
+    UserComponent.prototype.addList = function (movieid, genre, event) {
+        this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
+        if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>") {
+            document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark fa-lg\"></i>";
+        }
+        else {
+            document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>";
+        }
         this.localStorageUpdate("Bookmarked", "", movieid, genre);
         return true;
     };
@@ -963,17 +1117,17 @@ var MaterialModule = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* NgModule */])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatMenuModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCardModule */]
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatMenuModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatCardModule */]
             ],
             exports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatMenuModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCardModule */]
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatMenuModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatCardModule */]
             ]
         })
     ], MaterialModule);

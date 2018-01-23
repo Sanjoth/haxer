@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 //Angular Material 2
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonToggleModule } from '@angular/material';
 
 //Self Made
 import { TruncatePipe } from './truncate/truncate.module';
@@ -24,6 +25,8 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { RecommenderComponent } from './components/recommender/recommender.component';
+import { DiscoverComponent } from './components/discover/discover.component';
 
 const appRoutes: Routes = [
   { path: 'signup', component: SignUpComponent },
@@ -31,6 +34,8 @@ const appRoutes: Routes = [
   { path: 'movie/:id', component: MovieDetailComponent },
   { path: 'user/:id', component: UserDetailComponent},
   { path: 'about', component: AboutUsComponent},
+  { path: 'recom', component: RecommenderComponent},
+  { path: 'discover', component: DiscoverComponent},
   { path: '', component: UserComponent}
   /*{
     path: 'heroes',
@@ -57,7 +62,9 @@ const appRoutes: Routes = [
     MovieDetailComponent,
     UserDetailComponent,
     PageNotFoundComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    RecommenderComponent,
+    DiscoverComponent
     ],
   imports: [
     RouterModule.forRoot(
@@ -71,7 +78,8 @@ const appRoutes: Routes = [
     FormsModule,
     MaterialModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
