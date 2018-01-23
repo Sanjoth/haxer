@@ -11,6 +11,7 @@ export class UserComponent implements OnInit {
   
   // Global Vars
   title = 'A Hybrid Movie Search & Recommendation System for the real world!';
+  texts:string;
   tmdb:string;
   data:object;
   blank:object;
@@ -36,7 +37,7 @@ export class UserComponent implements OnInit {
     10752:"War",
     37:"Western"
 };
- iconChk:String;
+ iconChk:string;
 
   constructor(private http: HttpClient){}
 

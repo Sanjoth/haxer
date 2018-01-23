@@ -3,7 +3,7 @@
   <div class="wrapper">
     <h2>Sign Up</h2>
     <div class="w3ls-form" id="signup-form">
-      <form [formGroup]="myForm" (ngSubmit)="sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)">
+      <form #myForm="ngForm" (ngSubmit)="sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)">
         <label>Full Name</label>
         <input type="text" formControlName="name" #fulln placeholder="Name" required minlength="4"/>
         <label>Email Address</label>
