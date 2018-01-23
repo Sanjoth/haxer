@@ -140,14 +140,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var appRoutes = [
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_10__components_user_user_component__["a" /* UserComponent */] },
     { path: 'signup', component: __WEBPACK_IMPORTED_MODULE_13__components_sign_up_sign_up_component__["a" /* SignUpComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_14__components_log_in_log_in_component__["a" /* LogInComponent */] },
     { path: 'movie/:id', component: __WEBPACK_IMPORTED_MODULE_15__components_movie_detail_movie_detail_component__["a" /* MovieDetailComponent */] },
     { path: 'user/:id', component: __WEBPACK_IMPORTED_MODULE_16__components_user_detail_user_detail_component__["a" /* UserDetailComponent */] },
     { path: 'about', component: __WEBPACK_IMPORTED_MODULE_18__components_about_us_about_us_component__["a" /* AboutUsComponent */] },
     { path: 'recom', component: __WEBPACK_IMPORTED_MODULE_19__components_recommender_recommender_component__["a" /* RecommenderComponent */] },
-    { path: 'discover', component: __WEBPACK_IMPORTED_MODULE_20__components_discover_discover_component__["a" /* DiscoverComponent */] },
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_10__components_user_user_component__["a" /* UserComponent */] }
+    { path: 'discover', component: __WEBPACK_IMPORTED_MODULE_20__components_discover_discover_component__["a" /* DiscoverComponent */] }
     /*{
       path: 'heroes',
       component: HeroListComponent,
