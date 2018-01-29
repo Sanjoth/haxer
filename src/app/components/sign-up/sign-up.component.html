@@ -3,26 +3,29 @@
   <div class="wrapper">
     <h2>Sign Up</h2>
     <div class="w3ls-form" id="signup-form">
-      <form #myForm="ngForm" (ngSubmit)="sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)">
+      <form (ngSubmit)="sendReq(fulln.value,emailadd.value,pass1.value,pass2.value)">
         <label>Full Name</label>
-        <input type="text" formControlName="name" #fulln placeholder="Name" required minlength="4"/>
+        <input type="text"  #fulln placeholder="Name" required minlength="4"/>
         <label>Email Address</label>
-        <input type="text" formControlName="email" #emailadd placeholder="Email" required/>
+        <input type="text"  #emailadd placeholder="Email" required/>
         <label>Password</label>
-        <input type="password" formControlName="password1" #pass1 placeholder="Password" required minlength="4"/>
+        <input type="password"  #pass1 placeholder="Password" required minlength="4"/>
         <label>Confirm Password</label>
-        <input type="password" formControlName="password2" #pass2 placeholder="Confirm Password" required/><br>
+        <input type="password"  #pass2 placeholder="Confirm Password" required/><br>
         <a routerLink="/login" routerLinkActive="active" class="pass">Already Registered ?</a>
-        <input type="submit" [hidden]="myForm.invalid" value="Register"/>
+        <input type="submit" value="Register"/>
+        <!--
         <span style="color:orangered" *ngIf="myForm.hasError('email', 'email') && myForm.get('email').touched">
             Please enter a valid email address to succesfully register. <br>
         </span>
         <span style="color:orangered" *ngIf="myForm.get('password1').hasError('minlength') && myForm.get('password1').touched">
             Please enter a password having more than 4 alphanumeric characters. <br>
         </span>
-        
+      -->
       </form>
+     </div>
     </div>
+  </span>
 
     
     <!--
@@ -31,6 +34,3 @@
       <a href="#"><span class="fa fa-facebook"></span></a>
     </div>
   -->
-  </div>
-  <br>
-</span>

@@ -30,13 +30,14 @@ import { DiscoverComponent } from './components/discover/discover.component';
 
 const appRoutes: Routes = [
   { path: '', component: UserComponent},
-  { path: 'signup', component: SignUpComponent },
+  { path: 'signup', component: SignUpComponent},
   { path: 'login', component: LogInComponent},
   { path: 'movie/:id', component: MovieDetailComponent },
   { path: 'user/:id', component: UserDetailComponent},
   { path: 'about', component: AboutUsComponent},
   { path: 'recom', component: RecommenderComponent},
-  { path: 'discover', component: DiscoverComponent}
+  { path: 'discover', component: DiscoverComponent},
+  { path: '**', component: PageNotFoundComponent }
   /*{
     path: 'heroes',
     component: HeroListComponent,
@@ -46,8 +47,8 @@ const appRoutes: Routes = [
   { path: '',
     redirectTo: '/browse',
     pathMatch: 'full'
-  }*/,
-  { path: '**', component: PageNotFoundComponent }
+  }*/
+  
 ];
 
 @NgModule({

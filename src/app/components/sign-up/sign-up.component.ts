@@ -53,7 +53,7 @@ export class SignUpComponent implements OnInit {
       }
 
     });
-}
+  }
 }
 
 interface UserResponse {
