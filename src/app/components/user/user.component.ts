@@ -38,6 +38,7 @@ export class UserComponent implements OnInit {
     37:"Western"
 };
  iconChk:string;
+ JSON_
 
   constructor(private http: HttpClient){}
 
@@ -57,7 +58,8 @@ export class UserComponent implements OnInit {
 
   // Function to udpate cookie data with latest info
   localStorageUpdate(cookieName1,cookieName2,movieid,genre){
-console.log(movieid,genre);
+    console.log(movieid,genre);
+
     if(!localStorage.getItem("UserEmail") || genre.length == 0)
     {
       //Dont track
@@ -67,30 +69,30 @@ console.log(movieid,genre);
 
     if(localStorage.getItem(`"${cookieName1}"`)!= null)
     {
-    let checkDupli = localStorage.getItem(`"${cookieName1}"`);
-    let delim = checkDupli.split(",");
-    let num = delim.length;
-    let index = 0;
+      let checkDupli = localStorage.getItem(`"${cookieName1}"`);
+      let delim = checkDupli.split(",");
+      let num = delim.length;
+      let index = 0;
 
-    // If movie already tracked
-    for(index = 0; index < num; index++)
-    {
-      if(movieid == delim[index])
+      // If movie already tracked
+      for(index = 0; index < num; index++)
       {
-        return false;
+        if(movieid == delim[index])
+        {
+          return false;
+        }
       }
     }
-  }
 
     console.log(movieid,genre);
 
     if((localStorage.getItem(`"${cookieName1}"`)!= null) && (localStorage.getItem(`"${cookieName2}"`)!= null))
     { 
-      // If data already in cookie & both cookie names is specified
-    localStorage.setItem(`"${cookieName1}"`, `${localStorage.getItem(`"${cookieName1}"`)},${movieid}`);
-    localStorage.setItem(`"${cookieName2}"`, `${localStorage.getItem(`"${cookieName2}"`)},${genre}`);
-    console.log("Cookie1Mov "+localStorage.getItem(`"${cookieName1}"`));
-    console.log("Cookie2Gen "+localStorage.getItem(`"${cookieName2}"`));
+        // If data already in cookie & both cookie names is specified
+      localStorage.setItem(`"${cookieName1}"`, `${localStorage.getItem(`"${cookieName1}"`)},${movieid}`);
+      localStorage.setItem(`"${cookieName2}"`, `${localStorage.getItem(`"${cookieName2}"`)},${genre}`);
+      console.log("Cookie1Mov "+localStorage.getItem(`"${cookieName1}"`));
+      console.log("Cookie2Gen "+localStorage.getItem(`"${cookieName2}"`));
     }
     else if((localStorage.getItem(`"${cookieName1}"`)!= null) && cookieName2 == ""){
       // If data already in cookie but only 1 cookie name specified
@@ -113,6 +115,7 @@ console.log(movieid,genre);
   trackClick(movieid,genre){    
     this.localStorageUpdate("Intrst_MovieIDs","Intrst_GenreIDs",movieid,genre);   
   }
+
   likeMovie(movieid,genre,event){
     this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
     if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg\"></i>")
@@ -126,6 +129,7 @@ console.log(movieid,genre);
     this.localStorageUpdate("Like_MovieIDs","Like_GenreIDs",movieid,genre);
     return true;  
   }
+
   dislikeMovie(movieid,genre,event){
     this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
     if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg\"></i>")
@@ -139,6 +143,7 @@ console.log(movieid,genre);
     this.localStorageUpdate("Dislike_MovieIDs","Dislike_GenreIDs",movieid,genre);
     return true;  
   }
+
   addList(movieid,genre,event){
     this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
     if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>")
@@ -151,6 +156,29 @@ console.log(movieid,genre);
     }
     this.localStorageUpdate("Bookmarked","",movieid,genre);
     return true;  
+  }
+
+  JSONify(movieid, genre){
+
+    let date = new Date();
+    let timestamp = date.getTime();
+    /*
+      {
+        $id :  {
+            "last_updated": "",
+            "genre_ids": [
+              23,
+              45,
+              40
+            ],
+            "like": true,
+            "list": true,
+          }
+      }
+    */
+  // let abc = '{"$id":{"last_updated": "","genre_ids": [23,45,40],"like": true,"list": true }}';
+
+
   }
 
 }
@@ -181,7 +209,6 @@ interface Results{
 interface GenreTy {
   [key: number]:  string;
 }
-
 
 /* console.log(data);
       console.log(data.page);
