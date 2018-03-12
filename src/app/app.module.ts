@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 // Import HttpClientModule from @angular/common/http
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //Angular Material 2
 import { MaterialModule } from './material/material.module';
@@ -29,14 +29,14 @@ import { RecommenderComponent } from './components/recommender/recommender.compo
 import { DiscoverComponent } from './components/discover/discover.component';
 
 const appRoutes: Routes = [
-  { path: '', component: UserComponent},
-  { path: 'signup', component: SignUpComponent},
-  { path: 'login', component: LogInComponent},
+  { path: '', component: UserComponent },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'login', component: LogInComponent },
   { path: 'movie/:id', component: MovieDetailComponent },
-  { path: 'user/:id', component: UserDetailComponent},
-  { path: 'about', component: AboutUsComponent},
-  { path: 'recom', component: RecommenderComponent},
-  { path: 'discover', component: DiscoverComponent},
+  { path: 'user/:id', component: UserDetailComponent },
+  { path: 'about', component: AboutUsComponent },
+  { path: 'recom', component: RecommenderComponent },
+  { path: 'discover', component: DiscoverComponent },
   { path: '**', component: PageNotFoundComponent }
   /*{
     path: 'heroes',
@@ -48,7 +48,7 @@ const appRoutes: Routes = [
     redirectTo: '/browse',
     pathMatch: 'full'
   }*/
-  
+
 ];
 
 @NgModule({
@@ -66,14 +66,14 @@ const appRoutes: Routes = [
     AboutUsComponent,
     RecommenderComponent,
     DiscoverComponent
-    ],
+  ],
   imports: [
     RouterModule.forRoot(
       appRoutes
       /*,{ enableTracing: true } // <-- debugging purposes only */
     ),
     BrowserModule,
-     // Include it under 'imports' in your application module
+    // Include it under 'imports' in your application module
     // after BrowserModule.
     HttpClientModule,
     FormsModule,

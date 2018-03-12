@@ -1,70 +1,83 @@
-
 <div class="container" style="text-align:center; position:relative;">
   <h2>
-   <br> {{title}} <br>  
-  </h2> <br>
-<img src="/assets/haxer.png">
+    <br> {{title}}
+    <br>
+  </h2>
+  <br>
+  <img src="/assets/haxer.png">
 </div>
 <br>
 <div style="text-align:center">
-    Search: <input type="text" id="query" autocomplete="off" placeholder="Keywords" (keyup)="sendReq(query.value)" [(ngModel)]="texts" name="query" #query>
+  Search:
+  <input type="text" id="query" autocomplete="off" placeholder="Keywords" (keyup)="sendReq(query.value)" [(ngModel)]="texts"
+    name="query" #query>
 </div>
 <div *ngIf="data">
-      <div style="text-align:center"> 
-          <p>You searched for ' <b>{{texts}}</b> ' </p>
-          <h5>Search Details</h5>
-        <table> 
-          <tr>
-            <th>Page </th>
-            <th>Total Results</th>
-            <th>Total Pages</th>
-            <th>Results per page</th>
-          </tr>
-          <tr>
-            <td>{{data.page}}</td>
-            <td>{{data.total_results}}</td>
-            <td>{{data.total_pages}}</td>
-            <td>{{data.results.length}}</td>
-          </tr>
-        </table>  
-      </div> 
+  <div style="text-align:center">
+    <p>You searched for '
+      <b>{{texts}}</b> ' </p>
+    <h5>Search Details</h5>
+    <table>
+      <tr>
+        <th>Page </th>
+        <th>Total Results</th>
+        <th>Total Pages</th>
+        <th>Results per page</th>
+      </tr>
+      <tr>
+        <td>{{data.page}}</td>
+        <td>{{data.total_results}}</td>
+        <td>{{data.total_pages}}</td>
+        <td>{{data.results.length}}</td>
+      </tr>
+    </table>
+  </div>
   <div class="card-group">
-          <mat-card class="example-card" *ngFor="let movie of data.results; let myIndex = index">
-          <mat-card-header>
-              <mat-card-title>
-                  <i class="fa fa-film fa-lg" aria-hidden="true"></i> <b> {{movie.title}} </b>
-            </mat-card-title>
-          </mat-card-header>
-            <img (click)="trackClick(movie.id,movie.genre_ids)" mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}" onerror="this.onerror=null;this.src='/assets/nf.png'">
-          <mat-card-content (click)="trackClick(movie.id,movie.genre_ids)">
-            <div class="d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-calendar" aria-hidden="true"></i> {{movie.release_date}}
-                </div>
-                <div>
-                    <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average}} 
-                </div>
-            </div>
-          
-              <i><span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">{{this.gen[item]}}<span *ngIf="i < movie.genre_ids.length-1">,</span></span>.</i><br>
-              <span *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </span> 
-              <span *ngIf="movie.overview.length<140">{{movie.overview}} </span><br> 
+    <mat-card class="example-card" *ngFor="let movie of data.results; let myIndex = index">
+      <mat-card-header>
+        <mat-card-title>
+          <i class="fa fa-film fa-lg" aria-hidden="true"></i>
+          <b> {{movie.title}} </b>
+        </mat-card-title>
+      </mat-card-header>
+      <img (click)="trackClick(movie.id,movie.genre_ids)" mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}"
+        onerror="this.onerror=null;this.src='/assets/nf.png'">
+      <mat-card-content (click)="trackClick(movie.id,movie.genre_ids)">
+        <div class="d-flex justify-content-between">
+          <div>
+            <i class="fa fa-calendar" aria-hidden="true"></i> {{movie.release_date}}
+          </div>
+          <div>
+            <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average}}
+          </div>
+        </div>
 
-              <div class="d-flex justify-content-between">
-                  <div>
-                      <i class="fa fa-eye fa-lg" aria-hidden="true"></i> <span *ngIf="movie.adult; else Audience">Restricted</span>
-                      <ng-template #Audience>
-                          Unrestricted
-                      </ng-template>
-                  </div>
-                  <div>
-                      <i class="fa fa-language fa-lg" aria-hidden="true"></i> {{movie.original_language}}
-                  </div>
-            </div>
-              <i class="fa fa-rocket fa-lg" aria-hidden="true"></i>  {{movie.popularity}} <br> 
-           </mat-card-content>  
-           <mat-card-actions style="text-align: center">     
-             <!--
+        <i>
+          <span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">{{this.gen[item]}}
+            <span *ngIf="i < movie.genre_ids.length-1">,</span>
+          </span>.</i>
+        <br>
+        <span *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </span>
+        <span *ngIf="movie.overview.length<140">{{movie.overview}} </span>
+        <br>
+
+        <div class="d-flex justify-content-between">
+          <div>
+            <i class="fa fa-eye fa-lg" aria-hidden="true"></i>
+            <span *ngIf="movie.adult; else Audience">Restricted</span>
+            <ng-template #Audience>
+              Unrestricted
+            </ng-template>
+          </div>
+          <div>
+            <i class="fa fa-language fa-lg" aria-hidden="true"></i> {{movie.original_language}}
+          </div>
+        </div>
+        <i class="fa fa-rocket fa-lg" aria-hidden="true"></i> {{movie.popularity}}
+        <br>
+      </mat-card-content>
+      <mat-card-actions style="text-align: center">
+        <!--
             <button (click)="likeMovie(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}a">
                 <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i> 
               </button>
@@ -74,29 +87,33 @@
               <button (click)="addList(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}c" >
                 <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
               </button>  
-             --> 
-              <mat-button-toggle-group #group="matButtonToggleGroup">
-                  <mat-button-toggle value="like" (click)="likeMovie(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}a">
-                      <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i> 
-                    </mat-button-toggle>
-                    <mat-button-toggle value="dislike" (click)="dislikeMovie(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}b">
-                      <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
-                    </mat-button-toggle>        
-                  </mat-button-toggle-group>     
-                    <mat-button-toggle value="addList" (click)="addList(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}c" >
-                      <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
-                    </mat-button-toggle>  
-            </mat-card-actions>  
-      </mat-card>
-    
+             -->
+        <mat-button-toggle-group #group="matButtonToggleGroup">
+          <mat-button-toggle value="like" (click)="likeMovie(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button
+            id="{{movie.id}}a">
+            <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+          </mat-button-toggle>
+          <mat-button-toggle value="dislike" (click)="dislikeMovie(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button
+            id="{{movie.id}}b">
+            <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+        <mat-button-toggle value="addList" (click)="addList(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button
+          id="{{movie.id}}c">
+          <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+        </mat-button-toggle>
+      </mat-card-actions>
+    </mat-card>
+
   </div>
 </div>
 <div *ngIf="data" style="text-align: center">
-<a href="#" class="previous round">&#8249;</a>
-<a href="#" class="next round">&#8250;</a>
+  <a href="#" class="previous round">&#8249;</a>
+  <a href="#" class="next round">&#8250;</a>
 </div>
-<br/> <br/>
-  <!-- OLD CODE
+<br/>
+<br/>
+<!-- OLD CODE
   <b>Movie Details:</b><br>
   Movie id: {{data.results[0].id}}<br>
   Title: {{data.results[0].title}}<br>
@@ -119,7 +136,7 @@
   results:{{data.results.length}}<br>
 
   -->
-    <!-- OLD CODe
+<!-- OLD CODe
 
         
   <ol > 

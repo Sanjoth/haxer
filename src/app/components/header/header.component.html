@@ -1,17 +1,25 @@
 <div>
-    <mat-toolbar id="cont" color="accent">
-      <div id="left"><i class="fa fa-user fa-lg" aria-hidden="true" (click)="toggNav()"></i></div>
-      <div id="center"><a routerLink="/" routerLinkActive="active"><b>Haxèr</b></a></div>
-      <div id="right" [mat-menu-trigger-for]="menu"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></div>
-    </mat-toolbar>
-    <mat-menu x-position="before" #menu="matMenu">
-      <button mat-menu-item routerLink="/settings" routerLinkActive="active">Settings</button>
-      <button mat-menu-item routerLink="/help" routerLinkActive="active">Help</button>
-      <button mat-menu-item routerLink="/" *ngIf="signIn" (click)="logOut()">Sign out</button>
-    </mat-menu>
-  
-  </div>
-  <div id="mySidenav" class="sidenav" (click)="toggNav()">  
+  <mat-toolbar id="cont" color="accent">
+    <div id="left">
+      <i class="fa fa-user fa-lg" aria-hidden="true" (click)="toggNav()"></i>
+    </div>
+    <div id="center">
+      <a routerLink="/" routerLinkActive="active">
+        <b>Haxèr</b>
+      </a>
+    </div>
+    <div id="right" [mat-menu-trigger-for]="menu">
+      <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
+    </div>
+  </mat-toolbar>
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item routerLink="/settings" routerLinkActive="active">Settings</button>
+    <button mat-menu-item routerLink="/help" routerLinkActive="active">Help</button>
+    <button mat-menu-item routerLink="/" *ngIf="signIn" (click)="logOut()">Sign out</button>
+  </mat-menu>
+
+</div>
+<div id="mySidenav" class="sidenav" (click)="toggNav()">
   <a *ngIf="signIn" routerLink="/profile" routerLinkActive="active">{{Name}}</a>
   <a *ngIf="!signIn" routerLink="/login" routerLinkActive="active">Sign in</a>
   <a *ngIf="!signIn" routerLink="/signup" routerLinkActive="active">Register</a>
@@ -19,4 +27,4 @@
   <a routerLink="/recom" routerLinkActive="active">Recommendations</a>
   <a routerLink="/discover" routerLinkActive="active">Discover</a>
   <a routerLink="/about" routerLinkActive="active">About</a>
-  </div>
+</div>

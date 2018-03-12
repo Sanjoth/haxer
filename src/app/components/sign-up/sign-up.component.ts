@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,13 +8,13 @@ import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  check:boolean;
-  register:string;
-  myForm:object;
+  check: boolean;
+  register: string;
+  myForm: object;
 
   constructor(private http: HttpClient, private fb: FormBuilder) {
     this.myForm = fb.group({
-      name:  ['', Validators.required],
+      name: ['', Validators.required],
       password1: ['', Validators.minLength],
       password2: ['', Validators.minLength],
       email: ['', Validators.email]
@@ -22,18 +22,16 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
-  sendReq(name,email,pass1,pass2){
+  sendReq(name, email, pass1, pass2) {
 
-    if(name == "" || email == "" || pass1 == "" || pass2 == "")
-    {
+    if (name == "" || email == "" || pass1 == "" || pass2 == "") {
       alert("Please don't leave any fields blank !");
       return;
     }
-    if(pass1 != pass2)
-    {
+    if (pass1 != pass2) {
       alert("Passwords don't match");
       return;
     }
@@ -43,12 +41,10 @@ export class SignUpComponent implements OnInit {
       console.log(data);
       console.log(this.register);
 
-      if(data.ok == 1)
-      {
+      if (data.ok == 1) {
         alert("Successfully registered, please login :-)");
       }
-      else
-      {
+      else {
         alert("User already exists, please login or reset your password!");
       }
 

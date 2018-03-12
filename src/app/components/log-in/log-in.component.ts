@@ -8,9 +8,9 @@ import { Router } from '@angular/router'
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-  data:object;
-  loginstr:string;
-  movieid:number;
+  data: object;
+  loginstr: string;
+  movieid: number;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -21,26 +21,24 @@ export class LogInComponent implements OnInit {
    */
   }
 
-  sendReq(email,pass)
-  {
+  sendReq(email, pass) {
     this.loginstr = `/getUser?email=${email}&pass=${pass}`;
     this.http.get<UserResponse>(this.loginstr).subscribe(data => {
       this.data = data; // Assign local to global
       console.log(data);
-      if(data.length == 1)
-      {
-      console.log(data[0].email+" "+data[0].password);
-      alert("Welcome "+data[0].uname+" !");
-       //Initialize local Storage for Email
+      if (data.length == 1) {
+        console.log(data[0].email + " " + data[0].password);
+        alert("Welcome " + data[0].uname + " !");
+        //Initialize local Storage for Email
 
-       localStorage.setItem("UserEmail",`${this.data[0].email}`);
-       localStorage.setItem("Name",`${this.data[0].uname}`);
-      console.log(localStorage.getItem("UserEmail"));
+        localStorage.setItem("UserEmail", `${this.data[0].email}`);
+        localStorage.setItem("Name", `${this.data[0].uname}`);
+        console.log(localStorage.getItem("UserEmail"));
 
-      window.location.href = "/";
+        window.location.href = "/";
 
       }
-      else{
+      else {
         alert("The username or password is invalid !");
       }
     });
@@ -48,9 +46,9 @@ export class LogInComponent implements OnInit {
 
 }
 
-interface UserResponse{
-  email:string;
-  password:string;
-  length:number;
-  uname:string;
+interface UserResponse {
+  email: string;
+  password: string;
+  length: number;
+  uname: string;
 }
