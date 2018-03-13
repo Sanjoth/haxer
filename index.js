@@ -99,27 +99,25 @@ app.post('/sendTrackingData', function (req, res) {
   var tracking_data = {};
   tracking_data = JSON.parse(req.body.JSON_String);
   console.log(user_id);
-  var bcd = JSON.stringify(tracking_data);
+  var bcd = tracking_data;
   var search = JSON.parse(`{"email": "${user_id}"}`);
-  var query_object,abc,query;
-
-  for (var movie_id in tracking_data) {
-    //var temp = tracking_data[movie_id];
-    abc = "\"tracking_data."+movie_id+"\"";
-    query = '{$set: {'+abc+': '+bcd+'}}';
-    var jsonValidString = JSON.stringify(eval("(" + query + ")"));
-    var query_object=JSON.parse(jsonValidString);
-   // query_object = {$set: {tracking_data: tracking_data}};
-    
-  }
-  console.log(query_object);
-
- // UPDATE MULTIPLE FIELDS.
+  var query_object, abc, query;
+  // UPDATE MULTIPLE FI
 
   //console.log(tracking_data["18411"].genre_ids);
   MongoClient.connect(mourl, function (err, db) {
-
-    db.collection("users").updateOne(search, query_object, { upsert: true }, function (err, result) {
+    for (var movie_id in tracking_data) {
+      kcd = JSON.stringify(bcd[movie_id]);
+      //var temp = tracking_data[movie_id];
+      abc = "\"tracking_data." + movie_id + "\"";
+      query = '{$set: {' + abc + ': ' + kcd + '}}';
+      var jsonValidString = JSON.stringify(eval("(" + query + ")"));
+      var query_object = JSON.parse(jsonValidString);
+      // query_object = {$set: {tracking_data: tracking_data}};
+      console.log(query);
+    
+    }
+    db.collection("users").update(search, query_object, { upsert: true }, function (err, result) {
       if (err) {
         console.error(err);
         res.send("Error " + err); throw err;
