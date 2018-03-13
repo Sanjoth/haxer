@@ -33,6 +33,7 @@ export class LogInComponent implements OnInit {
 
         localStorage.setItem("UserEmail", `${this.data[0].email}`);
         localStorage.setItem("Name", `${this.data[0].uname}`);
+        localStorage.setItem("Password", `${this.data[0].password}`);
         console.log(localStorage.getItem("UserEmail"));
 
         window.location.href = "/";

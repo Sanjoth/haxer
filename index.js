@@ -4,13 +4,17 @@ const path = require('path');
 const mongo = require('mongodb');
 const app = express();
 const url = require('url');
-// Data
-var seedData;
+const bodyParser = require('body-parser');
+// Globals 
 
 var mourl = 'mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@ds261745.mlab.com:61745/heroku_m30b5bz0';
-
 var MongoClient = mongo.MongoClient;
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
+/**
+ * Test DB Connection
+ */
 MongoClient.connect(mourl, function (err, db) {
   if (err) throw err;
   console.log("Database usable!");
@@ -20,8 +24,13 @@ MongoClient.connect(mourl, function (err, db) {
  }); */
 });
 
-//search
+/**
+ * APIs Start here
+ */
 
+/**
+ * Get User Details
+ */
 app.get('/getUser', function (request, response) {
   var querys = url.parse(request.url, true);
   var email = querys.query.email;
@@ -40,28 +49,33 @@ app.get('/getUser', function (request, response) {
   });
 });
 
+/**
+ * Register User
+ */
 app.get('/regUser', function (request, response) {
   var querys = url.parse(request.url, true);
   var name = querys.query.name;
   var email = querys.query.email;
   var pass = querys.query.password1;
 
+  console.log("Hello");
   var seedData = {
     "uname": `${name}`,
     "email": `${email}`,
     "password": `${pass}`,
-    "movieClicks": [],
-    "genres": [],
-    "movieLikes": [],
-    "movieDislikes": [],
-    "mylist": []
+    "tracking_data": ``,
+    "additional_data": ``,
+    "cluster": ``,
+    "genre_ranking": ``
   };
 
   MongoClient.connect(mourl, function (err, db) {
     var search = JSON.parse(`{"email": "${email}"}`);
+    console.log(search);
     db.collection("users").find(search).toArray(function (err, result) {
       if (err) { console.error(err); response.send("Error " + err); throw err; }
       if (result.length == 0) {
+        console.log("NO user")
         //Insert the new document(user) into collection users if new user
         db.collection("users").insertOne(seedData, function (err, res) {
           if (err) throw err;
@@ -76,9 +90,52 @@ app.get('/regUser', function (request, response) {
   });
 });
 
+/**
+ * Send Tracking data to the MongoDB Database
+ */
+app.post('/sendTrackingData', function (req, res) {
+
+  var user_id = req.body.user_id;
+  var tracking_data = {};
+  tracking_data = JSON.parse(req.body.JSON_String);
+  console.log(user_id);
+  console.log(JSON.stringify(tracking_data));
+  var search = JSON.parse(`{"email": "${user_id}"}`);
+  var query_object;
+
+  for (var movie_id in tracking_data) {
+    //var temp = tracking_data[movie_id];
+    var abc = "tracking_data"+movie_id;
+    var query = {$set: {abc: "Hello"}};
+    //query_object = {$set: {tracking_data: tracking_data}};
+    query_object = query;
+    console.log(query_object);
+  }
+
+
+
+  //console.log(tracking_data["18411"].genre_ids);
+  MongoClient.connect(mourl, function (err, db) {
+
+    db.collection("users").updateOne(search, query_object, { upsert: true }, function (err, result) {
+      if (err) {
+        console.error(err);
+        res.send("Error " + err); throw err;
+      }
+      else {
+        res.send(result);
+      }
+    });
+
+  });
+});
+
+
+/**
+ * For using Angular with Node.js
+ * Keep it in the end of the requests
+ */
 app.use(express.static(path.join(__dirname, 'dist')));
-
-
 app.get('*', function (req, res) {
   const index = path.join(__dirname, 'dist', 'index.html');
   res.sendFile(index);

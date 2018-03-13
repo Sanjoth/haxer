@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
   blank: object;
   movieid: number;
   tracked_data = {};
+  additional_data = {};
   gen: GenreTy = {
     28: "Action",
     12: "Adventure",
@@ -40,8 +41,16 @@ export class UserComponent implements OnInit {
   };
   iconChk: string;
 
-  constructor(private http: HttpClient) {
-    console.log(localStorage.getItem("Tracked Data"));
+  constructor(private http: HttpClient, private http_sendData: HttpClient, private http_getData: HttpClient) {
+    console.log(localStorage.getItem("TRACKED_DATA"));
+    console.log(localStorage.getItem("ADDITIONAL_DATA"));
+    if(localStorage.getItem("TRACKED_DATA") === null)
+    {
+     
+    }
+    else{
+      this.send_tracked_info_to_db();
+    }
   }
 
   sendReq(query) {
@@ -134,26 +143,54 @@ export class UserComponent implements OnInit {
 
   trackClick(movieid, genre) {
     this.localStorageUpdate("Intrst_MovieIDs", "Intrst_GenreIDs", movieid, genre);
+    this.JSONify_extraInfo(movieid, genre);
   }
 
   addList(movieid, genre, event) {
     this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
     if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>") {
       document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark fa-lg\"></i>";
+      this.JSONify_extraInfo(movieid, genre, true);
     }
     else {
       document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>";
+      this.JSONify_extraInfo(movieid, genre, false);
     }
     this.localStorageUpdate("Bookmarked", "", movieid, genre);
     return true;
   }
 
-  JSONify_likeStatus_extraInfo(movieid, genre, list_status) {
-
+  JSONify_extraInfo(movieid, genre, list_status?) {
     let date = new Date();
     let last_updated = date.getTime();
+    let click_status: boolean;
+    let list_add_status: boolean;
 
+    if (list_status === undefined) {
+      let click_status = true;
+    }
+    else {
+      list_add_status = list_status;
+    }
 
+    /**
+     * Check if it already exists
+     */
+    if (this.additional_data[movieid] === undefined) {
+      this.additional_data[movieid] = { "last_updated": last_updated, "genre_ids": genre, "click_status": click_status, "list_add_status": list_status };
+    }
+    else {
+      if (list_status === undefined) {
+        this.additional_data[movieid].click_status = true;
+      }
+      else {
+        this.additional_data[movieid].list_add_status = list_status;
+      }
+      this.additional_data[movieid].last_updated = last_updated;
+      this.additional_data[movieid].genre_ids = genre;
+    }
+    localStorage.setItem("ADDITIONAL_DATA", JSON.stringify(this.additional_data));
+    console.log(this.additional_data);
 
   }
 
@@ -161,25 +198,29 @@ export class UserComponent implements OnInit {
 
     let date = new Date();
     let last_updated = date.getTime();
-    let list_status = 'blank';
 
     // let abc = '{"$id":{"last_updated": "","genre_ids": [23,45,40],"like": true,"list": true }}';
     let check = this.check_duplicate_tracks(movieid);
 
     if (check == true) {
-      this.tracked_data[movieid] = { movieid: { "last_updated": last_updated, "genre_ids": [genre], "like_status": like_status } };
+      this.tracked_data[movieid] = { "last_updated": last_updated, "genre_ids": genre, "like_status": like_status };
     }
     else {
-      this.tracked_data[movieid] = { movieid: { "last_updated": last_updated, "genre_ids": [genre], "like_status": like_status } };
+      this.tracked_data[movieid] = { "last_updated": last_updated, "genre_ids": genre, "like_status": like_status };
       console.log("New");
     }
-    localStorage.setItem("Tracked Data", JSON.stringify(this.tracked_data))
+    localStorage.setItem("TRACKED_DATA", JSON.stringify(this.tracked_data));
     console.log(this.tracked_data);
 
   }
 
   send_tracked_info_to_db() {
-
+     this.http_sendData.post("/sendTrackingData",{"user_id" : localStorage.getItem("UserEmail"), "JSON_String" : localStorage.getItem("TRACKED_DATA")}).subscribe(data => {
+     this.data = data;
+     console.log("POST DATA \n");
+     console.log(data);
+     });
+     
   }
 
   check_duplicate_tracks(movieid) {
@@ -193,6 +234,17 @@ export class UserComponent implements OnInit {
 
   }
 
+  get_user_activity() {
+    let loginstr = `/getUser?email=${localStorage.getItem("UserEmail")}&pass=${localStorage.getItem("Password")}`;
+    this.http_getData.get<UserResponse>(loginstr).subscribe(data => {
+      this.data = data; // Assign local to global
+      console.log(data);
+      if (data.ok == 1) {
+        localStorage.setItem("SERVER_TRACKING_DATA", `${this.data[0].tracking_data}`);
+        localStorage.setItem("SERVER_ADDITIONAL_DATA", `${this.data[0].additional_data}`);
+      }
+    });
+  }
 }
 
 //  BELOW INTERFACES FOR PARSING JSON OBJECT
@@ -201,6 +253,7 @@ interface UserResponse {
   total_results: number;
   total_pages: number;
   results: Results[];
+  ok: number;
 }
 
 interface Results {
