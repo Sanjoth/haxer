@@ -57,13 +57,13 @@ app.get('/regUser', function (request, response) {
   var name = querys.query.name;
   var email = querys.query.email;
   var pass = querys.query.password1;
-
+  var pos = JSON.parse('{"0": {"last_updated": 0,"genre_ids": [0,0],"like_status": false}}');
   console.log("Hello");
   var seedData = {
     "uname": `${name}`,
     "email": `${email}`,
     "password": `${pass}`,
-    "tracking_data": ``,
+    "tracking_data": pos,
     "additional_data": ``,
     "cluster": ``,
     "genre_ranking": ``
@@ -99,20 +99,22 @@ app.post('/sendTrackingData', function (req, res) {
   var tracking_data = {};
   tracking_data = JSON.parse(req.body.JSON_String);
   console.log(user_id);
-  console.log(JSON.stringify(tracking_data));
+  var bcd = JSON.stringify(tracking_data);
   var search = JSON.parse(`{"email": "${user_id}"}`);
-  var query_object;
+  var query_object,abc,query;
 
   for (var movie_id in tracking_data) {
     //var temp = tracking_data[movie_id];
-    var abc = "tracking_data"+movie_id;
-    var query = {$set: {abc: "Hello"}};
-    //query_object = {$set: {tracking_data: tracking_data}};
-    query_object = query;
-    console.log(query_object);
+    abc = "\"tracking_data."+movie_id+"\"";
+    query = '{$set: {'+abc+': '+bcd+'}}';
+    var jsonValidString = JSON.stringify(eval("(" + query + ")"));
+    var query_object=JSON.parse(jsonValidString);
+   // query_object = {$set: {tracking_data: tracking_data}};
+    
   }
+  console.log(query_object);
 
-
+ // UPDATE MULTIPLE FIELDS.
 
   //console.log(tracking_data["18411"].genre_ids);
   MongoClient.connect(mourl, function (err, db) {
