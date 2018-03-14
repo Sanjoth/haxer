@@ -9,7 +9,7 @@
 <br>
 <div style="text-align:center">
   Search:
-  <input type="text" id="query" autocomplete="off" placeholder="Keywords" (keyup)="sendReq(query.value)" [(ngModel)]="texts"
+  <input type="text" id="query" autocomplete="off" placeholder="Keywords" (keyup)="sendReq(query.value,$event)" [(ngModel)]="texts"
     name="query" #query>
 </div>
 <div *ngIf="data">

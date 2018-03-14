@@ -1457,7 +1457,7 @@ function View_UserComponent_0(_l) {
                 ad = (pd_3 && ad);
             }
             if (("keyup" === en)) {
-                var pd_4 = (_co.sendReq(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_15" /* ɵnov */](_v, 19).value) !== false);
+                var pd_4 = (_co.sendReq(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_15" /* ɵnov */](_v, 19).value, $event) !== false);
                 ad = (pd_4 && ad);
             }
             if (("ngModelChange" === en)) {
@@ -1467,7 +1467,7 @@ function View_UserComponent_0(_l) {
             return ad;
         }, null, null)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_2" /* ɵdid */](20, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* DefaultValueAccessor */], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Renderer2 */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["k" /* ElementRef */], [2, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* COMPOSITION_BUFFER_MODE */]]], null, null), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_19" /* ɵprd */](1024, null, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* NG_VALUE_ACCESSOR */], function (p0_0) { return [p0_0]; }, [__WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* DefaultValueAccessor */]]), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_2" /* ɵdid */](22, 671744, null, 0, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["k" /* NgModel */], [[8, null], [8, null], [8, null], [2, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["f" /* NG_VALUE_ACCESSOR */]]], { name: [0, "name"], model: [1, "model"] }, { update: "ngModelChange" }), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_19" /* ɵprd */](2048, null, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["g" /* NgControl */], null, [__WEBPACK_IMPORTED_MODULE_5__angular_forms__["k" /* NgModel */]]), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_2" /* ɵdid */](24, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["h" /* NgControlStatus */], [__WEBPACK_IMPORTED_MODULE_5__angular_forms__["g" /* NgControl */]], null, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* ɵted */](-1, null, ["\n"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* ɵted */](-1, null, ["\n"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["Y" /* ɵand */](16777216, null, null, 1, null, View_UserComponent_1)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_2" /* ɵdid */](28, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["j" /* NgIf */], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* ViewContainerRef */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* TemplateRef */]], { ngIf: [0, "ngIf"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* ɵted */](-1, null, ["\n"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["Y" /* ɵand */](16777216, null, null, 1, null, View_UserComponent_9)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_2" /* ɵdid */](31, 16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["j" /* NgIf */], [__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* ViewContainerRef */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* TemplateRef */]], { ngIf: [0, "ngIf"] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* ɵted */](-1, null, ["\n"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_3" /* ɵeld */](33, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* ɵted */](-1, null, ["\n"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_3" /* ɵeld */](35, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* ɵted */](-1, null, ["\n"])), (_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_23" /* ɵted */](-1, null, ["\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_8 = "query"; var currVal_9 = _co.texts; _ck(_v, 22, 0, currVal_8, currVal_9); var currVal_10 = _co.data; _ck(_v, 28, 0, currVal_10); var currVal_11 = _co.data; _ck(_v, 31, 0, currVal_11); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.title; _ck(_v, 6, 0, currVal_0); var currVal_1 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["_15" /* ɵnov */](_v, 24).ngClassUntouched; var currVal_2 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["_15" /* ɵnov */](_v, 24).ngClassTouched; var currVal_3 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["_15" /* ɵnov */](_v, 24).ngClassPristine; var currVal_4 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["_15" /* ɵnov */](_v, 24).ngClassDirty; var currVal_5 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["_15" /* ɵnov */](_v, 24).ngClassValid; var currVal_6 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["_15" /* ɵnov */](_v, 24).ngClassInvalid; var currVal_7 = __WEBPACK_IMPORTED_MODULE_1__angular_core__["_15" /* ɵnov */](_v, 24).ngClassPending; _ck(_v, 19, 0, currVal_1, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6, currVal_7); });
 }
-function View_UserComponent_Host_0(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["_25" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_3" /* ɵeld */](0, 0, null, null, 1, "app-user", [], null, null, null, View_UserComponent_0, RenderType_UserComponent)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_2" /* ɵdid */](1, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_11__user_component__["a" /* UserComponent */], [__WEBPACK_IMPORTED_MODULE_12__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_12__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_12__angular_common_http__["c" /* HttpClient */]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_UserComponent_Host_0(_l) { return __WEBPACK_IMPORTED_MODULE_1__angular_core__["_25" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_3" /* ɵeld */](0, 0, null, null, 1, "app-user", [], null, null, null, View_UserComponent_0, RenderType_UserComponent)), __WEBPACK_IMPORTED_MODULE_1__angular_core__["_2" /* ɵdid */](1, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_11__user_component__["a" /* UserComponent */], [__WEBPACK_IMPORTED_MODULE_12__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_12__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_12__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_12__angular_common_http__["c" /* HttpClient */]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var UserComponentNgFactory = /*@__PURE__*/ __WEBPACK_IMPORTED_MODULE_1__angular_core__["Z" /* ɵccf */]("app-user", __WEBPACK_IMPORTED_MODULE_11__user_component__["a" /* UserComponent */], View_UserComponent_Host_0, {}, {}, []);
 
 
@@ -1481,9 +1481,10 @@ var UserComponentNgFactory = /*@__PURE__*/ __WEBPACK_IMPORTED_MODULE_1__angular_
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserComponent; });
 var UserComponent = /*@__PURE__*/ (function () {
-    function UserComponent(http, http_sendData, http_getData) {
+    function UserComponent(http, http_sendAdditionalData, http_sendTrackingData, http_getData) {
         this.http = http;
-        this.http_sendData = http_sendData;
+        this.http_sendAdditionalData = http_sendAdditionalData;
+        this.http_sendTrackingData = http_sendTrackingData;
         this.http_getData = http_getData;
         // Global Vars
         this.title = 'A Hybrid Movie Search & Recommendation System for the real world!';
@@ -1510,26 +1511,33 @@ var UserComponent = /*@__PURE__*/ (function () {
             10752: "War",
             37: "Western"
         };
+    }
+    UserComponent.prototype.sendReq = function (query, event) {
+        var _this = this;
+        var key = event.keyCode || event.charCode;
+        if (query == '' || query === undefined) {
+            if (key == 8 || key == 46) {
+                this.data = this.blank; //Clearing Search Box
+            }
+        }
+        else {
+            //console.log(query);
+            this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1';
+            this.http.get(this.tmdb).subscribe(function (data) {
+                _this.data = data; // Assign local to global
+            });
+        }
+    };
+    UserComponent.prototype.ngOnInit = function () {
         console.log(localStorage.getItem("TRACKED_DATA"));
         console.log(localStorage.getItem("ADDITIONAL_DATA"));
         if (localStorage.getItem("TRACKED_DATA") === null) {
         }
         else {
             this.send_tracked_info_to_db();
+            this.send_extra_info_to_db();
         }
-    }
-    UserComponent.prototype.sendReq = function (query) {
-        var _this = this;
-        if (query == '') {
-            this.data = this.blank; //Clearing Search Box
-        }
-        //console.log(query);
-        this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1';
-        this.http.get(this.tmdb).subscribe(function (data) {
-            _this.data = data; // Assign local to global
-        });
     };
-    UserComponent.prototype.ngOnInit = function () { };
     // Function to udpate cookie data with latest info
     UserComponent.prototype.localStorageUpdate = function (cookieName1, cookieName2, movieid, genre) {
         console.log(movieid, genre);
@@ -1550,26 +1558,25 @@ var UserComponent = /*@__PURE__*/ (function () {
                 }
             }
         }
-        console.log(movieid, genre);
         if ((localStorage.getItem("\"" + cookieName1 + "\"") != null) && (localStorage.getItem("\"" + cookieName2 + "\"") != null)) {
             // If data already in cookie & both cookie names is specified
             localStorage.setItem("\"" + cookieName1 + "\"", localStorage.getItem("\"" + cookieName1 + "\"") + "," + movieid);
             localStorage.setItem("\"" + cookieName2 + "\"", localStorage.getItem("\"" + cookieName2 + "\"") + "," + genre);
-            console.log("Cookie1Mov " + localStorage.getItem("\"" + cookieName1 + "\""));
-            console.log("Cookie2Gen " + localStorage.getItem("\"" + cookieName2 + "\""));
+            //    console.log("Cookie1Mov " + localStorage.getItem(`"${cookieName1}"`));
+            //    console.log("Cookie2Gen " + localStorage.getItem(`"${cookieName2}"`));
         }
         else if ((localStorage.getItem("\"" + cookieName1 + "\"") != null) && cookieName2 == "") {
             // If data already in cookie but only 1 cookie name specified
             localStorage.setItem("\"" + cookieName1 + "\"", localStorage.getItem("\"" + cookieName1 + "\"") + "," + movieid);
-            console.log("Cookie1Mov " + localStorage.getItem("\"" + cookieName1 + "\""));
+            //   console.log("Cookie1Mov " + localStorage.getItem(`"${cookieName1}"`));
         }
         else {
             // If cookie new
             localStorage.setItem("\"" + cookieName1 + "\"", "" + movieid);
             localStorage.setItem("\"" + cookieName2 + "\"", "" + genre);
-            console.log("Cookie1Mov " + localStorage.getItem("\"" + cookieName1 + "\""));
+            //   console.log("Cookie1Mov " + localStorage.getItem(`"${cookieName1}"`));
             if (cookieName2 != '') {
-                console.log("Cookie2Gen " + localStorage.getItem("\"" + cookieName2 + "\""));
+                //     console.log("Cookie2Gen " + localStorage.getItem(`"${cookieName2}"`));
             }
         }
     };
@@ -1642,6 +1649,7 @@ var UserComponent = /*@__PURE__*/ (function () {
             this.additional_data[movieid].genre_ids = genre;
         }
         localStorage.setItem("ADDITIONAL_DATA", JSON.stringify(this.additional_data));
+        console.log("Additional Data:");
         console.log(this.additional_data);
     };
     UserComponent.prototype.JSONify_likeStatus = function (movieid, genre, like_status) {
@@ -1657,13 +1665,22 @@ var UserComponent = /*@__PURE__*/ (function () {
             console.log("New");
         }
         localStorage.setItem("TRACKED_DATA", JSON.stringify(this.tracked_data));
+        console.log("Tracked Data:");
         console.log(this.tracked_data);
+    };
+    UserComponent.prototype.send_extra_info_to_db = function () {
+        var _this = this;
+        this.http_sendTrackingData.post("/sendAdditionalData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("ADDITIONAL_DATA") }).subscribe(function (data) {
+            _this.local_send_additional_data = data;
+            console.log("POST DATA ADDITIONAL:");
+            console.log(data);
+        });
     };
     UserComponent.prototype.send_tracked_info_to_db = function () {
         var _this = this;
-        this.http_sendData.post("/sendTrackingData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("TRACKED_DATA") }).subscribe(function (data) {
-            _this.data = data;
-            console.log("POST DATA \n");
+        this.http_sendTrackingData.post("/sendTrackingData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("TRACKED_DATA") }).subscribe(function (data) {
+            _this.local_send_tracking_data = data;
+            console.log("POST DATA TRACKING:");
             console.log(data);
         });
     };
@@ -1679,13 +1696,15 @@ var UserComponent = /*@__PURE__*/ (function () {
         var _this = this;
         var loginstr = "/getUser?email=" + localStorage.getItem("UserEmail") + "&pass=" + localStorage.getItem("Password");
         this.http_getData.get(loginstr).subscribe(function (data) {
-            _this.data = data; // Assign local to global
-            console.log(data);
+            _this.server_data = data; // Assign local to global
+            //console.log(data);
             if (data.ok == 1) {
-                localStorage.setItem("SERVER_TRACKING_DATA", "" + _this.data[0].tracking_data);
-                localStorage.setItem("SERVER_ADDITIONAL_DATA", "" + _this.data[0].additional_data);
+                localStorage.setItem("SERVER_TRACKING_DATA", "" + _this.server_data[0].tracking_data);
+                localStorage.setItem("SERVER_ADDITIONAL_DATA", "" + _this.server_data[0].additional_data);
             }
         });
+        console.log(localStorage.getItem("SERVER_TRACKING_DATA"));
+        console.log(localStorage.getItem("SERVER_ADDITIONAL_DATA"));
     };
     return UserComponent;
 }());

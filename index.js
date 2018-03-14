@@ -57,14 +57,14 @@ app.get('/regUser', function (request, response) {
   var name = querys.query.name;
   var email = querys.query.email;
   var pass = querys.query.password1;
-  var pos = JSON.parse('{"0": {"last_updated": 0,"genre_ids": [0,0],"like_status": false}}');
+  var pos = {};
   console.log("Hello");
   var seedData = {
     "uname": `${name}`,
     "email": `${email}`,
     "password": `${pass}`,
     "tracking_data": pos,
-    "additional_data": ``,
+    "additional_data": pos,
     "cluster": ``,
     "genre_ranking": ``
   };
@@ -101,7 +101,7 @@ app.post('/sendTrackingData', function (req, res) {
   console.log(user_id);
   var bcd = tracking_data;
   var search = JSON.parse(`{"email": "${user_id}"}`);
-  var query_object, abc, query;
+  var query_object, abc, query, params;
   // UPDATE MULTIPLE FI
 
   //console.log(tracking_data["18411"].genre_ids);
@@ -110,13 +110,69 @@ app.post('/sendTrackingData', function (req, res) {
       kcd = JSON.stringify(bcd[movie_id]);
       //var temp = tracking_data[movie_id];
       abc = "\"tracking_data." + movie_id + "\"";
-      query = '{$set: {' + abc + ': ' + kcd + '}}';
+      if (params === undefined) {
+        params = abc + ': ' + kcd;
+      }
+      else {
+        params = params + ',' + abc + ': ' + kcd;
+      }
+
+      query = '{$set: {' + params + '}}';
       var jsonValidString = JSON.stringify(eval("(" + query + ")"));
       var query_object = JSON.parse(jsonValidString);
       // query_object = {$set: {tracking_data: tracking_data}};
       console.log(query);
-    
+
     }
+    // Send to DB
+    db.collection("users").update(search, query_object, { upsert: true }, function (err, result) {
+      if (err) {
+        console.error(err);
+        res.send("Error " + err); throw err;
+      }
+      else {
+        res.send(result);
+      }
+    });
+
+  });
+});
+
+/**
+ * 
+ */
+app.post('/sendAdditionalData', function (req, res) {
+
+  var user_id = req.body.user_id;
+  var additional_data = {};
+  additional_data = JSON.parse(req.body.JSON_String);
+  console.log(user_id);
+  var bcd = additional_data;
+  var search = JSON.parse(`{"email": "${user_id}"}`);
+  var query_object, abc, query, params;
+  // UPDATE MULTIPLE FI
+
+  //console.log(additional_data["18411"].genre_ids);
+  MongoClient.connect(mourl, function (err, db) {
+    for (var movie_id in additional_data) {
+      kcd = JSON.stringify(bcd[movie_id]);
+      //var temp = additional_data[movie_id];
+      abc = "\"additional_data." + movie_id + "\"";
+      if (params === undefined) {
+        params = abc + ': ' + kcd;
+      }
+      else {
+        params = params + ',' + abc + ': ' + kcd;
+      }
+
+      query = '{$set: {' + params + '}}';
+      var jsonValidString = JSON.stringify(eval("(" + query + ")"));
+      var query_object = JSON.parse(jsonValidString);
+      // query_object = {$set: {additional_data: additional_data}};
+      console.log(query);
+
+    }
+    // Send to DB
     db.collection("users").update(search, query_object, { upsert: true }, function (err, result) {
       if (err) {
         console.error(err);
