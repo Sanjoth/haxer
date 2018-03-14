@@ -5,12 +5,10 @@ const mongo = require('mongodb');
 const app = express();
 const url = require('url');
 const bodyParser = require('body-parser');
-const sslRedirect = require('heroku-ssl-redirect');
 // Globals 
 const mourl = 'mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@ds261745.mlab.com:61745/heroku_m30b5bz0';
 var MongoClient = mongo.MongoClient;
 
-app.use(sslRedirect());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
