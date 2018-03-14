@@ -43,6 +43,7 @@ export class SignUpComponent implements OnInit {
 
       if (data.ok == 1) {
         alert("Successfully registered, please login :-)");
+        this.send_to_login_page();
       }
       else {
         alert("User already exists, please login or reset your password!");
@@ -50,6 +51,11 @@ export class SignUpComponent implements OnInit {
 
     });
   }
+
+  send_to_login_page()  {
+    window.location.href = "/login";
+  }
+
 }
 
 interface UserResponse {

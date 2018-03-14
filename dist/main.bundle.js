@@ -1234,11 +1234,15 @@ var SignUpComponent = /*@__PURE__*/ (function () {
             console.log(_this.register);
             if (data.ok == 1) {
                 alert("Successfully registered, please login :-)");
+                _this.send_to_login_page();
             }
             else {
                 alert("User already exists, please login or reset your password!");
             }
         });
+    };
+    SignUpComponent.prototype.send_to_login_page = function () {
+        window.location.href = "/login";
     };
     return SignUpComponent;
 }());
