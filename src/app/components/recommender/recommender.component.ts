@@ -6,24 +6,22 @@ import * as flick from 'flickity';
   templateUrl: './recommender.component.html',
   styleUrls: ['./recommender.component.css']
 })
-export class RecommenderComponent implements OnInit,AfterViewChecked {
+export class RecommenderComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-
+  let elem = document.querySelector('.carousel');
+  console.log(elem);
+  let flk = new flick(elem, {
+    cellAlign: 'left',
+    contain: true,
+    wrapAround: true
+  });
   }
   
-  ngAfterViewChecked() {
-    let elem = document.querySelector('.main-carousel');
-    let flk = new flick(elem, {
-      cellAlign: 'left',
-      contain: true,
-      wrapAround: true
-      
-    });
-  }
-
+  draw() {
   
+  }
   
 }
