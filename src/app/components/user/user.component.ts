@@ -53,7 +53,6 @@ export class UserComponent implements OnInit {
       }
     }
     else {
-      //console.log(query);
       this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1';
       this.http.get<UserResponse>(this.tmdb).subscribe(data => {
         this.data = data; // Assign local to global
@@ -63,12 +62,13 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     console.log(localStorage.getItem("TRACKED_DATA"));
     console.log(localStorage.getItem("ADDITIONAL_DATA"));
-    if (localStorage.getItem("TRACKED_DATA") === null) {
-
-    }
-    else {
-      this.send_tracked_info_to_db();
-      this.send_extra_info_to_db();
+    if (localStorage.getItem("UserEmail") != null) {
+      if (localStorage.getItem("TRACKED_DATA") != null) {
+        this.send_tracked_info_to_db();
+      }
+      if (localStorage.getItem("ADDITIONAL_DATA") != null) {
+        this.send_extra_info_to_db();
+      }
     }
   }
 
@@ -101,21 +101,21 @@ export class UserComponent implements OnInit {
       // If data already in cookie & both cookie names is specified
       localStorage.setItem(`"${cookieName1}"`, `${localStorage.getItem(`"${cookieName1}"`)},${movieid}`);
       localStorage.setItem(`"${cookieName2}"`, `${localStorage.getItem(`"${cookieName2}"`)},${genre}`);
-  //    console.log("Cookie1Mov " + localStorage.getItem(`"${cookieName1}"`));
-  //    console.log("Cookie2Gen " + localStorage.getItem(`"${cookieName2}"`));
+      //    console.log("Cookie1Mov " + localStorage.getItem(`"${cookieName1}"`));
+      //    console.log("Cookie2Gen " + localStorage.getItem(`"${cookieName2}"`));
     }
     else if ((localStorage.getItem(`"${cookieName1}"`) != null) && cookieName2 == "") {
       // If data already in cookie but only 1 cookie name specified
       localStorage.setItem(`"${cookieName1}"`, `${localStorage.getItem(`"${cookieName1}"`)},${movieid}`);
-   //   console.log("Cookie1Mov " + localStorage.getItem(`"${cookieName1}"`));
+      //   console.log("Cookie1Mov " + localStorage.getItem(`"${cookieName1}"`));
     }
     else {
       // If cookie new
       localStorage.setItem(`"${cookieName1}"`, `${movieid}`);
       localStorage.setItem(`"${cookieName2}"`, `${genre}`);
-   //   console.log("Cookie1Mov " + localStorage.getItem(`"${cookieName1}"`));
+      //   console.log("Cookie1Mov " + localStorage.getItem(`"${cookieName1}"`));
       if (cookieName2 != '') {
-   //     console.log("Cookie2Gen " + localStorage.getItem(`"${cookieName2}"`));
+        //     console.log("Cookie2Gen " + localStorage.getItem(`"${cookieName2}"`));
       }
     }
   }
@@ -258,7 +258,7 @@ export class UserComponent implements OnInit {
         localStorage.setItem("SERVER_TRACKING_DATA", `${this.server_data[0].tracking_data}`);
         localStorage.setItem("SERVER_ADDITIONAL_DATA", `${this.server_data[0].additional_data}`);
       }
-      
+
     });
     console.log(localStorage.getItem("SERVER_TRACKING_DATA"));
     console.log(localStorage.getItem("SERVER_ADDITIONAL_DATA"));

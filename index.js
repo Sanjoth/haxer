@@ -100,7 +100,6 @@ app.post('/sendTrackingData', function (req, res) {
   var user_id = req.body.user_id;
   var tracking_data = {};
   tracking_data = JSON.parse(req.body.JSON_String);
-  console.log(user_id);
   var bcd = tracking_data;
   var search = JSON.parse(`{"email": "${user_id}"}`);
   var query_object, abc, query, params;
@@ -148,17 +147,14 @@ app.post('/sendAdditionalData', function (req, res) {
   var user_id = req.body.user_id;
   var additional_data = {};
   additional_data = JSON.parse(req.body.JSON_String);
-  console.log(user_id);
   var bcd = additional_data;
   var search = JSON.parse(`{"email": "${user_id}"}`);
   var query_object, abc, query, params;
-  // UPDATE MULTIPLE FI
 
   //console.log(additional_data["18411"].genre_ids);
   MongoClient.connect(mourl, function (err, db) {
     for (var movie_id in additional_data) {
       kcd = JSON.stringify(bcd[movie_id]);
-      //var temp = additional_data[movie_id];
       abc = "\"additional_data." + movie_id + "\"";
       if (params === undefined) {
         params = abc + ': ' + kcd;
