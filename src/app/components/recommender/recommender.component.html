@@ -1,19 +1,11 @@
-
 <br />
 <br />
-  <h1>Trending Now</h1>
-  <!-- Flickity HTML init -->
-  <div class="carousel" data-flickity='{"wrapAround": true}'>
-    <div class="carousel-cell"></div>
-    <div class="carousel-cell"></div>
-    <div class="carousel-cell"></div>
-    <div class="carousel-cell"></div>
-    <div class="carousel-cell"></div>
-    <div class="carousel-cell"></div>
-    <div class="carousel-cell"></div>
-    <div class="carousel-cell"></div>
-    <div class="carousel-cell"></div>
-    <div class="carousel-cell"></div>
-    <div class="carousel-cell"></div>
+<h1>Trending Now</h1>
+<!-- Flickity HTML init -->
+<div *ngIf="data">
+  <div class="carousel" id="caar" data-flickity='{"wrapAround": true, "groupCells": true}'>
+    <div class="cell" *ngFor="let movie of data.results; let myIndex = index">
+      <img src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}">
+    </div>
   </div>
-  
+</div>
