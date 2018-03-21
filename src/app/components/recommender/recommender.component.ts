@@ -33,7 +33,7 @@ export class RecommenderComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-      if (this.iter <= 10 && this.iter >= 2) {
+      if (this.iter <= 3 && this.iter >= 2) {
         let elem = document.querySelector('.carousel');
         console.log(elem);
        
