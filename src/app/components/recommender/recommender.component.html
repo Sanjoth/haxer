@@ -1,11 +1,10 @@
 <br />
 <br />
-<h1>Trending Now</h1>
-<!-- Flickity HTML init -->
+<h2>Trending Now</h2>
 <div *ngIf="data">
-  <div class="carousel" data-flickity='{"wrapAround": true, "groupCells": true}'>
+  <div class="carousel" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 5500}'>
     <div class="carousel-cell" *ngFor="let movie of data.results; let myIndex = index">
-      <img class="carousel-img" src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}">
+      <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
     </div>
-  </div>
+    </div>
 </div>

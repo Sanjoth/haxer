@@ -1,23 +1,15 @@
-/* external css: flickity.css */
-
-* { box-sizing: border-box; }
-
-body { font-family: sans-serif; }
-
 .carousel {
-  background: #EEE;
+  background: black;
 }
 
 .carousel-cell {
-  width: 300px;
-  height: 169px;
-  margin-right: 10px;
+  width: 185px;
+  height: 278px;
+  margin-right: 3px;
   border-radius: 5px;
 }
 
-/* cell number */
 .carousel-cell:before {
   display: block;
   text-align: center;
-  line-height: 200px;
 }

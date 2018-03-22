@@ -4,9 +4,23 @@
 @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+footer{
+  background-color: black !important;
+}
 
+.text-muted {
+  color: white !important;
+}
+
+h2, h5, p{
+  color: white;
+}
+#search {
+  color: white;
+}
 /* Card Style template */
 body {
+  background-color: black;
   margin: 0;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -81,4 +95,16 @@ mat-toolbar-row {
 
 .sidenav a:hover {
   color: #616161;
+}
+
+/* */
+.flickity-page-dots {
+  bottom: -30px !important;
+}
+/* dots are lines */
+.flickity-page-dots .dot {
+  height: 4px !important;
+  width: 40px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
 }

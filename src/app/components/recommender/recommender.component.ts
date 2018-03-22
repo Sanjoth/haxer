@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as flick from 'flickity';
-import { $ } from 'protractor';
 
 
 @Component({
@@ -22,8 +21,8 @@ export class RecommenderComponent implements OnInit, AfterViewChecked {
   }
 
   getData() {
-    let region = 'IT';
-    let lang = 'it-IT'
+    let region = 'IN';
+    let lang = 'en-US'
     this.trending = 'https://api.themoviedb.org/3/movie/popular?api_key=bd5e7f8161070f86bff1d8da34219f57&region=' + region + '&language=' + lang + '&page=1';
     this.http.get<UserResponse>(this.trending).subscribe(data => {
       this.data = data; // Assign local to global
@@ -40,10 +39,11 @@ export class RecommenderComponent implements OnInit, AfterViewChecked {
         this.flk = new flick(elem, {
           wrapAround: true,
           groupCells: true,
-          cellAlign: 'left'
+          cellAlign: 'left',
+          autoPlay: 5500
         });
   
-        this.flk.resize();
+       // this.flk.resize();
       }
       this.iter++;
     }
