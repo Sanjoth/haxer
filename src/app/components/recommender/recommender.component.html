@@ -2,7 +2,7 @@
 <br />
 <h2>Trending Now</h2>
 <div *ngIf="data">
-  <div class="carousel" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 5500}'>
+  <div class="carousel" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 5500, "pauseAutoPlayOnHover": false}'>
     <div class="carousel-cell" *ngFor="let movie of data.results; let myIndex = index">
       <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
     </div>
