@@ -1,8 +1,17 @@
 body {
 	padding: 0;
 	margin: 0;
-	background: ;
 }
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
 body a {
 	color:red;
 	transition: 0.5s all;
@@ -83,7 +92,7 @@ input[type="text"], input[type="password"]{
     border: none;
     background-color: rgba(87, 102, 103, 0.59);
     color: white;
-	width: 90%;
+	width: 100%;
 	letter-spacing: 1px;
 }
 .agile-login h1 {
@@ -217,7 +226,7 @@ span.fa.fa-facebook:hover {
 	    width: 300px;
 }
 .wrapper h2 {
-    font-size: 20px;
+    font-size: 20px;    
     margin-bottom: 15px;
 }	
 }
@@ -227,7 +236,7 @@ span.fa.fa-facebook:hover {
     font-size: 29px;
 }
 	input[type="text"],input[type="password"] {
-		width: 90%;
+		width: 100%;
 	}
 	label {
     margin: 20px 0px 5px 10px;
@@ -247,7 +256,7 @@ span.fa.fa-facebook:hover {
     width: 280px;
 }
 .wrapper h2 {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 10px;
 }
 input[type="submit"] {
@@ -264,12 +273,3 @@ input[type="text"], input[type="password"]{
     padding: 10px 15px;
 }
 }
-
-.text-xs-center {
-    text-align: center;
-}
-
-.g-recaptcha {
-    display: inline-block;
-}
-
