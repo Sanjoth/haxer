@@ -13,7 +13,7 @@
   <!-- iOS Safari -->
   <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
   <link rel="stylesheet" href="/assets/flickity.min.css">
-  <noscript><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/><link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"></noscript>
+  <noscript><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/><link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"><link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></noscript>
   <script>
     (function () {
       var font = document.createElement('link');
@@ -26,13 +26,13 @@
       font3.rel = 'stylesheet';
       font.href = 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
       font2.href = 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
-      font3.href = '  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />';
+      font3.href = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
       var s = document.getElementsByTagName('link')[0];
       var t = document.getElementsByTagName('link')[0];
       var p = document.getElementsByTagName('link')[0];
       s.parentNode.insertBefore(font, s);
       t.parentNode.insertBefore(font2, t);
-      p.parentNode.insertBefore(font2, p);
+      p.parentNode.insertBefore(font3, p);
     })();
   </script>
     <!-- Google Analytics -->
