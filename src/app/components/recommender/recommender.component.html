@@ -1,6 +1,6 @@
 <br />
-<h2>In Cinemas</h2>
 <div *ngIf="now_playing">
+  <h2>In Cinemas</h2>
   <div class="larry" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 5500, "pauseAutoPlayOnHover": false}'>
     <div class="carousel-cell" *ngFor="let movie of now_playing.results; let myIndex = index">
       <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
@@ -8,8 +8,8 @@
   </div>
 </div>
 <br>
-<h2>Trending Now</h2>
 <div *ngIf="trending_now">
+  <h2>Trending Now</h2>
   <div class="carousel" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 5500, "pauseAutoPlayOnHover": false}'>
     <div class="carousel-cell" *ngFor="let movie of trending_now.results; let myIndex = index">
       <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
@@ -18,7 +18,7 @@
 </div>
 <br>
 <div *ngIf="similar">
-    <h2>Movies Similar to {{similar.results[0].title}}</h2>
+  <h2>Movies Similar to {{similar.results[0].title}}</h2>
   <div class="arry" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 5500, "pauseAutoPlayOnHover": false}'>
     <div class="carousel-cell" *ngFor="let movie of similar.results; let myIndex = index">
       <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
