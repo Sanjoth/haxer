@@ -58,6 +58,7 @@ export class RecommenderComponent implements OnInit, AfterViewChecked{
       this.similar = data[2];
       this.now_playing = data[1];
       window.setTimeout(() => { this.create_obj(); });
+      //this.create_obj();
     });
 
   }
