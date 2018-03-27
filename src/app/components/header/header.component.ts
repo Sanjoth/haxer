@@ -14,20 +14,19 @@ export class HeaderComponent implements OnInit {
 
 
   constructor() {
-    console.log(localStorage.getItem("UserEmail"));
-    this.userEmail = localStorage.getItem("UserEmail");
-    if (this.userEmail == null) {
-      this.signIn = false;
-    }
-    else {
-      this.signIn = true;
-      this.Name = localStorage.getItem("Name");
-    }
-
   }
 
   ngOnInit() {
-
+    if(localStorage.getItem("UserEmail") != null)
+    {
+    console.log(localStorage.getItem("UserEmail"));
+    this.signIn = true;
+    this.Name = localStorage.getItem("Name");
+    }
+    else {
+      console.log("Not Logged in !")
+      this.signIn = false;
+    }
   }
 
 
