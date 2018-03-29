@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs/observable/forkJoin'
 import * as flick from 'flickity';
@@ -9,7 +9,7 @@ import * as flick from 'flickity';
   templateUrl: './recommender.component.html',
   styleUrls: ['./recommender.component.css']
 })
-export class RecommenderComponent implements OnInit, AfterViewChecked{
+export class RecommenderComponent implements OnInit{
   similar: any;
   now_playing: any;
   trending_now: any;
@@ -20,13 +20,9 @@ export class RecommenderComponent implements OnInit, AfterViewChecked{
   popular: any;
   get_similar: any;
   similar_last: any;
+  similar_movie_name: any;
 
-  constructor(private http: HttpClient) {
-
-  }
-
-  ngAfterViewChecked() {
-  }
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
     let obj = JSON.parse(localStorage.getItem("TRACKED_DATA"));
@@ -34,7 +30,9 @@ export class RecommenderComponent implements OnInit, AfterViewChecked{
       this.similar_last = id;
     }
     console.log(this.similar_last);
+    this.similar_movie_name = Object.values(obj)[0].title;
     this.getData();
+    
   }
 
   getData() {

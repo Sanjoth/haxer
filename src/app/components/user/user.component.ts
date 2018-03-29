@@ -47,6 +47,9 @@ export class UserComponent implements OnInit {
   constructor(private http: HttpClient, private http_sendAdditionalData: HttpClient, private http_sendTrackingData: HttpClient, private http_getData: HttpClient) { }
 
   sendReq(query, event) {
+    /**
+     * Send HTTP GET request for every valid keypress
+     */
     var key = event.keyCode || event.charCode;
     if (query == '' || query === undefined) {
       if (key == 8 || key == 46) {
@@ -61,6 +64,9 @@ export class UserComponent implements OnInit {
     }
   }
   ngOnInit() {
+    /**
+     * Send Tracking & Additional Data to the Cloud
+     */
     if (localStorage.getItem("TRACKED_DATA") != null) {
       console.log("Tracked Data:\n" + localStorage.getItem("TRACKED_DATA"));
     }
@@ -84,8 +90,6 @@ export class UserComponent implements OnInit {
   }
 
   likeMovie(movie, event) {
-    let movieid = movie.id;
-    let genre = movie.genre_ids;
     this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
     if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg\"></i>") {
       document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-up fa-lg\"></i>";
@@ -98,8 +102,6 @@ export class UserComponent implements OnInit {
   }
 
   dislikeMovie(movie, event) {
-    let movieid = movie.id;
-    let genre = movie.genre_ids;
     this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
     if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg\"></i>") {
       document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-down fa-lg\"></i>";
@@ -112,14 +114,10 @@ export class UserComponent implements OnInit {
   }
 
   trackClick(movie) {
-    let movieid = movie.id;
-    let genre = movie.genre_ids;
     this.JSONify_extraInfo(movie);
   }
 
   addList(movie, event) {
-    let movieid = movie.id;
-    let genre = movie.genre_ids;
     this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
     if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>") {
       document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark fa-lg\"></i>";
@@ -135,6 +133,7 @@ export class UserComponent implements OnInit {
   JSONify_extraInfo(movie, list_status?) {
     let movieid = movie.id;
     let genre = movie.genre_ids;
+    let movie_name = movie.title;
 
     let date = new Date();
     let last_updated = date.getTime();
@@ -154,10 +153,10 @@ export class UserComponent implements OnInit {
     // If Movie is not present
     if (this.additional_data[movieid] === undefined) {
       if (list_status === undefined) {
-        this.additional_data[movieid] = { "last_updated": last_updated, "genre_ids": genre, "click_status": click_status};
+        this.additional_data[movieid] = { "last_updated": last_updated, "title": movie_name,"genre_ids": genre, "click_status": click_status};
       }
       else {
-        this.additional_data[movieid] = { "last_updated": last_updated, "genre_ids": genre, "list_add_status": list_add_status};
+        this.additional_data[movieid] = { "last_updated": last_updated, "title": movie_name,"genre_ids": genre, "list_add_status": list_add_status};
       }
     }
     // If movie is already present
@@ -180,6 +179,8 @@ export class UserComponent implements OnInit {
   JSONify_likeStatus(movie, like_status) {
     let movieid = movie.id;
     let genre = movie.genre_ids;
+    let movie_name = movie.title;
+
     let date = new Date();
     let last_updated = date.getTime();
 
@@ -187,15 +188,14 @@ export class UserComponent implements OnInit {
     let check = this.check_duplicate_tracks(movieid);
 
     if (check == true) {
-      this.tracked_data[movieid] = { "last_updated": last_updated, "genre_ids": genre, "like_status": like_status };
+      this.tracked_data[movieid] = { "last_updated": last_updated, "title": movie_name, "genre_ids": genre, "like_status": like_status };
     }
     else {
-      this.tracked_data[movieid] = { "last_updated": last_updated, "genre_ids": genre, "like_status": like_status };
+      this.tracked_data[movieid] = { "last_updated": last_updated, "title": movie_name, "genre_ids": genre, "like_status": like_status };
     }
     localStorage.setItem("TRACKED_DATA", JSON.stringify(this.tracked_data));
     console.log("Tracked Data:");
     console.log(this.tracked_data);
-
   }
 
   send_extra_info_to_db() {

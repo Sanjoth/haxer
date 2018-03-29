@@ -18,7 +18,7 @@
 </div>
 <br>
 <div *ngIf="similar">
-  <h2>Movies Similar to {{similar.results[0].title}}</h2>
+  <h2>Movies Similar to {{similar_movie_name}}</h2>
   <div class="arry" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 5500, "pauseAutoPlayOnHover": false}'>
     <div class="carousel-cell" *ngFor="let movie of similar.results; let myIndex = index">
       <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">

@@ -62,6 +62,7 @@ app.get('/regUser', function (request, response) {
   var pass = querys.query.password1;
   var pos = {};
   console.log("Hello");
+  
   var seedData = {
     "uname": `${name}`,
     "email": `${email}`,
