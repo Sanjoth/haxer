@@ -14,9 +14,7 @@ export class RecommenderComponent implements OnInit{
   now_playing: any;
   trending_now: any;
   data: any;
-  iter = 0;
   flk: any;
-  flk1: any;
   popular: any;
   get_similar: any;
   similar_last: any;

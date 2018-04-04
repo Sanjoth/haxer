@@ -28,16 +28,18 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { RecommenderComponent } from './components/recommender/recommender.component';
 import { DiscoverComponent } from './components/discover/discover.component';
+import { SeedDataComponent } from './components/seed-data/seed-data.component';
 
 const appRoutes: Routes = [
   { path: '', component: UserComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LogInComponent },
+  { path: 'recom', component: RecommenderComponent },
   { path: 'movie/:id', component: MovieDetailComponent },
   { path: 'user/:id', component: UserDetailComponent },
   { path: 'about', component: AboutUsComponent },
-  { path: 'recom', component: RecommenderComponent },
   { path: 'discover', component: DiscoverComponent },
+  { path: 'newuser', component: SeedDataComponent},
   { path: '**', component: PageNotFoundComponent }
   /*{
     path: 'heroes',
@@ -66,7 +68,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     AboutUsComponent,
     RecommenderComponent,
-    DiscoverComponent
+    DiscoverComponent,
+    SeedDataComponent
   ],
   imports: [
     RouterModule.forRoot(
