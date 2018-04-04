@@ -30,7 +30,10 @@ export class RecommenderComponent implements OnInit{
       this.similar_last = id;
     }
     console.log(this.similar_last);
-    this.similar_movie_name = Object.values(obj)[0].title;
+    if(this.similar_last != undefined)
+    {
+    this.similar_movie_name = Object.values(obj)[0]["title"];
+    }
     this.getData();
     
   }
