@@ -5,11 +5,15 @@
   </h2>
   <br>
 </div>
-<br>
-<div id="search" style="text-align:center">
-  Search:
-  <input type="text" id="query" autocomplete="off" placeholder="Keywords" (keyup)="sendReq(query.value,$event)" [(ngModel)]="texts"
-    name="query" #query>
+<div class="container" id="search" style="text-align:center">
+<div class="input-group mb-3">
+  <input type="text" autocomplete="off" [(ngModel)]="texts" class="form-control" id="query" placeholder="Search" (keyup)="sendReq(query.value,$event)" aria-label="Search" aria-describedby="Search" 
+  name="query" #query>
+  <div class="input-group-append">
+    <span class="input-group-text" id="basic-addon2"><i class="fa fa-search fa-lg"></i></span>
+  </div>
+</div>
+    
 </div>
 <div *ngIf="data">
   <div style="text-align:center">

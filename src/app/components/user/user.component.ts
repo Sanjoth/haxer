@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserComponent implements OnInit {
 
   // Global Vars
-  title = 'A Hybrid Movie Search & Recommendation System for the real world!';
+  title = 'A hybrid yet intuitive approach for discovering movies & getting recommendations!';
   texts: string;
   tmdb: string;
   data: object;
@@ -128,6 +128,21 @@ export class UserComponent implements OnInit {
       this.JSONify_extraInfo(movie, false);
     }
     return true;
+  }
+
+  JSONify_bookmark(movie) {
+    let movieid = movie.id;
+    let genre = movie.genre_ids;
+    let movie_name = movie.title;
+
+    let date = new Date();
+    let last_updated = date.getTime();
+    let list_add_status: boolean;
+    
+  }
+
+  JSONify_click(movie) {
+
   }
 
   JSONify_extraInfo(movie, list_status?) {

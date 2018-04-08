@@ -1,3 +1,4 @@
+<p style="margin-top: 3%"></p>
 <span class="agile-login">
   <div class="wrapper">
     <h2>Sign Up</h2>
@@ -11,17 +12,8 @@
         <input type="password" #pass1 placeholder="Password" required minlength="4" />
         <label>Confirm Password</label>
         <input type="password" #pass2 placeholder="Confirm Password" required/>
-        <br>
         <a routerLink="/login" routerLinkActive="active" class="pass">Already Registered ?</a>
         <input type="submit" value="Register" />
-        <!--
-        <span style="color:orangered" *ngIf="myForm.hasError('email', 'email') && myForm.get('email').touched">
-            Please enter a valid email address to succesfully register. <br>
-        </span>
-        <span style="color:orangered" *ngIf="myForm.get('password1').hasError('minlength') && myForm.get('password1').touched">
-            Please enter a password having more than 4 alphanumeric characters. <br>
-        </span>
-      -->
       </form>
     </div>
   </div>

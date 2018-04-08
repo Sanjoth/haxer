@@ -20,7 +20,7 @@ h2, h5, p{
 }
 /* Card Style template */
 body {
-  background-color: black;
+  background-image: url("/assets/bg.jpg");
   margin: 0;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -108,3 +108,12 @@ mat-toolbar-row {
   margin: 0 !important;
   border-radius: 0 !important;
 }
+
+
+/* background-color: rgba(6, 5, 5, 0.33);
+box-shadow: 10px 3px 66px -19px rgba(0,0,0,0.75); */
+
+
+
+
+

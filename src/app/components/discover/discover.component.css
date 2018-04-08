@@ -1,8 +1,7 @@
 input {
-    display: block;
+    display: inline-block;
     position: inherit;
 }
-
 
 .btn.btn-secondary.focus.active {
     background-color: #545b62;
@@ -12,4 +11,13 @@ input {
 }
 .btn.btn-secondary {
     background-color: #545b62;
+}
+
+label {
+    color:white !important;
+}
+
+.btn-group {
+    margin-top: 10px;
+    margin-left: 5px;
 }

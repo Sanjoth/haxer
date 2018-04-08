@@ -7,14 +7,18 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
 })
 export class AboutUsComponent implements OnInit, OnDestroy {
 
+  background_image:any;
   constructor() { }
 
   ngOnInit() {
-    document.getElementById("body").style.backgroundColor = "white";  
+    this.background_image = document.getElementById("body").style.backgroundImage;
+    document.getElementById("body").style.backgroundColor = "white";
+    document.getElementById("body").style.backgroundImage = "none";
   }
 
   ngOnDestroy() {
     document.getElementById("body").style.backgroundColor = "black"; 
+    document.getElementById("body").style.backgroundImage = this.background_image;
   }
 
 }

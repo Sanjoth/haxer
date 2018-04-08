@@ -9,7 +9,6 @@ table, th , td  {
   table tr:nth-child(even) {
     background-color: #ffffff;
   }
-
   table
   { 
   margin-left: auto;
@@ -55,4 +54,10 @@ a:hover {
 .mat-button-toggle
 {
   background-color: #ffffff !important;
+}
+
+.input-group.mb-3 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%
 }
