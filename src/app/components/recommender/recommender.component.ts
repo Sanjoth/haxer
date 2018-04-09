@@ -23,15 +23,32 @@ export class RecommenderComponent implements OnInit{
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    let obj = JSON.parse(localStorage.getItem("TRACKED_DATA"));
-    for (let id in obj) {
-      this.similar_last = id;
-    }
-    console.log(this.similar_last);
-    if(this.similar_last != undefined)
+    let obj = JSON.parse(localStorage.getItem("LIKE_STATUS_DATA"));
+
+      let latest_timestamp=0;
+      let latest_movie_id:any;
+      let latest_title:any;
+
+    for(let value of Object.values(obj))
     {
-    this.similar_movie_name = Object.values(obj)[0]["title"];
+      if(latest_timestamp < value["last_updated"])
+      {
+        latest_timestamp = value["last_updated"];
+        latest_movie_id = value;
+        latest_title = value["title"];
+      }
     }
+    for (let id in obj) {
+      if(id["last_updated"] == latest_timestamp)
+      {
+        this.similar_last = id;
+      }
+    }
+    console.log(latest_movie_id);
+    console.log(latest_title);
+
+    this.similar_movie_name = latest_title;
+    // Object.values(obj)[0]["title"];
     this.getData();
     
   }

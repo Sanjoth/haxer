@@ -52,6 +52,24 @@ app.get('/getUser', function (request, response) {
   });
 });
 
+app.get('/getUserDetails', function (request, response) {
+  var querys = url.parse(request.url, true);
+  var email = querys.query.email;
+
+  MongoClient.connect(mourl, function (err, db) {
+    var search = JSON.parse(`{"email": "${email}"}`);
+    db.collection("users").find(search).toArray(function (err, result) {
+      if (err) {
+        console.error(err); response.send("Error " + err); throw err;
+      }
+      else {
+        response.send(result);
+      }
+    });
+  });
+});
+
+
 /**
  * Register User
  */
@@ -67,8 +85,9 @@ app.get('/regUser', function (request, response) {
     "uname": `${name}`,
     "email": `${email}`,
     "password": `${pass}`,
-    "tracking_data": pos,
-    "additional_data": pos,
+    "reactions_data":pos,
+    "bookmark_data":pos,
+    "impressions_data":pos,
     "cluster": ``,
     "genre_ranking": ``
   };
@@ -97,7 +116,7 @@ app.get('/regUser', function (request, response) {
 /**
  * Send Tracking data to the MongoDB Database
  */
-app.post('/sendTrackingData', function (req, res) {
+app.post('/sendReactionData', function (req, res) {
 
   var user_id = req.body.user_id;
   var tracking_data = {};
@@ -112,7 +131,7 @@ app.post('/sendTrackingData', function (req, res) {
     for (var movie_id in tracking_data) {
       kcd = JSON.stringify(bcd[movie_id]);
       //var temp = tracking_data[movie_id];
-      abc = "\"tracking_data." + movie_id + "\"";
+      abc = "\"reactions_data." + movie_id + "\"";
       if (params === undefined) {
         params = abc + ': ' + kcd;
       }
@@ -144,7 +163,7 @@ app.post('/sendTrackingData', function (req, res) {
 /**
  * 
  */
-app.post('/sendAdditionalData', function (req, res) {
+app.post('/sendClicksData', function (req, res) {
 
   var user_id = req.body.user_id;
   var additional_data = {};
@@ -157,7 +176,49 @@ app.post('/sendAdditionalData', function (req, res) {
   MongoClient.connect(mourl, function (err, db) {
     for (var movie_id in additional_data) {
       kcd = JSON.stringify(bcd[movie_id]);
-      abc = "\"additional_data." + movie_id + "\"";
+      abc = "\"impressions_data." + movie_id + "\"";
+      if (params === undefined) {
+        params = abc + ': ' + kcd;
+      }
+      else {
+        params = params + ',' + abc + ': ' + kcd;
+      }
+
+      query = '{$set: {' + params + '}}';
+      var jsonValidString = JSON.stringify(eval("(" + query + ")"));
+      var query_object = JSON.parse(jsonValidString);
+      // query_object = {$set: {additional_data: additional_data}};
+      console.log(query);
+
+    }
+    // Send to DB
+    db.collection("users").update(search, query_object, { upsert: true }, function (err, result) {
+      if (err) {
+        console.error(err);
+        res.send("Error " + err); throw err;
+      }
+      else {
+        res.send(result);
+      }
+    });
+
+  });
+});
+
+app.post('/sendBookmarkData', function (req, res) {
+
+  var user_id = req.body.user_id;
+  var additional_data = {};
+  additional_data = JSON.parse(req.body.JSON_String);
+  var bcd = additional_data;
+  var search = JSON.parse(`{"email": "${user_id}"}`);
+  var query_object, abc, query, params;
+
+  //console.log(additional_data["18411"].genre_ids);
+  MongoClient.connect(mourl, function (err, db) {
+    for (var movie_id in additional_data) {
+      kcd = JSON.stringify(bcd[movie_id]);
+      abc = "\"bookmark_data." + movie_id + "\"";
       if (params === undefined) {
         params = abc + ': ' + kcd;
       }

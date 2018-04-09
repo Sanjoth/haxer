@@ -23,7 +23,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { RecommenderComponent } from './components/recommender/recommender.component';
@@ -36,7 +35,6 @@ const appRoutes: Routes = [
   { path: 'login', component: LogInComponent },
   { path: 'recom', component: RecommenderComponent },
   { path: 'movie/:id', component: MovieDetailComponent },
-  { path: 'user/:id', component: UserDetailComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'discover', component: DiscoverComponent },
   { path: 'newuser', component: SeedDataComponent},
@@ -64,7 +62,6 @@ const appRoutes: Routes = [
     SignUpComponent,
     LogInComponent,
     MovieDetailComponent,
-    UserDetailComponent,
     PageNotFoundComponent,
     AboutUsComponent,
     RecommenderComponent,

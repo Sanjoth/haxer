@@ -17,10 +17,16 @@ export class UserComponent implements OnInit {
   blank: object;
   server_data: any;
   movieid: number;
+
+  user_details:any;
   local_send_tracking_data: any;
   local_send_additional_data: any;
-  tracked_data = {};
-  additional_data = {};
+  like_status_data = {};
+  bookmarked_data = {};
+  clicked_data = {};
+  local_send_bookmark_data: any;
+  local_send_clicks_data: any;
+
   gen: GenreTy = {
     28: "Action",
     12: "Adventure",
@@ -57,36 +63,63 @@ export class UserComponent implements OnInit {
       }
     }
     else {
-      this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1';
+      this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1&include_adult=true';
       this.http.get<UserResponse>(this.tmdb).subscribe(data => {
         this.data = data; // Assign local to global
       });
     }
   }
   ngOnInit() {
-    /**
-     * Send Tracking & Additional Data to the Cloud
-     */
-    if (localStorage.getItem("TRACKED_DATA") != null) {
-      console.log("Tracked Data:\n" + localStorage.getItem("TRACKED_DATA"));
+    localStorage.removeItem("LIKE_STATUS_DATA");
+    localStorage.removeItem("BOOKMARKED_DATA");
+    localStorage.removeItem("CLICKED_DATA");
+    let status:any;
+    if (localStorage.getItem("UserEmail")) {
+      status = this.getUserData();
+    }
+    else {
+      console.log("Not logged in!");
+    }
+  }
+
+  displayLocalData() {
+    if (localStorage.getItem("LIKE_STATUS_DATA") != null) {
+      console.log("Liked Status Data:\n" + localStorage.getItem("LIKE_STATUS_DATA"));
     }
     else {
       console.log("No Like/dislike history")
     }
-    if (localStorage.getItem("ADDITIONAL_DATA") != null) {
-      console.log("Additional Data:\n" + localStorage.getItem("ADDITIONAL_DATA"));
+    if (localStorage.getItem("BOOKMARKED_DATA") != null) {
+      console.log("Bookmarked Data:\n" + localStorage.getItem("BOOKMARKED_DATA"));
     }
     else {
-      console.log("No Click Impressions / Add to List history")
+      console.log("No Add to List history")
     }
-    if (localStorage.getItem("UserEmail") != null) {
-      if (localStorage.getItem("TRACKED_DATA") != null) {
-        this.send_tracked_info_to_db();
-      }
-      if (localStorage.getItem("ADDITIONAL_DATA") != null) {
-        this.send_extra_info_to_db();
-      }
+    if (localStorage.getItem("CLICKED_DATA") != null) {
+      console.log("Impressions Data:\n" + localStorage.getItem("CLICKED_DATA"));
     }
+    else {
+      console.log("No Click Impressions")
+    }
+  }
+
+  getUserData() {
+    let loginstr = '/getUserDetails?email=' + localStorage.getItem("UserEmail");
+    this.http.get<UserResponse>(loginstr).subscribe(data => {
+      this.user_details = data; // Assign local to global
+      console.log(data);
+      console.log(data[0].reactions_data);
+      console.log(data[0].bookmark_data);
+      console.log(data[0].impressions_data);
+
+      this.like_status_data = data[0].reactions_data;
+      this.bookmarked_data = data[0].bookmark_data;
+      this.clicked_data = data[0].impressions_data;
+      localStorage.setItem("BOOKMARKED_DATA", JSON.stringify(this.bookmarked_data));
+      localStorage.setItem("CLICKED_DATA", JSON.stringify(this.clicked_data));
+      localStorage.setItem("LIKE_STATUS_DATA", JSON.stringify(this.like_status_data));
+      this.displayLocalData();
+    });
   }
 
   likeMovie(movie, event) {
@@ -97,7 +130,7 @@ export class UserComponent implements OnInit {
     else {
       document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg\"></i>";
     }
-    this.JSONify_likeStatus(movie, true);
+    this.JSONify_like(movie, true);
     return true;
   }
 
@@ -109,89 +142,75 @@ export class UserComponent implements OnInit {
     else {
       document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg\"></i>";
     }
-    this.JSONify_likeStatus(movie, false);
+    this.JSONify_like(movie, false);
     return true;
   }
 
   trackClick(movie) {
-    this.JSONify_extraInfo(movie);
+    this.JSONify_click(movie);
   }
 
   addList(movie, event) {
     this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
     if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>") {
       document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark fa-lg\"></i>";
-      this.JSONify_extraInfo(movie, true);
+      this.JSONify_bookmark(movie, true);
     }
     else {
       document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>";
-      this.JSONify_extraInfo(movie, false);
+      this.JSONify_bookmark(movie, false);
     }
     return true;
   }
 
-  JSONify_bookmark(movie) {
+  JSONify_bookmark(movie, list_status) {
     let movieid = movie.id;
     let genre = movie.genre_ids;
     let movie_name = movie.title;
 
     let date = new Date();
     let last_updated = date.getTime();
-    let list_add_status: boolean;
-    
-  }
 
-  JSONify_click(movie) {
-
-  }
-
-  JSONify_extraInfo(movie, list_status?) {
-    let movieid = movie.id;
-    let genre = movie.genre_ids;
-    let movie_name = movie.title;
-
-    let date = new Date();
-    let last_updated = date.getTime();
-    let click_status: boolean;
-    let list_add_status: boolean;
-
-    if (list_status === undefined) {
-      click_status = true;
-    }
-    else {
-      list_add_status = list_status;
-    }
-
-    /**
-     * Check if it already exists
-     */
     // If Movie is not present
-    if (this.additional_data[movieid] === undefined) {
-      if (list_status === undefined) {
-        this.additional_data[movieid] = { "last_updated": last_updated, "title": movie_name,"genre_ids": genre, "click_status": click_status};
-      }
-      else {
-        this.additional_data[movieid] = { "last_updated": last_updated, "title": movie_name,"genre_ids": genre, "list_add_status": list_add_status};
-      }
+    if (this.bookmarked_data[movieid] === undefined) {
+      this.bookmarked_data[movieid] = { "last_updated": last_updated, "title": movie_name, "genre_ids": genre, "list_status": list_status };
     }
     // If movie is already present
     else {
-      if (list_status === undefined) {
-        this.additional_data[movieid].click_status = true;
-      }
-      else {
-        this.additional_data[movieid].list_add_status = list_status;
-      }
-      this.additional_data[movieid].last_updated = last_updated;
-      this.additional_data[movieid].genre_ids = genre;
+      this.bookmarked_data[movieid].list_status = list_status;
+      this.bookmarked_data[movieid].last_updated = last_updated;
     }
-    localStorage.setItem("ADDITIONAL_DATA", JSON.stringify(this.additional_data));
-    console.log("Additional Data:");
-    console.log(this.additional_data);
-
+    localStorage.setItem("BOOKMARKED_DATA", JSON.stringify(this.bookmarked_data));
+    console.log("Bookmarked Data:");
+    console.log(this.bookmarked_data);
+    this.send_bookmarks_to_db();
+    console.log("Bookmarked Data:\n" + localStorage.getItem("BOOKMARKED_DATA"));
   }
 
-  JSONify_likeStatus(movie, like_status) {
+  JSONify_click(movie) {
+    let movieid = movie.id;
+    let genre = movie.genre_ids;
+    let movie_name = movie.title;
+
+    let date = new Date();
+    let last_updated = date.getTime();
+
+    // If Movie is not present
+    if (this.clicked_data[movieid] === undefined) {
+      this.clicked_data[movieid] = { "last_updated": last_updated, "title": movie_name, "genre_ids": genre };
+      localStorage.setItem("CLICKED_DATA", JSON.stringify(this.clicked_data));
+      console.log("Clicked Data:");
+      console.log(this.clicked_data);
+      this.send_impressions_to_db();
+      console.log("Impressions Data:\n" + localStorage.getItem("BOOKMARKED_DATA"));
+    }
+    // If movie is already present
+    else {
+      console.log("Already Tracked");
+    }
+  }
+
+  JSONify_like(movie, like_status) {
     let movieid = movie.id;
     let genre = movie.genre_ids;
     let movie_name = movie.title;
@@ -203,28 +222,39 @@ export class UserComponent implements OnInit {
     let check = this.check_duplicate_tracks(movieid);
 
     if (check == true) {
-      this.tracked_data[movieid] = { "last_updated": last_updated, "title": movie_name, "genre_ids": genre, "like_status": like_status };
+      this.like_status_data[movieid] = { "last_updated": last_updated, "title": movie_name, "genre_ids": genre, "like_status": like_status };
     }
     else {
-      this.tracked_data[movieid] = { "last_updated": last_updated, "title": movie_name, "genre_ids": genre, "like_status": like_status };
+      this.like_status_data[movieid] = { "last_updated": last_updated, "title": movie_name, "genre_ids": genre, "like_status": like_status };
     }
-    localStorage.setItem("TRACKED_DATA", JSON.stringify(this.tracked_data));
-    console.log("Tracked Data:");
-    console.log(this.tracked_data);
+    localStorage.setItem("LIKE_STATUS_DATA", JSON.stringify(this.like_status_data));
+    console.log("Like Status Data:");
+    console.log(this.like_status_data);
+    this.send_reactions_to_db();
+    console.log("Liked Status Data:\n" + localStorage.getItem("LIKE_STATUS_DATA"));
   }
 
-  send_extra_info_to_db() {
-    this.http_sendTrackingData.post("/sendAdditionalData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("ADDITIONAL_DATA") }).subscribe(data => {
-      this.local_send_additional_data = data;
-      console.log("POST DATA ADDITIONAL:");
+  send_impressions_to_db() {
+    this.http_sendTrackingData.post("/sendClicksData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("CLICKED_DATA") }).subscribe(data => {
+      this.local_send_clicks_data = data;
+      console.log("POST DATA CLICKS:");
       console.log(data);
     });
   }
 
-  send_tracked_info_to_db() {
-    this.http_sendTrackingData.post("/sendTrackingData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("TRACKED_DATA") }).subscribe(data => {
+  send_bookmarks_to_db() {
+    this.http_sendTrackingData.post("/sendBookmarkData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("BOOKMARKED_DATA") }).subscribe(data => {
+      this.local_send_bookmark_data = data;
+      console.log("POST DATA BOOKMARKS:");
+      console.log(data);
+    });
+  }
+
+
+  send_reactions_to_db() {
+    this.http_sendTrackingData.post("/sendReactionData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("LIKE_STATUS_DATA") }).subscribe(data => {
       this.local_send_tracking_data = data;
-      console.log("POST DATA TRACKING:");
+      console.log("POST DATA REACTIOn:");
       console.log(data);
     });
 
@@ -232,7 +262,7 @@ export class UserComponent implements OnInit {
 
   check_duplicate_tracks(movieid) {
 
-    if (this.tracked_data[movieid] === undefined) {
+    if (this.like_status_data[movieid] === undefined) {
       return false;
     }
     else {
@@ -263,6 +293,7 @@ interface UserResponse {
   total_pages: number;
   results: Results[];
   ok: number;
+  length: number;
 }
 
 interface Results {
