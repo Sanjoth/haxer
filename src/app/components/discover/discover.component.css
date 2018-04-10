@@ -21,3 +21,7 @@ label {
     margin-top: 10px;
     margin-left: 5px;
 }
+
+.form-control {
+    width: 80%;
+}

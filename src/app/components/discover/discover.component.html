@@ -15,9 +15,7 @@
         Sort By
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+          <a *ngFor="let sort of sortby_fields" class="dropdown-item">{{sort}}</a>
       </div>
     </div>
     <div class="btn-group">
@@ -26,46 +24,30 @@
         Include Genres
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+        <a *ngFor="let gen of genre_keys" class="dropdown-item"><input type="checkbox" value="{{gen}}">&nbsp; {{this.genres[gen]}}</a>
       </div>
     </div>
     <div class="btn-group">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         Exclude Genres
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
+          <a *ngFor="let gen of genre_keys" class="dropdown-item"><input type="checkbox" value="{{gen}}">&nbsp; {{this.genres[gen]}}</a>
+        </div>
     </div>
     <div class="btn-group">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         Primary Release Date Range
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+        <a class="dropdown-item">From: <input class="form-control" type="date" value="{{this.before_date}}"></a>
+        <a class="dropdown-item">To: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="date"></a>
       </div>
     </div>
     <div class="btn-group">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Cast
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </div>
-    <div class="btn-group">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         Original Language
       </button>
@@ -75,22 +57,48 @@
         <a class="dropdown-item" href="#">Something else here</a>
       </div>
     </div>
+    <div class="btn-group">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          IMdB Rating
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Greater than</span>
+                  </div>
+                  <input type="number" max="9" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+          </a>
+        </div>
+      </div>
+      <div class="btn-group">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton7" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Vote Count
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item"><div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Greater than</span>
+                </div>
+                <input type="number" max="10000000000" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+              </div>
+            </a>
+          </div>
+        </div>
     <br>
     <br>
       <div class="form-check form-check-inline">
           <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> Include 18+ Movies?
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="false"> Include 18+ Movies?
           </label>
         </div>
         <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Vote Count Filter
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> IMdB Rating Filter
-          </label>
-        </div>
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="false"> Include Watched Movies?
+            </label>
+          </div>
     </div>
 

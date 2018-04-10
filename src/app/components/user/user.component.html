@@ -60,8 +60,7 @@
 
         <i>
           <span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">{{this.gen[item]}}
-            <span *ngIf="i < movie.genre_ids.length-1">,</span>
-          </span>.</i>
+            <span *ngIf="i < movie.genre_ids.length-1">,</span></span>.</i>
         <br>
         <span *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </span>
         <span *ngIf="movie.overview.length<140">{{movie.overview}} </span>
@@ -94,18 +93,50 @@
                 <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
               </button>  
              -->
+
         <mat-button-toggle-group #group="matButtonToggleGroup">
-          <mat-button-toggle value="like" (click)="likeMovie(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}a">
-            <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+          <mat-button-toggle value="like" *ngIf="like_status_data[movie.id]; else liked_content_empty" (click)="likeMovie(this.movie,$event)"
+            class="mat-button" mat-button id="{{movie.id}}a">
+            <i *ngIf="like_status_data[movie.id].like_status;else liked_content" class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>
+            <ng-template #liked_content>
+              <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+            </ng-template>
           </mat-button-toggle>
-          <mat-button-toggle value="dislike" (click)="dislikeMovie(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}b">
-            <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+          <ng-template #liked_content_empty>
+            <mat-button-toggle value="like" (click)="likeMovie(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}a">
+              <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+            </mat-button-toggle>
+          </ng-template>
+
+          <mat-button-toggle value="dislike" *ngIf="like_status_data[movie.id]; else disliked_content_empty" (click)="dislikeMovie(this.movie,$event)"
+            class="mat-button" mat-button id="{{movie.id}}b">
+            <i *ngIf="like_status_data[movie.id].like_status==false;else disliked_content" class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>
+            <ng-template #disliked_content>
+              <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+            </ng-template>
           </mat-button-toggle>
+          <ng-template #disliked_content_empty>
+            <mat-button-toggle value="dislike" (click)="dislikeMovie(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}b">
+              <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+              </mat-button-toggle>
+          </ng-template>
         </mat-button-toggle-group>
-        <mat-button-toggle value="addList" (click)="addList(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}c">
-          <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+
+        <mat-button-toggle *ngIf="bookmarked_data[movie.id]; else list_content_empty" value="addList" (click)="addList(this.movie,$event)"
+          class="mat-button" mat-button id="{{movie.id}}c">
+          <i *ngIf="bookmarked_data[movie.id].list_status;else list_content" class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
+          <ng-template #list_content>
+            <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+          </ng-template>
         </mat-button-toggle>
+        <ng-template #list_content_empty>
+          <mat-button-toggle value="addList" (click)="addList(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}c">
+            <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+          </mat-button-toggle>
+        </ng-template>
+
       </mat-card-actions>
+
     </mat-card>
 
   </div>
@@ -118,6 +149,9 @@
 </div>
 <br/>
 <br/>
+<ng-template>
+  Hello
+</ng-template>
 <!-- OLD CODE
   <b>Movie Details:</b><br>
   Movie id: {{data.results[0].id}}<br>

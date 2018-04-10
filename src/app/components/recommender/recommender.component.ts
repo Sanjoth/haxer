@@ -9,48 +9,26 @@ import * as flick from 'flickity';
   templateUrl: './recommender.component.html',
   styleUrls: ['./recommender.component.css']
 })
-export class RecommenderComponent implements OnInit{
+export class RecommenderComponent implements OnInit {
   similar: any;
   now_playing: any;
   trending_now: any;
   data: any;
   flk: any;
-  popular: any;
   get_similar: any;
   similar_last: any;
   similar_movie_name: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    let obj = JSON.parse(localStorage.getItem("LIKE_STATUS_DATA"));
-
-      let latest_timestamp=0;
-      let latest_movie_id:any;
-      let latest_title:any;
-
-    for(let value of Object.values(obj))
-    {
-      if(latest_timestamp < value["last_updated"])
-      {
-        latest_timestamp = value["last_updated"];
-        latest_movie_id = value;
-        latest_title = value["title"];
-      }
+    let latest_likes = localStorage.getItem("LATEST_LIKE");
+    if (latest_likes != undefined || latest_likes != null) {
+      let latest_like = latest_likes.split(",");
+      this.similar_last = latest_like[0];
+      this.similar_movie_name = latest_like[1];
     }
-    for (let id in obj) {
-      if(id["last_updated"] == latest_timestamp)
-      {
-        this.similar_last = id;
-      }
-    }
-    console.log(latest_movie_id);
-    console.log(latest_title);
-
-    this.similar_movie_name = latest_title;
-    // Object.values(obj)[0]["title"];
     this.getData();
-    
   }
 
   getData() {
@@ -58,13 +36,12 @@ export class RecommenderComponent implements OnInit{
     let lang = 'en-US';
     let characterHomeworld;
     let character = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/now_playing?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
-    if(this.similar_last != undefined)
-    {
-    characterHomeworld = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/' + this.similar_last + '/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&page=1');
+    if (this.similar_last != undefined) {
+      characterHomeworld = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/' + this.similar_last + '/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&page=1');
     }
-    else
-    {
-      characterHomeworld = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/21461/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
+    else {
+      this.similar_movie_name = 'Interstellar'
+      characterHomeworld = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/27205/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
     }
     let trending = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/popular?api_key=bd5e7f8161070f86bff1d8da34219f57&region=' + region + '&language=' + lang + '&page=1');
 
@@ -74,9 +51,7 @@ export class RecommenderComponent implements OnInit{
       this.similar = data[2];
       this.now_playing = data[1];
       window.setTimeout(() => { this.create_obj(); });
-      //this.create_obj();
     });
-
   }
 
   create_obj() {

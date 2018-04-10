@@ -79,7 +79,6 @@ app.get('/regUser', function (request, response) {
   var email = querys.query.email;
   var pass = querys.query.password1;
   var pos = {};
-  console.log("Hello");
   
   var seedData = {
     "uname": `${name}`,
@@ -143,7 +142,7 @@ app.post('/sendReactionData', function (req, res) {
       var jsonValidString = JSON.stringify(eval("(" + query + ")"));
       var query_object = JSON.parse(jsonValidString);
       // query_object = {$set: {tracking_data: tracking_data}};
-      console.log(query);
+      //console.log(query);
 
     }
     // Send to DB
@@ -188,7 +187,7 @@ app.post('/sendClicksData', function (req, res) {
       var jsonValidString = JSON.stringify(eval("(" + query + ")"));
       var query_object = JSON.parse(jsonValidString);
       // query_object = {$set: {additional_data: additional_data}};
-      console.log(query);
+      //console.log(query);
 
     }
     // Send to DB
@@ -230,7 +229,7 @@ app.post('/sendBookmarkData', function (req, res) {
       var jsonValidString = JSON.stringify(eval("(" + query + ")"));
       var query_object = JSON.parse(jsonValidString);
       // query_object = {$set: {additional_data: additional_data}};
-      console.log(query);
+      //console.log(query);
 
     }
     // Send to DB

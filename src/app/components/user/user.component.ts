@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
   server_data: any;
   movieid: number;
 
-  user_details:any;
+  user_details: any;
   local_send_tracking_data: any;
   local_send_additional_data: any;
   like_status_data = {};
@@ -49,6 +49,7 @@ export class UserComponent implements OnInit {
     37: "Western"
   };
   iconChk: string;
+  
 
   constructor(private http: HttpClient, private http_sendAdditionalData: HttpClient, private http_sendTrackingData: HttpClient, private http_getData: HttpClient) { }
 
@@ -73,7 +74,7 @@ export class UserComponent implements OnInit {
     localStorage.removeItem("LIKE_STATUS_DATA");
     localStorage.removeItem("BOOKMARKED_DATA");
     localStorage.removeItem("CLICKED_DATA");
-    let status:any;
+    let status: any;
     if (localStorage.getItem("UserEmail")) {
       status = this.getUserData();
     }
@@ -124,50 +125,90 @@ export class UserComponent implements OnInit {
 
   likeMovie(movie, event) {
     this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
-    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg\"></i>") {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-up fa-lg\"></i>";
+    /**
+     * If Already present
+     */
+
+    if (this.like_status_data[movie.id]) {
+      if (this.like_status_data[movie.id].like_status == true) {
+        this.JSONify_like(movie, null);
+      }
+      else if (this.like_status_data[movie.id].like_status == false || this.like_status_data[movie.id].like_status == null) {
+        this.JSONify_like(movie, true);
+      }
     }
     else {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg\"></i>";
+      localStorage.setItem("LATEST_LIKE", movie.id + ',' + movie.title);
+      this.JSONify_like(movie, true);
     }
-    this.JSONify_like(movie, true);
-    return true;
+
+    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg ng-star-inserter\"></i>") {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-up fa-lg ng-star-inserter\"></i>";
+    }
+    else {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg ng-star-inserter\"></i>";
+    }
   }
 
   dislikeMovie(movie, event) {
     this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
-    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg\"></i>") {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-down fa-lg\"></i>";
+
+    if (this.like_status_data[movie.id]) {
+      if (this.like_status_data[movie.id].like_status == false) {
+        this.JSONify_like(movie, null);
+      }
+      else if (this.like_status_data[movie.id].like_status == true || this.like_status_data[movie.id].like_status == null) {
+        this.JSONify_like(movie, false);
+      }
     }
     else {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg\"></i>";
+      this.JSONify_like(movie, false);
     }
-    this.JSONify_like(movie, false);
-    return true;
+
+    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg ng-star-inserter\"></i>") {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-down fa-lg ng-star-inserter\"></i>";
+    }
+    else {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg ng-star-inserter\"></i>";
+    }
   }
 
   trackClick(movie) {
-    this.JSONify_click(movie);
+    if (this.clicked_data[movie.id]) {
+      console.log("Already Exists");
+    }
+    else {
+      this.JSONify_click(movie);
+    }
   }
 
   addList(movie, event) {
     this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
-    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>") {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark fa-lg\"></i>";
-      this.JSONify_bookmark(movie, true);
+    if (this.bookmarked_data[movie.id]) {
+      if (this.bookmarked_data[movie.id].list_status == true) {
+        this.JSONify_bookmark(movie, null);
+      }
+      else if (this.bookmarked_data[movie.id].list_status == null) {
+        this.JSONify_bookmark(movie, true);
+      }
     }
     else {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg\"></i>";
-      this.JSONify_bookmark(movie, false);
+      this.JSONify_bookmark(movie, true);
     }
-    return true;
+
+        
+    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg ng-star-inserter\"></i>") {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark fa-lg ng-star-inserter\"></i>";
+    }
+    else {
+      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg ng-star-inserter\"></i>";
+    }
   }
 
   JSONify_bookmark(movie, list_status) {
     let movieid = movie.id;
     let genre = movie.genre_ids;
     let movie_name = movie.title;
-
     let date = new Date();
     let last_updated = date.getTime();
 
@@ -194,31 +235,21 @@ export class UserComponent implements OnInit {
 
     let date = new Date();
     let last_updated = date.getTime();
-
-    // If Movie is not present
-    if (this.clicked_data[movieid] === undefined) {
-      this.clicked_data[movieid] = { "last_updated": last_updated, "title": movie_name, "genre_ids": genre };
-      localStorage.setItem("CLICKED_DATA", JSON.stringify(this.clicked_data));
-      console.log("Clicked Data:");
-      console.log(this.clicked_data);
-      this.send_impressions_to_db();
-      console.log("Impressions Data:\n" + localStorage.getItem("BOOKMARKED_DATA"));
-    }
-    // If movie is already present
-    else {
-      console.log("Already Tracked");
-    }
+    this.clicked_data[movieid] = { "last_updated": last_updated, "title": movie_name, "genre_ids": genre };
+    localStorage.setItem("CLICKED_DATA", JSON.stringify(this.clicked_data));
+    console.log("Clicked Data:");
+    console.log(this.clicked_data);
+    this.send_impressions_to_db();
+    console.log("Impressions Data:\n" + localStorage.getItem("BOOKMARKED_DATA"));
   }
 
   JSONify_like(movie, like_status) {
     let movieid = movie.id;
+    console.log(like_status);
     let genre = movie.genre_ids;
     let movie_name = movie.title;
-
     let date = new Date();
     let last_updated = date.getTime();
-
-    // let abc = '{"$id":{"last_updated": "","genre_ids": [23,45,40],"like": true,"list": true }}';
     let check = this.check_duplicate_tracks(movieid);
 
     if (check == true) {
@@ -250,39 +281,21 @@ export class UserComponent implements OnInit {
     });
   }
 
-
   send_reactions_to_db() {
     this.http_sendTrackingData.post("/sendReactionData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("LIKE_STATUS_DATA") }).subscribe(data => {
       this.local_send_tracking_data = data;
       console.log("POST DATA REACTIOn:");
       console.log(data);
     });
-
   }
 
   check_duplicate_tracks(movieid) {
-
     if (this.like_status_data[movieid] === undefined) {
       return false;
     }
     else {
       return true;
     }
-
-  }
-
-  get_user_activity() {
-    let loginstr = `/getUser?email=${localStorage.getItem("UserEmail")}&pass=${localStorage.getItem("Password")}`;
-    this.http_getData.get<UserResponse>(loginstr).subscribe(data => {
-      this.server_data = data; // Assign local to global
-      if (data.ok == 1) {
-        localStorage.setItem("SERVER_TRACKING_DATA", `${this.server_data[0].tracking_data}`);
-        localStorage.setItem("SERVER_ADDITIONAL_DATA", `${this.server_data[0].additional_data}`);
-      }
-
-    });
-    console.log(localStorage.getItem("SERVER_TRACKING_DATA"));
-    console.log(localStorage.getItem("SERVER_ADDITIONAL_DATA"));
   }
 }
 
@@ -314,19 +327,3 @@ interface Results {
 interface GenreTy {
   [key: number]: string;
 }
-
-/* console.log(data);
-      console.log(data.page);
-      console.log(data.total_results);
-      console.log(data.total_pages);
-      console.log(data.results[0].id);
-      console.log(data.results[0].vote_average);
-      console.log(data.results[0].vote_count);
-      console.log(data.results[0].title);
-      console.log(data.results[0].overview);
-      console.log(data.results[0].poster_path);
-      console.log(data.results[0].genre_ids[0]);
-      console.log(data.results[0].genre_ids[1]);
-      console.log(data.results[0].genre_ids[2]);
-      console.log(data.results[0].popularity);
- */
