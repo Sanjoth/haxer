@@ -15,6 +15,15 @@
       </span>
     </div>
   </div>
+
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary active" (click)="setCat(true)">
+        <input type="radio" name="options" id="option1" autocomplete="off" checked> Movies
+      </label>
+      <label class="btn btn-secondary" (click)="setCat(false)">
+        <input type="radio" name="options" id="option2" autocomplete="off"> Tv Shows
+      </label>
+    </div>
 </div>
 <div *ngIf="data">
   <div style="text-align:center">
@@ -41,7 +50,8 @@
       <mat-card-header>
         <mat-card-title>
           <i class="fa fa-film fa-lg" aria-hidden="true"></i>
-          <b> {{movie.title}} </b>
+          <b *ngIf="movie_selected; else tvshow"> {{movie.title}} </b>
+          <ng-template #tvshow><b>{{movie.name}}</b></ng-template>
         </mat-card-title>
       </mat-card-header>
       <img *ngIf="movie.backdrop_path;else other_content" (click)="trackClick(movie)" mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}">
@@ -60,7 +70,8 @@
 
         <i>
           <span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">{{this.gen[item]}}
-            <span *ngIf="i < movie.genre_ids.length-1">,</span></span>.</i>
+            <span *ngIf="i < movie.genre_ids.length-1">,</span>
+          </span>.</i>
         <br>
         <span *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </span>
         <span *ngIf="movie.overview.length<140">{{movie.overview}} </span>
@@ -81,6 +92,15 @@
         <i class="fa fa-rocket fa-lg" aria-hidden="true"></i> {{movie.popularity}}
         <br>
       </mat-card-content>
+      <div style="text-align: center">
+        Search on: 
+        <a href="https://www.netflix.com/search?q={{movie.title || movie.name}}" target="_blank">Netflix</a>
+        <a href="https://www.primevideo.com/region/eu/search/ref=atv_nb_sr?phrase={{movie.title || movie.name}}" target="_blank"><i class="fa fa-play-circle" aria-hidden="true"></i> Prime Video</a>
+        <br>
+        <a href="http://solarmoviesc.com/search/{{movie.title || movie.name}}.html" target="_blank">SolarMovie</a>
+        <a *ngIf="movie.name" href="https://dwatchseries.to/search/{{movie.name}}" target="_blank">WatchSeries</a>
+
+      </div>
       <mat-card-actions style="text-align: center">
         <!--
             <button (click)="likeMovie(this.movie.id,this.movie.genre_ids,$event)" class="mat-button" mat-button id="{{movie.id}}a">
@@ -93,50 +113,45 @@
                 <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
               </button>  
              -->
-
-        <mat-button-toggle-group #group="matButtonToggleGroup">
-          <mat-button-toggle value="like" *ngIf="like_status_data[movie.id]; else liked_content_empty" (click)="likeMovie(this.movie,$event)"
-            class="mat-button" mat-button id="{{movie.id}}a">
-            <i *ngIf="like_status_data[movie.id].like_status;else liked_content" class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>
-            <ng-template #liked_content>
-              <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
-            </ng-template>
-          </mat-button-toggle>
-          <ng-template #liked_content_empty>
-            <mat-button-toggle value="like" (click)="likeMovie(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}a">
-              <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
-            </mat-button-toggle>
+        <button value="like" *ngIf="like_status_data[movie.id]; else liked_content_empty" (click)="likeMovie(this.movie,$event)"
+          class="mat-button" mat-button id="{{movie.id}}a">
+          <i *ngIf="like_status_data[movie.id].like_status;else liked_content" class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>
+          <ng-template #liked_content>
+            <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
           </ng-template>
+        </button>
+        <ng-template #liked_content_empty>
+          <button value="like" (click)="likeMovie(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}a">
+            <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+          </button>
+        </ng-template>
 
-          <mat-button-toggle value="dislike" *ngIf="like_status_data[movie.id]; else disliked_content_empty" (click)="dislikeMovie(this.movie,$event)"
-            class="mat-button" mat-button id="{{movie.id}}b">
-            <i *ngIf="like_status_data[movie.id].like_status==false;else disliked_content" class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>
-            <ng-template #disliked_content>
-              <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
-            </ng-template>
-          </mat-button-toggle>
-          <ng-template #disliked_content_empty>
-            <mat-button-toggle value="dislike" (click)="dislikeMovie(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}b">
-              <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
-              </mat-button-toggle>
+        <button value="dislike" *ngIf="like_status_data[movie.id]; else disliked_content_empty" (click)="dislikeMovie(this.movie,$event)"
+          class="mat-button" mat-button id="{{movie.id}}b">
+          <i *ngIf="like_status_data[movie.id].like_status==false;else disliked_content" class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>
+          <ng-template #disliked_content>
+            <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
           </ng-template>
-        </mat-button-toggle-group>
+        </button>
+        <ng-template #disliked_content_empty>
+          <button value="dislike" (click)="dislikeMovie(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}b">
+            <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+          </button>
+        </ng-template>
 
-        <mat-button-toggle *ngIf="bookmarked_data[movie.id]; else list_content_empty" value="addList" (click)="addList(this.movie,$event)"
-          class="mat-button" mat-button id="{{movie.id}}c">
+        <button *ngIf="bookmarked_data[movie.id]; else list_content_empty" value="addList" (click)="addList(this.movie,$event)" class="mat-button"
+          mat-button id="{{movie.id}}c">
           <i *ngIf="bookmarked_data[movie.id].list_status;else list_content" class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
           <ng-template #list_content>
             <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
           </ng-template>
-        </mat-button-toggle>
+        </button>
         <ng-template #list_content_empty>
-          <mat-button-toggle value="addList" (click)="addList(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}c">
+          <button style="margin-bottom: 20px;" value="addList" (click)="addList(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}c">
             <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
-          </mat-button-toggle>
+          </button>
         </ng-template>
-
       </mat-card-actions>
-
     </mat-card>
 
   </div>

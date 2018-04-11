@@ -1,3 +1,4 @@
+<div id="header">
 <div>
   <mat-toolbar id="cont" color="accent">
     <div id="left">
@@ -13,8 +14,8 @@
     </div>
   </mat-toolbar>
   <mat-menu x-position="before" #menu="matMenu">
+      <button mat-menu-item routerLink="/about" routerLinkActive="active">About Us</button>
     <button mat-menu-item routerLink="/settings" routerLinkActive="active">Settings</button>
-    <button mat-menu-item routerLink="/about" routerLinkActive="active">About Us</button>
     <button mat-menu-item routerLink="/" *ngIf="signIn" (click)="logOut()">Sign out</button>
   </mat-menu>
 
@@ -23,7 +24,14 @@
   <a *ngIf="signIn" routerLink="/profile" routerLinkActive="active">{{Name}}</a>
   <a *ngIf="!signIn" routerLink="/login" routerLinkActive="active">Sign in</a>
   <a *ngIf="!signIn" routerLink="/signup" routerLinkActive="active">Register</a>
-  <a *ngIf="signIn" routerLink="/user/:id" routerLinkActive="active">My List</a>
   <a routerLink="/recom" routerLinkActive="active">Recommendations</a>
   <a routerLink="/discover" routerLinkActive="active">Discover</a>
+
+  <div class="container" id="haxinfo">
+    <br>
+      <img width="45%" src="/assets/haxer.png">
+      <p>Version 5.1<br>
+&copy; 2017-2018 Haxèr, OSS</p>
+  </div>
+</div>
 </div>

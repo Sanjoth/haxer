@@ -11,8 +11,7 @@ export class HeaderComponent implements OnInit {
   userEmail: string;
   Name: string;
   signIn: boolean;
-
-
+ 
   constructor() {
   }
 
@@ -29,12 +28,11 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-
   toggNav() {
+
     if (document.getElementById("mySidenav").style.width == "245px") {
       document.getElementById("mySidenav").style.width = "0";
       document.getElementById("overlay").style.display = "none";
-
     }
     else {
       document.getElementById("mySidenav").style.width = "245px";

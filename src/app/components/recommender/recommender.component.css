@@ -1,11 +1,17 @@
-.carousel {
-  background: black;
+.slider-section{
+  margin-left: 20px;
 }
-
+.carousel, .arry, .larry {
+  background-color: black;
+}
+.flickity-viewport {
+  background-color: black !important;
+}
 .carousel-cell {
+  background-color: black;
   width: 185px;
   height: 278px;
-  margin-right: 3px;
+  margin-right: 4px;
   border-radius: 5px;
 }
 

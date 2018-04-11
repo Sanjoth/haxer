@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
   blank: object;
   server_data: any;
   movieid: number;
+  movie_selected=true;
 
   user_details: any;
   local_send_tracking_data: any;
@@ -46,12 +47,25 @@ export class UserComponent implements OnInit {
     10770: "TV Movie",
     53: "Thriller",
     10752: "War",
-    37: "Western"
+    37: "Western",
+    10765: "Sci-Fi & Fantasy",
+    10768: "War & Politics",
+    10767: "Talk",
+    10766: "Soap",
+    10764: "Reality",
+    10763: "News",
+    10762: "Kids",
+    10759: "Action & Adventure"
   };
   iconChk: string;
-  
 
   constructor(private http: HttpClient, private http_sendAdditionalData: HttpClient, private http_sendTrackingData: HttpClient, private http_getData: HttpClient) { }
+
+  setCat(bool)
+  {
+    this.movie_selected = bool;
+    this.data = null;
+  }
 
   sendReq(query, event) {
     /**
@@ -64,7 +78,14 @@ export class UserComponent implements OnInit {
       }
     }
     else {
-      this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1&include_adult=true';
+      if(this.movie_selected)
+      {
+        this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1&include_adult=true';
+      }
+      else{
+        this.tmdb="https://api.themoviedb.org/3/search/tv?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&query="+ query +"&page=1";
+      }
+      //this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1&include_adult=true';
       this.http.get<UserResponse>(this.tmdb).subscribe(data => {
         this.data = data; // Assign local to global
       });

@@ -12,9 +12,13 @@ input {
 .btn.btn-secondary {
     background-color: #545b62;
 }
-
+.form-check-label {
+    color: white !important;
+}
 label {
-    color:white !important;
+    color:black;
+    font-size: 14px;
+    margin: 0px;
 }
 
 .btn-group {

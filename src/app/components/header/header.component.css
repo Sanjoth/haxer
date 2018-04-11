@@ -11,7 +11,6 @@ mat-toolbar{
     top: 0;
     right: 0;
     left: 0;
-    z-index: 9;
     color: white; /*Text Color of Nav bar Text*/
     font-family: 'Source Sans Pro', sans-serif !important;
 }
@@ -40,6 +39,13 @@ mat-toolbar{
     float:right;
 }
 
-#mySidenav{
-    z-index: 3 !important;
+#haxinfo {
+    text-align: center;
+    background-color: white;
+    position: absolute;
+    bottom: 0px;
+}
+
+p{
+    color: black;
 }

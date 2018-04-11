@@ -1,6 +1,7 @@
-<br />
+<br /> <br />
+<div class="slider-section">
 <div *ngIf="now_playing">
-  <h2>In Cinemas</h2>
+  <h2>Now Showing</h2>
   <div class="larry" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 5500, "pauseAutoPlayOnHover": false}'>
     <div class="carousel-cell" *ngFor="let movie of now_playing.results; let myIndex = index">
       <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
@@ -25,3 +26,5 @@
     </div>
   </div>
 </div>
+</div>
+<br><br>

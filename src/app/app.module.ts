@@ -28,6 +28,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { RecommenderComponent } from './components/recommender/recommender.component';
 import { DiscoverComponent } from './components/discover/discover.component';
 import { SeedDataComponent } from './components/seed-data/seed-data.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const appRoutes: Routes = [
   { path: '', component: UserComponent },
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
   { path: 'about', component: AboutUsComponent },
   { path: 'discover', component: DiscoverComponent },
   { path: 'newuser', component: SeedDataComponent},
+  { path: 'settings', component: SettingsComponent},
   { path: '**', component: PageNotFoundComponent }
   /*{
     path: 'heroes',
@@ -66,7 +69,9 @@ const appRoutes: Routes = [
     AboutUsComponent,
     RecommenderComponent,
     DiscoverComponent,
-    SeedDataComponent
+    SeedDataComponent,
+    SettingsComponent,
+    ProfileComponent
   ],
   imports: [
     RouterModule.forRoot(
