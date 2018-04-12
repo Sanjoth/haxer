@@ -52,7 +52,20 @@
 
 footer{
   background-color: black !important;
+  margin-top: 100px;
 }
+
+@media screen and (max-width: 307px) {
+  footer {
+      position: relative !important;
+  }
+  }
+
+  @media screen and (max-height: 420px) {
+    footer {
+        position: relative !important;
+    }
+    }
 
 .text-muted {
   color: white !important;
@@ -114,8 +127,6 @@ mat-toolbar-row {
   font-family: 'Source Sans Pro', sans-serif !important;
   font-size: 17px !important;
 }
-
-
 
 /* */
 .flickity-page-dots {

@@ -10,17 +10,17 @@
     <input type="text" autocomplete="off" [(ngModel)]="texts" class="form-control" id="query" placeholder="Search" (keyup)="sendReq(query.value,$event)"
       aria-label="Search" aria-describedby="Search" name="query" #query>
     <div class="input-group-append">
-      <span class="input-group-text" id="basic-addon2">
+      <button class="input-group-text" id="basic-addon2" (click)="sendReq(query.value,$event)">
         <i class="fa fa-search fa-lg"></i>
-      </span>
+      </button>
     </div>
   </div>
 
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-secondary active" (click)="setCat(true)">
-        <input type="radio" name="options" id="option1" autocomplete="off" checked> Movies
+      <label class="btn btn-dark active" (click)="setCat(true, query.value, $event)">
+        <input type="radio" name="options" id="option1" autocomplete="off" checked > Movies
       </label>
-      <label class="btn btn-secondary" (click)="setCat(false)">
+      <label class="btn btn-dark" (click)="setCat(false, query.value, $event)">
         <input type="radio" name="options" id="option2" autocomplete="off"> Tv Shows
       </label>
     </div>
@@ -61,7 +61,7 @@
       <mat-card-content (click)="trackClick(movie.id,movie.genre_ids)">
         <div class="d-flex justify-content-between">
           <div>
-            <i class="fa fa-calendar" aria-hidden="true"></i> {{movie.release_date}}
+            <i class="fa fa-calendar" aria-hidden="true"></i> {{movie.release_date || movie.first_air_date}}
           </div>
           <div>
             <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average}}

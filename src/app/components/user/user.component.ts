@@ -21,7 +21,6 @@ export class UserComponent implements OnInit {
 
   user_details: any;
   local_send_tracking_data: any;
-  local_send_additional_data: any;
   like_status_data = {};
   bookmarked_data = {};
   clicked_data = {};
@@ -61,10 +60,11 @@ export class UserComponent implements OnInit {
 
   constructor(private http: HttpClient, private http_sendAdditionalData: HttpClient, private http_sendTrackingData: HttpClient, private http_getData: HttpClient) { }
 
-  setCat(bool)
+  setCat(bool, query, event)
   {
     this.movie_selected = bool;
     this.data = null;
+    this.sendReq(query,event);
   }
 
   sendReq(query, event) {

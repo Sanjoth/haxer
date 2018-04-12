@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { AlertModule } from 'ngx-alerts';
 
 
 // Import HttpClientModule from @angular/common/http
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
   { path: 'about', component: AboutUsComponent },
   { path: 'discover', component: DiscoverComponent },
   { path: 'newuser', component: SeedDataComponent},
+  { path: 'profile', component: ProfileComponent},
   { path: 'settings', component: SettingsComponent},
   { path: '**', component: PageNotFoundComponent }
   /*{
@@ -86,7 +88,8 @@ const appRoutes: Routes = [
     MaterialModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    AlertModule.forRoot({maxMessages: 3, timeout: 4000})
   ],
   providers: [],
   bootstrap: [AppComponent]

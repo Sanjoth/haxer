@@ -27,5 +27,5 @@ label {
 }
 
 .form-control {
-    width: 80%;
+    max-width: 100%;
 }

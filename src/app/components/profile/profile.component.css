@@ -1,0 +1,13 @@
+label {
+    font-size: 18px;
+    color: black;
+}
+
+p, li, td, text{
+    color:black;
+}
+
+footer {
+    margin-top: 0px !important;
+}
+

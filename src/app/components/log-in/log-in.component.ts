@@ -35,9 +35,7 @@ export class LogInComponent implements OnInit {
         localStorage.setItem("Name", `${this.data[0].uname}`);
         localStorage.setItem("Password", `${this.data[0].password}`);
         console.log(localStorage.getItem("UserEmail"));
-
         window.location.href = "/";
-
       }
       else {
         alert("The username or password is invalid !");
