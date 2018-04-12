@@ -21,6 +21,10 @@ export class LogInComponent implements OnInit {
    */
   }
 
+  forgot() 
+  {
+    alert("Feature currently in beta");
+  }
   sendReq(email, pass) {
     this.loginstr = `/getUser?email=${email}&pass=${pass}`;
     this.http.get<UserResponse>(this.loginstr).subscribe(data => {
