@@ -17,28 +17,11 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
   </noscript>
-  <script>
-    function defer_css(){
-      var font = document.createElement('link');
-      var font2 = document.createElement('link');
-      var font3 = document.createElement('link');
-      font.type = 'text/css';
-      font3.type = 'text/css';
-      font.rel = 'stylesheet';
-      font2.rel = 'stylesheet';
-      font3.rel = 'stylesheet';
-      font.href = 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css';
-      font2.href = 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
-      font3.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
-      var s = document.getElementsByTagName('link')[0];
-      var t = document.getElementsByTagName('link')[0];
-      var p = document.getElementsByTagName('link')[0];
-      s.parentNode.insertBefore(font, s);
-      t.parentNode.insertBefore(font2, t);
-      p.parentNode.insertBefore(font3, p);};
-  </script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
-  <!-- Google Analytics --><script defer src="https://www.googletagmanager.com/gtag/js?id=UA-73846583-5"></script><script defer src="/assets/ga.js"></script>
+  <!-- Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-73846583-5"></script><script defer src="/assets/ga.js"></script>
 </head>
-<body id="body" onload="defer_css()"><app-root></app-root></body>
+<body id="body"><app-root></app-root>  
+<script>
+(function () {var boots_css=document.createElement('link');var font_ssp=document.createElement('link');var fa_min=document.createElement('link');boots_css.type='text/css';fa_min.type='text/css';boots_css.rel='stylesheet';font_ssp.rel='stylesheet';fa_min.rel='stylesheet';boots_css.href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css';font_ssp.href='https://fonts.googleapis.com/css?family=Source+Sans+Pro';fa_min.href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';var s=document.getElementsByTagName('link')[0];var t=document.getElementsByTagName('link')[0];var p=document.getElementsByTagName('link')[0];s.parentNode.insertBefore(boots_css,s);t.parentNode.insertBefore(font_ssp,t);p.parentNode.insertBefore(fa_min,p)}());
+</script></body>
 </html>
