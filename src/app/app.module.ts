@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { AlertModule } from 'ngx-alerts';
+import { environment } from '../environments/environment';
 
 
 // Import HttpClientModule from @angular/common/http
@@ -89,7 +91,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatButtonToggleModule,
-    AlertModule.forRoot({maxMessages: 3, timeout: 4000})
+    AlertModule.forRoot({maxMessages: 3, timeout: 4000}),
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [],
   bootstrap: [AppComponent]
