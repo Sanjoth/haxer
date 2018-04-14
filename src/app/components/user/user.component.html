@@ -10,7 +10,7 @@
     <input type="text" autocomplete="off" [(ngModel)]="texts" class="form-control" id="query" placeholder="Search" (keyup)="sendReq(query.value,$event)"
       aria-label="Search" aria-describedby="Search" name="query" #query>
     <div class="input-group-append">
-      <button class="input-group-text" id="basic-addon2" (click)="sendReq(query.value,$event)">
+      <button class="btn-light" id="basic-addon2" (click)="sendReq(query.value,$event)">
         <i class="fa fa-search fa-lg"></i>
       </button>
     </div>

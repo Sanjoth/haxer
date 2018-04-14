@@ -1,9 +1,14 @@
 input {
     display: inline-block;
-    position: inherit;
+    position: relative;
 }
 
-.btn.btn-secondary.focus.active {
+a, a:active, a:focus, a:link{
+    text-decoration: none;
+    background-color: inherit !important;
+}
+
+/* .btn.btn-secondary.focus.active {
     background-color: #545b62;
 }
 .btn.btn-secondary.focus {
@@ -11,7 +16,7 @@ input {
 }
 .btn.btn-secondary {
     background-color: #545b62;
-}
+} */
 .form-check-label {
     color: white !important;
 }
@@ -20,6 +25,37 @@ label {
     font-size: 14px;
     margin: 0px;
 }
+
+#listbox {
+    width: 155px;
+    text-align: center;
+    
+}
+
+#before, #after {
+    max-width: 90%;
+}
+
+input {
+    background-color: #f0f2f4 !important;
+border-color:#f8f9fa !important;
+}
+
+
+.input-group-text {
+background-color: #f0f2f4 !important;
+border-color:#f8f9fa !important;
+}
+
+#lang {
+    border-width: inherit;
+    width: 155px;
+}
+
+#haxthedb {
+    z-index: 0;
+}
+
 
 .btn-group {
     margin-top: 10px;

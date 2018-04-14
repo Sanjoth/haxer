@@ -66,7 +66,7 @@ body{
 		padding-top: 60px;
 }
 .wrapper {
-    width: 450px;
+    max-width: 450px;
     margin: auto;
     text-align: center;
     padding: 3% 0px;
@@ -208,9 +208,9 @@ span.fa.fa-facebook:hover {
     font-size: 26px;
 
 }
-.wrapper {
+/* .wrapper {
     width: 370px;
-}
+} */
 
 }
 @media screen and (max-width: 414px){
@@ -219,9 +219,9 @@ span.fa.fa-facebook:hover {
 	letter-spacing: 3px;
 	    margin-bottom: 6%;
 }
-.wrapper {
+/* .wrapper {
     width: 320px;
-}
+} */
 .w3ls-form {
 	    width: 300px;
 }
@@ -252,9 +252,9 @@ span.fa.fa-facebook:hover {
 .agile-login h1 {
     font-size: 23px;
 }
-.wrapper {
+/* .wrapper {
     width: 280px;
-}
+} */
 .wrapper h2 {
     font-size: 16px;
     margin-bottom: 10px;

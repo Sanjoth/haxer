@@ -35,10 +35,9 @@ export class LogInComponent implements OnInit {
         alert("Welcome " + data[0].uname + " !");
         //Initialize local Storage for Email
 
-        localStorage.setItem("UserEmail", `${this.data[0].email}`);
+        localStorage.setItem("Email", `${this.data[0].email}`);
         localStorage.setItem("Name", `${this.data[0].uname}`);
         localStorage.setItem("Password", `${this.data[0].password}`);
-        console.log(localStorage.getItem("UserEmail"));
         window.location.href = "/";
       }
       else {

@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   blank: object;
   server_data: any;
   movieid: number;
-  movie_selected=true;
+  movie_selected = true;
 
   user_details: any;
   local_send_tracking_data: any;
@@ -60,11 +60,10 @@ export class UserComponent implements OnInit {
 
   constructor(private http: HttpClient, private http_sendAdditionalData: HttpClient, private http_sendTrackingData: HttpClient, private http_getData: HttpClient) { }
 
-  setCat(bool, query, event)
-  {
+  setCat(bool, query, event) {
     this.movie_selected = bool;
     this.data = null;
-    this.sendReq(query,event);
+    this.sendReq(query, event);
   }
 
   sendReq(query, event) {
@@ -72,18 +71,17 @@ export class UserComponent implements OnInit {
      * Send HTTP GET request for every valid keypress
      */
     var key = event.keyCode || event.charCode;
-    if (query == '' || query === undefined) {
-      if (key == 8 || key == 46) {
+    if (query === '' || query === undefined) {
+      if (key === 8 || key === 46) {
         this.data = this.blank; //Clearing Search Box
       }
     }
     else {
-      if(this.movie_selected)
-      {
+      if (this.movie_selected) {
         this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1&include_adult=true';
       }
-      else{
-        this.tmdb="https://api.themoviedb.org/3/search/tv?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&query="+ query +"&page=1";
+      else {
+        this.tmdb = "https://api.themoviedb.org/3/search/tv?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&query=" + query + "&page=1";
       }
       //this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1&include_adult=true';
       this.http.get<UserResponse>(this.tmdb).subscribe(data => {
@@ -96,7 +94,7 @@ export class UserComponent implements OnInit {
     localStorage.removeItem("BOOKMARKED_DATA");
     localStorage.removeItem("CLICKED_DATA");
     let status: any;
-    if (localStorage.getItem("UserEmail")) {
+    if (localStorage.getItem("Email")) {
       status = this.getUserData();
     }
     else {
@@ -126,7 +124,7 @@ export class UserComponent implements OnInit {
   }
 
   getUserData() {
-    let loginstr = '/getUserDetails?email=' + localStorage.getItem("UserEmail");
+    let loginstr = '/getUserDetails?email=' + localStorage.getItem("Email");
     this.http.get<UserResponse>(loginstr).subscribe(data => {
       this.user_details = data; // Assign local to global
       console.log(data);
@@ -217,7 +215,7 @@ export class UserComponent implements OnInit {
       this.JSONify_bookmark(movie, true);
     }
 
-        
+
     if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg ng-star-inserter\"></i>") {
       document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark fa-lg ng-star-inserter\"></i>";
     }
@@ -287,7 +285,7 @@ export class UserComponent implements OnInit {
   }
 
   send_impressions_to_db() {
-    this.http_sendTrackingData.post("/sendClicksData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("CLICKED_DATA") }).subscribe(data => {
+    this.http_sendTrackingData.post("/sendClicksData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("CLICKED_DATA") }).subscribe(data => {
       this.local_send_clicks_data = data;
       console.log("POST DATA CLICKS:");
       console.log(data);
@@ -295,7 +293,7 @@ export class UserComponent implements OnInit {
   }
 
   send_bookmarks_to_db() {
-    this.http_sendTrackingData.post("/sendBookmarkData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("BOOKMARKED_DATA") }).subscribe(data => {
+    this.http_sendTrackingData.post("/sendBookmarkData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("BOOKMARKED_DATA") }).subscribe(data => {
       this.local_send_bookmark_data = data;
       console.log("POST DATA BOOKMARKS:");
       console.log(data);
@@ -303,7 +301,7 @@ export class UserComponent implements OnInit {
   }
 
   send_reactions_to_db() {
-    this.http_sendTrackingData.post("/sendReactionData", { "user_id": localStorage.getItem("UserEmail"), "JSON_String": localStorage.getItem("LIKE_STATUS_DATA") }).subscribe(data => {
+    this.http_sendTrackingData.post("/sendReactionData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("LIKE_STATUS_DATA") }).subscribe(data => {
       this.local_send_tracking_data = data;
       console.log("POST DATA REACTIOn:");
       console.log(data);
