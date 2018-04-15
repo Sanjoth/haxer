@@ -17,13 +17,13 @@
   </div>
 
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-dark active" (click)="setCat(true, query.value, $event)">
-        <input type="radio" name="options" id="option1" autocomplete="off" checked > Movies
-      </label>
-      <label class="btn btn-dark" (click)="setCat(false, query.value, $event)">
-        <input type="radio" name="options" id="option2" autocomplete="off"> Tv Shows
-      </label>
-    </div>
+    <label class="btn btn-dark active" (click)="setCat(true, query.value, $event)">
+      <input type="radio" name="options" id="option1" autocomplete="off" checked> Movies
+    </label>
+    <label class="btn btn-dark" (click)="setCat(false, query.value, $event)">
+      <input type="radio" name="options" id="option2" autocomplete="off"> Tv Shows
+    </label>
+  </div>
 </div>
 <div *ngIf="data">
   <div style="text-align:center">
@@ -51,7 +51,9 @@
         <mat-card-title>
           <i class="fa fa-film fa-lg" aria-hidden="true"></i>
           <b *ngIf="movie_selected; else tvshow"> {{movie.title}} </b>
-          <ng-template #tvshow><b>{{movie.name}}</b></ng-template>
+          <ng-template #tvshow>
+            <b>{{movie.name}}</b>
+          </ng-template>
         </mat-card-title>
       </mat-card-header>
       <img *ngIf="movie.backdrop_path;else other_content" (click)="trackClick(movie)" mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}">
@@ -93,9 +95,10 @@
         <br>
       </mat-card-content>
       <div style="text-align: center">
-        Search on: 
+        Search on:
         <a href="https://www.netflix.com/search?q={{movie.title || movie.name}}" target="_blank">Netflix</a>
-        <a href="https://www.primevideo.com/region/eu/search/ref=atv_nb_sr?phrase={{movie.title || movie.name}}" target="_blank"><i class="fa fa-play-circle" aria-hidden="true"></i> Prime Video</a>
+        <a href="https://www.primevideo.com/region/eu/search/ref=atv_nb_sr?phrase={{movie.title || movie.name}}" target="_blank">
+          <i class="fa fa-play-circle" aria-hidden="true"></i> Prime Video</a>
         <br>
         <a href="http://solarmoviesc.com/search/{{movie.title || movie.name}}.html" target="_blank">SolarMovie</a>
         <a *ngIf="movie.name" href="https://dwatchseries.to/search/{{movie.name}}" target="_blank">WatchSeries</a>

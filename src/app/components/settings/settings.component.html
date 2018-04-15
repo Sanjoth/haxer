@@ -1,6 +1,17 @@
 <br>
 <div class="container" id="search" style="text-align:center">
 <h2>Settings</h2>
+<br>
+<h3>Background Settings</h3>
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-dark active" (click)="setBlack(true)">
+      <input type="radio" name="options" id="option1" autocomplete="off" checked> Remove Image
+    </label>
+    <label class="btn btn-dark" (click)="setBlack(false)">
+      <input type="radio" name="options" id="option2" autocomplete="off"> Keep Image
+    </label>
+  </div>
+</div>
 <div class="input-group">
     <textarea class="form-control" aria-label="With textarea"></textarea>
     <div class="input-group-prepend">
@@ -12,4 +23,4 @@
       <button type="button" class="btn btn-warning" (click)="deleteData()">Delete Tracked Data</button>
       <button type="button" class="btn btn-danger" (click)="deleteAccount()">Delete Account</button>
   </div>
-</div>
+

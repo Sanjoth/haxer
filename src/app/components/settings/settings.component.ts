@@ -7,8 +7,21 @@ import { AlertService } from 'ngx-alerts'
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-
+  background_image:any;
   constructor(public alert: AlertService) { }
+
+  setBlack(bool)
+  {
+    if(bool === true)
+    {
+    this.background_image = document.getElementById("body").style.backgroundImage;
+    document.getElementById("body").style.backgroundColor = "black";
+    document.getElementById("body").style.backgroundImage = "none";
+    }
+    else {
+      document.getElementById("body").style.backgroundImage = this.background_image;
+    }
+  }
 
   ngOnInit() {
   }

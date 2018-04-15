@@ -215,7 +215,11 @@ export class ProfileComponent implements OnInit, OnDestroy{
   {
     this.show_like = bool;
   }
-  constructor() { }
+  constructor() { 
+    this.background_image = document.getElementById("body").style.backgroundImage;
+    document.getElementById("body").style.backgroundColor = "#e9ecef";
+    document.getElementById("body").style.backgroundImage = "none";
+  }
 
   ngOnInit() {
     this.name = localStorage.getItem("Name");
@@ -224,9 +228,8 @@ export class ProfileComponent implements OnInit, OnDestroy{
     this.reactions_data = Object.values(JSON.parse(this.reactions_data));
     this.bookmarked_data = Object.values(JSON.parse(this.bookmarked_data));
 
-    this.background_image = document.getElementById("body").style.backgroundImage;
-    document.getElementById("body").style.backgroundColor = "#e9ecef";
-    document.getElementById("body").style.backgroundImage = "none";
+    
+
 
     this.lang_keys = Object.keys(this.lang_object);
     this.lang_values = Object.values(this.lang_object);
