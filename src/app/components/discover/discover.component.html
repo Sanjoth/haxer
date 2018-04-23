@@ -1,84 +1,74 @@
 <br>
 <div class="container" id="search" style="text-align:center">
-  <h2>Discover Movies
-    <sub> beta</sub>
-  </h2>
-  <br>
-  <div class="container" style="text-align:center;">
-    <div class="dropdown">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Keywords" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-dark" type="button" id="haxthedb" (onclick)="hax()">Hax the dB</button>
-        </div>
-      </div>
+  <h3>Discover Movies
+  </h3>
+  <div class="btn-group">
+    <button class="btn btn-dark active dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      Sort By
+    </button>
+    <div class="dropdown-menu" ria-labelledby="dropdownMenuButton">
+      <label *ngFor="let sort of sortby_keys; let myIndex = index" class="dropdown-item" (click)="sortFix(sort)">{{sortby[sort]}}
+      </label>
     </div>
-    <div class="btn-group">
-      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Sort By
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a *ngFor="let sort of sortby_keys; let myIndex = index" class="dropdown-item">
-          <label>{{sortby[sort]}}</label>
-        </a>
-      </div>
+  </div>
+  <div class="btn-group">
+    <button class="btn btn-dark active dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      Include Genres
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <label *ngFor="let gen of genres_incl" class="dropdown-item">
+        <input style="margin-left:2px;" type="checkbox" class="form-check-input" value="{{gen}}" [(ngModel)]="gen.checked">&nbsp; {{gen.text}}</label>
     </div>
-    <div class="btn-group">
-      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Include Genres
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <label *ngFor="let gen of genre_keys" class="dropdown-item">
-          <input style="margin-left:2px;" type="checkbox" class="form-check-input" value="{{gen}}">&nbsp; {{genres[gen]}}</label>
-      </div>
+  </div>
+  <div class="btn-group">
+    <button class="btn btn-dark active dropdown-toggle" type="button" id="dropdownMenuButton3" aria-haspopup="true" data-toggle="dropdown"
+      aria-expanded="false">
+      Exclude Genres
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <label *ngFor="let gen of genres_excl" class="dropdown-item">
+        <input style="margin-left:2px;" type="checkbox" class="form-check-input" value="{{gen}}" [(ngModel)]="gen.checked">&nbsp; {{gen.text}}</label>
     </div>
-    <div class="btn-group">
-      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton3" aria-haspopup="true" data-toggle="dropdown"
-        aria-expanded="false">
-        Exclude Genres
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <label *ngFor="let gen of genre_keys" class="dropdown-item">
-          <input style="margin-left:2px;" type="checkbox" class="form-check-input" value="{{gen}}">&nbsp; {{genres[gen]}}</label>
-      </div>
 
-    </div>
-    <div class="btn-group">
-      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Primary Release Date Range
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item">
-         <label>From:</label>
-          <input class="form-control" id="before" type="date" value="{{before_date}}">
-          <br><label style="margin-left:16px;">To:</label>
+  </div>
+  <div class="btn-group">
+    <button class="btn btn-dark active dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      Primary Release Date Range
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item">
+        <label>From:</label>
+        <input class="form-control" id="before" #before type="date">
+        <br>
+        <label style="margin-left:16px;">To:</label>
 
-          <input class="form-control" id="after" type="date" style="margin-right:20px">
-        </a>
-      </div>
+        <input class="form-control" id="after" #after type="date" value="{{before_date}}" style="margin-right:20px">
+      </a>
     </div>
-    <div class="btn-group">
-      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Original Language
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span id="listbox" class="input-group-text"><label style="margin-left:30px;"></label>Language</span>
-              </div>
-              <input id="lang" list="languages" name="language">
+  </div>
+  <div class="btn-group">
+    <button class="btn btn-dark active dropdown-toggle" type="button" id="dropdownMenuButton5" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      Original Language
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span id="listbox" class="input-group-text">
+              <label style="margin-left:30px;"></label>Language</span>
+          </div>
+          <input list="languages" name="language" #lang>
           <datalist id="languages">
             <option *ngFor="let lang of lang_keys" value="{{lang}}">
           </datalist>
-            </div>
-          </a>
         </div>
-      <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      </a>
+    </div>
+    <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <div>
           <label style="margin-left: 50px;">Language</label>
           <input style="margin-left: 3px;" list="languages" name="language">
@@ -87,50 +77,152 @@
           </datalist>
         </div>
       </div> -->
-    </div>
-    <div class="btn-group">
-      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        IMdB Rating
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon3">Greater than</span>
-            </div>
-            <input type="number" max="9" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+  </div>
+  <div class="btn-group">
+    <button class="btn btn-dark active dropdown-toggle" type="button" id="dropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      IMdB Rating
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Greater than</span>
           </div>
-        </a>
-      </div>
-    </div>
-    <div class="btn-group">
-      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton7" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Vote Count
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon3">Greater than</span>
-            </div>
-            <input type="number" max="10000000000" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-          </div>
-        </a>
-      </div>
-    </div>
-    <br>
-    <br>
-    <div class="form-check form-check-inline">
-      <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="false"> Include 18+ Movies
-      </label>
-    </div>
-    <div class="form-check form-check-inline">
-      <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="false"> Exclude Watched Movies
-      </label>
+          <input type="number" max="9" class="form-control" #rating aria-describedby="basic-addon3">
+        </div>
+      </a>
     </div>
   </div>
+  <div class="btn-group">
+    <button class="btn btn-dark active dropdown-toggle" type="button" id="dropdownMenuButton7" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      Vote Count
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Greater than</span>
+          </div>
+          <input type="number" max="10000000000" class="form-control" #vote_count aria-describedby="basic-addon3">
+        </div>
+      </a>
+    </div>
+  </div>
+  <br>
+  <div class="form-check form-check-inline" style="margin-top: 10px">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="false"> 16+ Movies
+    </label>
+  </div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="false"> Watched Movies
+    </label>
+  </div>
+  <br>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-dark active" (click)="setCat(true, $event)">
+      <input type="radio" name="options" id="option1" autocomplete="off">Movies
+    </label>
+    <label class="btn btn-dark" (click)="setCat(false, $event)">
+      <input type="radio" name="options" id="option2" autocomplete="off" checked> TV Shows
+    </label>
+  </div>
+  <div style="margin-top:10px" (click)="hax(vote_count.value, lang.value, rating.value, before.value, after.value)">
+    <button class="btn btn-dark btn-lg active" type="button" id="haxthedb">Hax the dB</button>
+  </div>
+
 </div>
+
+
+<div *ngIf="data">
+  <div style="text-align:center">
+    <h5>Search Details</h5>
+    <table>
+      <tr>
+        <th>Page </th>
+        <th>Total Results</th>
+        <th>Total Pages</th>
+        <th>Results per page</th>
+      </tr>
+      <tr>
+        <td>{{data.page}}</td>
+        <td>{{data.total_results}}</td>
+        <td>{{data.total_pages}}</td>
+        <td>{{data.results.length}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="card-group">
+    <mat-card class="example-card" *ngFor="let movie of data.results; let myIndex = index">
+      <mat-card-header>
+        <mat-card-title>
+          <i class="fa fa-film fa-lg" aria-hidden="true"></i>
+          <b *ngIf="movie_selected; else tvshow"> {{movie.title}} </b>
+          <ng-template #tvshow>
+            <b>{{movie.name}}</b>
+          </ng-template>
+        </mat-card-title>
+      </mat-card-header>
+      <img *ngIf="movie.backdrop_path;else other_content" (click)="trackClick(movie)" mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}">
+      <ng-template #other_content>
+        <img (click)="trackClick(movie)" mat-card-image src="/assets/nf.png">
+      </ng-template>
+      <mat-card-content (click)="trackClick(movie.id,movie.genre_ids)">
+        <div class="d-flex justify-content-between">
+          <div>
+            <i class="fa fa-calendar" aria-hidden="true"></i> {{movie.release_date || movie.first_air_date}}
+          </div>
+          <div>
+            <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average}}
+          </div>
+        </div>
+        <i *ngIf="movie.genre_ids">
+          <span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">{{this.gen[item]}}
+            <span *ngIf="i < movie.genre_ids.length-1">,</span>
+          </span>.</i>
+        <br>
+        <span *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </span>
+        <span *ngIf="movie.overview.length<140">{{movie.overview}} </span>
+        <br>
+
+        <div class="d-flex justify-content-between">
+          <div>
+            <i class="fa fa-eye fa-lg" aria-hidden="true"></i>
+            <span *ngIf="movie.adult; else Audience">Restricted</span>
+            <ng-template #Audience>
+              Unrestricted
+            </ng-template>
+          </div>
+          <div>
+            <i class="fa fa-language fa-lg" aria-hidden="true"></i> {{movie.original_language}}
+          </div>
+        </div>
+        <i class="fa fa-rocket fa-lg" aria-hidden="true"></i> {{movie.popularity}}
+        <br>
+      </mat-card-content>
+      <div style="text-align: center" class="links">
+        Search on:
+        <a href="https://www.netflix.com/search?q={{movie.title || movie.name}}" target="_blank">Netflix</a>
+        <a href="https://www.primevideo.com/region/eu/search/ref=atv_nb_sr?phrase={{movie.title || movie.name}}" target="_blank">
+          <i class="fa fa-play-circle" aria-hidden="true"></i> Prime Video</a>
+        <br>
+        <a href="http://solarmoviesc.com/search/{{movie.title || movie.name}}.html" target="_blank">SolarMovie</a>
+        <a *ngIf="movie.name" href="https://dwatchseries.to/search/{{movie.name}}" target="_blank">WatchSeries</a>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div *ngIf="data" style="text-align: center">
+  <div *ngIf="data.total_results>1">
+    <a href="#" class="previous round">&#8249;</a>
+    <a href="#" class="next round">&#8250;</a>
+  </div>
+</div>
+<br/>
+<br/>
+<ng-template>
+  Hello
+</ng-template>

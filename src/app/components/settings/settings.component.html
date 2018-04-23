@@ -1,26 +1,18 @@
 <br>
 <div class="container" id="search" style="text-align:center">
-<h2>Settings</h2>
-<br>
-<h3>Background Settings</h3>
-<div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-dark active" (click)="setBlack(true)">
-      <input type="radio" name="options" id="option1" autocomplete="off" checked> Remove Image
-    </label>
-    <label class="btn btn-dark" (click)="setBlack(false)">
-      <input type="radio" name="options" id="option2" autocomplete="off"> Keep Image
-    </label>
+  <h3>Settings</h3>
+<div class="input-group">
+  <textarea class="form-control" aria-label="With textarea"></textarea>
+  <div class="input-group-prepend">
+    <span class="input-group-text"><label>Suggestions</label></span>
   </div>
 </div>
-<div class="input-group">
-    <textarea class="form-control" aria-label="With textarea"></textarea>
-    <div class="input-group-prepend">
-        <span class="input-group-text">Suggestions</span>
-      </div>
+<div class="warnings">
+  <div>
+    <button type="button" class="btn btn-dark active" (click)="feedback()">Send Response</button>
   </div>
-  <div class="warnings">
-      <div><button type="button" class="btn btn-primary" (click)="feedback()">Send Response</button></div><br>
-      <button type="button" class="btn btn-warning" (click)="deleteData()">Delete Tracked Data</button>
-      <button type="button" class="btn btn-danger" (click)="deleteAccount()">Delete Account</button>
-  </div>
-
+  <br>
+  <button type="button" class="btn btn-dark active" (click)="deleteData()">Delete Tracked Data</button>
+  <button type="button" class="btn btn-dark active" (click)="deleteAccount()">Delete Account</button>
+</div>
+</div>

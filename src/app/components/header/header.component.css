@@ -1,9 +1,18 @@
 b{
-    font-size: 19px;
+    font-size: 18px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 a {
     text-decoration:none; 
     color:white;  
+}
+
+.show-off:hover {
+    color:#efbb42 !important;
+}
+
+#center a:hover, i:hover {
+    color:#efbb42 !important;
 }
 
 mat-toolbar{

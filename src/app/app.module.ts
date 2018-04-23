@@ -91,7 +91,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatButtonToggleModule,
-    AlertModule.forRoot({maxMessages: 3, timeout: 4000}),
+    AlertModule.forRoot({maxMessages: 5, timeout: 5000}),
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [],

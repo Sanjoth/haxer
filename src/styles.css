@@ -71,7 +71,7 @@ footer{
   color: white !important;
 }
 
-h2, h5, p{
+h2, h3, h5, p{
   color: white;
 }
 #search {
@@ -146,5 +146,7 @@ box-shadow: 10px 3px 66px -19px rgba(0,0,0,0.75); */
 
 
 
-
+.content {
+  color:black !important;
+}
 

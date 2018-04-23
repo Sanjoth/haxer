@@ -15,26 +15,10 @@ table, th , td  {
   margin-right: auto;
   }
 
-  a {
-    text-decoration: none;
-    color: grey;
-  }
-  /*  Material Card */
   .example-card {
     width: 400px; 
     font-family: 'Source Sans Pro', sans-serif;
   }
-
-  a {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-}
-
-a:hover {
-    background-color: #ddd;
-    color: black;
-}
 
 .previous {
     background-color: #000;
@@ -44,20 +28,6 @@ a:hover {
 .next {
     background-color: #000;
     color: white;
-}
-
-.mat-button-toggle-group, .mat-button-toggle-standalone{
-  box-shadow: none !important;
-  border-radius: 0px !important;
-}
-
-.mat-button-toggle-checked{
-  background-color: #ffffff !important;
-}
-
-.mat-button-toggle
-{
-  background-color: #ffffff !important;
 }
 
 .input-group.mb-3 {
@@ -72,4 +42,16 @@ a:hover {
     margin-right: auto;
     width: 50%
   }
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  color: grey;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
 }

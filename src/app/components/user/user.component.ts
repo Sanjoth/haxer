@@ -57,6 +57,7 @@ export class UserComponent implements OnInit {
     10759: "Action & Adventure"
   };
   iconChk: string;
+  sub:any;
 
   constructor(private http: HttpClient, private http_sendAdditionalData: HttpClient, private http_sendTrackingData: HttpClient, private http_getData: HttpClient) { }
 
@@ -70,6 +71,10 @@ export class UserComponent implements OnInit {
     /**
      * Send HTTP GET request for every valid keypress
      */
+    if(this.sub != undefined)
+    {
+    this.sub.unsubscribe();
+    }
     var key = event.keyCode || event.charCode;
     if (query === '' || query === undefined) {
       if (key === 8 || key === 46) {
@@ -84,7 +89,8 @@ export class UserComponent implements OnInit {
         this.tmdb = "https://api.themoviedb.org/3/search/tv?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&query=" + query + "&page=1";
       }
       //this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1&include_adult=true';
-      this.http.get<UserResponse>(this.tmdb).subscribe(data => {
+      
+      this.sub = this.http.get<UserResponse>(this.tmdb).subscribe(data => {
         this.data = data; // Assign local to global
       });
     }
