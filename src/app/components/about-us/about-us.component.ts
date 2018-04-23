@@ -11,14 +11,14 @@ export class AboutUsComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    this.background_image = document.getElementById("body").style.backgroundImage;
-    document.getElementById("body").style.backgroundColor = "white";
-    document.getElementById("body").style.backgroundImage = "none";
+    // this.background_image = document.getElementById("body").style.backgroundImage;
+    document.getElementById("body").style.backgroundColor = 'rgb(233, 236, 239)';
+    // document.getElementById("body").style.backgroundImage = "none";
   }
 
   ngOnDestroy() {
     document.getElementById("body").style.backgroundColor = "black"; 
-    document.getElementById("body").style.backgroundImage = this.background_image;
+    // document.getElementById("body").style.backgroundImage = this.background_image;
   }
 
 }

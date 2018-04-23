@@ -79,9 +79,10 @@ h2, h3, h5, p{
 }
 /* Card Style template */
 body {
-  background-image: url("/assets/bg.jpg");
+  /* background-image: url("/assets/bg.jpg"); */
   margin: 0;
   font-family: 'Source Sans Pro', sans-serif;
+  background-color: black;
 }
 
 mat-card {
