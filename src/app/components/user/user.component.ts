@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserComponent implements OnInit {
 
   // Global Vars
-  title = 'A hybrid yet intuitive approach for discovering movies & getting recommendations!';
+  title = 'A hybrid and intuitive approach for discovering movies and getting recommendations!';
   texts: string;
   tmdb: string;
   data: object;
@@ -104,7 +104,7 @@ export class UserComponent implements OnInit {
       status = this.getUserData();
     }
     else {
-      console.log("Not logged in!");
+      console.log("Not logged in to get user data.");
     }
   }
 

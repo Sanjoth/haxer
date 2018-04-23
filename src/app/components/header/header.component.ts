@@ -16,13 +16,13 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (localStorage.getItem("UserEmail") != null) {
-      console.log(localStorage.getItem("UserEmail"));
+    if (localStorage.getItem("Email") != null) {
+      console.log(localStorage.getItem("Email"));
       this.signIn = true;
       this.Name = localStorage.getItem("Name");
     }
     else {
-      console.log("Not Logged in !")
+      console.log("Not Logged in for personlization")
       this.signIn = false;
     }
   }
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    localStorage.removeItem("UserEmail");
+    localStorage.removeItem("Email");
     localStorage.removeItem("Name");
     localStorage.clear();
     this.signIn = false;
