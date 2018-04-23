@@ -297,7 +297,7 @@ export class DiscoverComponent implements OnInit {
   adult_filter = false;
   Date = new Date();
   data: any;
-  movie_selected = false;
+  movie_selected = true;
   sub: any;
 
   ngOnInit() {
