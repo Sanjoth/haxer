@@ -329,6 +329,7 @@ export class UserComponent implements OnInit {
     if (this.page_number > 1) {
       this.page_number -= 1;
     }
+    window.scrollTo(0,0);
     this.sendReq(this.query, this.event);
   }
 
@@ -336,6 +337,7 @@ export class UserComponent implements OnInit {
     if (this.page_number < this.data.total_pages) {
       this.page_number += 1;
     }
+    window.scrollTo(0,0);
     this.sendReq(this.query, this.event);
   }
 }
