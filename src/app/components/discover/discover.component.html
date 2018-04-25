@@ -68,15 +68,6 @@
         </div>
       </a>
     </div>
-    <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <div>
-          <label style="margin-left: 50px;">Language</label>
-          <input style="margin-left: 3px;" list="languages" name="language">
-          <datalist id="languages">
-            <option *ngFor="let lang of lang_keys" value="{{lang}}">
-          </datalist>
-        </div>
-      </div> -->
   </div>
   <div class="btn-group">
     <button class="btn btn-dark active dropdown-toggle" type="button" id="dropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true"
@@ -136,93 +127,139 @@
 
 </div>
 
-
 <div *ngIf="data">
-  <div style="text-align:center">
-    <h5>Search Details</h5>
-    <table>
-      <tr>
-        <th>Page </th>
-        <th>Total Results</th>
-        <th>Total Pages</th>
-        <th>Results per page</th>
-      </tr>
-      <tr>
-        <td>{{data.page}}</td>
-        <td>{{data.total_results}}</td>
-        <td>{{data.total_pages}}</td>
-        <td>{{data.results.length}}</td>
-      </tr>
-    </table>
-  </div>
-  <div class="card-group">
-    <mat-card class="example-card" *ngFor="let movie of data.results; let myIndex = index">
-      <mat-card-header>
-        <mat-card-title>
-          <i class="fa fa-film fa-lg" aria-hidden="true"></i>
-          <b *ngIf="movie_selected; else tvshow"> {{movie.title}} </b>
-          <ng-template #tvshow>
-            <b>{{movie.name}}</b>
-          </ng-template>
-        </mat-card-title>
-      </mat-card-header>
-      <img *ngIf="movie.backdrop_path;else other_content" (click)="trackClick(movie)" mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}">
-      <ng-template #other_content>
-        <img (click)="trackClick(movie)" mat-card-image src="/assets/nf.png">
-      </ng-template>
-      <mat-card-content (click)="trackClick(movie.id,movie.genre_ids)">
-        <div class="d-flex justify-content-between">
-          <div>
-            <i class="fa fa-calendar" aria-hidden="true"></i> {{movie.release_date || movie.first_air_date}}
-          </div>
-          <div>
-            <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average}}
-          </div>
-        </div>
-        <i *ngIf="movie.genre_ids">
-          <span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">{{this.gen[item]}}
-            <span *ngIf="i < movie.genre_ids.length-1">,</span>
-          </span>.</i>
+    <div *ngIf="data.results.length>1;else noresults">
+      <div style="text-align:center">
         <br>
-        <span *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </span>
-        <span *ngIf="movie.overview.length<140">{{movie.overview}} </span>
-        <br>
-
-        <div class="d-flex justify-content-between">
-          <div>
-            <i class="fa fa-eye fa-lg" aria-hidden="true"></i>
-            <span *ngIf="movie.adult; else Audience">Restricted</span>
-            <ng-template #Audience>
-              Unrestricted
-            </ng-template>
-          </div>
-          <div>
-            <i class="fa fa-language fa-lg" aria-hidden="true"></i> {{movie.original_language}}
-          </div>
-        </div>
-        <i class="fa fa-rocket fa-lg" aria-hidden="true"></i> {{movie.popularity}}
-        <br>
-      </mat-card-content>
-      <div style="text-align: center" class="links">
-        Search on:
-        <a href="https://www.netflix.com/search?q={{movie.title || movie.name}}" target="_blank">Netflix</a>
-        <a href="https://www.primevideo.com/region/eu/search/ref=atv_nb_sr?phrase={{movie.title || movie.name}}" target="_blank">
-          <i class="fa fa-play-circle" aria-hidden="true"></i> Prime Video</a>
-        <br>
-        <a href="http://solarmoviesc.com/search/{{movie.title || movie.name}}.html" target="_blank">SolarMovie</a>
-        <a *ngIf="movie.name" href="https://dwatchseries.to/search/{{movie.name}}" target="_blank">WatchSeries</a>
+        <h5>Search Details</h5>
+        <table>
+          <tr>
+            <th>Page </th>
+            <th>Total Results</th>
+            <th>Total Pages</th>
+            <th>Results per page</th>
+          </tr>
+          <tr>
+            <td>{{data.page}}</td>
+            <td>{{data.total_results}}</td>
+            <td>{{data.total_pages}}</td>
+            <td>{{data.results.length}}</td>
+          </tr>
+        </table>
       </div>
-    </mat-card>
-  </div>
-</div>
-<div *ngIf="data" style="text-align: center">
-  <div *ngIf="data.total_results>1">
-    <a href="#" class="previous round">&#8249;</a>
-    <a href="#" class="next round">&#8250;</a>
-  </div>
-</div>
-<br/>
-<br/>
-<ng-template>
-  Hello
-</ng-template>
+      <div class="card-group">
+        <mat-card class="example-card" *ngFor="let movie of data.results; let myIndex = index">
+          <mat-card-header>
+            <mat-card-title>
+              <i class="fa fa-film fa-lg" aria-hidden="true"></i>
+              <b *ngIf="movie_selected; else tvshow"> {{movie.title}} </b>
+              <ng-template #tvshow>
+                <b>{{movie.name}}</b>
+              </ng-template>
+            </mat-card-title>
+          </mat-card-header>
+          <img *ngIf="movie.backdrop_path;else other_content" (click)="trackClick(movie)" mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}">
+          <ng-template #other_content>
+            <img (click)="trackClick(movie)" mat-card-image src="/assets/nf.png">
+          </ng-template>
+          <mat-card-content (click)="trackClick(movie.id,movie.genre_ids)">
+            <div class="d-flex justify-content-between">
+              <div>
+                <i class="fa fa-calendar" aria-hidden="true"></i> {{movie.release_date || movie.first_air_date}}
+              </div>
+              <div>
+                <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average}}
+              </div>
+            </div>
+  
+            <i>
+              <span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">{{this.gen[item]}}
+                <span *ngIf="i < movie.genre_ids.length-1">,</span>
+              </span>.</i>
+            <br>
+            <span *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </span>
+            <span *ngIf="movie.overview.length<140">{{movie.overview}} </span>
+            <br>
+  
+            <div class="d-flex justify-content-between">
+              <div>
+                <i class="fa fa-eye fa-lg" aria-hidden="true"></i>
+                <span *ngIf="movie.adult; else Audience">Restricted</span>
+                <ng-template #Audience>
+                  Unrestricted
+                </ng-template>
+              </div>
+              <div>
+                <i class="fa fa-language fa-lg" aria-hidden="true"></i> {{movie.original_language}}
+              </div>
+            </div>
+            <i class="fa fa-rocket fa-lg" aria-hidden="true"></i> {{movie.popularity}}
+            <br>
+          </mat-card-content>
+          <div class="links" style="text-align: center">
+            Search on:
+            <a href="https://www.netflix.com/search?q={{movie.title || movie.name}}" target="_blank">Netflix</a>
+            <a href="https://www.primevideo.com/region/eu/search/ref=atv_nb_sr?phrase={{movie.title || movie.name}}" target="_blank">
+              <i class="fa fa-play-circle" aria-hidden="true"></i> Prime Video</a>
+            <br>
+            <a href="http://solarmoviesc.com/search/{{movie.title || movie.name}}.html" target="_blank">SolarMovie</a>
+            <a *ngIf="movie.name" href="https://dwatchseries.to/search/{{movie.name}}" target="_blank">WatchSeries</a>
+          </div>
+          <mat-card-actions style="text-align: center">
+            <button value="like" *ngIf="like_status_data[movie.id]; else liked_content_empty" (click)="likeMovie(this.movie,$event)"
+              class="mat-button" mat-button id="{{movie.id}}a">
+              <i *ngIf="like_status_data[movie.id].like_status;else liked_content" class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>
+              <ng-template #liked_content>
+                <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+              </ng-template>
+            </button>
+            <ng-template #liked_content_empty>
+              <button value="like" (click)="likeMovie(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}a">
+                <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+              </button>
+            </ng-template>
+            <button value="dislike" *ngIf="like_status_data[movie.id]; else disliked_content_empty" (click)="dislikeMovie(this.movie,$event)"
+              class="mat-button" mat-button id="{{movie.id}}b">
+              <i *ngIf="like_status_data[movie.id].like_status==false;else disliked_content" class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>
+              <ng-template #disliked_content>
+                <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+              </ng-template>
+            </button>
+            <ng-template #disliked_content_empty>
+              <button value="dislike" (click)="dislikeMovie(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}b">
+                <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+              </button>
+            </ng-template>
+  
+            <button *ngIf="bookmarked_data[movie.id]; else list_content_empty" value="addList" (click)="addList(this.movie,$event)" class="mat-button"
+              mat-button id="{{movie.id}}c">
+              <i *ngIf="bookmarked_data[movie.id].list_status;else list_content" class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
+              <ng-template #list_content>
+                <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+              </ng-template>
+            </button>
+            <ng-template #list_content_empty>
+              <button style="margin-bottom: 20px;" value="addList" (click)="addList(this.movie,$event)" class="mat-button" mat-button id="{{movie.id}}c">
+                <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+              </button>
+            </ng-template>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  
+    <ng-template #noresults>
+      <div class="container" style="text-align:center; position:relative;">
+        <p>No results found for '
+          <b>{{texts}}</b> ' </p>
+      </div>
+  </ng-template>
+  <br>
+  <div *ngIf="data" style="text-align: center">
+      <div *ngIf="data.results.length>1">
+        <a *ngIf="data.page>1" id="prev_button" (click)="prev()" class="previous round">&#8249;</a>
+        <a *ngIf="data.page<data.total_pages" id="next_button" (click)="next()" class="next round">&#8250;</a>
+      </div>
+    </div>
+  <br/>
+  <br/>

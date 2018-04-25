@@ -1,22 +1,22 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Welcome, {{name}}</h1>
-    <p class="lead">Details</p>
+    <h1 class="display-4">Welcome {{user_name}} !</h1>
+    <p class="lead">User Details</p>
     <hr class="my-4">
     <div id="search" style="text-align:center">
         <label>Adult Content:</label> <label><input style="position: relative; margin-left: 10px;" class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." checked> Yes
           </label><br>
-        <label>Primary Language: <input style="margin-left: 3px;" list="languages" name="language"> Default: English
-    <datalist id="languages">
-        <option *ngFor="let lang of lang_keys" value="{{lang}}">
-      </datalist></label>
+        <label>Primary Language: <input style="margin-left: 3px;" list="languages" name="language" #lang placeholder="{{default_lang}}">
+          <datalist id="languages">
+            <option *ngFor="let lang of lang_keys" value="{{lang}}">
+          </datalist></label>
       <br>
     <br>
-    <button type="button" class="btn btn-success" (click)="save()">Save Details</button><br><br>
+    <button type="button" class="btn btn-success" (click)="save(lang.value)">Save Details</button><br><br>
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
           <label class="btn btn-secondary active" (click)="setCat(true)">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked>Like/Disliked Movies 
+            <input type="radio" name="options" id="option1" autocomplete="off" checked>Rated Movies 
           </label>
           <label class="btn btn-secondary" (click)="setCat(false)">
             <input type="radio" name="options" id="option2" autocomplete="off">Bookmarked Movies
@@ -45,7 +45,6 @@
                 </tbody> 
              </ng-template> 
           </table>
-          <br>
         <button type="button" class="btn btn-dark" routerLink="/settings" routerLinkActive="active">Settings</button>
     </div>
   </div>

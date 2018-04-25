@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-discover',
   templateUrl: './discover.component.html',
   styleUrls: ['./discover.component.css']
 })
-export class DiscoverComponent implements OnInit {
-  constructor(private http: HttpClient) { }
+export class DiscoverComponent extends UserComponent implements OnInit {
+  constructor(private http_discover: HttpClient,private http_discover_sendAdditionalData: HttpClient, private http_discover_sendTrackingData: HttpClient, private http_discover_getData: HttpClient) {
+    super(http_discover, http_discover_sendAdditionalData, http_discover_sendTrackingData, http_discover_getData);
+   }
 
   gen: GenreTy = {
     28: "Action",
@@ -98,10 +101,8 @@ export class DiscoverComponent implements OnInit {
     { "value": 37, "text": "Western", "checked": false }
   ]
   before_date: any;
-
   sortby_values = Object.values(this.sortby);
   sortby_keys = Object.keys(this.sortby);
-  langs: any;
   lang_object = {
     "No Language": "xx",
     "Afar": "aa",
@@ -300,22 +301,44 @@ export class DiscoverComponent implements OnInit {
   movie_selected = true;
   sub: any;
 
+
+  page_number:number;
+  votecount:number;
+  lang:string;
+  rating:number;
+  before:string;
+
   ngOnInit() {
+    this.page_number = 1;
+    localStorage.removeItem("LIKE_STATUS_DATA");
+    localStorage.removeItem("BOOKMARKED_DATA");
+    localStorage.removeItem("CLICKED_DATA");
     this.before_date = this.Date.toISOString().split('T')[0];
     this.lang_keys = Object.keys(this.lang_object);
     this.lang_values = Object.values(this.lang_object);
+    let status: any;
+    if (localStorage.getItem("Email")) {
+      status = this.getUserData();
+    }
+    else {
+      console.log("Not logged in to get user data.");
+    }
   }
 
-  hax(vote_count = '1000', lang = 'Hindi', rating = '5', before = '1996-07-15', after = this.before_date) {
+  hax(vote_count, lang, rating, before, after?) {
+    if(after == undefined)
+    {
+    after = this.before_date
+    }
     let ratecheck = parseInt(rating);
-    let votecount = parseInt(vote_count);
     let before_date = new Date(before);
-    let after_date = new Date(after);
+    let after_date = new Date(this.before_date);
+    
     if (ratecheck > 10) {
       alert("Rating can't be higher than 10");
       return;
     }
-    if (votecount > 10000) {
+    if (this.votecount > 10000) {
       alert("Vote count out of range.");
       return;
     }
@@ -330,8 +353,8 @@ export class DiscoverComponent implements OnInit {
     if (this.sub != undefined) {
       this.sub.unsubscribe();
     }
-    if (this.sort_filter === '') {
-      this.sort_filter = 'popularity.desc';
+    if (this.sort_filter == '' || this.sort_filter == undefined) {
+      this.sort_filter = 'vote_average.desc';
     }
     if (before === '') {
       before = '1996-07-15'
@@ -345,30 +368,45 @@ export class DiscoverComponent implements OnInit {
     if (vote_count === '') {
       vote_count = '1000';
     }
+    this.votecount = parseInt(vote_count);
+    this.before=before;
+    this.lang=lang;
+    this.rating=rating;
     let in_genres = this.genres_incl.filter(opt => opt.checked).map(opt => opt.value).toString();
     let ex_genres = this.genres_excl.filter(opt => opt.checked).map(opt => opt.value).toString();
     if (this.movie_selected == true) {
-      this.hax_link = 'https://api.themoviedb.org/3/discover/movie?api_key=' + this.api_key + '&language=en-IN&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&include_video=false&page=1&primary_release_date.gte=' + before + '&primary_release_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
-      console.log(this.hax_link);
+      this.hax_link = 'https://api.themoviedb.org/3/discover/movie?api_key=' + this.api_key + '&language=en-IN&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&include_video=false&page='+this.page_number+'&primary_release_date.gte=' + before + '&primary_release_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
     }
     else {
-      this.hax_link = 'https://api.themoviedb.org/3/discover/tv?api_key=' + this.api_key + '&language=en-US&sort_by=' + this.sort_filter + '&page=1&include_null_first_air_dates=false&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&page=1&first_air_date.gte=' + before + '&first_air_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
+      this.hax_link = 'https://api.themoviedb.org/3/discover/tv?api_key=' + this.api_key + '&language=en-US&sort_by=' + this.sort_filter + '&page=1&include_null_first_air_dates=false&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&page='+this.page_number+'&first_air_date.gte=' + before + '&first_air_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
     }
-    this.sub = this.http.get<UserResponse>(this.hax_link).subscribe(data => {
+    this.sub = this.http_discover.get<UserResponse>(this.hax_link).subscribe(data => {
       this.data = data; // Assign local to global
-      console.log(data);
     });
   }
 
   sortFix(sort) {
     this.sort_filter = sort;
-    console.log(this.sort_filter);
   }
 
   setCat(bool, event) {
     this.movie_selected = bool;
     this.data = null;
     document.getElementById("haxthedb").click();
+  }
+
+  prev() {
+    if (this.page_number > 1) {
+      this.page_number -= 1;
+    }
+    this.hax(this.votecount, this.lang, this.rating, this.before);
+  }
+
+  next() {
+    if (this.page_number < this.data.total_pages) {
+      this.page_number += 1;
+    }
+    this.hax(this.votecount, this.lang, this.rating, this.before);
   }
 
 }
@@ -395,6 +433,7 @@ interface Results {
   popularity: number;
   poster_path: string;
   release_date: string;
+  length: number;
 }
 
 interface GenreTy {

@@ -13,9 +13,8 @@ export class UserComponent implements OnInit {
   title = 'A hybrid and intuitive approach for discovering movies and getting recommendations!';
   texts: string;
   tmdb: string;
-  data: object;
+  data: any;
   blank: object;
-  server_data: any;
   movieid: number;
   movie_selected = true;
 
@@ -24,6 +23,7 @@ export class UserComponent implements OnInit {
   like_status_data = {};
   bookmarked_data = {};
   clicked_data = {};
+  page_number: number;
   local_send_bookmark_data: any;
   local_send_clicks_data: any;
 
@@ -57,8 +57,9 @@ export class UserComponent implements OnInit {
     10759: "Action & Adventure"
   };
   iconChk: string;
-  sub:any;
-
+  sub: any;
+  query: string;
+  event: any;
   constructor(private http: HttpClient, private http_sendAdditionalData: HttpClient, private http_sendTrackingData: HttpClient, private http_getData: HttpClient) { }
 
   setCat(bool, query, event) {
@@ -68,12 +69,13 @@ export class UserComponent implements OnInit {
   }
 
   sendReq(query, event) {
+    this.query = query;
+    this.event = event;
     /**
      * Send HTTP GET request for every valid keypress
      */
-    if(this.sub != undefined)
-    {
-    this.sub.unsubscribe();
+    if (this.sub != undefined) {
+      this.sub.unsubscribe();
     }
     var key = event.keyCode || event.charCode;
     if (query === '' || query === undefined) {
@@ -83,19 +85,19 @@ export class UserComponent implements OnInit {
     }
     else {
       if (this.movie_selected) {
-        this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1&include_adult=true';
+        this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=' + this.page_number + '&include_adult=true';
       }
       else {
-        this.tmdb = "https://api.themoviedb.org/3/search/tv?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&query=" + query + "&page=1";
+        this.tmdb = "https://api.themoviedb.org/3/search/tv?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&query=" + query + "&page=" + this.page_number;
       }
       //this.tmdb = 'https://api.themoviedb.org/3/search/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&query=' + query + '&page=1&include_adult=true';
-      
       this.sub = this.http.get<UserResponse>(this.tmdb).subscribe(data => {
         this.data = data; // Assign local to global
       });
     }
   }
   ngOnInit() {
+    this.page_number = 1;
     localStorage.removeItem("LIKE_STATUS_DATA");
     localStorage.removeItem("BOOKMARKED_DATA");
     localStorage.removeItem("CLICKED_DATA");
@@ -299,7 +301,7 @@ export class UserComponent implements OnInit {
   }
 
   send_bookmarks_to_db() {
-    this.http_sendTrackingData.post("/sendBookmarkData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("BOOKMARKED_DATA") }).subscribe(data => {
+    this.http_sendAdditionalData.post("/sendBookmarkData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("BOOKMARKED_DATA") }).subscribe(data => {
       this.local_send_bookmark_data = data;
       console.log("POST DATA BOOKMARKS:");
       console.log(data);
@@ -321,6 +323,20 @@ export class UserComponent implements OnInit {
     else {
       return true;
     }
+  }
+
+  prev() {
+    if (this.page_number > 1) {
+      this.page_number -= 1;
+    }
+    this.sendReq(this.query, this.event);
+  }
+
+  next() {
+    if (this.page_number < this.data.total_pages) {
+      this.page_number += 1;
+    }
+    this.sendReq(this.query, this.event);
   }
 }
 
@@ -347,6 +363,7 @@ interface Results {
   popularity: number;
   poster_path: string;
   release_date: string;
+  length: number;
 }
 
 interface GenreTy {

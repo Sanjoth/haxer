@@ -20,16 +20,6 @@ table, th , td  {
     font-family: 'Source Sans Pro', sans-serif;
   }
 
-.previous {
-    background-color: #000;
-    color: white;
-}
-
-.next {
-    background-color: #000;
-    color: white;
-}
-
 .input-group.mb-3 {
   margin-left: auto;
   margin-right: auto;
@@ -54,4 +44,10 @@ a {
 a:hover {
   background-color: #ddd;
   color: black;
+}
+
+label {
+  color: white;
+  font-size: 14px;
+  margin: 0px;
 }

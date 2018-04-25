@@ -10,10 +10,10 @@
         "/favicon.ico",
         "/index.html",
         "/inline.318b50c57b4eba3d437b.bundle.js",
-        "/main.54ea9c13ece6e1e06bdd.bundle.js",
-        "/polyfills.2d896654d931a4d9a559.bundle.js",
+        "/main.3642bdb8776df14f4007.bundle.js",
+        "/polyfills.afd5ca7a9365d12a01be.bundle.js",
         "/scripts.806effac119676237f10.bundle.js",
-        "/styles.c575d0b4f0078cfd62f4.bundle.css"
+        "/styles.3b34ead1812e25d9b51e.bundle.css"
       ],
       "patterns": []
     },
@@ -22,7 +22,6 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
-        "/assets/bg.jpg",
         "/assets/flickity.min.css",
         "/assets/ga.js",
         "/assets/haxer.png",
@@ -35,17 +34,16 @@
   "dataGroups": [],
   "hashTable": {
     "/inline.318b50c57b4eba3d437b.bundle.js": "998c6060446975e566fd17509558ddc68d72eec3",
-    "/assets/bg.jpg": "4c756bbc9e2e5f18717f56be557fc3ddb134d1ab",
-    "/main.54ea9c13ece6e1e06bdd.bundle.js": "16a42bd8984264afe42db93895ab7654e12d3256",
     "/assets/flickity.min.css": "8157670d0b0abefe12a465b97d177474cee8ebde",
-    "/polyfills.2d896654d931a4d9a559.bundle.js": "5f49131c0c147a20f91b1e77814434e0c77bd3dc",
+    "/main.3642bdb8776df14f4007.bundle.js": "cad8c272290035d8031d1b3f751ed4b4e055a07f",
     "/assets/ga.js": "3cc6ecd4d0021b7f469e8916e62255b02b47faaf",
-    "/scripts.806effac119676237f10.bundle.js": "ddbf61a66fdf53cc2143cd1dfaf206e5db0840e2",
+    "/polyfills.afd5ca7a9365d12a01be.bundle.js": "b092f5c27ff4222179ae3e9e3164c8cc6caa09cf",
     "/assets/haxer.png": "086ddf7898556cff4e040058bad42e9a33c63b65",
-    "/styles.c575d0b4f0078cfd62f4.bundle.css": "da5824f72710c9b996f8c2879e9617e3f38edcaf",
+    "/scripts.806effac119676237f10.bundle.js": "ddbf61a66fdf53cc2143cd1dfaf206e5db0840e2",
     "/assets/mean.png": "e6976821d458682b6f0ea12c388dc903f10d149b",
-    "/favicon.ico": "ce9f26e7d3f6f3347021ce7cebfb5c8be0f7c2e5",
+    "/styles.3b34ead1812e25d9b51e.bundle.css": "d4ad084549e2d011490ff9f6389f7f4e7ed26fbb",
     "/assets/nf.png": "75b72b58ec2dc702be3ab5c1f0949036bcaa39a6",
-    "/index.html": "730a73955b935c63d38927804e168fc23ccea49b"
+    "/favicon.ico": "ce9f26e7d3f6f3347021ce7cebfb5c8be0f7c2e5",
+    "/index.html": "2a60ba8ba3b25b374e19e60d6acec06b1dc54778"
   }
 }

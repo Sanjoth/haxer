@@ -12,7 +12,7 @@ export class AboutUsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // this.background_image = document.getElementById("body").style.backgroundImage;
-    document.getElementById("body").style.backgroundColor = 'rgb(233, 236, 239)';
+    document.getElementById("body").style.backgroundColor = '#e9ecef';
     // document.getElementById("body").style.backgroundImage = "none";
   }
 
