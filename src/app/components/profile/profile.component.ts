@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpClient } from 
 
 @Component({
   selector: 'app-profile',
@@ -233,11 +234,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
     console.log(this.user_name);
 
-    if (this.bookmarked_data != null || this.bookmarked_data != undefined) {
+    if (this.bookmarked_data == null || this.bookmarked_data == undefined) {
       this.bookmarked_data = localStorage.getItem("BOOKMARKED_DATA");
       this.bookmarked_data = Object.values(JSON.parse(this.bookmarked_data));
     }
-    if (this.reactions_data != null || this.reactions_data != undefined) {
+    if (this.reactions_data == null || this.reactions_data == undefined) {
       this.reactions_data = localStorage.getItem("LIKE_STATUS_DATA");
       this.reactions_data = Object.values(JSON.parse(this.reactions_data));
     }

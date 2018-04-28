@@ -18,8 +18,9 @@ export class RecommenderComponent implements OnInit {
   get_similar: any;
   similar_last: any;
   similar_movie_name: any;
+  also_watched:any;
 
-  recom_section = ['.carousel', '.arry', '.larry', '.upcom'];
+  recom_section = ['.carousel', '.arry', '.larry', '.upcom','.barry'];
 
   constructor(private http: HttpClient) { }
 
@@ -37,10 +38,12 @@ export class RecommenderComponent implements OnInit {
     let region = 'IN';
     let lang = 'en-US';
     let characterHomeworld;
+    let alsoWatched;
     let upcoming_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/upcoming?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
     let character = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/now_playing?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
     if (this.similar_last != undefined) {
       characterHomeworld = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/' + this.similar_last + '/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&page=1');
+      alsoWatched = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/'+this.similar_last+'/recommendations?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&page=1')
     }
     else {
       this.similar_movie_name = 'Interstellar'
@@ -49,11 +52,12 @@ export class RecommenderComponent implements OnInit {
     let trending = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/popular?api_key=bd5e7f8161070f86bff1d8da34219f57&region=' + region + '&language=' + lang + '&page=1');
 
     try {
-      forkJoin([trending, character, characterHomeworld, upcoming_api]).subscribe(data => {
+      forkJoin([trending, character, characterHomeworld, upcoming_api, alsoWatched]).subscribe(data => {
         this.trending_now = data[0];
         this.similar = data[2];
         this.now_playing = data[1];
         this.upcoming = data[3];
+        this.also_watched = data[4];
         window.setTimeout(() => { this.create_obj(); });
       });
     }

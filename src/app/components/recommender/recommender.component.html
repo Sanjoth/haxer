@@ -28,14 +28,23 @@
     </div>
   </div>
   <br>
-  <div *ngIf="upcoming">
-      <h2>Upcoming Movies</h2>
-      <div class="upcom" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 3000, "pauseAutoPlayOnHover": false}'>
-        <div class="carousel-cell" *ngFor="let movie of trending_now.results; let myIndex = index">
-          <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
-        </div>
+  <div *ngIf="also_watched">
+    <h2>People who watched {{similar_movie_name}}, also watched</h2>
+    <div class="barry" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 3000, "pauseAutoPlayOnHover": false}'>
+      <div class="carousel-cell" *ngFor="let movie of similar.results; let myIndex = index">
+        <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
       </div>
     </div>
+  </div>
+  <br>
+  <div *ngIf="upcoming">
+    <h2>Upcoming Movies</h2>
+    <div class="upcom" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 3000, "pauseAutoPlayOnHover": false}'>
+      <div class="carousel-cell" *ngFor="let movie of trending_now.results; let myIndex = index">
+        <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+      </div>
+    </div>
+  </div>
 </div>
 <br>
 <br>

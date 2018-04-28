@@ -267,12 +267,11 @@ export class UserComponent implements OnInit {
     console.log("Clicked Data:");
     console.log(this.clicked_data);
     this.send_impressions_to_db();
-    console.log("Impressions Data:\n" + localStorage.getItem("BOOKMARKED_DATA"));
+    console.log("Clicked Data:\n" + localStorage.getItem("CLICKED_DATA"));
   }
 
   JSONify_like(movie, like_status) {
     let movieid = movie.id;
-    console.log(like_status);
     let genre = movie.genre_ids;
     let movie_name = movie.title;
     let date = new Date();
@@ -293,27 +292,33 @@ export class UserComponent implements OnInit {
   }
 
   send_impressions_to_db() {
-    this.http_sendTrackingData.post("/sendClicksData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("CLICKED_DATA") }).subscribe(data => {
-      this.local_send_clicks_data = data;
-      console.log("POST DATA CLICKS:");
-      console.log(data);
-    });
+    if (localStorage.getItem("Email")) {
+      this.http_sendTrackingData.post("/sendClicksData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("CLICKED_DATA") }).subscribe(data => {
+        this.local_send_clicks_data = data;
+        console.log("POST DATA CLICKS:");
+        console.log(data);
+      });
+    }
   }
 
   send_bookmarks_to_db() {
-    this.http_sendAdditionalData.post("/sendBookmarkData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("BOOKMARKED_DATA") }).subscribe(data => {
-      this.local_send_bookmark_data = data;
-      console.log("POST DATA BOOKMARKS:");
-      console.log(data);
-    });
+    if (localStorage.getItem("Email")) {
+      this.http_sendAdditionalData.post("/sendBookmarkData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("BOOKMARKED_DATA") }).subscribe(data => {
+        this.local_send_bookmark_data = data;
+        console.log("POST DATA BOOKMARKS:");
+        console.log(data);
+      });
+    }
   }
 
   send_reactions_to_db() {
-    this.http_sendTrackingData.post("/sendReactionData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("LIKE_STATUS_DATA") }).subscribe(data => {
-      this.local_send_tracking_data = data;
-      console.log("POST DATA REACTIOn:");
-      console.log(data);
-    });
+    if (localStorage.getItem("Email")) {
+      this.http_sendTrackingData.post("/sendReactionData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("LIKE_STATUS_DATA") }).subscribe(data => {
+        this.local_send_tracking_data = data;
+        console.log("POST DATA REACTIOn:");
+        console.log(data);
+      });
+    }
   }
 
   check_duplicate_tracks(movieid) {
@@ -329,7 +334,7 @@ export class UserComponent implements OnInit {
     if (this.page_number > 1) {
       this.page_number -= 1;
     }
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     this.sendReq(this.query, this.event);
   }
 
@@ -337,7 +342,7 @@ export class UserComponent implements OnInit {
     if (this.page_number < this.data.total_pages) {
       this.page_number += 1;
     }
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     this.sendReq(this.query, this.event);
   }
 }
