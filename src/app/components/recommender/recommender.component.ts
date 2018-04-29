@@ -49,14 +49,15 @@ export class RecommenderComponent implements OnInit, OnDestroy {
     let characterHomeworld;
     let alsoWatched;
     let upcoming_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/upcoming?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
-    let character = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/now_playing?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
+    let character = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/now_playing?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');  
     if (this.similar_last != undefined) {
       characterHomeworld = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/' + this.similar_last + '/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&page=1');
-      alsoWatched = this.http.get<UserResponse>('https://api.themoviedb.org/3/discover/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&sort_by=vote_average.desc&e&page=1&with_genres=' + this.similar_genre_ids)
+      alsoWatched = this.http.get<UserResponse>('https://api.themoviedb.org/3/discover/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&sort_by=vote_average.desc&e&page=1&with_genres=' + this.similar_genre_ids[0])
     }
     else {
       this.similar_movie_name = 'Interstellar'
       characterHomeworld = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/27205/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
+      alsoWatched = this.http.get<UserResponse>('https://api.themoviedb.org/3/discover/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&sort_by=vote_average.desc&e&page=1&with_genres=12,18,878')
     }
     let trending = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/popular?api_key=bd5e7f8161070f86bff1d8da34219f57&region=' + region + '&language=' + lang + '&page=1');
 
