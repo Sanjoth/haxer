@@ -154,11 +154,14 @@
       <mat-card class="example-card" *ngFor="let movie of data.results; let myIndex = index">
         <mat-card-header>
           <mat-card-title>
-            <i class="fa fa-film fa-lg" aria-hidden="true"></i>
-            <b *ngIf="movie_selected; else tvshow"> {{movie.title}} </b>
-            <ng-template #tvshow>
-              <b>{{movie.name}}</b>
-            </ng-template>
+              <b *ngIf="movie_selected; else tvshow">
+                  <i class="fa fa-film fa-lg" aria-hidden="true"></i>
+                  {{movie.title}} </b>
+                <ng-template #tvshow>
+                  <b>
+                    <i class="fa fa-television fa-lg" aria-hidden="true"></i> {{movie.name}}
+                  </b>
+                </ng-template>
           </mat-card-title>
         </mat-card-header>
         <img *ngIf="movie.backdrop_path;else other_content" (click)="trackClick(movie)" mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.backdrop_path}}">
