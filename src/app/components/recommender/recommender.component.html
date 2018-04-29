@@ -44,7 +44,7 @@
   <div *ngIf="upcoming">
     <h3>Upcoming Movies</h3>
     <div class="upcom" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 3000, "pauseAutoPlayOnHover": false}'>
-      <div class="carousel-cell" *ngFor="let movie of trending_now.results; let myIndex = index">
+      <div class="carousel-cell" *ngFor="let movie of upcoming.results; let myIndex = index">
         <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
       </div>
     </div>
