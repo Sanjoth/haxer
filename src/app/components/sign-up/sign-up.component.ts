@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
@@ -22,7 +22,11 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById('body').style.backgroundImage = 'url("/assets/bg.jpg")';
+  }
 
+  ngOnDestroy() {
+    document.getElementById('body').style.backgroundImage = null;
   }
 
   validateEmail(email) {
@@ -37,8 +41,7 @@ export class SignUpComponent implements OnInit {
       return;
     }
     let valid_flag = this.validateEmail(email);
-    if(valid_flag != true)
-    {
+    if (valid_flag != true) {
       alert("Please enter a valid email");
       return;
     }
@@ -63,7 +66,7 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  send_to_login_page()  {
+  send_to_login_page() {
     window.location.href = "/login";
   }
 

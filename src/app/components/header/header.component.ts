@@ -42,8 +42,8 @@ export class HeaderComponent implements OnInit {
 
   closeNav() {
     if (document.getElementById("mySidenav").style.width == "245px") {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("overlay").style.display = "none";
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("overlay").style.display = "none";
     }
   }
 

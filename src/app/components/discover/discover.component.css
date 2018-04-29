@@ -119,3 +119,11 @@ table, th , td  {
 .next:hover {
     background-color: grey;
 }
+
+.form-check.form-check-inline label {
+    font-size: 16px;
+}
+
+.form-check-input:checked {
+    background-color: black;
+}

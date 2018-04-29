@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router'
 
@@ -15,14 +15,14 @@ export class LogInComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    /*for (let key in localStorage){
-      console.log(key)
-   }
-   */
+    document.getElementById('body').style.backgroundImage = 'url("/assets/bg.jpg")';
   }
 
-  forgot() 
-  {
+  ngOnDestroy() {
+    document.getElementById('body').style.backgroundImage = null;
+  }
+
+  forgot() {
     alert("Feature currently in beta");
   }
   sendReq(email, pass) {
@@ -38,8 +38,8 @@ export class LogInComponent implements OnInit {
         localStorage.setItem("Email", `${this.data[0].email}`);
         localStorage.setItem("Name", `${this.data[0].uname}`);
         localStorage.setItem("Password", `${this.data[0].password}`);
-        this.router.navigateByUrl('/');
-        
+        window.location.href = "/";
+
       }
       else {
         alert("The username or password is invalid !");

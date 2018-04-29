@@ -98,7 +98,7 @@ export class UserComponent implements OnInit {
   }
   ngOnInit() {
     this.page_number = 1;
-    localStorage.removeItem("LIKE_STATUS_DATA");
+    localStorage.removeItem("REACTION_DATA");
     localStorage.removeItem("BOOKMARKED_DATA");
     localStorage.removeItem("CLICKED_DATA");
     let status: any;
@@ -111,8 +111,8 @@ export class UserComponent implements OnInit {
   }
 
   displayLocalData() {
-    if (localStorage.getItem("LIKE_STATUS_DATA") != null) {
-      console.log("Liked Status Data:\n" + localStorage.getItem("LIKE_STATUS_DATA"));
+    if (localStorage.getItem("REACTION_DATA") != null) {
+      console.log("Liked Status Data:\n" + localStorage.getItem("REACTION_DATA"));
     }
     else {
       console.log("No Like/dislike history")
@@ -138,14 +138,14 @@ export class UserComponent implements OnInit {
       console.log(data);
       console.log(data[0].reactions_data);
       console.log(data[0].bookmark_data);
-      console.log(data[0].impressions_data);
+      console.log(data[0].clicked_data);
 
       this.like_status_data = data[0].reactions_data;
       this.bookmarked_data = data[0].bookmark_data;
-      this.clicked_data = data[0].impressions_data;
+      this.clicked_data = data[0].clicked_data;
       localStorage.setItem("BOOKMARKED_DATA", JSON.stringify(this.bookmarked_data));
       localStorage.setItem("CLICKED_DATA", JSON.stringify(this.clicked_data));
-      localStorage.setItem("LIKE_STATUS_DATA", JSON.stringify(this.like_status_data));
+      localStorage.setItem("REACTION_DATA", JSON.stringify(this.like_status_data));
       this.displayLocalData();
     });
   }
@@ -165,7 +165,7 @@ export class UserComponent implements OnInit {
       }
     }
     else {
-      localStorage.setItem("LATEST_LIKE", movie.id + ',' + movie.title);
+      localStorage.setItem("LATEST_LIKE", movie.id + '|' + movie.title + '|' + movie.genre_ids);
       this.JSONify_like(movie, true);
     }
 
@@ -284,11 +284,11 @@ export class UserComponent implements OnInit {
     else {
       this.like_status_data[movieid] = { "last_updated": last_updated, "title": movie_name, "genre_ids": genre, "like_status": like_status };
     }
-    localStorage.setItem("LIKE_STATUS_DATA", JSON.stringify(this.like_status_data));
+    localStorage.setItem("REACTION_DATA", JSON.stringify(this.like_status_data));
     console.log("Like Status Data:");
     console.log(this.like_status_data);
     this.send_reactions_to_db();
-    console.log("Liked Status Data:\n" + localStorage.getItem("LIKE_STATUS_DATA"));
+    console.log("Liked Status Data:\n" + localStorage.getItem("REACTION_DATA"));
   }
 
   send_impressions_to_db() {
@@ -313,7 +313,10 @@ export class UserComponent implements OnInit {
 
   send_reactions_to_db() {
     if (localStorage.getItem("Email")) {
-      this.http_sendTrackingData.post("/sendReactionData", { "user_id": localStorage.getItem("Email"), "JSON_String": localStorage.getItem("LIKE_STATUS_DATA") }).subscribe(data => {
+      this.http_sendTrackingData.post("/sendReactionData", {
+        "user_id": localStorage.getItem("Email"),
+        "JSON_String": localStorage.getItem("REACTION_DATA")
+      }).subscribe(data => {
         this.local_send_tracking_data = data;
         console.log("POST DATA REACTIOn:");
         console.log(data);

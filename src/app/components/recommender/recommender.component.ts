@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs/observable/forkJoin'
 import * as flick from 'flickity';
@@ -9,27 +9,36 @@ import * as flick from 'flickity';
   templateUrl: './recommender.component.html',
   styleUrls: ['./recommender.component.css']
 })
-export class RecommenderComponent implements OnInit {
+export class RecommenderComponent implements OnInit, OnDestroy {
   similar: any;
   now_playing: any;
   trending_now: any;
-  upcoming:any;
+  upcoming: any;
   flk: any;
   get_similar: any;
   similar_last: any;
   similar_movie_name: any;
-  also_watched:any;
+  also_watched: any;
+  sub: any;
+  similar_genre_ids: any;
 
-  recom_section = ['.carousel', '.arry', '.larry', '.upcom','.barry'];
+  recom_section = ['.carousel', '.arry', '.larry', '.barry', '.upcom'];
 
   constructor(private http: HttpClient) { }
+
+  ngOnDestroy() {
+    if (this.sub != undefined) {
+      this.sub.unsubscribe();
+    }
+  }
 
   ngOnInit() {
     let latest_likes = localStorage.getItem("LATEST_LIKE");
     if (latest_likes != undefined || latest_likes != null) {
-      let latest_like = latest_likes.split(",");
+      let latest_like = latest_likes.split("|");
       this.similar_last = latest_like[0];
       this.similar_movie_name = latest_like[1];
+      this.similar_genre_ids = latest_like[2].split(',');
     }
     this.getData();
   }
@@ -43,7 +52,7 @@ export class RecommenderComponent implements OnInit {
     let character = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/now_playing?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
     if (this.similar_last != undefined) {
       characterHomeworld = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/' + this.similar_last + '/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&page=1');
-      alsoWatched = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/'+this.similar_last+'/recommendations?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&page=1')
+      alsoWatched = this.http.get<UserResponse>('https://api.themoviedb.org/3/discover/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&sort_by=vote_average.desc&e&page=1&with_genres=' + this.similar_genre_ids)
     }
     else {
       this.similar_movie_name = 'Interstellar'
@@ -52,7 +61,7 @@ export class RecommenderComponent implements OnInit {
     let trending = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/popular?api_key=bd5e7f8161070f86bff1d8da34219f57&region=' + region + '&language=' + lang + '&page=1');
 
     try {
-      forkJoin([trending, character, characterHomeworld, upcoming_api, alsoWatched]).subscribe(data => {
+      this.sub = forkJoin([trending, character, characterHomeworld, upcoming_api, alsoWatched]).subscribe(data => {
         this.trending_now = data[0];
         this.similar = data[2];
         this.now_playing = data[1];

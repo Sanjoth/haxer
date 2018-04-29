@@ -8,9 +8,9 @@ import { UserComponent } from '../user/user.component';
   styleUrls: ['./discover.component.css']
 })
 export class DiscoverComponent extends UserComponent implements OnInit {
-  constructor(private http_discover: HttpClient,private http_discover_sendAdditionalData: HttpClient, private http_discover_sendTrackingData: HttpClient, private http_discover_getData: HttpClient) {
+  constructor(private http_discover: HttpClient, private http_discover_sendAdditionalData: HttpClient, private http_discover_sendTrackingData: HttpClient, private http_discover_getData: HttpClient) {
     super(http_discover, http_discover_sendAdditionalData, http_discover_sendTrackingData, http_discover_getData);
-   }
+  }
 
   gen: GenreTy = {
     28: "Action",
@@ -99,196 +99,12 @@ export class DiscoverComponent extends UserComponent implements OnInit {
     { "value": 53, "text": "Thriller", "checked": false },
     { "value": 10752, "text": "War", "checked": false },
     { "value": 37, "text": "Western", "checked": false }
-  ]
+  ];
   before_date: any;
   sortby_values = Object.values(this.sortby);
   sortby_keys = Object.keys(this.sortby);
   lang_object = {
-    "No Language": "xx",
-    "Afar": "aa",
-    "Afrikaans": "af",
-    "Akan": "ak",
-    "Aragonese": "an",
-    "Assamese": "as",
-    "Avaric": "av",
-    "Avestan": "ae",
-    "Aymara": "ay",
-    "Azerbaijani": "az",
-    "Bashkir": "ba",
-    "Bambara": "bm",
-    "Bislama": "bi",
-    "Tibetan": "bo",
-    "Breton": "br",
-    "Catalan": "ca",
-    "Czech": "cs",
-    "Chechen": "ce",
-    "Slavic": "cu",
-    "Chuvash": "cv",
-    "Cornish": "kw",
-    "Corsican": "co",
-    "Cree": "cr",
-    "Welsh": "cy",
-    "Danish": "da",
-    "German": "de",
-    "Divehi": "dv",
-    "Dzongkha": "dz",
-    "Esperanto": "eo",
-    "Estonian": "et",
-    "Basque": "eu",
-    "Faroese": "fo",
-    "Fijian": "fj",
-    "Finnish": "fi",
-    "French": "fr",
-    "Frisian": "fy",
-    "Fulah": "ff",
-    "Gaelic": "gd",
-    "Irish": "ga",
-    "Gallegan": "gl",
-    "Manx": "gv",
-    "Guarani": "gn",
-    "Gujarati": "gu",
-    "Haitian; Haitian Creole": "ht",
-    "Hausa": "ha",
-    "Serbo-Croatian": "sh",
-    "Herero": "hz",
-    "Hiri Motu": "ho",
-    "Croatian": "hr",
-    "Hungarian": "hu",
-    "Igbo": "ig",
-    "Ido": "io",
-    "Yi": "ii",
-    "Inuktitut": "iu",
-    "Interlingue": "ie",
-    "Interlingua": "ia",
-    "Indonesian": "id",
-    "Inupiaq": "ik",
-    "Icelandic": "is",
-    "Italian": "it",
-    "Javanese": "jv",
-    "Japanese": "ja",
-    "Kalaallisut": "kl",
-    "Kannada": "kn",
-    "Kashmiri": "ks",
-    "Kanuri": "kr",
-    "Kazakh": "kk",
-    "Khmer": "km",
-    "Kikuyu": "ki",
-    "Kinyarwanda": "rw",
-    "Kirghiz": "ky",
-    "Komi": "kv",
-    "Kongo": "kg",
-    "Korean": "ko",
-    "Kuanyama": "kj",
-    "Kurdish": "ku",
-    "Lao": "lo",
-    "Latin": "la",
-    "Latvian": "lv",
-    "Limburgish": "li",
-    "Lingala": "ln",
-    "Lithuanian": "lt",
-    "Letzeburgesch": "lb",
-    "Luba-Katanga": "lu",
-    "Ganda": "lg",
-    "Marshall": "mh",
-    "Malayalam": "ml",
-    "Marathi": "mr",
-    "Malagasy": "mg",
-    "Maltese": "mt",
-    "Moldavian": "mo",
-    "Mongolian": "mn",
-    "Maori": "mi",
-    "Malay": "ms",
-    "Burmese": "my",
-    "Nauru": "na",
-    "Navajo": "nv",
-    "Ndebele": "nd",
-    "Ndonga": "ng",
-    "Nepali": "ne",
-    "Dutch": "nl",
-    "Norwegian Nynorsk": "nn",
-    "Norwegian Bokmål": "nb",
-    "Norwegian": "no",
-    "Chichewa; Nyanja": "ny",
-    "Occitan": "oc",
-    "Ojibwa": "oj",
-    "Oriya": "or",
-    "Oromo": "om",
-    "Ossetian; Ossetic": "os",
-    "Pali": "pi",
-    "Polish": "pl",
-    "Portuguese": "pt",
-    "Quechua": "qu",
-    "Raeto-Romance": "rm",
-    "Romanian": "ro",
-    "Rundi": "rn",
-    "Russian": "ru",
-    "Sango": "sg",
-    "Sanskrit": "sa",
-    "Sinhalese": "si",
-    "Slovak": "sk",
-    "Slovenian": "sl",
-    "Northern Sami": "se",
-    "Samoan": "sm",
-    "Shona": "sn",
-    "Sindhi": "sd",
-    "Somali": "so",
-    "Sotho": "st",
-    "Spanish": "es",
-    "Albanian": "sq",
-    "Sardinian": "sc",
-    "Serbian": "sr",
-    "Swati": "ss",
-    "Sundanese": "su",
-    "Swahili": "sw",
-    "Swedish": "sv",
-    "Tahitian": "ty",
-    "Tamil": "ta",
-    "Tatar": "tt",
-    "Telugu": "te",
-    "Tajik": "tg",
-    "Tagalog": "tl",
-    "Thai": "th",
-    "Tigrinya": "ti",
-    "Tonga": "to",
-    "Tswana": "tn",
-    "Tsonga": "ts",
-    "Turkmen": "tk",
-    "Turkish": "tr",
-    "Twi": "tw",
-    "Uighur": "ug",
-    "Ukrainian": "uk",
-    "Urdu": "ur",
-    "Uzbek": "uz",
-    "Venda": "ve",
-    "Vietnamese": "vi",
-    "Volapük": "vo",
-    "Walloon": "wa",
-    "Wolof": "wo",
-    "Xhosa": "xh",
-    "Yiddish": "yi",
-    "Zhuang": "za",
-    "Zulu": "zu",
-    "Abkhazian": "ab",
-    "Mandarin": "zh",
-    "Pushto": "ps",
-    "Amharic": "am",
-    "Arabic": "ar",
-    "Bulgarian": "bg",
-    "Cantonese": "cn",
-    "Macedonian": "mk",
-    "Greek": "el",
-    "Persian": "fa",
-    "Hebrew": "he",
-    "Hindi": "hi",
-    "Armenian": "hy",
-    "English": "en",
-    "Ewe": "ee",
-    "Georgian": "ka",
-    "Punjabi": "pa",
-    "Bengali": "bn",
-    "Bosnian": "bs",
-    "Chamorro": "ch",
-    "Belarusian": "be"
+    "No Language": "xx", "Afar": "aa", "Afrikaans": "af", "Akan": "ak", "Aragonese": "an", "Assamese": "as", "Avaric": "av", "Avestan": "ae", "Aymara": "ay", "Azerbaijani": "az", "Bashkir": "ba", "Bambara": "bm", "Bislama": "bi", "Tibetan": "bo", "Breton": "br", "Catalan": "ca", "Czech": "cs", "Chechen": "ce", "Slavic": "cu", "Chuvash": "cv", "Cornish": "kw", "Corsican": "co", "Cree": "cr", "Welsh": "cy", "Danish": "da", "German": "de", "Divehi": "dv", "Dzongkha": "dz", "Esperanto": "eo", "Estonian": "et", "Basque": "eu", "Faroese": "fo", "Fijian": "fj", "Finnish": "fi", "French": "fr", "Frisian": "fy", "Fulah": "ff", "Gaelic": "gd", "Irish": "ga", "Gallegan": "gl", "Manx": "gv", "Guarani": "gn", "Gujarati": "gu", "Haitian; Haitian Creole": "ht", "Hausa": "ha", "Serbo-Croatian": "sh", "Herero": "hz", "Hiri Motu": "ho", "Croatian": "hr", "Hungarian": "hu", "Igbo": "ig", "Ido": "io", "Yi": "ii", "Inuktitut": "iu", "Interlingue": "ie", "Interlingua": "ia", "Indonesian": "id", "Inupiaq": "ik", "Icelandic": "is", "Italian": "it", "Javanese": "jv", "Japanese": "ja", "Kalaallisut": "kl", "Kannada": "kn", "Kashmiri": "ks", "Kanuri": "kr", "Kazakh": "kk", "Khmer": "km", "Kikuyu": "ki", "Kinyarwanda": "rw", "Kirghiz": "ky", "Komi": "kv", "Kongo": "kg", "Korean": "ko", "Kuanyama": "kj", "Kurdish": "ku", "Lao": "lo", "Latin": "la", "Latvian": "lv", "Limburgish": "li", "Lingala": "ln", "Lithuanian": "lt", "Letzeburgesch": "lb", "Luba-Katanga": "lu", "Ganda": "lg", "Marshall": "mh", "Malayalam": "ml", "Marathi": "mr", "Malagasy": "mg", "Maltese": "mt", "Moldavian": "mo", "Mongolian": "mn", "Maori": "mi", "Malay": "ms", "Burmese": "my", "Nauru": "na", "Navajo": "nv", "Ndebele": "nd", "Ndonga": "ng", "Nepali": "ne", "Dutch": "nl", "Norwegian Nynorsk": "nn", "Norwegian Bokmål": "nb", "Norwegian": "no", "Chichewa; Nyanja": "ny", "Occitan": "oc", "Ojibwa": "oj", "Oriya": "or", "Oromo": "om", "Ossetian; Ossetic": "os", "Pali": "pi", "Polish": "pl", "Portuguese": "pt", "Quechua": "qu", "Raeto-Romance": "rm", "Romanian": "ro", "Rundi": "rn", "Russian": "ru", "Sango": "sg", "Sanskrit": "sa", "Sinhalese": "si", "Slovak": "sk", "Slovenian": "sl", "Northern Sami": "se", "Samoan": "sm", "Shona": "sn", "Sindhi": "sd", "Somali": "so", "Sotho": "st", "Spanish": "es", "Albanian": "sq", "Sardinian": "sc", "Serbian": "sr", "Swati": "ss", "Sundanese": "su", "Swahili": "sw", "Swedish": "sv", "Tahitian": "ty", "Tamil": "ta", "Tatar": "tt", "Telugu": "te", "Tajik": "tg", "Tagalog": "tl", "Thai": "th", "Tigrinya": "ti", "Tonga": "to", "Tswana": "tn", "Tsonga": "ts", "Turkmen": "tk", "Turkish": "tr", "Twi": "tw", "Uighur": "ug", "Ukrainian": "uk", "Urdu": "ur", "Uzbek": "uz", "Venda": "ve", "Vietnamese": "vi", "Volapük": "vo", "Walloon": "wa", "Wolof": "wo", "Xhosa": "xh", "Yiddish": "yi", "Zhuang": "za", "Zulu": "zu", "Abkhazian": "ab", "Mandarin": "zh", "Pushto": "ps", "Amharic": "am", "Arabic": "ar", "Bulgarian": "bg", "Cantonese": "cn", "Macedonian": "mk", "Greek": "el", "Persian": "fa", "Hebrew": "he", "Hindi": "hi", "Armenian": "hy", "English": "en", "Ewe": "ee", "Georgian": "ka", "Punjabi": "pa", "Bengali": "bn", "Bosnian": "bs", "Chamorro": "ch", "Belarusian": "be"
   };
   lang_keys: any;
   lang_values: any;
@@ -302,15 +118,16 @@ export class DiscoverComponent extends UserComponent implements OnInit {
   sub: any;
 
 
-  page_number:number;
-  votecount:number;
-  lang:string;
-  rating:number;
-  before:string;
+  page_number: number;
+  votecount: number;
+  lang: string;
+  rating: number;
+  before: string;
 
   ngOnInit() {
+
     this.page_number = 1;
-    localStorage.removeItem("LIKE_STATUS_DATA");
+    localStorage.removeItem("REACTION_DATA");
     localStorage.removeItem("BOOKMARKED_DATA");
     localStorage.removeItem("CLICKED_DATA");
     this.before_date = this.Date.toISOString().split('T')[0];
@@ -326,14 +143,13 @@ export class DiscoverComponent extends UserComponent implements OnInit {
   }
 
   hax(vote_count, lang, rating, before, after?) {
-    if(after == undefined)
-    {
-    after = this.before_date
+    if (after == undefined) {
+      after = this.before_date
     }
     let ratecheck = parseInt(rating);
     let before_date = new Date(before);
     let after_date = new Date(this.before_date);
-    
+
     if (ratecheck > 10) {
       alert("Rating can't be higher than 10");
       return;
@@ -342,12 +158,10 @@ export class DiscoverComponent extends UserComponent implements OnInit {
       alert("Vote count out of range.");
       return;
     }
-    if(before > after)
-    {
+    if (before > after) {
       alert("From date can't be higher than To date.");
     }
-    if(before > this.before_date || after > this.before_date)
-    {
+    if (before > this.before_date || after > this.before_date) {
       alert("Please insert correct date range.");
     }
     if (this.sub != undefined) {
@@ -356,29 +170,26 @@ export class DiscoverComponent extends UserComponent implements OnInit {
     if (this.sort_filter == '' || this.sort_filter == undefined) {
       this.sort_filter = 'vote_average.desc';
     }
-    if (before === '') {
-      before = '1996-07-15'
-    }
     if (rating === '') {
-      rating = '5';
+      rating = '0';
     }
     if (lang === '') {
       lang = 'English';
     }
     if (vote_count === '') {
-      vote_count = '1000';
+      vote_count = '0';
     }
     this.votecount = parseInt(vote_count);
-    this.before=before;
-    this.lang=lang;
-    this.rating=rating;
+    this.before = before;
+    this.lang = lang;
+    this.rating = rating;
     let in_genres = this.genres_incl.filter(opt => opt.checked).map(opt => opt.value).toString();
     let ex_genres = this.genres_excl.filter(opt => opt.checked).map(opt => opt.value).toString();
     if (this.movie_selected == true) {
-      this.hax_link = 'https://api.themoviedb.org/3/discover/movie?api_key=' + this.api_key + '&language=en-IN&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&include_video=false&page='+this.page_number+'&primary_release_date.gte=' + before + '&primary_release_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
+      this.hax_link = 'https://api.themoviedb.org/3/discover/movie?api_key=' + this.api_key + '&language=en-IN&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&include_video=false&page=' + this.page_number + '&release_date.gte=' + before + '&release_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
     }
     else {
-      this.hax_link = 'https://api.themoviedb.org/3/discover/tv?api_key=' + this.api_key + '&language=en-US&sort_by=' + this.sort_filter + '&page=1&include_null_first_air_dates=false&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&page='+this.page_number+'&first_air_date.gte=' + before + '&first_air_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
+      this.hax_link = 'https://api.themoviedb.org/3/discover/tv?api_key=' + this.api_key + '&language=en-US&sort_by=' + this.sort_filter + '&page=1&include_null_first_air_dates=false&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&page=' + this.page_number + '&first_air_date.gte=' + before + '&first_air_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
     }
     this.sub = this.http_discover.get<UserResponse>(this.hax_link).subscribe(data => {
       this.data = data; // Assign local to global
@@ -399,16 +210,16 @@ export class DiscoverComponent extends UserComponent implements OnInit {
     if (this.page_number > 1) {
       this.page_number -= 1;
     }
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     this.hax(this.votecount, this.lang, this.rating, this.before);
-    
+
   }
 
   next() {
     if (this.page_number < this.data.total_pages) {
       this.page_number += 1;
     }
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     this.hax(this.votecount, this.lang, this.rating, this.before);
   }
 

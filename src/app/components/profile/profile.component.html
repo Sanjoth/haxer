@@ -4,48 +4,57 @@
     <p class="lead">User Details</p>
     <hr class="my-4">
     <div id="search" style="text-align:center">
-        <label>Adult Content:</label> <label><input style="position: relative; margin-left: 10px;" class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." checked> Yes
-          </label><br>
-        <label>Primary Language: <input style="margin-left: 3px;" list="languages" name="language" #lang placeholder="{{default_lang}}">
-          <datalist id="languages">
-            <option *ngFor="let lang of lang_keys" value="{{lang}}">
-          </datalist></label>
+      <label>Adult Content:</label>
+      <label>
+        <input style="position: relative; margin-left: 10px;" class="form-check-input position-static" type="checkbox" id="blankCheckbox"
+          value="option1" aria-label="..." checked> Yes
+      </label>
       <br>
-    <br>
-    <button type="button" class="btn btn-success" (click)="save(lang.value)">Save Details</button><br><br>
+      <label>Primary Language:
+        <input style="margin-left: 3px;" list="languages" name="language" #lang placeholder="{{default_lang}}">
+        <datalist id="languages">
+          <option *ngFor="let lang of lang_keys" value="{{lang}}">
+        </datalist>
+      </label>
+      <br>
+      <br>
+      <button type="button" class="btn btn-success" (click)="save(lang.value)">Save Details</button>
+      <br>
+      <br>
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
-          <label class="btn btn-secondary active" (click)="setCat(true)">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked>Rated Movies 
-          </label>
-          <label class="btn btn-secondary" (click)="setCat(false)">
-            <input type="radio" name="options" id="option2" autocomplete="off">Bookmarked Movies
-          </label>
-          <br>
-        </div>
-        <br><br>
-        <table class="table">
-            <tbody *ngIf="show_like; else showBook">
-              <tr *ngFor="let reaction of reactions_data">
-                <td>{{convertTimestamp(reaction.last_updated)}}</td>
-                <td>{{reaction.title}}</td>
-                <td>{{reaction.like_status}}</td>
-              </tr>
-            </tbody>
-            <ng-template #showBook>
-                <tbody>
-                    <tr *ngFor="let bookmark of bookmarked_data">
-                        <td>{{convertTimestamp(bookmark.last_updated)}}</td>
-                        <td>{{bookmark.title}}</td>
-                        <td *ngIf="bookmark.list_status; else bookTemp">{{bookmark.list_status}}</td>
-                        <ng-template #bookTemp>
-                          <td>Removed</td>
-                        </ng-template>
-                      </tr>
-                </tbody> 
-             </ng-template> 
-          </table>
-        <button type="button" class="btn btn-dark" routerLink="/settings" routerLinkActive="active">Settings</button>
+        <label class="btn btn-secondary active" (click)="setCat(true)">
+          <input type="radio" name="options" id="option1" autocomplete="off" checked>Rated Movies
+        </label>
+        <label class="btn btn-secondary" (click)="setCat(false)">
+          <input type="radio" name="options" id="option2" autocomplete="off">Bookmarked Movies
+        </label>
+        <br>
+      </div>
+      <br>
+      <br>
+      <table class="table">
+        <tbody *ngIf="show_like; else showBook">
+          <tr *ngFor="let reaction of reactions_data">
+            <td>{{convertTimestamp(reaction.last_updated)}}</td>
+            <td>{{reaction.title}}</td>
+            <td>{{reaction.like_status}}</td>
+          </tr>
+        </tbody>
+        <ng-template #showBook>
+          <tbody>
+            <tr *ngFor="let bookmark of bookmarked_data">
+              <td>{{convertTimestamp(bookmark.last_updated)}}</td>
+              <td>{{bookmark.title}}</td>
+              <td *ngIf="bookmark.list_status; else bookTemp">{{bookmark.list_status}}</td>
+              <ng-template #bookTemp>
+                <td>Removed</td>
+              </ng-template>
+            </tr>
+          </tbody>
+        </ng-template>
+      </table>
+      <button type="button" class="btn btn-dark" routerLink="/settings" routerLinkActive="active">Settings</button>
     </div>
   </div>
 </div>

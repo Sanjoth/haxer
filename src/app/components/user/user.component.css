@@ -49,5 +49,26 @@ a:hover {
 label {
   color: white;
   font-size: 14px;
-  margin: 0px;
+}
+
+mat-card-title label {
+  color:black;
+  font-size: 14px;
+}
+
+#query, #query:focus, #query:active{
+  border-color: white !important;
+  -webkit-appearance:none !important;
+  box-shadow: none !important;
+-moz-box-shadow: none !important;
+-webkit-box-shadow: none !important;
+outline:none !important;
+}
+
+button, button:focus, button:active, .form-control:focus {
+  -webkit-appearance:none !important;
+  box-shadow: none !important;
+-moz-box-shadow: none !important;
+-webkit-box-shadow: none !important;
+outline:none !important;
 }

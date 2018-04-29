@@ -9,15 +9,14 @@ const bodyParser = require('body-parser');
 const sslRedirect = require('heroku-ssl-redirect');
 const UIDGenerator = require('uid-generator');
 const uidgen = new UIDGenerator(256, UIDGenerator.BASE62);
-// Globals 
 const mourl = 'mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@ds261745.mlab.com:61745/heroku_m30b5bz0';
 var MongoClient = mongo.MongoClient;
+
+
 app.use(compression());
 app.use(sslRedirect());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-
-
 
 
 /**
@@ -26,10 +25,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 MongoClient.connect(mourl, function (err, db) {
   if (err) throw err;
   console.log("Database usable!");
-  /* db.createCollection("users", function(err, res) {
-   console.log("Collection created!");
-   db.close();
- }); */
 });
 
 /**
@@ -86,7 +81,6 @@ app.get('/regUser', function (request, response) {
   var pos = {};
   var uid = uidgen.generateSync();
   console.log(uid);
-  
   var seedData = {
     "uname": `${name}`,
     "email": `${email}`,
@@ -94,11 +88,10 @@ app.get('/regUser', function (request, response) {
     "token": uid,
     "reactions_data": pos,
     "bookmark_data": pos,
-    "impressions_data": pos,
+    "clicked_data": pos,
     "cluster": ``,
     "genre_ranking": ``
   };
-
   MongoClient.connect(mourl, function (err, db) {
     var search = JSON.parse(`{"email": "${email}"}`);
     console.log(search);
@@ -106,7 +99,6 @@ app.get('/regUser', function (request, response) {
       if (err) { console.error(err); response.send("Error " + err); throw err; }
       if (result.length == 0) {
         console.log("NO user")
-        //Insert the new document(user) into collection users if new user
         db.collection("users").insertOne(seedData, function (err, res) {
           if (err) throw err;
           console.log("1 user inserted");
@@ -183,27 +175,21 @@ app.post('/sendClicksData', function (req, res) {
   var search = JSON.parse(`{"email": "${user_id}"}`);
   var query_object, abc, query, params;
 
-  //console.log(additional_data["18411"].genre_ids);
   try {
     MongoClient.connect(mourl, function (err, db) {
       for (var movie_id in additional_data) {
         kcd = JSON.stringify(bcd[movie_id]);
-        abc = "\"impressions_data." + movie_id + "\"";
+        abc = "\"clicked_data." + movie_id + "\"";
         if (params === undefined) {
           params = abc + ': ' + kcd;
         }
         else {
           params = params + ',' + abc + ': ' + kcd;
         }
-
         query = '{$set: {' + params + '}}';
         var jsonValidString = JSON.stringify(eval("(" + query + ")"));
         var query_object = JSON.parse(jsonValidString);
-        // query_object = {$set: {additional_data: additional_data}};
-        //console.log(query);
-
       }
-      // Send to DB
       db.collection("users").update(search, query_object, { upsert: true }, function (err, result) {
         if (err) {
           console.error(err);
