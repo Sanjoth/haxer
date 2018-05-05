@@ -1,5 +1,3 @@
-import { Options } from 'selenium-webdriver/ie';
-
 const express = require('express');
 const http = require('http');
 const sslRedirect = require('heroku-ssl-redirect');
