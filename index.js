@@ -1,20 +1,21 @@
+import { Options } from 'selenium-webdriver/ie';
+
 const express = require('express');
 const http = require('http');
+const sslRedirect = require('heroku-ssl-redirect');
+const compression = require('compression');
 const path = require('path');
 const mongo = require('mongodb');
 const app = express();
-const compression = require('compression');
 const url = require('url');
 const bodyParser = require('body-parser');
-const sslRedirect = require('heroku-ssl-redirect');
 const UIDGenerator = require('uid-generator');
 const uidgen = new UIDGenerator(256, UIDGenerator.BASE62);
 const mourl = 'mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@ds261745.mlab.com:61745/heroku_m30b5bz0';
 var MongoClient = mongo.MongoClient;
 
-
-app.use(compression());
 app.use(sslRedirect());
+app.use(compression(({level: 9})));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
@@ -28,7 +29,7 @@ MongoClient.connect(mourl, function (err, db) {
 });
 
 /**
- * APIs Start here
+ * APIs START HERE
  */
 
 /**
@@ -253,7 +254,6 @@ app.post('/sendBookmarkData', function (req, res) {
   }
 });
 
-
 /**
  * For using Angular with Node.js
  * Keep it in the end of the requests
@@ -263,7 +263,6 @@ app.get('*', function (req, res) {
   const index = path.join(__dirname, 'dist', 'index.html');
   res.sendFile(index);
 });
-
 
 const port = process.env.PORT || '3001';
 app.set('port', port);
