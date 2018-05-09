@@ -256,7 +256,7 @@ app.post('/sendBookmarkData', function (req, res) {
  * For using Angular with Node.js
  * Keep it in the end of the requests
  */
-app.use(express.static(path.join(__dirname, 'dist'), { maxAge: 0 }));
+app.use(express.static(path.join(__dirname, 'dist'), { maxAge: '7d' }));
 app.get('*', function (req, res) {
   const index = path.join(__dirname, 'dist', 'index.html');
   res.sendFile(index);
