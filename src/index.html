@@ -33,6 +33,12 @@ var loadDeferredStyles = function() {
       if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
       else window.addEventListener('load', loadDeferredStyles);
 </script>
-<script async src="assets/ga.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73846583-5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-73846583-5');
+</script>
 </body>
 </html>
