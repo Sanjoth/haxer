@@ -26,7 +26,7 @@ export class LogInComponent implements OnInit {
     alert("Feature currently in beta");
   }
   sendReq(email, pass) {
-    this.loginstr = `/getUser?email=${email}&pass=${pass}`;
+    this.loginstr = `/loginUser?email=${email}&pass=${pass}`;
     this.http.get<UserResponse>(this.loginstr).subscribe(data => {
       this.data = data; // Assign local to global
       console.log(data);

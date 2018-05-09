@@ -33,13 +33,13 @@ label {
 
 input {
     background-color: #f0f2f4 !important;
-border-color:#f8f9fa !important;
+border-color:#f0f2f4 !important;
 }
 
 
 .input-group-text {
 background-color: #f0f2f4 !important;
-border-color:#f8f9fa !important;
+border-color:#f0f2f4 !important;
 }
 
 #lang {
@@ -126,4 +126,10 @@ table, th , td  {
 
 .form-check-input:checked {
     background-color: black;
+}
+
+#lang {
+    border-left: none;
+    border-top: none;
+    width: 155px !important;
 }

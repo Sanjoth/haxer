@@ -79,6 +79,12 @@ export class DiscoverComponent extends UserComponent implements OnInit {
     { "value": 10752, "text": "War", "checked": false },
     { "value": 37, "text": "Western", "checked": false }
   ]
+
+  optional_filters = [
+    {"filter_name": "adult", "checked": false},
+    {"filter_name": "history", "checked": false}
+  ]
+
   genres_excl = [
     { "value": 28, "text": "Action", "checked": false },
     { "value": 12, "text": "Adventure", "checked": false },
@@ -185,6 +191,10 @@ export class DiscoverComponent extends UserComponent implements OnInit {
     this.rating = rating;
     let in_genres = this.genres_incl.filter(opt => opt.checked).map(opt => opt.value).toString();
     let ex_genres = this.genres_excl.filter(opt => opt.checked).map(opt => opt.value).toString();
+
+    // let adult_filter = this.optional_filters.filter(opt => opt.checked).map(opt => opt.filter_name).toString();
+    // let history_filter = this.optional_filters.filter(opt => opt.checked).map(opt => opt.filter_name).toString();
+
     if (this.movie_selected == true) {
       this.hax_link = 'https://api.themoviedb.org/3/discover/movie?api_key=' + this.api_key + '&language=en-IN&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&include_video=false&page=' + this.page_number + '&release_date.gte=' + before + '&release_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
     }

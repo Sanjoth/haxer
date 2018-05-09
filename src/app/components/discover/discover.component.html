@@ -61,7 +61,7 @@
             <span id="listbox" class="input-group-text">
               <label style="margin-left:30px;"></label> &nbsp; Language</span>
           </div>
-          <input list="languages" name="language" #lang>
+          <input list="languages" name="language" #lang id="lang">
           <datalist id="languages">
             <option *ngFor="let lang of lang_keys" value="{{lang}}">
           </datalist>

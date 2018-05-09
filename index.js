@@ -33,7 +33,7 @@ MongoClient.connect(mourl, function (err, db) {
 /**
  * Get User Details
  */
-app.get('/getUser', function (request, response) {
+app.get('/loginUser', function (request, response) {
   var querys = url.parse(request.url, true);
   var email = querys.query.email;
   var pass = querys.query.pass;
