@@ -48,7 +48,6 @@ export class RecommenderComponent implements OnInit, OnDestroy {
     let lang = 'en-US';
     let characterHomeworld;
     let alsoWatched;
-    console.log(this.similar_genre_ids[0]);
     let upcoming_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/upcoming?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
     let character = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/now_playing?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
     if (this.similar_last != undefined) {
