@@ -11,14 +11,15 @@ import { environment } from '../environments/environment';
 // Import HttpClientModule from @angular/common/http
 import { HttpClientModule } from '@angular/common/http';
 
-//Angular Material 2
+// Angular Material 2
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonToggleModule } from '@angular/material';
 
-//Self Made
+// Self Made
 import { TruncatePipe } from './truncate/truncate.module';
 
+// User Components
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -46,16 +47,6 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'settings', component: SettingsComponent},
   { path: '**', component: PageNotFoundComponent }
-  /*{
-    path: 'heroes',
-    component: HeroListComponent,
-    data: { title: 'Heroes List' }
-  }*/
-  /*
-  { path: '',
-    redirectTo: '/browse',
-    pathMatch: 'full'
-  }*/
 
 ];
 
@@ -83,8 +74,6 @@ const appRoutes: Routes = [
       /*,{ enableTracing: true } // <-- debugging purposes only */
     ),
     BrowserModule,
-    // Include it under 'imports' in your application module
-    // after BrowserModule.
     HttpClientModule,
     FormsModule,
     MaterialModule,

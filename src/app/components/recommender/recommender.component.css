@@ -19,3 +19,41 @@
   display: block;
   text-align: center;
 }
+
+#buttons-dislike {
+  margin-left: 4px;
+  top: 0;
+  right: 0;
+  z-index: 1; 
+  position: absolute; 
+  width: 100%;
+  border: 0px;
+}
+
+#buttons-like {
+  margin-left: 4px;
+  bottom: 0;
+  right: 0;
+  z-index: 1; 
+  position: absolute; 
+  width: 100%;
+  border: 0px;
+}
+
+#buttons-watchlater {
+  left: 0;
+  z-index: 1; 
+  position: absolute; 
+  height: 100%;
+  border: 0px;
+}
+
+button:hover
+{
+opacity: 1;
+}
+
+button
+{
+opacity: 0;
+}

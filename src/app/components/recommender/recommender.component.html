@@ -6,6 +6,9 @@
     <div class="larry" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 3000, "pauseAutoPlayOnHover": false}'>
       <div class="carousel-cell" *ngFor="let movie of now_playing.results; let myIndex = index">
         <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+        <button id="buttons-like" type="button" class="btn btn-outline-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+        <button id="buttons-dislike" type="button" class="btn btn-outline-warning"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+        <button id="buttons-watchlater" type="button" class="btn btn-outline-dark"><i class="fa fa-bookmark-o" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>
@@ -16,6 +19,9 @@
     <div class="carousel" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 3000, "pauseAutoPlayOnHover": false}'>
       <div class="carousel-cell" *ngFor="let movie of trending_now.results; let myIndex = index">
         <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+        <button id="buttons-like" type="button" class="btn btn-outline-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+        <button id="buttons-dislike" type="button" class="btn btn-outline-warning"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+        <button id="buttons-watchlater" type="button" class="btn btn-outline-dark"><i class="fa fa-bookmark-o" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>
@@ -26,6 +32,9 @@
     <div class="arry" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 3000, "pauseAutoPlayOnHover": false}'>
       <div class="carousel-cell" *ngFor="let movie of similar.results; let myIndex = index">
         <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+        <button id="buttons-like" type="button" class="btn btn-outline-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+        <button id="buttons-dislike" type="button" class="btn btn-outline-warning"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+        <button id="buttons-watchlater" type="button" class="btn btn-outline-dark"><i class="fa fa-bookmark-o" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>
@@ -36,6 +45,9 @@
     <div class="barry" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 3000, "pauseAutoPlayOnHover": false}'>
       <div class="carousel-cell" *ngFor="let movie of also_watched.results; let myIndex = index">
         <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+        <button id="buttons-like" type="button" class="btn btn-outline-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+        <button id="buttons-dislike" type="button" class="btn btn-outline-warning"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+        <button id="buttons-watchlater" type="button" class="btn btn-outline-dark"><i class="fa fa-bookmark-o" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>
@@ -46,6 +58,9 @@
     <div class="upcom" data-flickity='{"wrapAround": true, "groupCells": true, "autoPlay": 3000, "pauseAutoPlayOnHover": false}'>
       <div class="carousel-cell" *ngFor="let movie of upcoming.results; let myIndex = index">
         <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+        <button id="buttons-like" type="button" class="btn btn-outline-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+        <button id="buttons-dislike" type="button" class="btn btn-outline-warning"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+        <button id="buttons-watchlater" type="button" class="btn btn-outline-dark"><i class="fa fa-bookmark-o" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>

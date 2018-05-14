@@ -50,12 +50,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
     console.log(this.user_name);
 
     if (this.bookmarked_data == null || this.bookmarked_data == undefined) {
-      this.bookmarked_data = localStorage.getItem("BOOKMARKED_DATA");
-      this.bookmarked_data = Object.values(JSON.parse(this.bookmarked_data));
+      if (localStorage.getItem("BOOKMARKED_DATA"))
+      {
+        this.bookmarked_data = localStorage.getItem("BOOKMARKED_DATA");
+        this.bookmarked_data = Object.values(JSON.parse(this.bookmarked_data));
+      }
     }
     if (this.reactions_data == null || this.reactions_data == undefined) {
-      this.reactions_data = localStorage.getItem("REACTION_DATA");
-      this.reactions_data = Object.values(JSON.parse(this.reactions_data));
+      if (localStorage.getItem("REACTION_DATA"))
+      {
+        this.reactions_data = localStorage.getItem("REACTION_DATA");
+        this.reactions_data = Object.values(JSON.parse(this.reactions_data));
+      }
     }
     this.lang_keys = Object.keys(this.lang_object);
     this.lang_values = Object.values(this.lang_object);
@@ -66,10 +72,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   showAlerts(): void {
-    // this.alertService.info('this is an info alert');
-    // this.alertService.danger('this is a danger alert');
-    // this.alertService.success('this is a success alert');
-    // this.alertService.warning('this is a warning alert');
     alert('Sucessfully saved :-)');
   }
   save(default_value) {

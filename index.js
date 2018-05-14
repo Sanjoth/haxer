@@ -10,13 +10,12 @@ const bodyParser = require('body-parser');
 const UIDGenerator = require('uid-generator');
 const uidgen = new UIDGenerator(256, UIDGenerator.BASE62);
 const mourl = 'mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@ds261745.mlab.com:61745/heroku_m30b5bz0';
-var MongoClient = mongo.MongoClient;
+const MongoClient = mongo.MongoClient;
 
 app.use(sslRedirect());
 app.use(compression(({level: 9})));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-
 
 /**
  * Test DB Connection
@@ -25,10 +24,6 @@ MongoClient.connect(mourl, function (err, db) {
   if (err) throw err;
   console.log("Database usable!");
 });
-
-/**
- * APIs START HERE
- */
 
 /**
  * Get User Details
@@ -77,7 +72,7 @@ app.get('/regUser', function (request, response) {
   var name = querys.query.name;
   var email = querys.query.email;
   var pass = querys.query.password1;
-  var pos = {};
+  var tracking_data = {};
   var uid = uidgen.generateSync();
   console.log(uid);
   var seedData = {
@@ -85,9 +80,9 @@ app.get('/regUser', function (request, response) {
     "email": `${email}`,
     "password": `${pass}`,
     "token": uid,
-    "reactions_data": pos,
-    "bookmark_data": pos,
-    "clicked_data": pos,
+    "reactions_data": tracking_data,
+    "bookmark_data": tracking_data,
+    "clicked_data": tracking_data,
     "cluster": ``,
     "genre_ranking": ``
   };
@@ -121,14 +116,11 @@ app.post('/sendReactionData', function (req, res) {
   var bcd = tracking_data;
   var search = JSON.parse(`{"email": "${user_id}"}`);
   var query_object, abc, query, params;
-  // UPDATE MULTIPLE FI
 
-  //console.log(tracking_data["18411"].genre_ids);
   try {
     MongoClient.connect(mourl, function (err, db) {
       for (var movie_id in tracking_data) {
         kcd = JSON.stringify(bcd[movie_id]);
-        //var temp = tracking_data[movie_id];
         abc = "\"reactions_data." + movie_id + "\"";
         if (params === undefined) {
           params = abc + ': ' + kcd;
@@ -136,13 +128,9 @@ app.post('/sendReactionData', function (req, res) {
         else {
           params = params + ',' + abc + ': ' + kcd;
         }
-
         query = '{$set: {' + params + '}}';
         var jsonValidString = JSON.stringify(eval("(" + query + ")"));
         var query_object = JSON.parse(jsonValidString);
-        // query_object = {$set: {tracking_data: tracking_data}};
-        //console.log(query);
-
       }
       // Send to DB
       db.collection("users").update(search, query_object, { upsert: true }, function (err, result) {
@@ -154,7 +142,6 @@ app.post('/sendReactionData', function (req, res) {
           res.send(result);
         }
       });
-
     });
   }
   catch (e) {
@@ -226,13 +213,9 @@ app.post('/sendBookmarkData', function (req, res) {
         else {
           params = params + ',' + abc + ': ' + kcd;
         }
-
         query = '{$set: {' + params + '}}';
         var jsonValidString = JSON.stringify(eval("(" + query + ")"));
         var query_object = JSON.parse(jsonValidString);
-        // query_object = {$set: {additional_data: additional_data}};
-        //console.log(query);
-
       }
       // Send to DB
       db.collection("users").update(search, query_object, { upsert: true }, function (err, result) {
@@ -253,7 +236,7 @@ app.post('/sendBookmarkData', function (req, res) {
 });
 
 /**
- * For using Angular with Node.js
+ * For using Angular generated templates with Node.js
  * Keep it in the end of the requests
  */
 app.use(express.static(path.join(__dirname, 'dist'), { maxAge: '7d' }));

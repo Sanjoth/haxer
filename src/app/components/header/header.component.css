@@ -50,13 +50,14 @@ mat-toolbar{
 
 #haxinfo {
     text-align: center;
-    background-color: white;
+    background-color: whitesmoke;
     position: absolute;
     bottom: 0px;
 }
 
 p{
     color: black;
+    size: 12px;
 }
 
 i {

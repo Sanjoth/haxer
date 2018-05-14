@@ -102,17 +102,6 @@
     </div>
   </div>
   <br>
-  <div class="form-check form-check-inline" style="margin-top: 10px">
-    <label class="form-check-label">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="false"> 16+ Movies
-    </label>
-  </div>
-  <div class="form-check form-check-inline">
-    <label class="form-check-label">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="false"> Watched Movies <sub>BETA</sub> 
-    </label>
-  </div>
-  <br>
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
     <label class="btn btn-dark active" (click)="setCat(true, $event)">
       <input type="radio" name="options" id="option1" autocomplete="off">
@@ -123,9 +112,16 @@
       <i class="fa fa-television" aria-hidden="true"></i> TV Shows
     </label>
   </div>
+  <br>
+  <div class="form-check form-check-inline" style="margin-top: 10px">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="false" checked> Watched Movies <sub>BETA</sub> 
+      </label>
+    </div>
+    <br>
   <div style="margin-top:10px" (click)="hax(vote_count.value, lang.value, rating.value, before.value, after.value)">
-    <button class="btn btn-dark active" type="button" id="haxthedb">
-      <i class="fa fa-search-plus" aria-hidden="true"></i> Hax it</button>
+    <button class="btn btn-light" type="button" id="haxthedb">
+        Discover <i style="margin-left:3px;" class="fa fa-search-plus" aria-hidden="true"></i></button>
   </div>
 
 </div>

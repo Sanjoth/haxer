@@ -15,19 +15,18 @@
       </button>
     </div>
   </div>
-
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
     <label class="btn btn-dark active" (click)="setCat(true, query.value, $event)">
       <input type="radio" name="options" id="option1" autocomplete="off" checked>
-      <i class="fa fa-film" aria-hidden="true"></i> &nbsp; Movies
+      <i style="margin-left:3px" class="fa fa-film" aria-hidden="true"></i> Movies
     </label>
     <label class="btn btn-dark" (click)="setCat(false, query.value, $event)">
       <input type="radio" name="options" id="option2" autocomplete="off">
-      <i class="fa fa-television" aria-hidden="true"></i> &nbsp; TV Shows
+      <i style="margin-left:3px" class="fa fa-television" aria-hidden="true"></i> TV Shows
     </label>
   </div>
-  
 </div>
+<br>
 <div *ngIf="data">
   <div *ngIf="data.results.length>1;else noresults">
     <div style="text-align:center">

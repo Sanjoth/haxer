@@ -48,7 +48,7 @@ a:hover {
 
 label {
   color: white;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 mat-card-title label {
@@ -71,4 +71,9 @@ button, button:focus, button:active, .form-control:focus {
 -moz-box-shadow: none !important;
 -webkit-box-shadow: none !important;
 outline:none !important;
+}
+
+#basic-addon2 {
+  border-top-right-radius: .25rem !important;
+  border-bottom-right-radius: .25rem  !important;
 }

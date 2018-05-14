@@ -1,38 +1,47 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Welcome {{user_name}} !</h1>
-    <p class="lead">User Details</p>
+    <h1 class="display-4">
+      <i class="fa fa-user" aria-hidden="true"></i>
+      {{user_name}}</h1>
+    <p class="lead">Details</p>
     <hr class="my-4">
-    <div id="search" style="text-align:center">
-      <label>Adult Content:</label>
-      <label>
-        <input style="position: relative; margin-left: 10px;" class="form-check-input position-static" type="checkbox" id="blankCheckbox"
-          value="option1" aria-label="..." checked> Yes
-      </label>
+    <div class="center-block">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Adult Content:</span>
+        </div>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label id="adult-yes" class="btn btn-secondary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> Yes
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option3" autocomplete="off"> No
+          </label>
+        </div>
+      </div>
       <br>
-      <label>Primary Language:
-        <input style="margin-left: 3px;" list="languages" name="language" #lang placeholder="{{default_lang}}">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Language</span>
+        </div>
+        <input list="languages" name="language" id="lang" #lang placeholder="{{default_lang}}">
         <datalist id="languages">
           <option *ngFor="let lang of lang_keys" value="{{lang}}">
         </datalist>
-      </label>
+      </div>
       <br>
       <br>
-      <button type="button" class="btn btn-success" (click)="save(lang.value)">Save Details</button>
+      <button type="button" class="btn btn-info" (click)="save(lang.value)">Save Details</button>
       <br>
       <br>
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-
+      <div style="margin-bottom: 10px;" class="btn-group btn-group-toggle" data-toggle="buttons">
         <label class="btn btn-secondary active" (click)="setCat(true)">
           <input type="radio" name="options" id="option1" autocomplete="off" checked>Rated Movies
         </label>
         <label class="btn btn-secondary" (click)="setCat(false)">
           <input type="radio" name="options" id="option2" autocomplete="off">Bookmarked Movies
         </label>
-        <br>
       </div>
-      <br>
-      <br>
       <table class="table">
         <tbody *ngIf="show_like; else showBook">
           <tr *ngFor="let reaction of reactions_data">
