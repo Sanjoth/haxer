@@ -3,14 +3,14 @@ const http = require('http');
 const sslRedirect = require('heroku-ssl-redirect');
 const compression = require('compression');
 const path = require('path');
-const mongo = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
 const app = express();
 const url = require('url');
 const bodyParser = require('body-parser');
 const UIDGenerator = require('uid-generator');
 const uidgen = new UIDGenerator(256, UIDGenerator.BASE62);
 const mourl = 'mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@ds261745.mlab.com:61745/heroku_m30b5bz0';
-const MongoClient = mongo.MongoClient;
+
 
 app.use(sslRedirect());
 app.use(compression(({level: 9})));
