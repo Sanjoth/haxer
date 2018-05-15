@@ -1,9 +1,6 @@
 .slider-section{
   margin-left: 20px;
 }
-.carousel, .arry, .larry {
-  background-color: black;
-}
 .flickity-viewport {
   background-color: black !important;
 }
@@ -21,30 +18,31 @@
 }
 
 #buttons-dislike {
-  margin-left: 4px;
-  top: 0;
-  right: 0;
+  bottom: 0;
   z-index: 1; 
+  margin-left:52%;
   position: absolute; 
-  width: 100%;
+  width: 50%;
   border: 0px;
+  float:right;
 }
 
 #buttons-like {
   margin-left: 4px;
   bottom: 0;
-  right: 0;
   z-index: 1; 
   position: absolute; 
-  width: 100%;
+  width: 50%;
   border: 0px;
+  float:left;
 }
 
 #buttons-watchlater {
-  left: 0;
+  top:0;
   z-index: 1; 
+  margin-left:4px;
   position: absolute; 
-  height: 100%;
+  width: 100%;
   border: 0px;
 }
 
