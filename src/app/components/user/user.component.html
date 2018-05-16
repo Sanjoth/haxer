@@ -1,8 +1,12 @@
+<br>
 <div class="container" style="text-align:center; position:relative;">
-  <h3>
-    <br> {{title}}
+  <h3>Haxèr</h3>
+  <h4>
+    A hybrid and intuitive approach for
+    <i routerLink="/discover" routerLinkActive="active">discovering</i> movies and getting
+    <i routerLink="/recom" routerLinkActive="active">recommendations</i>!
     <br>
-  </h3>
+  </h4>
   <br>
 </div>
 <div class="container" id="search" style="text-align:center">
@@ -75,11 +79,12 @@
               <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average}}
             </div>
           </div>
-
           <i>
-            <span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">{{this.gen[item]}}
-              <span *ngIf="i < movie.genre_ids.length-1">,</span>
-            </span>.</i>
+            <span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">
+              <span *ngIf="i < movie.genre_ids.length-1;else fullstop2">&nbsp;{{gen[item]}},</span>
+              <ng-template #fullstop2>&nbsp;{{gen[item]}}.</ng-template>
+            </span>
+          </i>
           <br>
           <span *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </span>
           <span *ngIf="movie.overview.length<140">{{movie.overview}} </span>
@@ -94,7 +99,7 @@
               </ng-template>
             </div>
             <div>
-              <i class="fa fa-language fa-lg" aria-hidden="true"></i> {{movie.original_language}}
+              <i class="fa fa-language fa-lg" aria-hidden="true"></i> {{rev_lang_obj[movie.original_language]}}
             </div>
           </div>
           <i class="fa fa-rocket fa-lg" aria-hidden="true"></i> {{movie.popularity}}
@@ -111,39 +116,39 @@
         </div>
         <mat-card-actions style="text-align: center">
           <button value="like" *ngIf="like_status_data[movie.id]; else liked_content_empty" (click)="likeMovie(this.movie,$event)"
-            class="mat-button" mat-button >
+            class="mat-button" mat-button>
             <i *ngIf="like_status_data[movie.id].like_status;else liked_content" class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>
             <ng-template #liked_content>
               <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
             </ng-template>
           </button>
           <ng-template #liked_content_empty>
-            <button value="like" (click)="likeMovie(this.movie,$event)" class="mat-button" mat-button >
+            <button value="like" (click)="likeMovie(this.movie,$event)" class="mat-button" mat-button>
               <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
             </button>
           </ng-template>
           <button value="dislike" *ngIf="like_status_data[movie.id]; else disliked_content_empty" (click)="dislikeMovie(this.movie,$event)"
-            class="mat-button" mat-button >
+            class="mat-button" mat-button>
             <i *ngIf="like_status_data[movie.id].like_status==false;else disliked_content" class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>
             <ng-template #disliked_content>
               <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
             </ng-template>
           </button>
           <ng-template #disliked_content_empty>
-            <button value="dislike" (click)="dislikeMovie(this.movie,$event)" class="mat-button" mat-button >
+            <button value="dislike" (click)="dislikeMovie(this.movie,$event)" class="mat-button" mat-button>
               <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
             </button>
           </ng-template>
 
           <button *ngIf="bookmarked_data[movie.id]; else list_content_empty" value="addList" (click)="addList(this.movie,$event)" class="mat-button"
-            mat-button >
+            mat-button>
             <i *ngIf="bookmarked_data[movie.id].list_status;else list_content" class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
             <ng-template #list_content>
               <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
             </ng-template>
           </button>
           <ng-template #list_content_empty>
-            <button style="margin-bottom: 20px;" value="addList" (click)="addList(this.movie,$event)" class="mat-button" mat-button >
+            <button style="margin-bottom: 20px;" value="addList" (click)="addList(this.movie,$event)" class="mat-button" mat-button>
               <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
             </button>
           </ng-template>
@@ -161,8 +166,12 @@
   <br>
   <div *ngIf="data" style="text-align: center">
     <div *ngIf="data.results.length>1">
-      <a *ngIf="data.page>1" id="prev_button" (click)="prev()" class="previous round"><i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i></a>
-      <a *ngIf="data.page<data.total_pages" id="next_button" (click)="next()" class="next round"><i class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"></i></a>
+      <a *ngIf="data.page>1" id="prev_button" (click)="prev()" class="previous round">
+        <i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i>
+      </a>
+      <a *ngIf="data.page<data.total_pages" id="next_button" (click)="next()" class="next round">
+        <i class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"></i>
+      </a>
     </div>
   </div>
   <br/>

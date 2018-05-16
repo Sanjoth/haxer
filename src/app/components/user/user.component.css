@@ -56,6 +56,10 @@ mat-card-title label {
   font-size: 14px;
 }
 
+h4 {
+  color: white;
+}
+
 #query, #query:focus, #query:active{
   border-color: white !important;
   -webkit-appearance:none !important;

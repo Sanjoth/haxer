@@ -135,7 +135,7 @@ mat-toolbar-row {
 /* dots are lines */
 .flickity-page-dots .dot {
   height: 4px !important;
-  width: 40px !important;
+  width: 1.5em !important;
   margin: 0 !important;
   border-radius: 0 !important;
 }
@@ -176,4 +176,8 @@ i {
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   outline:none !important;
+}
+
+iframe {
+  border: 0px;
 }

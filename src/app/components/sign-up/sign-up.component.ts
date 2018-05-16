@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,13 +11,7 @@ export class SignUpComponent implements OnInit {
   register: string;
   myForm: object;
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {
-    this.myForm = fb.group({
-      name: ['', Validators.required],
-      password1: ['', Validators.minLength],
-      password2: ['', Validators.minLength],
-      email: ['', Validators.email]
-    });
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit() {

@@ -55,9 +55,5 @@ export class HeaderComponent implements OnInit {
     alert("Successfully logged out!")
     window.location.href = "/";
   }
-
-  showHaxer() {
-    document.getElementById("haxlogo").style.display = 'block';
-  }
 }
 

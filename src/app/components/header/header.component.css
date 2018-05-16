@@ -33,6 +33,9 @@ mat-toolbar{
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 16px;}
 }
+#right a {
+    margin-right: 20px;
+}
 
 #cont {
     width:100%;

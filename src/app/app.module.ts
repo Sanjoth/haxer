@@ -29,7 +29,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
-import { RecommenderComponent } from './components/recommender/recommender.component';
+import { RecommenderComponent,SafePipe } from './components/recommender/recommender.component';
 import { DiscoverComponent } from './components/discover/discover.component';
 import { SeedDataComponent } from './components/seed-data/seed-data.component';
 import { SettingsComponent } from './components/settings/settings.component';
@@ -63,6 +63,7 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     AboutUsComponent,
     RecommenderComponent,
+    SafePipe,
     DiscoverComponent,
     SeedDataComponent,
     SettingsComponent,
