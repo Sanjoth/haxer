@@ -9,41 +9,40 @@
           <img class="carousel-img" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
 
           <button value="like" *ngIf="like_status_data[movie.id]; else liked_content_empty" (click)="likeMovie(this.movie,$event)"
-            class="btn btn-success" mat-button id="buttons-like">
-            <i *ngIf="like_status_data[movie.id].like_status;else liked_content" class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>
+            class="btn btn-success" id="buttons-like">
+            <i *ngIf="like_status_data[movie.id].like_status;else liked_content" class="fa fa-thumbs-up" aria-hidden="true"></i>
             <ng-template #liked_content>
-              <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
             </ng-template>
           </button>
           <ng-template #liked_content_empty>
-            <button value="like" (click)="likeMovie(this.movie,$event)" class="btn btn-success" mat-button id="buttons-like">
-              <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+            <button value="like" (click)="likeMovie(this.movie,$event)" class="btn btn-success" id="buttons-like">
+              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
             </button>
           </ng-template>
           <button value="dislike" *ngIf="like_status_data[movie.id]; else disliked_content_empty" (click)="dislikeMovie(this.movie,$event)"
-            class="btn btn-warning" mat-button id="buttons-dislike">
-            <i *ngIf="like_status_data[movie.id].like_status==false;else disliked_content" class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>
+            class="btn btn-warning" id="buttons-dislike">
+            <i *ngIf="like_status_data[movie.id].like_status==false;else disliked_content" class="fa fa-thumbs-down" aria-hidden="true"></i>
             <ng-template #disliked_content>
-              <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+              <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
             </ng-template>
           </button>
           <ng-template #disliked_content_empty>
-            <button value="dislike" (click)="dislikeMovie(this.movie,$event)" class="btn btn-warning" mat-button id="buttons-dislike">
-              <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+            <button value="dislike" (click)="dislikeMovie(this.movie,$event)" class="btn btn-warning" id="buttons-dislike">
+              <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
             </button>
           </ng-template>
 
           <button *ngIf="bookmarked_data[movie.id]; else list_content_empty" value="addList" (click)="addList(this.movie,$event)" class="btn btn-dark"
-            mat-button id="buttons-watchlater">
-            <i *ngIf="bookmarked_data[movie.id].list_status;else list_content" class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
+            id="buttons-watchlater">
+            <i *ngIf="bookmarked_data[movie.id].list_status;else list_content" class="fa fa-bookmark" aria-hidden="true"></i>
             <ng-template #list_content>
-              <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+              <i class="fa fa-bookmark-o" aria-hidden="true"></i>
             </ng-template>
           </button>
           <ng-template #list_content_empty>
-            <button style="margin-bottom: 20px;" value="addList" (click)="addList(this.movie,$event)" class="btn btn-dark" mat-button
-              id="buttons-watchlater">
-              <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+            <button style="margin-bottom: 20px;" value="addList" (click)="addList(this.movie,$event)" class="btn btn-dark" id="buttons-watchlater">
+              <i class="fa fa-bookmark-o" aria-hidden="true"></i>
             </button>
           </ng-template>
 

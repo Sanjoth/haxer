@@ -17,10 +17,6 @@ label {
     margin: 0px;
 }
 
-.btn-group.btn-group-toggle label {
-    color: white;
-}
-
 #listbox {
     width: 155px;
     text-align: center;
@@ -131,4 +127,8 @@ table, th , td  {
     border-left: none;
     border-top: none;
     width: 155px !important;
+}
+
+.btn.btn-light.active,.btn.btn-light.active {
+    color: black !important;
 }

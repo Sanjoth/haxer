@@ -22,7 +22,7 @@
   z-index: 23;
   top: 0;
   left: 0;
-  background-color: #000;
+  background-color: #1A1717;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -31,6 +31,7 @@
 #header {
   position: fixed;
   z-index: 5;
+  background-color: #1A1717;
 }
 
 /* Overlay */
@@ -44,12 +45,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.1);
   cursor: pointer;
 }
 
 footer{
-  background-color: black !important;
+  background-color: #1A1717 !important;
   margin-top: 100px;
 }
 
@@ -80,7 +81,7 @@ body {
   /* background-image: url("/assets/bg.jpg"); */
   margin: 0;
   font-family: 'Source Sans Pro', sans-serif;
-  background-color: black;
+  background-color: #1A1717;
 }
 
 mat-card {
@@ -105,16 +106,16 @@ mat-toolbar-row {
     min-height: 100%;
   }
  
-  .mat-toolbar.mat-accent {background: #000 !important;}
+  .mat-toolbar.mat-accent {background: #1A1717 !important;}
 
 
 /* SETTINGS OPTION PANEL */
   .mat-menu-panel {
-    background: #000 !important;
+    background: #1A1717 !important;
 }
 
 .mat-menu-item {
-  background: #000 !important;
+  background: #1A1717 !important;
   color: white !important;
   font-family: 'Source Sans Pro', sans-serif !important;
   font-size: 17px !important;

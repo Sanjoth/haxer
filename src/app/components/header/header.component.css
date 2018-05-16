@@ -1,5 +1,5 @@
 b{
-    font-size: 18px;
+    font-size: 22px;
     font-family: 'Source Sans Pro', sans-serif;
 }
 a {
@@ -13,6 +13,11 @@ a {
 
 #center a:hover, i:hover {
     color:#efbb42 !important;
+}
+
+#haxlogo {
+    color: white !important;
+    display: none;
 }
 
 mat-toolbar{

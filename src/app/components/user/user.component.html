@@ -16,11 +16,11 @@
     </div>
   </div>
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-dark active" (click)="setCat(true, query.value, $event)">
+    <label class="btn btn-light active" (click)="setCat(true, query.value, $event)">
       <input type="radio" name="options" id="option1" autocomplete="off" checked>
       <i style="margin-left:3px" class="fa fa-film" aria-hidden="true"></i> Movies
     </label>
-    <label class="btn btn-dark" (click)="setCat(false, query.value, $event)">
+    <label class="btn btn-light" (click)="setCat(false, query.value, $event)">
       <input type="radio" name="options" id="option2" autocomplete="off">
       <i style="margin-left:3px" class="fa fa-television" aria-hidden="true"></i> TV Shows
     </label>
@@ -161,8 +161,8 @@
   <br>
   <div *ngIf="data" style="text-align: center">
     <div *ngIf="data.results.length>1">
-      <a *ngIf="data.page>1" id="prev_button" (click)="prev()" class="previous round">&#8249;</a>
-      <a *ngIf="data.page<data.total_pages" id="next_button" (click)="next()" class="next round">&#8250;</a>
+      <a *ngIf="data.page>1" id="prev_button" (click)="prev()" class="previous round"><i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i></a>
+      <a *ngIf="data.page<data.total_pages" id="next_button" (click)="next()" class="next round"><i class="fa fa-arrow-circle-right fa-lg" aria-hidden="true"></i></a>
     </div>
   </div>
   <br/>
