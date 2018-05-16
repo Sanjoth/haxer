@@ -40,7 +40,7 @@
             </ng-template>
           </button>
           <ng-template #list_content_empty>
-            <button style="margin-bottom: 20px;" value="addList" (click)="addList(this.movie,$event)" class="btn btn-dark" id="buttons-watchlater">
+            <button value="addList" (click)="addList(this.movie,$event)" class="btn btn-dark" id="buttons-watchlater">
               <i class="fa fa-bookmark-o" aria-hidden="true"></i>
             </button>
           </ng-template>
@@ -74,12 +74,12 @@
           </span>
         </p>
         <p *ngIf="movie_details.credits.crew">
-            <b>Main Crew:</b>
-            <span *ngFor="let main of movie_details.credits.crew.slice(0,3);let i = index">
-                <span *ngIf="i < movie_details.credits.crew.slice(0,3).length-1; else fullstop">&nbsp;{{main.name}} ({{main.job}}),</span>
-                <ng-template #fullstop>&nbsp;{{main.name}} ({{main.job}}).</ng-template>
-                </span>
-          </p>
+          <b>Main Crew:</b>
+          <span *ngFor="let main of movie_details.credits.crew.slice(0,3);let i = index">
+            <span *ngIf="i < movie_details.credits.crew.slice(0,3).length-1; else fullstop">&nbsp;{{main.name}} ({{main.job}}),</span>
+            <ng-template #fullstop>&nbsp;{{main.name}} ({{main.job}}).</ng-template>
+          </span>
+        </p>
         <p>{{movie_details.overview}}</p>
         <div style="text-align: center">
           <a *ngIf="active_trailer!=movie_details.id; else show" id="{{movie_details.id}}" (click)="toggleTrailer($event)">Show Trailer</a>
@@ -95,8 +95,9 @@
           <a href="https://www.netflix.com/search?q={{movie_details.original_title}}" target="_blank">Netflix</a>
           <a href="https://www.primevideo.com/region/eu/search/ref=atv_nb_sr?phrase={{movie_details.original_title}}" target="_blank">
             <i class="fa fa-play-circle" aria-hidden="true"></i> Prime Video</a>
-          <a href="http://solarmoviesc.com/search/{{movie_details.original_title}}.html" target="_blank">SolarMovie</a> 
-          <br><br>
+          <a href="http://solarmoviesc.com/search/{{movie_details.original_title}}.html" target="_blank">SolarMovie</a>
+          <br>
+          <br>
           <a style="color:white !important" class="btn btn-dark active" href="/movie/{{movie_details.id}}" target="_blank">Complete Details</a>
         </div>
       </div>

@@ -56,12 +56,48 @@
         </iframe>
         <br>
       </ng-template>
-
       <i style="margin-right: 10px; color: white" class="fa fa-search" aria-hidden="true"></i>
       <a href="https://www.netflix.com/search?q={{movie_details.original_title}}" target="_blank">Netflix</a>
       <a href="https://www.primevideo.com/region/eu/search/ref=atv_nb_sr?phrase={{movie_details.original_title}}" target="_blank">
         <i class="fa fa-play-circle" aria-hidden="true"></i> Prime Video</a>
       <a href="http://solarmoviesc.com/search/{{movie_details.original_title}}.html" target="_blank">SolarMovie</a>
+      <br>
+      <br>
+
+      <a value="like" *ngIf="like_status_data[movie_details.id]; else liked_content_empty" (click)="likeMovie(this.movie_details,$event)">
+        <i *ngIf="like_status_data[movie_details.id].like_status;else liked_content" class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>
+        <ng-template #liked_content>
+          <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+        </ng-template>
+      </a>
+      <ng-template #liked_content_empty>
+        <a value="like" (click)="likeMovie(this.movie_details,$event)">
+          <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+        </a>
+      </ng-template>
+      <a value="dislike" *ngIf="like_status_data[movie_details.id]; else disliked_content_empty" (click)="dislikeMovie(this.movie_details,$event)">
+        <i *ngIf="like_status_data[movie_details.id].like_status==false;else disliked_content" class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>
+        <ng-template #disliked_content>
+          <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+        </ng-template>
+      </a>
+      <ng-template #disliked_content_empty>
+        <a value="dislike" (click)="dislikeMovie(this.movie_details,$event)">
+          <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+        </a>
+      </ng-template>
+
+      <a *ngIf="bookmarked_data[movie_details.id]; else list_content_empty" value="addList" (click)="addList(this.movie_details,$event)">
+        <i *ngIf="bookmarked_data[movie_details.id].list_status;else list_content" class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
+        <ng-template #list_content>
+          <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+        </ng-template>
+      </a>
+      <ng-template #list_content_empty>
+        <a value="addList" (click)="addList(this.movie_details,$event)">
+          <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+        </a>
+      </ng-template>
     </div>
   </div>
 </div>

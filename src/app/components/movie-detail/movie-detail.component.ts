@@ -1,13 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
 import { HttpClient } from '@angular/common/http'
+import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.css']
 })
-export class MovieDetailComponent implements OnInit, OnDestroy {
+export class MovieDetailComponent extends UserComponent implements OnInit, OnDestroy {
   sub: any;
   movie_id: any;
   movie_details: any;
@@ -46,13 +47,19 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     10759: "Action & Adventure"
   };
 
-  constructor(private active_route: ActivatedRoute, private http: HttpClient, private router: Router) { }
+  constructor(private active_route: ActivatedRoute, private http_movie_detail: HttpClient, private router: Router, private http_movie_detail_getData: HttpClient, private http_movie_detail_sendTrackingData: HttpClient, private http_movie_detail_sendAdditionalData: HttpClient) { 
+    super(http_movie_detail, http_movie_detail_sendAdditionalData, http_movie_detail_sendTrackingData, http_movie_detail_getData);
+  }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
     document.getElementById("body").style.backgroundImage = null;
     document.getElementById("body").style.backgroundColor = '#1A1717';
   }
   ngOnInit() {
+    localStorage.removeItem("REACTION_DATA");
+    localStorage.removeItem("BOOKMARKED_DATA");
+    localStorage.removeItem("CLICKED_DATA");
     document.getElementById("jumbo").style.backgroundColor = 'rgba(0,0,0,0)';
     this.sub = this.active_route.params.subscribe(params => {
       this.movie_id = +params['id']; // + converts String to int
@@ -61,7 +68,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/'+err.statusText);
   });
     let url = 'https://api.themoviedb.org/3/movie/' + this.movie_id + '?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&append_to_response=videos,credits';
-    this.http.get<MovieDetails>(url).subscribe(data => {
+    this.http_movie_detail.get<MovieDetails>(url).subscribe(data => {
       this.movie_details = data;
       if(data.videos.results[0])
       {
