@@ -20,7 +20,8 @@
         "/assets/bg.jpg",
         "/assets/haxer.png",
         "/assets/mean.png",
-        "/assets/nf.png"
+        "/assets/nf.png",
+        "/assets/og_haxer.png"
       ],
       "patterns": []
     }
@@ -31,8 +32,9 @@
     "/assets/haxer.png": "086ddf7898556cff4e040058bad42e9a33c63b65",
     "/assets/mean.png": "e6976821d458682b6f0ea12c388dc903f10d149b",
     "/assets/nf.png": "13527e4a33ea75d3cb683d4613b2f913d50cf65c",
+    "/assets/og_haxer.png": "42307d89f8aa36eabfa955887c6d99502fe57fec",
     "/favicon.ico": "ce9f26e7d3f6f3347021ce7cebfb5c8be0f7c2e5",
-    "/index.html": "209c22747f1ff02ff5dc0319c2ba6ba969536499"
+    "/index.html": "f4ea592a69175874ed3bc555fb05fefc003ed3d0"
   },
   "navigationUrls": [
     {

@@ -137,7 +137,20 @@ mat-toolbar-row {
   width: 40px !important;
   margin: 0 !important;
   border-radius: 0 !important;
+  position: absolute;
 }
+
+@media screen and (max-width: 307px) {
+  .flickity-page-dots {
+      position: initial !important;
+  }
+  }
+
+  @media screen and (max-height: 420px) {
+    .flickity-page-dots {
+        position: initial !important;
+    }
+    }
 
 i {
   margin-right: 2px;
