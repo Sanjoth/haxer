@@ -151,7 +151,7 @@ export class UserComponent implements OnInit {
   }
 
   likeMovie(movie, event) {
-    this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
+    
     /**
      * If Already present
      */
@@ -168,17 +168,10 @@ export class UserComponent implements OnInit {
       localStorage.setItem("LATEST_LIKE", movie.id + '|' + movie.title + '|' + movie.genre_ids);
       this.JSONify_like(movie, true);
     }
-
-    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg ng-star-inserter\"></i>") {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-up fa-lg ng-star-inserter\"></i>";
-    }
-    else {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-up fa-lg ng-star-inserter\"></i>";
-    }
   }
 
   dislikeMovie(movie, event) {
-    this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
+    
 
     if (this.like_status_data[movie.id]) {
       if (this.like_status_data[movie.id].like_status == false) {
@@ -192,12 +185,6 @@ export class UserComponent implements OnInit {
       this.JSONify_like(movie, false);
     }
 
-    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg ng-star-inserter\"></i>") {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-down fa-lg ng-star-inserter\"></i>";
-    }
-    else {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-thumbs-o-down fa-lg ng-star-inserter\"></i>";
-    }
   }
 
   trackClick(movie) {
@@ -210,7 +197,7 @@ export class UserComponent implements OnInit {
   }
 
   addList(movie, event) {
-    this.iconChk = document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML.trim();
+    
     if (this.bookmarked_data[movie.id]) {
       if (this.bookmarked_data[movie.id].list_status == true) {
         this.JSONify_bookmark(movie, null);
@@ -223,13 +210,6 @@ export class UserComponent implements OnInit {
       this.JSONify_bookmark(movie, true);
     }
 
-
-    if (this.iconChk == "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg ng-star-inserter\"></i>") {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark fa-lg ng-star-inserter\"></i>";
-    }
-    else {
-      document.getElementById(event.currentTarget.id).firstElementChild.lastElementChild.innerHTML = "<i _ngcontent-c5=\"\" aria-hidden=\"true\" class=\"fa fa-bookmark-o fa-lg ng-star-inserter\"></i>";
-    }
   }
 
   JSONify_bookmark(movie, list_status) {

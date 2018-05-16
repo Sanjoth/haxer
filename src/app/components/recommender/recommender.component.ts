@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs/observable/forkJoin'
 import * as flick from 'flickity';
+import { UserComponent } from '../user/user.component';
 
 
 @Component({
@@ -9,7 +10,7 @@ import * as flick from 'flickity';
   templateUrl: './recommender.component.html',
   styleUrls: ['./recommender.component.css']
 })
-export class RecommenderComponent implements OnInit, OnDestroy {
+export class RecommenderComponent extends UserComponent implements OnInit, OnDestroy {
 
   similar_last: any;
   similar_movie_name: string;
@@ -46,8 +47,9 @@ export class RecommenderComponent implements OnInit, OnDestroy {
 
   section_group = ['now_playing', 'trending_now', 'similar', 'recom', 'popular', 'upcoming'];
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http_views: HttpClient, private http_discover: HttpClient, private http_discover_sendAdditionalData: HttpClient, private http_discover_sendTrackingData: HttpClient, private http_discover_getData: HttpClient) {
+    super(http_discover, http_discover_sendAdditionalData, http_discover_sendTrackingData, http_discover_getData);
+  }
 
   ngOnDestroy() {
     if (this.request_group != undefined) {
@@ -79,21 +81,21 @@ export class RecommenderComponent implements OnInit, OnDestroy {
     let similar_api;
     let popular_api;
     let recom_api;
-    let upcoming_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/upcoming?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
-    let nowplaying_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/now_playing?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
+    let upcoming_api = this.http_views.get<UserResponse>('https://api.themoviedb.org/3/movie/upcoming?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
+    let nowplaying_api = this.http_views.get<UserResponse>('https://api.themoviedb.org/3/movie/now_playing?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
 
     if (this.similar_last != undefined) {
-      similar_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/' + this.similar_last + '/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&page=1');
-      popular_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/discover/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&sort_by=popularity.desc&include_video=false&page=1&vote_average.gte=5&with_genres=' + this.similar_genre_ids[0]);
-      recom_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/' + this.similar_last + '/recommendations?api_key=bd5e7f8161070f86bff1d8da34219f57&&language='+lang+'page=1');
+      similar_api = this.http_views.get<UserResponse>('https://api.themoviedb.org/3/movie/' + this.similar_last + '/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&page=1');
+      popular_api = this.http_views.get<UserResponse>('https://api.themoviedb.org/3/discover/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&sort_by=popularity.desc&include_video=false&page=1&vote_average.gte=5&with_genres=' + this.similar_genre_ids[0]);
+      recom_api = this.http_views.get<UserResponse>('https://api.themoviedb.org/3/movie/' + this.similar_last + '/recommendations?api_key=bd5e7f8161070f86bff1d8da34219f57&&language='+lang+'page=1');
     }
     else {
       this.similar_movie_name = 'Interstellar'
-      similar_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/157336/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
-      popular_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/discover/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language='+lang+'&sort_by=popularity.desc&include_video=false&page=1&vote_average.gte=5&with_genres=12,18');
-      recom_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/157336/recommendations?api_key=bd5e7f8161070f86bff1d8da34219f57&language='+lang+  '&page=1');
+      similar_api = this.http_views.get<UserResponse>('https://api.themoviedb.org/3/movie/157336/similar?api_key=bd5e7f8161070f86bff1d8da34219f57&language=' + lang + '&page=1');
+      popular_api = this.http_views.get<UserResponse>('https://api.themoviedb.org/3/discover/movie?api_key=bd5e7f8161070f86bff1d8da34219f57&language='+lang+'&sort_by=popularity.desc&include_video=false&page=1&vote_average.gte=5&with_genres=12,18');
+      recom_api = this.http_views.get<UserResponse>('https://api.themoviedb.org/3/movie/157336/recommendations?api_key=bd5e7f8161070f86bff1d8da34219f57&language='+lang+  '&page=1');
     }
-    let trending_api = this.http.get<UserResponse>('https://api.themoviedb.org/3/movie/popular?api_key=bd5e7f8161070f86bff1d8da34219f57&region=' + region + '&language=' + lang + '&page=1');
+    let trending_api = this.http_views.get<UserResponse>('https://api.themoviedb.org/3/movie/popular?api_key=bd5e7f8161070f86bff1d8da34219f57&region=' + region + '&language=' + lang + '&page=1');
     let api_list = [nowplaying_api, trending_api, similar_api, recom_api, popular_api, upcoming_api];
     try {
       for (let i = 0; i <= api_list.length - 3; i += 3) {
@@ -103,7 +105,6 @@ export class RecommenderComponent implements OnInit, OnDestroy {
             this.sections_data[i+1]["data"] = data[1];
             this.sections_data[i+2]["data"] = data[2];
             this.sections_data[i+2].text = 'Movies Similar to ' + this.similar_movie_name;
-            console.log(this.sections_data);
               window.setTimeout(() => { this.create_obj(this.recom_section_primary.slice(i,i+3)); });
           });
         this.request_group.push(temp);
