@@ -22,11 +22,9 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
-    document.getElementById('body').style.backgroundImage = 'url("/assets/bg.jpg")';
   }
 
   ngOnDestroy() {
-    document.getElementById('body').style.backgroundImage = null;
   }
 
   validateEmail(email) {

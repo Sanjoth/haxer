@@ -15,11 +15,10 @@ export class LogInComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    document.getElementById('body').style.backgroundImage = 'url("/assets/bg.jpg")';
   }
 
   ngOnDestroy() {
-    document.getElementById('body').style.backgroundImage = null;
+
   }
 
   forgot() {

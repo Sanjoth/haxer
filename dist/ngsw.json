@@ -17,7 +17,6 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
-        "/assets/bg.jpg",
         "/assets/haxer.png",
         "/assets/haxer_logo.png",
         "/assets/mean.png",
@@ -29,14 +28,13 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/assets/bg.jpg": "4c756bbc9e2e5f18717f56be557fc3ddb134d1ab",
     "/assets/haxer.png": "086ddf7898556cff4e040058bad42e9a33c63b65",
     "/assets/haxer_logo.png": "ca6348b1c30e87327ff245b92888d6596de9beb9",
     "/assets/mean.png": "e6976821d458682b6f0ea12c388dc903f10d149b",
     "/assets/nf.png": "13527e4a33ea75d3cb683d4613b2f913d50cf65c",
     "/assets/og_haxer.png": "42307d89f8aa36eabfa955887c6d99502fe57fec",
     "/favicon.ico": "ce9f26e7d3f6f3347021ce7cebfb5c8be0f7c2e5",
-    "/index.html": "5d1eebb2e01db5133178478eec2d036cbba0b5bb"
+    "/index.html": "4882ea5668cab2834dbb8761b11268e690fd0ef9"
   },
   "navigationUrls": [
     {
