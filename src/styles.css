@@ -84,10 +84,16 @@ body {
   background-color: #1A1717;
 }
 
+.card-group {
+  margin-top:18px !important;  
+  margin: 1em auto;
+}
+
 mat-card {
   max-width: 100%;
   margin: 1em auto;
   text-align: left;
+  padding-bottom: 42px !important;
 }
 
 mat-toolbar-row {

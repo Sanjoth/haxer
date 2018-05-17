@@ -105,6 +105,9 @@ export class RecommenderComponent extends UserComponent implements OnInit, OnDes
   }
 
   ngOnInit() {
+    localStorage.removeItem("REACTION_DATA");
+    localStorage.removeItem("BOOKMARKED_DATA");
+    localStorage.removeItem("CLICKED_DATA");
     let latest_likes = localStorage.getItem("LATEST_LIKE");
     if (latest_likes != undefined || latest_likes != null) {
       let latest_like = latest_likes.split("|");

@@ -60,7 +60,7 @@ export class MovieDetailComponent extends UserComponent implements OnInit, OnDes
     localStorage.removeItem("REACTION_DATA");
     localStorage.removeItem("BOOKMARKED_DATA");
     localStorage.removeItem("CLICKED_DATA");
-    document.getElementById("jumbo").style.backgroundColor = 'rgba(0,0,0,0)';
+    document.getElementById("jumbo").style.backgroundColor = 'rgba(0,0,0,0.0)';
     this.sub = this.active_route.params.subscribe(params => {
       this.movie_id = +params['id']; // + converts String to int
     },

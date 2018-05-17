@@ -8,12 +8,50 @@ Also, there has been an increasing demand of Recommendation Systems for movies t
 
 Our system is a full-stack web application which uses a live movie source, TMDb, which maintaines all real-world movies in their database. The users will have the ability to register themselves in our system so that we can track their browsing activity in our website. The website uses an effective movie filter in the discover section which will solve the problem of filtering movies and a hybrid approach to recommendations would be based on user history, movie similarity and user similarity clusters which will hence provide an effective solution to the aforementioned problems.
 
-#Technologies Used
-* TMDB APIs
+# Technologies Used
+* TMDb APIs
 * Heroku Cloud
-* mLab MongoDB
-* Angular 6
+* mLab MongoDB (MongoDB Cloud)
+* Angular v6
 * MEAN Stack
 * Bootstrap & Font Awesome
 * Supervized Machine Learning
 * Clustering
+
+# Launch Instructions
+
+## Prerequisites
+Dependencies listed in package.json
+
+### Istall Prequisites
+```bash
+npm install // After installing node and angular
+```
+
+## Angular App
+
+/app/*
+
+## Node.js Server Side App 
+
+index.js
+
+## Developer Build Compiation & Launch
+```bash
+ng serve --aot
+```
+
+## Production Build Compilation
+```bash
+ng build --prod --build-optimizer
+```
+
+## Production Build 
+```bash
+node index.js
+```
+
+## Compiled Views Directory
+
+/dist/*
+

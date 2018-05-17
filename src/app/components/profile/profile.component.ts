@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +30,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   setCat(bool) {
     this.show_like = bool;
   }
-  constructor() {
+  constructor(private http: HttpClient) {
     document.getElementById("body").style.backgroundColor = "#e9ecef";
     document.getElementById("body").style.backgroundImage = "none";
   }
@@ -48,19 +49,27 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.user_name = localStorage.getItem("Name");
     }
     console.log(this.user_name);
-
-    if (this.bookmarked_data == null || this.bookmarked_data == undefined) {
-      if (localStorage.getItem("BOOKMARKED_DATA"))
-      {
-        this.bookmarked_data = localStorage.getItem("BOOKMARKED_DATA");
-        this.bookmarked_data = Object.values(JSON.parse(this.bookmarked_data));
-      }
+    if (this.user_name != 'Guest')
+    {
+      let loginstr = '/getUserDetails?email=' + localStorage.getItem("Email");
+      this.http.get(loginstr).subscribe(data => {
+        console.log('SUCCESS');
+        this.reactions_data = Object.values(data[0].reactions_data);
+        this.bookmarked_data = Object.values(data[0].bookmark_data);
+      });
     }
-    if (this.reactions_data == null || this.reactions_data == undefined) {
-      if (localStorage.getItem("REACTION_DATA"))
-      {
-        this.reactions_data = localStorage.getItem("REACTION_DATA");
-        this.reactions_data = Object.values(JSON.parse(this.reactions_data));
+    else {
+      if (this.bookmarked_data == null || this.bookmarked_data == undefined) {
+        if (localStorage.getItem("BOOKMARKED_DATA")) {
+          this.bookmarked_data = localStorage.getItem("BOOKMARKED_DATA");
+          this.bookmarked_data = Object.values(JSON.parse(this.bookmarked_data));
+        }
+      }
+      if (this.reactions_data == null || this.reactions_data == undefined) {
+        if (localStorage.getItem("REACTION_DATA")) {
+          this.reactions_data = localStorage.getItem("REACTION_DATA");
+          this.reactions_data = Object.values(JSON.parse(this.reactions_data));
+        }
       }
     }
     this.lang_keys = Object.keys(this.lang_object);
@@ -68,7 +77,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    document.getElementById("body").style.backgroundColor = "black";
+    document.getElementById("body").style.backgroundColor = "#1A1717";
   }
 
   showAlerts(): void {

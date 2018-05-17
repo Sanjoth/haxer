@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem("Email") != null) {
-      console.log(localStorage.getItem("Email"));
       this.signIn = true;
       this.Name = localStorage.getItem("Name");
     }

@@ -30,7 +30,6 @@
         </datalist>
       </div>
       <br>
-      <br>
       <button type="button" class="btn btn-info" (click)="save(lang.value)">Save Details</button>
       <br>
       <br>
@@ -42,6 +41,7 @@
           <input type="radio" name="options" id="option2" autocomplete="off">Bookmarked Movies
         </label>
       </div>
+      <br>
       <table class="table">
         <tbody *ngIf="show_like; else showBook">
           <tr *ngFor="let reaction of reactions_data">
