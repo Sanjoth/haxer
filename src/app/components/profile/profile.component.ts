@@ -86,7 +86,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   save(new_lang) {
     this.showAlerts();
     let lang = this.lang_object[new_lang];
-    localStorage.setItem("DEFAULT_LANG", lang);
+    localStorage.setItem("DEFAULT_LANG", new_lang);
     console.log(lang);
   }
 

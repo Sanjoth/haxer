@@ -109,7 +109,6 @@ export class RecommenderComponent extends UserComponent implements OnInit, OnDes
     if(!localStorage.getItem("Email"))
     {
       this.alert.warning("Please log-in for personalized recommendations!");
-      this.alert.warning("Currently showing static recommendations!");
     }
     localStorage.removeItem("REACTION_DATA");
     localStorage.removeItem("BOOKMARKED_DATA");

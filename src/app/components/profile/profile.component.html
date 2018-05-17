@@ -47,7 +47,17 @@
           <tr *ngFor="let reaction of reactions_data">
             <td>{{convertTimestamp(reaction.last_updated)}}</td>
             <td>{{reaction.title}}</td>
-            <td>{{reaction.like_status}}</td>
+            <td>
+              <ng-template [ngIf]="reaction.like_status == true">
+                Liked
+              </ng-template>
+              <ng-template [ngIf]="reaction.like_status == false">
+                  Disliked
+                </ng-template>
+                <ng-template [ngIf]="reaction.like_status == null || reaction.like_status == undefined">
+                    Removed
+                  </ng-template>
+            </td>
           </tr>
         </tbody>
         <ng-template #showBook>
@@ -55,10 +65,14 @@
             <tr *ngFor="let bookmark of bookmarked_data">
               <td>{{convertTimestamp(bookmark.last_updated)}}</td>
               <td>{{bookmark.title}}</td>
-              <td *ngIf="bookmark.list_status; else bookTemp">{{bookmark.list_status}}</td>
-              <ng-template #bookTemp>
-                <td>Removed</td>
-              </ng-template>
+              <td>
+                  <ng-template [ngIf]="reaction.like_status == true">
+                      Bookmarked
+                    </ng-template>
+                    <ng-template [ngIf]="bookmark.list_status == null || bookmark.list_status == undefined || bookmark.list_status">
+                      Removed
+                      </ng-template>
+              </td>
             </tr>
           </tbody>
         </ng-template>
