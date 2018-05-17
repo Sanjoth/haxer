@@ -80,7 +80,7 @@ export class RecommenderComponent extends UserComponent implements OnInit, OnDes
     "class": "recommend-flick",
   },
   {
-    "text": "Movies as per your current interests",
+    "text": "Based on your current interests",
     "class": "popular-flick",
   },
   {

@@ -159,17 +159,23 @@ export class DiscoverComponent extends UserComponent implements OnInit {
 
     if (ratecheck > 10) {
       alert("Rating can't be higher than 10");
+      this.data = null;
       return;
     }
     if (this.votecount > 10000) {
       alert("Vote count out of range.");
+      this.data = null;
       return;
     }
     if (before > after) {
-      alert("From date can't be higher than To date.");
+      alert("'From date' can't be higher than 'To date'.");
+      this.data = null;
+      return;
     }
     if (before > this.before_date || after > this.before_date) {
       alert("Please insert correct date range.");
+      this.data = null;
+      return;
     }
     if (this.sub != undefined) {
       this.sub.unsubscribe();
@@ -183,6 +189,14 @@ export class DiscoverComponent extends UserComponent implements OnInit {
     if (lang === '') {
       lang = 'English';
     }
+    else {
+      if(!this.lang_object[lang])
+      {
+        alert("Please select a valid language from the dropdown!");
+        this.data = null;
+        return;
+      }
+    }
     if (vote_count === '') {
       vote_count = '0';
     }
@@ -192,9 +206,6 @@ export class DiscoverComponent extends UserComponent implements OnInit {
     this.rating = rating;
     let in_genres = this.genres_incl.filter(opt => opt.checked).map(opt => opt.value).toString();
     let ex_genres = this.genres_excl.filter(opt => opt.checked).map(opt => opt.value).toString();
-
-    // let adult_filter = this.optional_filters.filter(opt => opt.checked).map(opt => opt.filter_name).toString();
-    // let history_filter = this.optional_filters.filter(opt => opt.checked).map(opt => opt.filter_name).toString();
 
     if (this.movie_selected == true) {
       this.hax_link = 'https://api.themoviedb.org/3/discover/movie?api_key=' + this.api_key + '&language=en-IN&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&include_video=false&page=' + this.page_number + '&release_date.gte=' + before + '&release_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];

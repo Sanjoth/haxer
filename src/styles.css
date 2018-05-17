@@ -24,8 +24,9 @@
   left: 0;
   background-color: #1A1717;
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.4s;
   padding-top: 60px;
+  bottom:0;
 }
 /* Header */
 #header {
@@ -54,17 +55,11 @@ footer{
   margin-top: 100px;
 }
 
-@media screen and (max-width: 307px) {
+@media screen and (max-width: 328px) {
   footer {
       position: relative !important;
   }
   }
-
-  @media screen and (max-height: 420px) {
-    footer {
-        position: relative !important;
-    }
-    }
 
 .text-muted {
   color: white !important;
