@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertService } from 'ngx-alerts'
+import { AlertService } from 'ngx-alerts';
 
 @Component({
   selector: 'app-settings',

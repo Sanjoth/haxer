@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, Pipe, PipeTransform, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs/observable/forkJoin'
+import { forkJoin } from 'rxjs/observable/forkJoin';
+import { AlertService } from 'ngx-alerts';
 import * as flick from 'flickity';
 import { UserComponent } from '../user/user.component';
 import { DomSanitizer } from "@angular/platform-browser";
@@ -92,7 +93,7 @@ export class RecommenderComponent extends UserComponent implements OnInit, OnDes
   recom_section_primary = ['.shownow-flick', '.trend-flick', '.similar-flick', '.recommend-flick', '.popular-flick', '.upcom-flick'];
   section_group = ['now_playing', 'trending_now', 'similar', 'recom', 'popular', 'upcoming'];
 
-  constructor(private http_viewinfos: HttpClient, private http_views: HttpClient, private http_discover: HttpClient, private http_discover_sendAdditionalData: HttpClient, private http_discover_sendTrackingData: HttpClient, private http_discover_getData: HttpClient) {
+  constructor(private http_viewinfos: HttpClient, private http_views: HttpClient, private http_discover: HttpClient, private http_discover_sendAdditionalData: HttpClient, private http_discover_sendTrackingData: HttpClient, private http_discover_getData: HttpClient,public alert: AlertService) {
     super(http_discover, http_discover_sendAdditionalData, http_discover_sendTrackingData, http_discover_getData);
   }
 
@@ -105,6 +106,11 @@ export class RecommenderComponent extends UserComponent implements OnInit, OnDes
   }
 
   ngOnInit() {
+    if(!localStorage.getItem("Email"))
+    {
+      this.alert.warning("Please log-in for personalized recommendations!");
+      this.alert.warning("Currently showing static recommendations!");
+    }
     localStorage.removeItem("REACTION_DATA");
     localStorage.removeItem("BOOKMARKED_DATA");
     localStorage.removeItem("CLICKED_DATA");
