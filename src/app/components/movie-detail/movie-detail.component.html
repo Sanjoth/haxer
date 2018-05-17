@@ -30,7 +30,7 @@
         <ng-template #fullstop>&nbsp;{{cast.name}}.</ng-template>
       </span>
     </p>
-    <p *ngIf="movie_details.credits.crew">
+    <p *ngIf="movie_details.credits.crew.length>1">
       <b>Main Crew:</b>
       <span *ngFor="let main of movie_details.credits.crew.slice(0,4);let i = index">
         <span *ngIf="i < movie_details.credits.crew.slice(0,4).length-1; else fullstop">&nbsp;{{main.name}} ({{main.job}}),</span>
@@ -39,14 +39,15 @@
     </p>
     <p *ngIf="movie_details.belongs_to_collection">
       <b>Collection:</b>&nbsp;{{movie_details.belongs_to_collection.name}}</p>
-    <p *ngIf="movie_details.production_companies">
+    <p *ngIf="movie_details.production_companies.length>1">
       <b>Production Company:</b>&nbsp;{{movie_details.production_companies[0].name}}, {{movie_details.production_companies[0].origin_country}}</p>
 
     <p>{{movie_details.overview}}</p>
     <div style="text-align: center">
       <a *ngIf="movie_details.homepage" href="{{movie_details.homepage}}" target="_blank">Movie Homepage</a>
       <br>
-      <a *ngIf="active_trailer!=movie_details.id; else show" id="{{movie_details.id}}" (click)="toggleTrailer($event)">Show Trailer</a>
+      <span *ngIf="movie_details.videos.results.length>1">
+      <a *ngIf="active_trailer!=movie_details.id; else show" id="{{movie_details.id}}" (click)="toggleTrailer($event)">Show Trailer</a></span>
       <br>
       <ng-template #show>
         <a id="trailer-{{movie_details.id}}" (click)="toggleTrailer($event)">Hide Trailer</a>
