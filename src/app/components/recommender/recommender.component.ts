@@ -210,7 +210,7 @@ export class RecommenderComponent extends UserComponent implements OnInit, OnDes
     this.http_viewinfos.get<MovieDetails>(url).subscribe(data => {
       this.movie_details = data;
       console.log(this.movie_details);
-      this.trailer_key = 'http://www.youtube.com/embed/'+ data.videos.results[0].key;
+      this.trailer_key = 'https://www.youtube.com/embed/'+ data.videos.results[0].key;
       document.getElementById(element_id).style.display = 'block';  
       
     });
