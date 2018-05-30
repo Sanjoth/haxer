@@ -13,7 +13,7 @@ const uidgen = new UIDGenerator(256, UIDGenerator.BASE62);
 const mourl = 'mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@ds261745.mlab.com:61745/heroku_m30b5bz0';
 
 app.use(sslRedirect());
-app.use(compression(({level: 9})));
+app.use(compression(({ level: 9 })));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
@@ -150,7 +150,7 @@ app.post('/sendReactionData', function (req, res) {
 });
 
 /**
- * 
+ * Clicks Data Endpoint
  */
 app.post('/sendClicksData', function (req, res) {
 
@@ -201,7 +201,6 @@ app.post('/sendBookmarkData', function (req, res) {
   var search = JSON.parse(`{"email": "${user_id}"}`);
   var query_object, abc, query, params;
 
-  //console.log(additional_data["18411"].genre_ids);
   try {
     MongoClient.connect(mourl, function (err, db) {
       for (var movie_id in additional_data) {

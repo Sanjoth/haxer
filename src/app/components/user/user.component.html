@@ -127,7 +127,7 @@
               <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
             </button>
           </ng-template>
-          
+
           <button value="dislike" *ngIf="like_status_data[movie.id]; else disliked_content_empty" (click)="dislikeMovie(this.movie,$event)"
             class="mat-button" mat-button>
             <i *ngIf="like_status_data[movie.id].like_status==false;else disliked_content" class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>
