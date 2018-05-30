@@ -73,21 +73,21 @@
         <mat-card-content (click)="trackClick(movie)">
           <div class="d-flex justify-content-between">
             <div>
-              <i class="fa fa-calendar" aria-hidden="true"></i> {{movie.release_date || movie.first_air_date}}
+              <i class="fa fa-calendar" aria-hidden="true"></i> {{movie.release_date || movie.first_air_date || 'N/A'}}
             </div>
             <div>
-              <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average}}
+              <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average || 'N/A'}}
             </div>
           </div>
           <i>
             <span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">
               <span *ngIf="i < movie.genre_ids.length-1;else fullstop2">&nbsp;{{gen[item]}},</span>
-              <ng-template #fullstop2>&nbsp;{{gen[item]}}.</ng-template>
+              <ng-template #fullstop2>&nbsp;{{gen[item] || 'N/A'}}.</ng-template>
             </span>
           </i>
           <br>
           <span *ngIf="movie.overview.length>140">{{movie.overview | truncate : 140 : true}} </span>
-          <span *ngIf="movie.overview.length<140">{{movie.overview}} </span>
+          <span *ngIf="movie.overview.length<140">{{movie.overview || 'N/A'}} </span>
           <br>
 
           <div class="d-flex justify-content-between">
@@ -99,10 +99,10 @@
               </ng-template>
             </div>
             <div>
-              <i class="fa fa-language fa-lg" aria-hidden="true"></i> {{rev_lang_obj[movie.original_language]}}
+              <i class="fa fa-language fa-lg" aria-hidden="true"></i> {{rev_lang_obj[movie.original_language] || 'N/A'}}
             </div>
           </div>
-          <i class="fa fa-rocket fa-lg" aria-hidden="true"></i> {{movie.popularity}}
+          <i class="fa fa-rocket fa-lg" aria-hidden="true"></i> {{movie.popularity || 'N/A'}}
           <br>
         </mat-card-content>
         <div style="text-align: center">

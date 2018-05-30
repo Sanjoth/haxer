@@ -72,7 +72,7 @@ export class MovieDetailComponent extends UserComponent implements OnInit, OnDes
       this.movie_details = data;
       if(data.videos.results[0])
       {
-      this.trailer_key = 'http://www.youtube.com/embed/' + data.videos.results[0].key;
+      this.trailer_key = 'https://www.youtube.com/embed/' + data.videos.results[0].key;
       }
       console.log(this.movie_details);
       let bg_url:string = 'https://image.tmdb.org/t/p/w1280/'+this.movie_details.backdrop_path;

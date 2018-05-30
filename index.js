@@ -9,8 +9,8 @@ const url = require('url');
 const bodyParser = require('body-parser');
 const UIDGenerator = require('uid-generator');
 const uidgen = new UIDGenerator(256, UIDGenerator.BASE62);
-const mourl = 'mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@ds261745.mlab.com:61745/heroku_m30b5bz0';
 
+const mourl = 'mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@ds261745.mlab.com:61745/heroku_m30b5bz0';
 
 app.use(sslRedirect());
 app.use(compression(({level: 9})));

@@ -3,12 +3,12 @@
     <h1 class="display-4">{{movie_details.original_title}}</h1>
     <p *ngIf="movie_details.tagline">{{movie_details.tagline}}</p>
     <p class="lead">
-      <i style="margin-left: 0px !important;" class="fa fa-calendar" aria-hidden="true"></i> {{movie_details.release_date}}
-      <i class="fa fa-imdb" aria-hidden="true"></i> {{movie_details.vote_average}}
-      <i class="fa fa-users" aria-hidden="true"></i>{{movie_details.vote_count}}
-      <i class="fa fa-rocket" aria-hidden="true"></i>{{movie_details.popularity}}
-      <i class="fa fa-language" aria-hidden="true"></i>{{rev_lang_obj[movie_details.original_language]}}
-      <i class="fa fa-hourglass" aria-hidden="true"></i> {{movie_details.runtime}} mintues
+      <i style="margin-left: 0px !important;" class="fa fa-calendar" aria-hidden="true"></i> {{movie_details.release_date || 'N/A'}}
+      <i class="fa fa-imdb" aria-hidden="true"></i> {{movie_details.vote_average || 'N/A'}}
+      <i class="fa fa-users" aria-hidden="true"></i>{{movie_details.vote_count || 'N/A'}}
+      <i class="fa fa-rocket" aria-hidden="true"></i>{{movie_details.popularity || 'N/A'}}
+      <i class="fa fa-language" aria-hidden="true"></i>{{rev_lang_obj[movie_details.original_language] || 'N/A'}}
+      <i class="fa fa-hourglass" aria-hidden="true"></i> {{movie_details.runtime || 'N/A'}} mintues
       <i class="fa fa-eye fa-lg" aria-hidden="true"></i>
       <span *ngIf="movie_details.adult; else Audience">Restricted</span>
       <ng-template #Audience>
