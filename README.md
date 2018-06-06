@@ -1,8 +1,7 @@
 # Haxèr
-A hybrid and intuitive approach for discovering movies and getting recommendations! 
+## A hybrid and intuitive approach for discovering movies and getting recommendations! 
 
-
-![](haxer.png)
+![](haxer.png) 
 
 [Visit Website](https://haxer.herokuapp.com)
 
