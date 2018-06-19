@@ -10,7 +10,8 @@ const bodyParser = require('body-parser');
 const UIDGenerator = require('uid-generator');
 const uidgen = new UIDGenerator(256, UIDGenerator.BASE62);
 
-const mourl = 'mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@ds261745.mlab.com:61745/heroku_m30b5bz0';
+const mourl = String(process.argv[2]);
+console.log(mourl);
 
 app.use(sslRedirect());
 app.use(compression(({ level: 9 })));
@@ -26,7 +27,7 @@ MongoClient.connect(mourl, function (err, db) {
 });
 
 /**
- * Get User Details
+ * Get User Details Endpoint
  */
 app.get('/loginUser', function (request, response) {
   var querys = url.parse(request.url, true);
@@ -45,6 +46,10 @@ app.get('/loginUser', function (request, response) {
     });
   });
 });
+
+/**
+ * Check Existing User Endpoint
+ */
 
 app.get('/getUserDetails', function (request, response) {
   var querys = url.parse(request.url, true);
@@ -65,7 +70,7 @@ app.get('/getUserDetails', function (request, response) {
 
 
 /**
- * Register User
+ * Register User Endpoint
  */
 app.get('/regUser', function (request, response) {
   var querys = url.parse(request.url, true);
@@ -107,7 +112,7 @@ app.get('/regUser', function (request, response) {
 });
 
 /**
- * Send Tracking data to the MongoDB Database
+ * Reaction data Endpoint
  */
 app.post('/sendReactionData', function (req, res) {
   var user_id = req.body.user_id;
@@ -192,6 +197,10 @@ app.post('/sendClicksData', function (req, res) {
   }
 });
 
+/**
+ * Bookmark Data Endpoint
+ */
+
 app.post('/sendBookmarkData', function (req, res) {
 
   var user_id = req.body.user_id;
@@ -238,7 +247,7 @@ app.post('/sendBookmarkData', function (req, res) {
  * For using Angular generated templates with Node.js
  * Keep it in the end of the requests
  */
-app.use(express.static(path.join(__dirname, 'dist'), { maxAge: '7d' }));
+app.use(express.static(path.join(__dirname, 'dist'), { maxAge: '5d' }));
 app.get('*', function (req, res) {
   const index = path.join(__dirname, 'dist', 'index.html');
   res.sendFile(index);
