@@ -45,12 +45,12 @@ export class DiscoverComponent extends UserComponent implements OnInit {
   sortby = {
     "popularity.asc": "Popularity ↑",
     "popularity.desc": "Popularity ↓",
-    "release_date.asc": "Release Date ↑",
-    "release_date.desc": "Release Date ↓",
+    "primary_release_date.asc": "Release Date ↑",
+    "primary_release_date.desc": "Release Date ↓",
     "revenue.asc": "Revenue ↑",
     "revenue.desc": "Revenue ↓",
-    "primary_release_date.asc": "Primary Release Date ↑",
-    "primary_release_date.desc": "Primary Release Date ↓",
+    "primary_primary_release_date.asc": "Primary Release Date ↑",
+    "primary_primary_release_date.desc": "Primary Release Date ↓",
     "original_title.asc": "Original Title ↑",
     "original_title.desc": "Original Title ↓",
     "vote_average.asc": "Vote Average ↑",
@@ -197,8 +197,11 @@ export class DiscoverComponent extends UserComponent implements OnInit {
         return;
       }
     }
-    if (vote_count === '') {
+    if (vote_count === undefined) {
       vote_count = '0';
+    }
+    if (before === undefined) {
+      before = ''
     }
     this.votecount = parseInt(vote_count);
     this.before = before;
@@ -208,7 +211,7 @@ export class DiscoverComponent extends UserComponent implements OnInit {
     let ex_genres = this.genres_excl.filter(opt => opt.checked).map(opt => opt.value).toString();
 
     if (this.movie_selected == true) {
-      this.hax_link = 'https://api.themoviedb.org/3/discover/movie?api_key=' + this.api_key + '&language=en-IN&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&include_video=false&page=' + this.page_number + '&release_date.gte=' + before + '&release_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
+      this.hax_link = 'https://api.themoviedb.org/3/discover/movie?api_key=' + this.api_key + '&language=en-IN&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&include_video=false&page=' + this.page_number + '&primary_release_date.gte=' + before + '&primary_release_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
     }
     else {
       this.hax_link = 'https://api.themoviedb.org/3/discover/tv?api_key=' + this.api_key + '&language=en-US&sort_by=' + this.sort_filter + '&page=1&include_null_first_air_dates=false&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&page=' + this.page_number + '&first_air_date.gte=' + before + '&first_air_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
@@ -268,7 +271,7 @@ interface Results {
   overview: string;
   popularity: number;
   poster_path: string;
-  release_date: string;
+  primary_release_date: string;
   length: number;
 }
 

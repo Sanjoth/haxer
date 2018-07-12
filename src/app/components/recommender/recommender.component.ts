@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, Pipe, PipeTransform, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs/observable/forkJoin';
+import { forkJoin } from 'rxjs';
 import { AlertService } from 'ngx-alerts';
 import * as flick from 'flickity';
 import { UserComponent } from '../user/user.component';
