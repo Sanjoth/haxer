@@ -128,7 +128,7 @@ export class DiscoverComponent extends UserComponent implements OnInit {
   page_number: number;
   votecount: number;
   lang: string;
-  rating: number;
+  rating: any;
   before: string;
 
   ngOnInit() {
@@ -149,7 +149,7 @@ export class DiscoverComponent extends UserComponent implements OnInit {
     }
   }
 
-  hax(vote_count, lang, rating, before, after?) {
+  hax(vote_count, lang='English', rating='0', before, after?) {
     if (after == undefined) {
       after = this.before_date
     }
@@ -211,10 +211,10 @@ export class DiscoverComponent extends UserComponent implements OnInit {
     let ex_genres = this.genres_excl.filter(opt => opt.checked).map(opt => opt.value).toString();
 
     if (this.movie_selected == true) {
-      this.hax_link = 'https://api.themoviedb.org/3/discover/movie?api_key=' + this.api_key + '&language=en-IN&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&include_video=false&page=' + this.page_number + '&primary_release_date.gte=' + before + '&primary_release_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
+      this.hax_link = 'https://api.themoviedb.org/3/discover/movie?api_key=' + this.api_key + '&language=en-IN&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&include_video=false&page=' + this.page_number + '&primary_release_date.gte=' + before + '&primary_release_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang] + '&vote_average.lte=9';
     }
     else {
-      this.hax_link = 'https://api.themoviedb.org/3/discover/tv?api_key=' + this.api_key + '&language=en-US&sort_by=' + this.sort_filter + '&page=1&include_null_first_air_dates=false&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&page=' + this.page_number + '&first_air_date.gte=' + before + '&first_air_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang];
+      this.hax_link = 'https://api.themoviedb.org/3/discover/tv?api_key=' + this.api_key + '&language=en-US&sort_by=' + this.sort_filter + '&page=1&include_null_first_air_dates=false&sort_by=' + this.sort_filter + '&include_adult=' + this.adult_filter + '&page=' + this.page_number + '&first_air_date.gte=' + before + '&first_air_date.lte=' + after + '&vote_count.gte=' + vote_count + '&vote_average.gte=' + rating + '&with_genres=' + in_genres + '&without_genres=' + ex_genres + '&with_original_language=' + this.lang_object[lang] + '&vote_average.lte=9';
     }
     this.sub = this.http_discover.get<UserResponse>(this.hax_link).subscribe(data => {
       this.data = data; // Assign local to global

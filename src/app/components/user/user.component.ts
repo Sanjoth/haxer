@@ -180,7 +180,13 @@ export class UserComponent implements OnInit {
   }
 
   trackClick(movie) {
-    window.open('/movie/' + movie.id, '_blank');
+    if (this.movie_selected){
+      window.open('/show/movie/' + movie.id, '_blank');
+    }
+    else {
+      window.open('/show/tv/' + movie.id, '_blank');
+    }
+
     if (this.clicked_data[movie.id]) {
       console.log("Already Exists");
     }

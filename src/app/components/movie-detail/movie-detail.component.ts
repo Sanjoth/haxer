@@ -46,6 +46,7 @@ export class MovieDetailComponent extends UserComponent implements OnInit, OnDes
     10762: "Kids",
     10759: "Action & Adventure"
   };
+  url:string = ''
 
   constructor(private active_route: ActivatedRoute, private http_movie_detail: HttpClient, private router: Router, private http_movie_detail_getData: HttpClient, private http_movie_detail_sendTrackingData: HttpClient, private http_movie_detail_sendAdditionalData: HttpClient) { 
     super(http_movie_detail, http_movie_detail_sendAdditionalData, http_movie_detail_sendTrackingData, http_movie_detail_getData);
@@ -67,8 +68,15 @@ export class MovieDetailComponent extends UserComponent implements OnInit, OnDes
   err => {
     this.router.navigateByUrl('/'+err.statusText);
   });
-    let url = 'https://api.themoviedb.org/3/movie/' + this.movie_id + '?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&append_to_response=videos,credits';
-    this.http_movie_detail.get<MovieDetails>(url).subscribe(data => {
+
+
+    if (this.router.url.toString().includes('movie')){
+    this.url = 'https://api.themoviedb.org/3/movie/' + this.movie_id + '?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&append_to_response=videos,credits';
+    }
+    else{
+    this.url = 'https://api.themoviedb.org/3/tv/' + this.movie_id + '?api_key=bd5e7f8161070f86bff1d8da34219f57&language=en-US&append_to_response=videos,credits';
+    }
+    this.http_movie_detail.get<MovieDetails>(this.url).subscribe(data => {
       this.movie_details = data;
       if(data.videos.results[0])
       {

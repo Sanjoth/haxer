@@ -79,8 +79,7 @@
               <i class="fa fa-imdb fa-lg" aria-hidden="true"></i> {{movie.vote_average || 'N/A'}}
             </div>
           </div>
-          <i>
-            <span style="color: #666; font-size: 12px;" *ngFor="let item of movie.genre_ids;let i = index">
+          <i><span style="color: #666; font-size: 12px; margin-left: -3px !important;" *ngFor="let item of movie.genre_ids;let i = index">
               <span *ngIf="i < movie.genre_ids.length-1;else fullstop2">&nbsp;{{gen[item]}},</span>
               <ng-template #fullstop2>&nbsp;{{gen[item] || 'N/A'}}.</ng-template>
             </span>
