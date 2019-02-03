@@ -149,7 +149,7 @@ export class DiscoverComponent extends UserComponent implements OnInit {
     }
   }
 
-  hax(vote_count, lang='English', rating='0', before, after?) {
+  hax(vote_count, lang='English', rating='0', before?, after?) {
     if (after == undefined) {
       after = this.before_date
     }
@@ -236,7 +236,7 @@ export class DiscoverComponent extends UserComponent implements OnInit {
       this.page_number -= 1;
     }
     window.scrollTo(0, 0);
-    this.sendReq(this.query, this.event);
+    this.hax('0');
   }
 
   next() {
@@ -244,7 +244,7 @@ export class DiscoverComponent extends UserComponent implements OnInit {
       this.page_number += 1;
     }
     window.scrollTo(0, 0);
-    this.sendReq(this.query, this.event);
+    this.hax('0');
   }
 
 }
