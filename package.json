@@ -27,6 +27,7 @@
     "@angular/platform-browser": "^7.2.3",
     "@angular/platform-browser-dynamic": "^7.2.3",
     "@angular/platform-server": "^7.2.3",
+    "@angular/pwa": "^0.12.4",
     "@angular/router": "^7.2.3",
     "@angular/service-worker": "^7.2.3",
     "@types/flickity": "^2.0.2",
@@ -46,6 +47,7 @@
     "package.json": "^2.0.1",
     "rxjs": "^6.4.0",
     "rxjs-tslint": "^0.1.6",
+    "terser": "^3.14.1",
     "uid-generator": "^1.0.0",
     "zone.js": "^0.8.29"
   },

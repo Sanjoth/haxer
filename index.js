@@ -247,9 +247,9 @@ app.post('/sendBookmarkData', function (req, res) {
  * For using Angular generated templates with Node.js
  * Keep it in the end of the requests
  */
-app.use(express.static(path.join(__dirname, 'dist'), { maxAge: '5d' }));
+app.use(express.static(path.join(__dirname, 'dist/'), { maxAge: '5d' }));
 app.get('*', function (req, res) {
-  const index = path.join(__dirname, 'dist', 'index.html');
+  const index = path.join(__dirname, 'dist/', 'index.html');
   res.sendFile(index);
 });
 
