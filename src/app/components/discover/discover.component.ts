@@ -236,8 +236,7 @@ export class DiscoverComponent extends UserComponent implements OnInit {
       this.page_number -= 1;
     }
     window.scrollTo(0, 0);
-    this.hax(this.votecount, this.lang, this.rating, this.before);
-
+    this.sendReq(this.query, this.event);
   }
 
   next() {
@@ -245,7 +244,7 @@ export class DiscoverComponent extends UserComponent implements OnInit {
       this.page_number += 1;
     }
     window.scrollTo(0, 0);
-    this.hax(this.votecount, this.lang, this.rating, this.before);
+    this.sendReq(this.query, this.event);
   }
 
 }
