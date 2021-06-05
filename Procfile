@@ -1,1 +1,1 @@
-web: node index.js "mongodb://heroku_m30b5bz0:60gal69sk9g13li16u57jda1ts@cluster0-shard-00-00.jfnsk.mongodb.net:27017,cluster0-shard-00-01.jfnsk.mongodb.net:27017,cluster0-shard-00-02.jfnsk.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-1vrj2t-shard-0&authSource=admin&retryWrites=true&w=majority"
+web: npm start
