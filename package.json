@@ -2,7 +2,7 @@
   "name": "haxer",
   "version": "5.2.0",
   "license": "Apache-2.0",
-  "engines {
+  "engines": {
     "node": "14.x"
   },
   "repository": {
