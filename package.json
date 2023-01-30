@@ -45,7 +45,7 @@
     "package.json": "^2.0.1",
     "rxjs": "^6.4.0",
     "rxjs-tslint": "^0.1.6",
-    "terser": "^3.14.1",
+    "terser": "^4.8.1",
     "uid-generator": "^1.0.0",
     "zone.js": "^0.8.26"
   },
